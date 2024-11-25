@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FashionShop", "FashionShop.csproj", "{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

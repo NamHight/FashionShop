@@ -1,0 +1,45 @@
+﻿@model List<FashionShop.Models.views.SidebarItem>
+
+@{
+    
+}
+
+<!-- sidebar -->
+<div class="sidebar px-4 py-4 py-md-4 me-0">
+    <div class="d-flex flex-column h-100">
+        <a href="/dashboard" class="mb-0 brand-icon">
+            <span class="logo-icon">
+                <i class="bi bi-bag-check-fill fs-4"></i>
+            </span>
+            <span class="logo-text">FashionShop</span>
+        </a>
+        <!-- Menu: main ul -->
+        <ul class="menu-list flex-grow-1 mt-3">
+            @foreach (var item in Model)
+            {
+                if (item.hasSubItems)
+                {
+                    <li class="collapsed">
+                        <a class="m-link @( ViewBag.SelectedMenu == item.title ? "active" : "" )" data-bs-toggle="collapse" data-bs-target="#@item.title" href="@item.url">    
+                            <i class="@item.icon fs-5"></i> <span>@item.title</span> <span class="arrow icofont-rounded-down ms-auto text-end fs-5"></span></a>
+                        <!-- Menu: Sub menu ul -->
+                        <ul class="sub-menu collapse @( ViewBag.SelectedMenu == item.title ? "show" : "" )" id="@item.title">
+                            @foreach (var subItem in item.subItems)
+                            {
+                                <li><a class="ms-link @( ViewBag.SelectedMenu != subItem.title ? "" : "active" )" href="@subItem.url">@subItem.title</a></li>
+                            }
+                        </ul>
+                    </li>
+                }
+                else
+                {
+                    <li><a class="m-link @( ViewBag.SelectedMenu == item.title ? "active" : "" )" href="@item.url"><i class="@item.icon fs-5"></i> <span>@item.title</span></a></li>
+                }
+            }
+        </ul>
+        <!-- Menu: menu collepce btn -->
+        <button type="button" class="btn btn-link sidebar-mini-btn text-light">
+            <span class="ms-2"><i class="icofont-bubble-right"></i></span>
+        </button>
+    </div>
+</div>
