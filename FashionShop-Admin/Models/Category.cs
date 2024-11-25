@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 namespace FashionShop.Models;
 
 [Table("categories")]
+[Index("CategoryName", Name = "category_name", IsUnique = true)]
+[Index("Slug", Name = "slug", IsUnique = true)]
 public partial class Category
 {
     [Key]
@@ -14,8 +16,10 @@ public partial class Category
     public long CategoryId { get; set; }
 
     [Column("category_name")]
-    [StringLength(255)]
     public string CategoryName { get; set; } = null!;
+
+    [Column("slug")]
+    public string Slug { get; set; } = null!;
 
     [Column("description", TypeName = "text")]
     public string? Description { get; set; }

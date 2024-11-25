@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace FashionShop.Models;
 
 [Table("customers")]
+[Index("Email", Name = "email", IsUnique = true)]
 public partial class Customer
 {
     [Key]
@@ -21,8 +22,11 @@ public partial class Customer
     [StringLength(15)]
     public string? Phone { get; set; }
 
-    [Column("email")]
+    [Column("password")]
     [StringLength(255)]
+    public string Password { get; set; } = null!;
+
+    [Column("email")]
     public string? Email { get; set; }
 
     [Column("address", TypeName = "text")]
@@ -34,11 +38,8 @@ public partial class Customer
     [Column("updated_at", TypeName = "timestamp")]
     public DateTime? UpdatedAt { get; set; }
 
-    [Column("status", TypeName = "enum('active','inactive')")]
+    [Column("status", TypeName = "enum('active','warnning','banned')")]
     public string? Status { get; set; }
-
-    [InverseProperty("Customer")]
-    public virtual ICollection<Cart> Carts { get; set; } = new List<Cart>();
 
     [InverseProperty("Customer")]
     public virtual ICollection<Favorite> Favorites { get; set; } = new List<Favorite>();

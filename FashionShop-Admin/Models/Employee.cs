@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace FashionShop.Models;
 
 [Table("employees")]
+[Index("Email", Name = "email", IsUnique = true)]
 [Index("RoleId", Name = "fk_employees_role")]
 [Index("StoreId", Name = "fk_employees_store")]
 public partial class Employee
@@ -19,15 +20,22 @@ public partial class Employee
     [StringLength(255)]
     public string EmployeeName { get; set; } = null!;
 
-    [Column("employee_position", TypeName = "enum('manager','sales','customer care','deliver','intern')")]
+    [Column("employee_position", TypeName = "enum('manager','sales','customer care','deliver','intern','stock')")]
     public string? EmployeePosition { get; set; }
 
     [Column("phone")]
     [StringLength(15)]
     public string? Phone { get; set; }
 
-    [Column("email")]
+    [Column("avatar")]
     [StringLength(255)]
+    public string? Avatar { get; set; }
+
+    [Column("password")]
+    [StringLength(255)]
+    public string Password { get; set; } = null!;
+
+    [Column("email")]
     public string Email { get; set; } = null!;
 
     [Column("store_id")]
@@ -42,7 +50,7 @@ public partial class Employee
     [Column("updated_at", TypeName = "timestamp")]
     public DateTime? UpdatedAt { get; set; }
 
-    [Column("status", TypeName = "enum('active','inactive')")]
+    [Column("status", TypeName = "enum('active','warnning','banned')")]
     public string? Status { get; set; }
 
     [InverseProperty("Employee")]

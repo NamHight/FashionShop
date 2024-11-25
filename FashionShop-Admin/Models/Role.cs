@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace FashionShop.Models;
 
 [Table("roles")]
+[Index("RoleName", Name = "role_name", IsUnique = true)]
 public partial class Role
 {
     [Key]
@@ -14,7 +15,6 @@ public partial class Role
     public int RoleId { get; set; }
 
     [Column("role_name")]
-    [StringLength(255)]
     public string RoleName { get; set; } = null!;
 
     [Column("description", TypeName = "text")]

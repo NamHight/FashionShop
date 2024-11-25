@@ -8,6 +8,8 @@ namespace FashionShop.Models;
 
 [Table("products")]
 [Index("CategoryId", Name = "fk_products_category")]
+[Index("ProductName", Name = "product_name", IsUnique = true)]
+[Index("Slug", Name = "slug", IsUnique = true)]
 public partial class Product
 {
     [Key]
@@ -15,8 +17,14 @@ public partial class Product
     public long ProductId { get; set; }
 
     [Column("product_name")]
-    [StringLength(255)]
     public string ProductName { get; set; } = null!;
+
+    [Column("slug")]
+    public string Slug { get; set; } = null!;
+
+    [Column("banner")]
+    [StringLength(255)]
+    public string? Banner { get; set; }
 
     [Column("description", TypeName = "text")]
     public string? Description { get; set; }
@@ -37,15 +45,15 @@ public partial class Product
     [Column("status", TypeName = "enum('available','unavailable')")]
     public string? Status { get; set; }
 
-    [InverseProperty("Product")]
-    public virtual ICollection<Cartsdetail> Cartsdetails { get; set; } = new List<Cartsdetail>();
-
     [ForeignKey("CategoryId")]
     [InverseProperty("Products")]
     public virtual Category? Category { get; set; }
 
     [InverseProperty("Product")]
     public virtual ICollection<Favorite> Favorites { get; set; } = new List<Favorite>();
+
+    [InverseProperty("Product")]
+    public virtual ICollection<Image> Images { get; set; } = new List<Image>();
 
     [InverseProperty("Product")]
     public virtual ICollection<Ordersdetail> Ordersdetails { get; set; } = new List<Ordersdetail>();

@@ -8,6 +8,7 @@ namespace FashionShop.Models;
 
 [Table("promotions")]
 [Index("PromotionName", Name = "nq_promotion_name", IsUnique = true)]
+[Index("Slug", Name = "slug", IsUnique = true)]
 public partial class Promotion
 {
     [Key]
@@ -16,6 +17,9 @@ public partial class Promotion
 
     [Column("promotion_name")]
     public string PromotionName { get; set; } = null!;
+
+    [Column("slug")]
+    public string? Slug { get; set; }
 
     [Column("description", TypeName = "text")]
     public string? Description { get; set; }

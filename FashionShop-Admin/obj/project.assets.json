@@ -6451,11 +6451,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Project\\New folder\\FashionShop\\FashionShop-Admin\\FashionShop.csproj",
+      "projectUniqueName": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\FashionShop.csproj",
       "projectName": "FashionShop",
-      "projectPath": "D:\\Project\\New folder\\FashionShop\\FashionShop-Admin\\FashionShop.csproj",
+      "projectPath": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\FashionShop.csproj",
       "packagesPath": "C:\\Users\\finsr\\.nuget\\packages\\",
-      "outputPath": "D:\\Project\\New folder\\FashionShop\\FashionShop-Admin\\obj\\",
+      "outputPath": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\obj\\",
       "projectStyle": "PackageReference",
       "UsingMicrosoftNETSdk": false,
       "configFilePaths": [

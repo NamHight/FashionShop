@@ -19,10 +19,6 @@ public partial class MyDbContext : DbContext
 
     public virtual DbSet<Brand> Brands { get; set; }
 
-    public virtual DbSet<Cart> Carts { get; set; }
-
-    public virtual DbSet<Cartsdetail> Cartsdetails { get; set; }
-
     public virtual DbSet<Category> Categories { get; set; }
 
     public virtual DbSet<Customer> Customers { get; set; }
@@ -30,6 +26,8 @@ public partial class MyDbContext : DbContext
     public virtual DbSet<Employee> Employees { get; set; }
 
     public virtual DbSet<Favorite> Favorites { get; set; }
+
+    public virtual DbSet<Image> Images { get; set; }
 
     public virtual DbSet<Order> Orders { get; set; }
 
@@ -56,7 +54,7 @@ public partial class MyDbContext : DbContext
     public virtual DbSet<View> Views { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseMySql("Server=mysql-fashion-finsr8280-699e.h.aivencloud.com;Port=13062;Database=defaultdb;Uid=avnadmin;Pwd=AVNS_UIxLS_rvA7dyKjwnFDf;", ServerVersion.Parse("8.0.30-mysql"));
+        => optionsBuilder.UseMySql("server=mysql-fashion-finsr8280-699e.h.aivencloud.com;port=13062;database=defaultdb;uid=avnadmin;pwd=AVNS_UIxLS_rvA7dyKjwnFDf", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.30-mysql"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -73,34 +71,6 @@ public partial class MyDbContext : DbContext
             entity.Property(e => e.UpdatedAt)
                 .ValueGeneratedOnAddOrUpdate()
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
-        });
-
-        modelBuilder.Entity<Cart>(entity =>
-        {
-            entity.HasKey(e => e.CartId).HasName("PRIMARY");
-
-            entity.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
-            entity.Property(e => e.Status).HasDefaultValueSql("'waiting'");
-            entity.Property(e => e.UpdatedAt)
-                .ValueGeneratedOnAddOrUpdate()
-                .HasDefaultValueSql("CURRENT_TIMESTAMP");
-
-            entity.HasOne(d => d.Customer).WithMany(p => p.Carts).HasConstraintName("fk_carts_customer");
-        });
-
-        modelBuilder.Entity<Cartsdetail>(entity =>
-        {
-            entity.HasKey(e => e.CartDetailId).HasName("PRIMARY");
-
-            entity.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
-            entity.Property(e => e.Status).HasDefaultValueSql("'waiting'");
-            entity.Property(e => e.UpdatedAt)
-                .ValueGeneratedOnAddOrUpdate()
-                .HasDefaultValueSql("CURRENT_TIMESTAMP");
-
-            entity.HasOne(d => d.Cart).WithMany(p => p.Cartsdetails).HasConstraintName("fk_cartsdetail_cart");
-
-            entity.HasOne(d => d.Product).WithMany(p => p.Cartsdetails).HasConstraintName("fk_cartsdetail_product");
         });
 
         modelBuilder.Entity<Category>(entity =>
@@ -156,6 +126,19 @@ public partial class MyDbContext : DbContext
             entity.HasOne(d => d.Customer).WithMany(p => p.Favorites).HasConstraintName("fk_favorites_customer");
 
             entity.HasOne(d => d.Product).WithMany(p => p.Favorites).HasConstraintName("fk_favorites_product");
+        });
+
+        modelBuilder.Entity<Image>(entity =>
+        {
+            entity.HasKey(e => e.ImageId).HasName("PRIMARY");
+
+            entity.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
+            entity.Property(e => e.Type).HasDefaultValueSql("'gallery'");
+            entity.Property(e => e.UpdatedAt)
+                .ValueGeneratedOnAddOrUpdate()
+                .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+            entity.HasOne(d => d.Product).WithMany(p => p.Images).HasConstraintName("images_ibfk_1");
         });
 
         modelBuilder.Entity<Order>(entity =>
@@ -260,16 +243,18 @@ public partial class MyDbContext : DbContext
 
         modelBuilder.Entity<Stock>(entity =>
         {
-            entity.HasKey(e => e.InventoryId).HasName("PRIMARY");
+            entity.HasKey(e => e.StockId).HasName("PRIMARY");
 
+            entity.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
             entity.Property(e => e.LastUpdated)
                 .ValueGeneratedOnAddOrUpdate()
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
             entity.Property(e => e.Status).HasDefaultValueSql("'in_stock'");
+            entity.Property(e => e.UpdatedAt)
+                .ValueGeneratedOnAddOrUpdate()
+                .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
             entity.HasOne(d => d.Product).WithMany(p => p.Stocks).HasConstraintName("fk_inventory_product");
-
-            entity.HasOne(d => d.Store).WithMany(p => p.Stocks).HasConstraintName("fk_inventory_store");
         });
 
         modelBuilder.Entity<Store>(entity =>
