@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Project\\FashionShop\\FashionShop\\FashionShop-API\\FashionShop-API.csproj": {}
+    "D:\\Project\\New folder\\FashionShop\\FashionShop-API\\FashionShop-API.csproj": {}
   },
   "projects": {
-    "D:\\Project\\FashionShop\\FashionShop\\FashionShop-API\\FashionShop-API.csproj": {
+    "D:\\Project\\New folder\\FashionShop\\FashionShop-API\\FashionShop-API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-API\\FashionShop-API.csproj",
+        "projectUniqueName": "D:\\Project\\New folder\\FashionShop\\FashionShop-API\\FashionShop-API.csproj",
         "projectName": "FashionShop-API",
-        "projectPath": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-API\\FashionShop-API.csproj",
+        "projectPath": "D:\\Project\\New folder\\FashionShop\\FashionShop-API\\FashionShop-API.csproj",
         "packagesPath": "C:\\Users\\finsr\\.nuget\\packages\\",
-        "outputPath": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-API\\obj\\",
+        "outputPath": "D:\\Project\\New folder\\FashionShop\\FashionShop-API\\obj\\",
         "projectStyle": "PackageReference",
         "UsingMicrosoftNETSdk": false,
         "configFilePaths": [

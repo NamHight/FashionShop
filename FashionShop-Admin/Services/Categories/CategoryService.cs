@@ -13,4 +13,5 @@ public class CategoryService : ICategoryService
         var categories = await _managerRepository.Category.GetAllAsync(trackChanges);
         return categories;
     }
+    
 }

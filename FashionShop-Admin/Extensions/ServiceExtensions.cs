@@ -8,8 +8,8 @@ namespace FashionShop.Extensions;
 public static class ServiceExtensions
 {
     public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration)
-        => services.AddDbContext<MyDbContext>(options => options.UseMySql(configuration.GetConnectionString("Default"),
-            ServerVersion.AutoDetect(configuration.GetConnectionString("Default"))));
+        => services.AddDbContext<MyDbContext>(options => options.UseMySql(configuration.GetConnectionString("DefaultConnection"),
+            ServerVersion.AutoDetect(configuration.GetConnectionString("DefaultConnection"))));
 
     public static void ConfigureManagerRepository(this IServiceCollection services) =>
         services.AddScoped<IManagerRepository, ManagerRepository>();

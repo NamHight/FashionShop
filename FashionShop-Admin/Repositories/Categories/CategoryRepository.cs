@@ -15,5 +15,12 @@ public class CategoryRepository : GenericRepo<Category>,ICategoryRepository
         var categories = await FindAll(trackChanges).ToListAsync();
         return categories;
     }
+
+    public async Task<Category?> GetByIdAsync(long id, bool trackChanges)
+    {
+        var category = await FindById(item => item.CategoryId == id, trackChanges).FirstOrDefaultAsync();
+        return category;
+    }
+
     
 }

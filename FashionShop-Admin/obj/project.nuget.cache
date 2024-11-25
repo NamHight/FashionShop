@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "S2eqoxf/SMk=",
+  "dgSpecHash": "v5per4fAr2U=",
   "success": true,
-  "projectFilePath": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\FashionShop.csproj",
+  "projectFilePath": "D:\\Project\\New folder\\FashionShop\\FashionShop-Admin\\FashionShop.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\finsr\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\finsr\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

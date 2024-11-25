@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "oHBYPCyB6J0=",
+  "dgSpecHash": "ZDFCTch7wKE=",
   "success": true,
-  "projectFilePath": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-API\\FashionShop-API.csproj",
+  "projectFilePath": "D:\\Project\\New folder\\FashionShop\\FashionShop-API\\FashionShop-API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\finsr\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\finsr\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",

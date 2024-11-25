@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "rndi6rJmlsO1ZExSy+Fl7odzSS7A4Y3dCOq3k0Oksmo=",
+  "Hash": "oXpFyOs8Kyo9cdhkpWMhtWTrz8ffueNRltJvxPEkhMY=",
   "Source": "FashionShop-API",
   "BasePath": "_content/FashionShop-API",
   "Mode": "Default",
@@ -10,7 +10,7 @@
     {
       "Name": "FashionShop-API\\wwwroot",
       "Source": "FashionShop-API",
-      "ContentRoot": "D:\\Workspace\\C# dotnet\\FashionShop-API\\wwwroot\\",
+      "ContentRoot": "D:\\Project\\New folder\\FashionShop\\FashionShop-API\\wwwroot\\",
       "BasePath": "_content/FashionShop-API",
       "Pattern": "**"
     }

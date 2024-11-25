@@ -54,8 +54,13 @@ public partial class MyDbContext : DbContext
     public virtual DbSet<View> Views { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-       => optionsBuilder.UseMySql(Environment.GetEnvironmentVariable("DefaultConnection"), Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.30-mysql"));
+    {
+        var connect =
+            "Server=mysql-fashion-finsr8280-699e.h.aivencloud.com;Port=13062;Database=defaultdb;Uid=avnadmin;Pwd=AVNS_UIxLS_rvA7dyKjwnFDf;";
+        optionsBuilder.UseMySql(connect, ServerVersion.Parse("8.0.30-mysql"));
 
+    }
+     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
