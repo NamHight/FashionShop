@@ -8,6 +8,5 @@ public interface IManagerService
 {
     ICategoryService Category { get; }
     IContactService Contact { get; }
-
     IProductService Product { get; }
 }

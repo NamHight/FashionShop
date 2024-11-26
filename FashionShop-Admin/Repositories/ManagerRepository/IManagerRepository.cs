@@ -7,11 +7,7 @@ namespace FashionShop.Repositories.ManagerRepo;
 public interface IManagerRepository
 {
     ICategoryRepository Category { get; }
-
     IProductRepository Product { get; }
-
-
     IContactRepository Contact { get; } 
-    
     Task SaveAsync();
 }
