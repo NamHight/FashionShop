@@ -7,8 +7,14 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Remove="Filters\**" />
+      <Content Remove="Filters\**" />
+      <EmbeddedResource Remove="Filters\**" />
+      <None Remove="Filters\**" />
+    </ItemGroup>
+
+    <ItemGroup>
       <Folder Include="Context\" />
-      <Folder Include="Filters\" />
       <Folder Include="Views\Shared\Partials\" />
     </ItemGroup>
 
