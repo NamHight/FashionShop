@@ -30,8 +30,7 @@
 
     <ItemGroup>
       <Folder Include="Controllers\" />
-      <Folder Include="Filters\" />
-      <Folder Include="wwwroot\" />
+      <Folder Include="wwwroot\css\" />
     </ItemGroup>
 
 </Project>
