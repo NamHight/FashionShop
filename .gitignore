@@ -1,2 +1,23 @@
-node_modules/
+# Ignore build output directories
+bin/
+obj/
+
+# Ignore specific files
+*.dll
+*.exe
+*.pdb
+*.cache
+*.json
+*.nuget.g.props
+
+# Ignore Visual Studio and IDE-specific files
 .vs/
+*.user
+*.suo
+
+# Ignore temporary files
+*.tmp
+*.temp
+*.log
+
+node_modules/
