@@ -1,0 +1,81 @@
+﻿@model List<Contact>
+
+@{
+    ViewBag.Title = "Contacts List";
+}
+@section Styles {
+    <!-- plugin css file  -->
+    <link rel="stylesheet" href="~/plugin/datatables/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="~/plugin/datatables/dataTables.bootstrap5.min.css">
+}
+@section Scripts {
+    <script src="~/bundles/dataTables.bundle.js"></script>
+    <script>
+        $('#myDataTable')
+            .addClass('nowrap')
+            .dataTable({
+                responsive: true,
+                columnDefs: [
+                    { targets: [-1, -3], className: 'dt-body-right' }
+                ]
+            });
+        $('.deleterow').on('click', function () {
+            var tablename = $(this).closest('table').DataTable();
+            tablename
+                .row($(this)
+                    .parents('tr'))
+                .remove()
+                .draw();
+
+        });
+    </script>
+
+}
+<!-- Body: Body -->
+<div class="body d-flex py-3">
+    <div class="container-xxl">
+        <div class="row g-3 mb-3">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <table id="myDataTable" class="table table-hover align-middle mb-0" style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Description</th>
+                                    <th>Phone</th> 
+                                    <th>CreatedDate</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var contact in Model)
+                                {
+                                    <tr>
+                                        <td><strong>#@contact.ContactId</strong></td>
+                                        <td>@contact.Fullname</td>
+                                        <td>@contact.Email</td>
+                                        <td>@contact.Description</td>
+                                        <td>@contact.Phone</td>
+                                        <td>@contact.CreatedAt</td>
+                                        <td><span class="badge bg-success">@contact.Status</span></td>
+                                        <td>
+                                            <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                                <a href="contact-edit.html" class="btn btn-outline-secondary"><i class="icofont-edit text-success"></i></a>
+                                                <button type="button" class="btn btn-outline-secondary deleterow"><i class="icofont-ui-delete text-danger"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

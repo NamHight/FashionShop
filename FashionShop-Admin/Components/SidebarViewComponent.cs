@@ -1,5 +1,7 @@
 ﻿using FashionShop.Models.views;
 using Microsoft.AspNetCore.Mvc;
+using System.Drawing;
+using System.Security.Policy;
 
 namespace FashionShop.Components;
 
@@ -9,7 +11,8 @@ public class SidebarViewComponent : ViewComponent
     {
         new SidebarItem { title = "Dashboard", url = "/Dashboard", icon = "icofont-home" },
         new SidebarItem{ title = "Categories",url="/Categories", icon = "icofont-folder" },
-        new SidebarItem 
+        new SidebarItem{ title = "Contacts",url="/Contacts", icon = "icofont-contacts" },
+        new SidebarItem
         { 
             title = "Stores", url = "/Stores", icon = "icofont-brand-appstore",
             subItems =
