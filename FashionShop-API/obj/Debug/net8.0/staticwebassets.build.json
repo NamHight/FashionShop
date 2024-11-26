@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "oXpFyOs8Kyo9cdhkpWMhtWTrz8ffueNRltJvxPEkhMY=",
+  "Hash": "QUXQ1B5gbEWptm33A+LkTIgd3z4kQ42D0l5NZIRXkj8=",
   "Source": "FashionShop-API",
   "BasePath": "_content/FashionShop-API",
   "Mode": "Default",
@@ -10,7 +10,7 @@
     {
       "Name": "FashionShop-API\\wwwroot",
       "Source": "FashionShop-API",
-      "ContentRoot": "D:\\Project\\New folder\\FashionShop\\FashionShop-API\\wwwroot\\",
+      "ContentRoot": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-API\\wwwroot\\",
       "BasePath": "_content/FashionShop-API",
       "Pattern": "**"
     }

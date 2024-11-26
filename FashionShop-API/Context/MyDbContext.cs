@@ -21,6 +21,8 @@ public partial class MyDbContext : DbContext
 
     public virtual DbSet<Category> Categories { get; set; }
 
+    public virtual DbSet<Contact> Contacts { get; set; }
+
     public virtual DbSet<Customer> Customers { get; set; }
 
     public virtual DbSet<Employee> Employees { get; set; }
@@ -54,13 +56,9 @@ public partial class MyDbContext : DbContext
     public virtual DbSet<View> Views { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        var connect =
-            "Server=mysql-fashion-finsr8280-699e.h.aivencloud.com;Port=13062;Database=defaultdb;Uid=avnadmin;Pwd=AVNS_UIxLS_rvA7dyKjwnFDf;";
-        optionsBuilder.UseMySql(connect, ServerVersion.Parse("8.0.30-mysql"));
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseMySql("server=mysql-fashion-finsr8280-699e.h.aivencloud.com;port=13062;database=defaultdb;uid=avnadmin;pwd=AVNS_UIxLS_rvA7dyKjwnFDf", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.30-mysql"));
 
-    }
-     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
@@ -84,6 +82,16 @@ public partial class MyDbContext : DbContext
 
             entity.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
             entity.Property(e => e.Status).HasDefaultValueSql("'active'");
+            entity.Property(e => e.UpdatedAt)
+                .ValueGeneratedOnAddOrUpdate()
+                .HasDefaultValueSql("CURRENT_TIMESTAMP");
+        });
+
+        modelBuilder.Entity<Contact>(entity =>
+        {
+            entity.HasKey(e => e.ContactId).HasName("PRIMARY");
+
+            entity.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
             entity.Property(e => e.UpdatedAt)
                 .ValueGeneratedOnAddOrUpdate()
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
