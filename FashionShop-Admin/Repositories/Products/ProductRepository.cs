@@ -33,5 +33,19 @@ namespace FashionShop.Repositories.Products
             if (result!=null) return true;
             return false;   
         }
+
+        public async Task UpdateCategoryId(long newCategoryID, long idProduct, bool trackChanges)
+        {
+            var result = await FindById(item => item.ProductId == idProduct, trackChanges).FirstOrDefaultAsync(); 
+            if (result!=null)
+            {
+                result.CategoryId = newCategoryID;
+                // trackChanges = true thì chỉ cần gán lại thuộc tính cần thay đổi, k cần update
+                if (!trackChanges)
+                {
+                    Update(result); // nếu trackChanges = false thì phải tự update
+                }
+            }
+        }
     }
 }

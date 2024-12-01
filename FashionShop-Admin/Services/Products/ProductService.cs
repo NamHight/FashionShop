@@ -16,7 +16,7 @@ namespace FashionShop.Services.Products
 
         public async Task AddNewProduct(Product product)
         {
-             _managerRepository.Product.AddNewProduct(product);
+            _managerRepository.Product.AddNewProduct(product);
             await _managerRepository.SaveAsync();
         }
 
@@ -26,5 +26,14 @@ namespace FashionShop.Services.Products
             if (result) return true;
             return false;
         }
-    }
+
+        public async Task<bool> UpdateCategoryId(long newCategoryID, long idProduct, bool trackChanges)
+        {
+            await _managerRepository.Product.UpdateCategoryId(newCategoryID, idProduct, trackChanges);
+            int numRowEffect = await _managerRepository.SaveAsyncAndNumRowEffect();
+            Console.WriteLine($"so dong bi anh huong la {numRowEffect}");
+            if (numRowEffect > 0) return true;
+            return false;
+        }
+    } 
 }

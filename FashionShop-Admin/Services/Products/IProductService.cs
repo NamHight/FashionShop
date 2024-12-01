@@ -9,6 +9,7 @@ namespace FashionShop.Services.Products
         Task AddNewProduct(Product product);
 
         Task <bool> CheckSlug(string slug);
-        
+
+        Task<bool> UpdateCategoryId(long newCategoryID, long idProduct, bool v);
     }
 }

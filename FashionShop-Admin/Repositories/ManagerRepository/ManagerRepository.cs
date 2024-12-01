@@ -2,6 +2,7 @@
 using FashionShop.Repositories.Categories;
 using FashionShop.Repositories.Contacts;
 using FashionShop.Repositories.Products;
+using Microsoft.EntityFrameworkCore;
 
 namespace FashionShop.Repositories.ManagerRepo;
 
@@ -24,7 +25,31 @@ public class ManagerRepository : IManagerRepository
     public ICategoryRepository Category => _categoryRepository.Value;
     public IProductRepository Product => _productRepository.Value;
     public IContactRepository Contact => _contactRepository.Value;
-    
+
+    public async Task<int> SaveAsyncAndNumRowEffect()
+    {
+        try
+        {
+            var rowsAffected = await _context.SaveChangesAsync();
+            return rowsAffected;
+        }
+        catch (DbUpdateConcurrencyException ex)
+        {
+            Console.WriteLine("Lỗi cạnh tranh dữ liệu: " + ex.Message);
+            return 0;
+        }
+        catch (DbUpdateException ex)
+        {
+            Console.WriteLine("Lỗi cập nhật dữ liệu: " + ex.Message);
+            return 0;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Lỗi không xác định: " + ex.Message);
+            return 0;
+        }
+    }
+
     public async Task SaveAsync()
     {
         await _context.SaveChangesAsync();

@@ -10,5 +10,7 @@ namespace FashionShop.Repositories.Products
         void AddNewProduct(Product product);
 
         Task<bool> CheckSlug(string slug);
+
+        Task UpdateCategoryId(long newCategoryID, long idProduct, bool trackChanges);
     }
 }

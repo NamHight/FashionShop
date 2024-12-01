@@ -9,5 +9,7 @@ public interface IManagerRepository
     ICategoryRepository Category { get; }
     IProductRepository Product { get; }
     IContactRepository Contact { get; } 
+    //Task<int>SaveAsync();
+    Task <int> SaveAsyncAndNumRowEffect();
     Task SaveAsync();
 }

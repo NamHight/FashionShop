@@ -13,5 +13,9 @@ public class CategoryService : ICategoryService
         var categories = await _managerRepository.Category.GetAllAsync(trackChanges);
         return categories;
     }
-    
+
+    public async Task<long> FindByNameAsync(string newCategoryName)
+    {
+        return await _managerRepository.Category.FindByNameAsync(newCategoryName);
+    }
 }

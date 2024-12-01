@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "NIg9EP5QULEIuQhvY9gOFzVS/vnSoDQqtghJGzT1aRs=",
+  "Hash": "s82X2w8Y5hmNP6gdrSdWdwLUsqb1dV1ZKJlgQ+HBGUA=",
   "Source": "FashionShop",
   "BasePath": "_content/FashionShop",
   "Mode": "Default",
@@ -8736,6 +8736,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\template.js"
+    },
+    {
+      "Identity": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\js\\updateProduct.js",
+      "SourceId": "FashionShop",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\",
+      "BasePath": "_content/FashionShop",
+      "RelativePath": "js/updateProduct.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\updateProduct.js"
     },
     {
       "Identity": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",

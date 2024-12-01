@@ -6,4 +6,6 @@ public interface ICategoryRepository
 {
     Task<List<Category>> GetAllAsync(bool trackChanges);
     Task<Category?> GetByIdAsync(long id, bool trackChanges);
+
+    Task<long> FindByNameAsync(string newCategoryName);
 }

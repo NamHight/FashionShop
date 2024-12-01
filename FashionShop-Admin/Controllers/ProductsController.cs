@@ -28,13 +28,12 @@ namespace FashionShop.Controllers
             };
             return View(resutl);
         }
-        // GET: ProductsController/Details/5
-
-        // GET: ProductsController/Create
+      
         public async Task<IActionResult> Create()
         {
             return View();
         }
+
         [HttpPost]
         public async Task<JsonResult> CheckSlug(string slug)
         {
@@ -44,7 +43,32 @@ namespace FashionShop.Controllers
             }
             return Json(new { statusCode = 1, slugg = slug });
         }
-        // POST: ProductsController/Create
+
+        [HttpPost]
+        public async Task<JsonResult> UpdateCategoryId(string newData, long idProduct)
+        {
+            var newCategoryID = await _managerService.Category.FindByNameAsync(newData);
+            // lấy id category dựa theo name_category mới cập nhật.
+
+            // cho phép trackChanges nên chỉ cần gán lại thuộc tính cần update, k cần gọi hàm update
+            if (await _managerService.Product.UpdateCategoryId(newCategoryID, idProduct, false))
+            {
+                // nếu cập nhật thành công thì trả về statusCode = 1 ngược lại trả về 0
+                return Json(new { statusCode = 1, newCategory = newData, idProduct = idProduct, id_category = newCategoryID });
+            }
+            return Json(new { statusCode = 0, newCategory = newData, idProduct = idProduct, id_category = newCategoryID });
+        }
+
+        //[HttpPost]
+        //public async Task<JsonResult> UpdateStatus(string slug)
+        //{
+        //    if (await _managerService.Product.CheckSlug(slug))
+        //    {
+        //        return Json(new { statusCode = 0, slugg = slug });
+        //    }
+        //    return Json(new { statusCode = 1, slugg = slug });
+        //}
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult>  Create(Product collection, IFormFile Banner)
@@ -89,13 +113,13 @@ namespace FashionShop.Controllers
             }
         }
 
-        // GET: ProductsController/Edit/5
+       
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: ProductsController/Edit/5
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -110,13 +134,13 @@ namespace FashionShop.Controllers
             }
         }
 
-        // GET: ProductsController/Delete/5
+      
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: ProductsController/Delete/5
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

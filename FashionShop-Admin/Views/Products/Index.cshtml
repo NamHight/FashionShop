@@ -29,18 +29,9 @@
 
         });
     </script>
-    <script>
-        // xử lý ajax cho cập nhật category hoặc status
-        $(document).ready(function () {
-            $('select').change(function () { 
-                var id_select = $(this).attr('id');
-                if (id_select.includes("category-")) {
-                    alert("ban da thay doi category");
-                }else{
-                    alert("ban da thay doi status");
-                }
-            })
-        })
+
+   @* Xử lý cập nhật categoryID và status *@
+    <script src="~/js/updateProduct.js" type="module">
     </script>
 }
 <!-- Body: Body -->
@@ -85,10 +76,13 @@
                                         <td>@product.Description</td>
                                         <td>@product.Price</td>
                                         <td>
-                                            <select id="category-@(product.CategoryId)" class="badge bg-success">
+                                            <select id="category-@(product.ProductId)" class="badge bg-success" value="">
                                                 @foreach (var category in Model?.Categories)
                                                 {
-                                                   <option selected=@(product.CategoryId == category.CategoryId ? true : false)>@category.CategoryName</option>
+                                                   <option selected=@(product.CategoryId == category.CategoryId ? true : false)
+                                                            value="@category.CategoryName">
+                                                            @category.CategoryName
+                                                   </option>
                                                 }
                                             </select>
                                         </td>
@@ -102,7 +96,7 @@
                                                     "unavailable" => "bg-warning",
                                                 };
                                             }
-                                            <select id="status-@(product.CategoryId)" class="badge @color">
+                                            <select id="status-@(product.ProductId)" class="badge @color">
                                                 <option selected="@(product.Status == "available" ? true : false)">available</option>
                                                 <option selected="@(product.Status == "unavailable" ? true : false)">unavailable</option>
                                             </select>

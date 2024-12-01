@@ -1833,6 +1833,10 @@
       "PackagePath": "staticwebassets\\js\\template.js"
     },
     {
+      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\js\\updateProduct.js",
+      "PackagePath": "staticwebassets\\js\\updateProduct.js"
+    },
+    {
       "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\LICENSE",
       "PackagePath": "staticwebassets\\lib\\bootstrap"
     },
