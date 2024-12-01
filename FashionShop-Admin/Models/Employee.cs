@@ -18,9 +18,9 @@ public partial class Employee
 
     [Column("employee_name")]
     [StringLength(255)]
-    public string EmployeeName { get; set; } = null!;
+    public string? EmployeeName { get; set; } = null!;
 
-    [Column("employee_position", TypeName = "enum('manager','sales','customer care','deliver','intern','stock')")]
+    [Column("employee_position", TypeName = "enum('manager','sales','customer_care','deliver','intern','stock')")]
     public string? EmployeePosition { get; set; }
 
     [Column("phone")]
@@ -36,7 +36,10 @@ public partial class Employee
     public string Password { get; set; } = null!;
 
     [Column("email")]
-    public string Email { get; set; } = null!;
+    public string? Email { get; set; } = null!;
+
+    [Column("gender", TypeName = "enum('male','Female')")]
+    public string? Gender { get; set; }
 
     [Column("store_id")]
     public long? StoreId { get; set; }

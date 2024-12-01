@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "IN+Mo7ZSyiFk5oiEOim0tjqa46/zfCLubI3z5e2u4F0=",
+  "Hash": "2k19UvzxkDoCBFMSAPWunGoSeUoxj7hf7F9iGk6lTIk=",
   "Source": "FashionShop",
   "BasePath": "_content/FashionShop",
   "Mode": "Default",
@@ -7199,6 +7199,25 @@
       "OriginalItemSpec": "wwwroot\\fonts\\icofont\\fonts\\icofontd41d.eot"
     },
     {
+      "Identity": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\avatar-user.webp",
+      "SourceId": "FashionShop",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\",
+      "BasePath": "_content/FashionShop",
+      "RelativePath": "images/avatar-user.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\avatar-user.webp"
+    },
+    {
       "Identity": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\change-log.svg",
       "SourceId": "FashionShop",
       "SourceType": "Discovered",
@@ -9857,6 +9876,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\plugin\\bootstrap-tagsinput\\bootstrap-tagsinput.js"
+    },
+    {
+      "Identity": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\ckeditor5\\29.0.0\\classic\\ckeditor.js",
+      "SourceId": "FashionShop",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\",
+      "BasePath": "_content/FashionShop",
+      "RelativePath": "plugin/ckeditor5/29.0.0/classic/ckeditor.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\plugin\\ckeditor5\\29.0.0\\classic\\ckeditor.js"
     },
     {
       "Identity": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\cropper\\cropper-init.js",

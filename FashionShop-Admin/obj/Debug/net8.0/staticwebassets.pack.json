@@ -1509,6 +1509,10 @@
       "PackagePath": "staticwebassets\\fonts\\icofont\\fonts\\icofontd41d.eot"
     },
     {
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\avatar-user.webp",
+      "PackagePath": "staticwebassets\\images\\avatar-user.webp"
+    },
+    {
       "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\change-log.svg",
       "PackagePath": "staticwebassets\\images\\change-log.svg"
     },
@@ -2067,6 +2071,10 @@
     {
       "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\bootstrap-tagsinput\\bootstrap-tagsinput.js",
       "PackagePath": "staticwebassets\\plugin\\bootstrap-tagsinput\\bootstrap-tagsinput.js"
+    },
+    {
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\ckeditor5\\29.0.0\\classic\\ckeditor.js",
+      "PackagePath": "staticwebassets\\plugin\\ckeditor5\\29.0.0\\classic\\ckeditor.js"
     },
     {
       "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\cropper\\cropper-init.js",

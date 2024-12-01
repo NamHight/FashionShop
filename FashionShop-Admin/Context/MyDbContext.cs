@@ -116,7 +116,7 @@ public partial class MyDbContext : DbContext
 
             entity.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
             entity.Property(e => e.Email).HasDefaultValueSql("_utf8mb4\\'abc@gmail.com\\'");
-            entity.Property(e => e.EmployeePosition).HasDefaultValueSql("_utf8mb4\\'intern\\'");
+            entity.Property(e => e.EmployeePosition).HasDefaultValueSql("'intern'");
             entity.Property(e => e.Status).HasDefaultValueSql("'active'");
             entity.Property(e => e.UpdatedAt)
                 .ValueGeneratedOnAddOrUpdate()

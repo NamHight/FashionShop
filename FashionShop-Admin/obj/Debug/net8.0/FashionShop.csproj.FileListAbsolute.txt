@@ -949,3 +949,4 @@ C:\Users\Locbm\OneDrive\Desktop\DoAnWeb\FashionShop\FashionShop-Admin\obj\Debug\
 C:\Users\Locbm\OneDrive\Desktop\DoAnWeb\FashionShop\FashionShop-Admin\obj\Debug\net8.0\FashionShop.pdb
 C:\Users\Locbm\OneDrive\Desktop\DoAnWeb\FashionShop\FashionShop-Admin\obj\Debug\net8.0\FashionShop.genruntimeconfig.cache
 C:\Users\Locbm\OneDrive\Desktop\DoAnWeb\FashionShop\FashionShop-Admin\obj\Debug\net8.0\ref\FashionShop.dll
+D:\Project\FashionShop\FashionShop\FashionShop-Admin\bin\Debug\net8.0\BCrypt.Net-Core.dll

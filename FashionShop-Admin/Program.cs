@@ -1,14 +1,18 @@
 using FashionShop.Extensions;
+using FashionShop.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(options =>
+{
+    options.Filters.Add<ModelValidationFilter>();
+});
 builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.ConfigureManagerRepository();
 builder.Services.ConfigureManagerService();
-
-
+builder.Services.ConfigureAuthenticate();
+builder.Services.AddAuthorization();
 
 builder.Services.AddSession(option =>
 {
@@ -28,11 +32,17 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
 app.UseSession();
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
-
+app.MapControllerRoute(
+    name:"Login",
+    pattern:"login",
+    defaults:new {Controller="Authenticate",Action="Login"}
+    );
 app.MapControllerRoute(
     "analysisRoute",
     "{controller}/analysis",

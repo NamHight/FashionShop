@@ -22,5 +22,9 @@ public class CategoryRepository : GenericRepo<Category>,ICategoryRepository
         return category;
     }
 
+    public void CreateCategoryAsync(Category category)
+    {
+        Create(category);
+    }
     
 }

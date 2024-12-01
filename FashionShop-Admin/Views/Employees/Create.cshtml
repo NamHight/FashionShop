@@ -1,0 +1,250 @@
+﻿@model CreateEmployeeViewModel
+
+@section Styles{
+    <!--plugin css file -->
+    <link rel="stylesheet" href="~/plugin/cropper/cropper.min.css">
+    <link rel="stylesheet" href="~/plugin/dropify/dist/css/dropify.min.css"/>
+}
+
+@section Scripts{
+    <!-- Jquery Plugin -->
+    <script src="~/plugin/ckeditor5/29.0.0/classic/ckeditor.js"></script>
+    <script src="~/plugin/cropper/cropper.min.js"></script>
+    <script src="~/plugin/cropper/cropper-init.js"></script>
+    <script src="~/bundles/dropify.bundle.js"></script>
+    <!-- Jquery Page Js -->
+    <script src="~/js/template.js"></script>
+    <script>
+        $(document).ready(function() {
+            //Ch-editer
+            ClassicEditor
+                .create( document.querySelector( '#editor' ) )
+                .catch( error => {
+                    console.error( error );
+                } );
+            //Deleterow
+            $("#tbproduct").on('click', '.deleterow', function () {
+                $(this).closest('tr').remove();
+            });
+        });
+        $(function() {
+            $('.dropify').dropify();
+
+            var drEvent = $('#dropify-event').dropify();
+            drEvent.on('dropify.beforeClear', function(event, element) {
+                return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+            });
+
+            drEvent.on('dropify.afterClear', function(event, element) {
+                alert('File deleted');
+            });
+
+            $('.dropify-fr').dropify({
+                messages: {
+                    default: 'Glissez-dÃ©posez un fichier ici ou cliquez',
+                    replace: 'Glissez-dÃ©posez un fichier ou cliquez pour remplacer',
+                    remove: 'Supprimer',
+                    error: 'DÃ©solÃ©, le fichier trop volumineux'
+                }
+            });
+        });
+    </script>
+    <script>
+        $('#createEmployee').on('submit',(function (event){
+            event.preventDefault();
+            var formData = {
+                EmployeeName: $('#EmployeeName').val(),
+                Email: $('#Email').val(),
+                Phone: $('#Phone').val(),
+                EmployeePosition: $('#EmployeePosition').val(),
+                Status: $('input[name="radio-status"]:checked').val(),
+                Gender: $('input[name="radio-gender"]:checked').val(),
+                RoleId: $('#Role').val(),
+                StoreId: $('#Store').val(),
+                Password: $('#Password').val(),
+                ConfirmPassword: $('#ConfirmPassword').val(),
+            };
+            console.log({formData});
+            var url = "@(Url.Action("Create","Employees"))";
+            var token = $("input[name='__RequestVerificationToken']").val();
+            $.ajax({
+                method: "POST",
+                url: url ,
+                headers:{
+                    'RequestVerificationToken': token
+                },
+                contentType: "application/json",
+                data: JSON.stringify(formData),
+                success: function (res) {
+                   console.log(res.Status);
+                },
+                error: function (err){
+                    if (err.status === 400){
+                        var errors = JSON.parse(err);
+                        console.log(errors);
+                    }
+                }
+            });
+        }));
+    </script>
+}
+<!-- Body: Body -->
+            <div class="body d-flex py-3">
+                <div class="container-xxl">
+                    <form id="createEmployee" enctype="multipart/form-data">
+                        @Html.AntiForgeryToken()
+                        <div class="row align-items-center">
+                            <div class="border-0 mb-4">
+                                <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
+                                    <h3 class="fw-bold mb-0">Employees Add</h3>
+                                    <button type="submit" class="btn btn-primary py-2 px-5 text-uppercase btn-set-task w-sm-100">Save</button>
+                                </div>
+                            </div>
+                        </div> <!-- Row end  -->
+                        <div class="row g-3 mb-3">
+                            <div class="col-lg-4">
+                                <div class="sticky-lg-top">
+                                    <div class="card mb-3">
+                                        <div class="card-header py-3 d-flex justify-content-between align-items-center bg-transparent border-bottom-0">
+                                            <h6 class="m-0 fw-bold">Visibility Status</h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="active" asp-for="Status" name="radio-status" checked id="radio-active">
+                                                <label class="form-check-label " style="cursor: pointer" for="radio-active">
+                                                    Active
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="warnning" asp-for="Status" name="radio-status" id="radio-warning">
+                                                <label class="form-check-label" style="cursor: pointer" for="radio-warning">
+                                                    Warning
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="banned" asp-for="Status" name="radio-status" id="radio-banned">
+                                                <label class="form-check-label" style="cursor: pointer" for="radio-banned">
+                                                    Banned
+                                                </label>
+                                            </div>
+                                            <span id="Status" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="card mb-3">
+                                        <div class="card-header py-3 d-flex justify-content-between align-items-center bg-transparent border-bottom-0">
+                                            <h6 class="m-0 fw-bold">Gender</h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="male" asp-for="Gender" name="radio-gender" checked id="radio-male">
+                                                <label class="form-check-label " style="cursor: pointer" for="radio-male">
+                                                    Male
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="female" asp-for="Gender" name="radio-gender" id="radio-female">
+                                                <label class="form-check-label" style="cursor: pointer" for="radio-female">
+                                                    Female
+                                                </label>
+                                            </div>
+                                            <span asp-validation-for="Gender" class="text-danger"></span>
+
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header py-2 bg-transparent border-bottom-0">
+                                            <h6 class="m-0 fw-bold">Employee Avatar Upload</h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <input type="file" id="dropify-event" accept="image/*" data-default-file="~/images/avatar-user.webp" asp-for="Avatar">
+                                        </div>
+                                        <span asp-validation-for="Avatar" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="card mb-3">
+                                    <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
+                                        <h6 class="mb-0 fw-bold ">Profile information</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row g-3 align-items-center">
+                                            <div class="col-md-6">
+                                                <label class="form-label" for="EmployeeName">Name</label>
+                                                <input type="text" class="form-control" asp-for="EmployeeName" name="EmployeeName" id="EmployeeName" tabindex="1">
+                                                <span asp-validation-for="EmployeeName" class="text-danger"></span>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label" for="Email">Email</label>
+                                                <input type="text" class="form-control" asp-for="Email" name="Email" id="Email" tabindex="2">
+                                                <span asp-validation-for="Email" class="text-danger"></span>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label" for="Phone">Phone</label>
+                                                <input type="text" class="form-control" asp-for="Phone" name="Phone" id="Phone" tabindex="3">
+                                                <span asp-validation-for="Phone" class="text-danger"></span>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label" for="EmployeePosition">Position</label>
+                                                <select name="EmployeePosition" id="EmployeePosition" class="form-select" asp-for="EmployeePosition" tabindex="4">
+                                                    <option value="" selected></option>
+                                                    <option value="manager">Manager</option>
+                                                    <option value="sales">Sales</option>
+                                                    <option value="customer_care">Customer care</option>
+                                                    <option value="deliver">Deliver</option>
+                                                    <option value="intern">Intern</option>
+                                                    <option value="stock">stock</option>
+                                                </select>
+                                                <span asp-validation-for="EmployeePosition" class="text-danger"></span>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="Role" class="form-label">Roles</label>
+                                                <select name="Role" id="Role" class="form-select" asp-for="RoleId">
+                                                    <option value="" selected></option>
+                                                    @if (Model?.Roles != null)
+                                                    {
+                                                        @foreach (var item in Model.Roles)
+                                                        {
+                                                            <option value="@item?.RoleId"> @item?.RoleName</option>
+                                                        }
+                                                    }
+
+                                                </select>
+                                                <span asp-validation-for="RoleId" class="text-danger"></span>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="Store" class="form-label">Stores</label>
+                                                <select name="Store" id="Store" class="form-select" asp-for="StoreId">
+                                                    <option value="" selected></option>
+                                                    @if (Model?.Stores != null)
+                                                    {
+                                                        @foreach (var store in Model.Stores)
+                                                        {
+                                                            <option value="@store?.StoreId">@store?.StoreName</option>
+                                                        }
+                                                    }
+                                                </select>
+                                                <span asp-validation-for="StoreId" class="text-danger"></span>
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="Password" class="form-label">Password</label>
+                                                <input type="password" class="form-control" asp-for="Password" name="Password" id="Password" tabindex="5">
+                                                <span asp-validation-for="Password" class="text-danger"></span>
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="ConfirmPassword" class="form-label">Confirm Password</label>
+                                                <input type="password" class="form-control" asp-for="ConfirmPassword" name="ConfirmPassword" id="ConfirmPassword" tabindex="6">
+                                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- Row end  -->
+                    </form>
+                </div>
+            </div>    

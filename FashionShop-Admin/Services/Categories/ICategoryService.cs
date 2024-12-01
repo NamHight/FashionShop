@@ -6,5 +6,7 @@ public interface ICategoryService
 {
 
     Task<List<Category>> GetAllAsync(bool trackChanges);
-
+    
+    Task CreateCategoryAsync(Category category);
+    
 }
