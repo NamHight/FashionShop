@@ -1,2159 +1,2159 @@
 {
   "Files": [
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\FashionShop.bundle.scp.css",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\FashionShop.bundle.scp.css",
       "PackagePath": "staticwebassets\\FashionShop.bundle.scp.css"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\bundles\\apexcharts.bundle.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\bundles\\apexcharts.bundle.js",
       "PackagePath": "staticwebassets\\bundles\\apexcharts.bundle.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\bundles\\dataTables.bundle.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\bundles\\dataTables.bundle.js",
       "PackagePath": "staticwebassets\\bundles\\dataTables.bundle.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\bundles\\dropify.bundle.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\bundles\\dropify.bundle.js",
       "PackagePath": "staticwebassets\\bundles\\dropify.bundle.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\bundles\\invoice.bundle.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\bundles\\invoice.bundle.js",
       "PackagePath": "staticwebassets\\bundles\\invoice.bundle.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\bundles\\libscripts.bundle.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\bundles\\libscripts.bundle.js",
       "PackagePath": "staticwebassets\\bundles\\libscripts.bundle.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\ebazar.style.min.css",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\ebazar.style.min.css",
       "PackagePath": "staticwebassets\\css\\ebazar.style.min.css"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\site.css",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\Italic.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\Italic.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\Italic.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\agenda.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\agenda.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\agenda.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\alarm-clock.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\alarm-clock.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\alarm-clock.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\alert.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\alert.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\alert.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\align-center.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\align-center.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\align-center.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\align-justify.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\align-justify.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\align-justify.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\align-left.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\align-left.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\align-left.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\align-right.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\align-right.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\align-right.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\anchor.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\anchor.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\anchor.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\android.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\android.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\android.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\angle-double-down.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\angle-double-down.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\angle-double-down.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\angle-double-left.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\angle-double-left.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\angle-double-left.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\angle-double-right.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\angle-double-right.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\angle-double-right.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\angle-double-up.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\angle-double-up.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\angle-double-up.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\angle-down.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\angle-down.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\angle-down.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\angle-left.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\angle-left.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\angle-left.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\angle-right.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\angle-right.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\angle-right.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\angle-up.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\angle-up.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\angle-up.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\announcement.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\announcement.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\announcement.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\apple.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\apple.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\apple.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\archive.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\archive.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\archive.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\arrow-circle-down.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\arrow-circle-down.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\arrow-circle-down.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\arrow-circle-left.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\arrow-circle-left.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\arrow-circle-left.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\arrow-circle-right.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\arrow-circle-right.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\arrow-circle-right.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\arrow-circle-up.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\arrow-circle-up.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\arrow-circle-up.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\arrow-down.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\arrow-down.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\arrow-down.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\arrow-left.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\arrow-left.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\arrow-left.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\arrow-right.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\arrow-right.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\arrow-right.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\arrow-top-left.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\arrow-top-left.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\arrow-top-left.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\arrow-top-right.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\arrow-top-right.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\arrow-top-right.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\arrow-up.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\arrow-up.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\arrow-up.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\arrow.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\arrow.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\arrow.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\arrows-corner.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\arrows-corner.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\arrows-corner.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\arrows-horizontal.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\arrows-horizontal.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\arrows-horizontal.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\arrows-vertical.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\arrows-vertical.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\arrows-vertical.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\back-left.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\back-left.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\back-left.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\back-right.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\back-right.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\back-right.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\bag.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\bag.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\bag.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\bar-chart-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\bar-chart-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\bar-chart-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\bar-chart.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\bar-chart.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\bar-chart.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\basketball.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\basketball.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\basketball.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\bell.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\bell.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\bell.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\blackboard.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\blackboard.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\blackboard.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\bolt-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\bolt-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\bolt-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\bolt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\bolt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\bolt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\book.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\book.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\book.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\bookmark-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\bookmark-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\bookmark-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\bookmark.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\bookmark.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\bookmark.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\briefcase.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\briefcase.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\briefcase.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\brush-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\brush-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\brush-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\brush.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\brush.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\brush.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\calendar.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\calendar.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\calendar.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\camera.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\camera.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\camera.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\car.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\car.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\car.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\check-box.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\check-box.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\check-box.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\check.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\check.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\check.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\clip.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\clip.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\clip.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\clipboard.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\clipboard.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\clipboard.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\close.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\close.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\close.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\cloud-down.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\cloud-down.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\cloud-down.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\cloud-up.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\cloud-up.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\cloud-up.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\cloud.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\cloud.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\cloud.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\comment-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\comment-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\comment-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\comment.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\comment.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\comment.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\comments-smiley.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\comments-smiley.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\comments-smiley.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\comments.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\comments.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\comments.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\control-backward.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\control-backward.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\control-backward.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\control-eject.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\control-eject.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\control-eject.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\control-forward.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\control-forward.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\control-forward.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\control-pause.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\control-pause.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\control-pause.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\control-play.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\control-play.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\control-play.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\control-record.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\control-record.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\control-record.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\control-shuffle.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\control-shuffle.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\control-shuffle.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\control-skip-backward.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\control-skip-backward.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\control-skip-backward.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\control-skip-forward.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\control-skip-forward.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\control-skip-forward.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\control-stop.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\control-stop.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\control-stop.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\credit-card.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\credit-card.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\credit-card.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\crown.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\crown.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\crown.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\css3.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\css3.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\css3.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\cup.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\cup.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\cup.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\cut.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\cut.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\cut.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\dashboard.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\dashboard.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\dashboard.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\desktop.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\desktop.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\desktop.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\direction-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\direction-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\direction-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\direction.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\direction.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\direction.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\download.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\download.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\download.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\dribbble.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\dribbble.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\dribbble.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\dropbox-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\dropbox-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\dropbox-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\dropbox.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\dropbox.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\dropbox.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\drupal.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\drupal.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\drupal.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\email.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\email.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\email.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\envelope.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\envelope.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\envelope.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\eraser.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\eraser.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\eraser.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\exchange-vertical.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\exchange-vertical.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\exchange-vertical.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\export.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\export.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\export.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\eye.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\eye.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\eye.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\face-sad.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\face-sad.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\face-sad.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\face-smile.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\face-smile.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\face-smile.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\facebook.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\facebook.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\facebook.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\file.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\file.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\file.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\files.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\files.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\files.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\filter.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\filter.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\filter.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\flag-alt-2.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\flag-alt-2.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\flag-alt-2.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\flag-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\flag-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\flag-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\flag.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\flag.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\flag.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\flickr-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\flickr-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\flickr-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\flickr.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\flickr.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\flickr.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\folder.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\folder.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\folder.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\fullscreen.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\fullscreen.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\fullscreen.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\gallery.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\gallery.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\gallery.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\game.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\game.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\game.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\gift.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\gift.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\gift.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\github.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\github.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\github.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\google.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\google.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\google.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\hand-drag.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\hand-drag.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\hand-drag.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\hand-open.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\hand-open.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\hand-open.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\hand-point-down.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\hand-point-down.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\hand-point-down.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\hand-point-left.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\hand-point-left.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\hand-point-left.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\hand-point-right.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\hand-point-right.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\hand-point-right.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\hand-point-up.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\hand-point-up.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\hand-point-up.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\hand-stop.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\hand-stop.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\hand-stop.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\harddrive.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\harddrive.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\harddrive.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\harddrives.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\harddrives.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\harddrives.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\headphone-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\headphone-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\headphone-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\headphone.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\headphone.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\headphone.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\heart-broken.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\heart-broken.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\heart-broken.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\heart.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\heart.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\heart.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\help-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\help-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\help-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\help.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\help.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\help.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\home.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\home.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\home.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\html5.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\html5.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\html5.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\hummer.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\hummer.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\hummer.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\id-badge.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\id-badge.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\id-badge.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\image.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\image.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\image.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\import.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\import.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\import.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\infinite.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\infinite.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\infinite.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\info-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\info-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\info-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\info.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\info.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\info.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\ink-pen.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\ink-pen.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\ink-pen.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\instagram.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\instagram.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\instagram.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\joomla.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\joomla.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\joomla.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\jsfiddle.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\jsfiddle.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\jsfiddle.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\key.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\key.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\key.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layers-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layers-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layers-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layers.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layers.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layers.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-accordion-list.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-accordion-list.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-accordion-list.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-accordion-merged.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-accordion-merged.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-accordion-merged.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-accordion-separated.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-accordion-separated.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-accordion-separated.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-column2-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-column2-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-column2-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-column2.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-column2.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-column2.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-column3-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-column3-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-column3-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-column3.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-column3.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-column3.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-column4-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-column4-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-column4-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-column4.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-column4.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-column4.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-cta-btn-left.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-cta-btn-left.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-cta-btn-left.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-cta-btn-right.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-cta-btn-right.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-cta-btn-right.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-cta-center.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-cta-center.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-cta-center.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-cta-left.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-cta-left.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-cta-left.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-cta-right.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-cta-right.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-cta-right.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-grid2-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-grid2-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-grid2-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-grid2-thumb.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-grid2-thumb.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-grid2-thumb.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-grid2.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-grid2.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-grid2.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-grid3-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-grid3-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-grid3-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-grid3.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-grid3.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-grid3.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-grid4-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-grid4-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-grid4-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-grid4.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-grid4.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-grid4.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-line-solid.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-line-solid.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-line-solid.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-list-large-image.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-list-large-image.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-list-large-image.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-list-post.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-list-post.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-list-post.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-list-thumb-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-list-thumb-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-list-thumb-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-list-thumb.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-list-thumb.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-list-thumb.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-media-center-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-media-center-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-media-center-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-media-center.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-media-center.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-media-center.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-media-left-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-media-left-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-media-left-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-media-left.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-media-left.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-media-left.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-media-overlay-alt-2.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-media-overlay-alt-2.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-media-overlay-alt-2.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-media-overlay-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-media-overlay-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-media-overlay-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-media-overlay.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-media-overlay.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-media-overlay.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-media-right-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-media-right-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-media-right-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-media-right.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-media-right.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-media-right.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-menu-full.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-menu-full.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-menu-full.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-menu-separated.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-menu-separated.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-menu-separated.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-menu-v.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-menu-v.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-menu-v.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-menu.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-menu.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-menu.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-placeholder.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-placeholder.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-placeholder.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-sidebar-2.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-sidebar-2.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-sidebar-2.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-sidebar-left.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-sidebar-left.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-sidebar-left.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-sidebar-none.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-sidebar-none.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-sidebar-none.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-sidebar-right.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-sidebar-right.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-sidebar-right.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-slider-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-slider-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-slider-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-slider.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-slider.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-slider.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-tab-min.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-tab-min.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-tab-min.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-tab-v.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-tab-v.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-tab-v.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-tab-window.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-tab-window.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-tab-window.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-tab.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-tab.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-tab.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-width-default-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-width-default-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-width-default-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-width-default.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-width-default.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-width-default.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-width-full.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout-width-full.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout-width-full.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\layout.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\layout.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\light-bulb.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\light-bulb.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\light-bulb.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\line-dashed.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\line-dashed.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\line-dashed.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\line-dotted.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\line-dotted.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\line-dotted.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\line-double.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\line-double.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\line-double.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\link.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\link.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\link.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\linkedin.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\linkedin.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\linkedin.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\linux.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\linux.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\linux.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\list-ol.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\list-ol.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\list-ol.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\list.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\list.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\list.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\location-arrow.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\location-arrow.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\location-arrow.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\location-pin.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\location-pin.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\location-pin.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\lock.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\lock.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\lock.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\loop.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\loop.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\loop.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\magnet.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\magnet.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\magnet.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\map-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\map-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\map-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\map.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\map.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\map.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\marker-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\marker-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\marker-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\marker.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\marker.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\marker.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\medall-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\medall-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\medall-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\medall.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\medall.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\medall.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\menu-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\menu-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\menu-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\menu.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\menu.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\menu.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\microphone-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\microphone-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\microphone-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\microphone.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\microphone.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\microphone.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\microsoft-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\microsoft-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\microsoft-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\microsoft.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\microsoft.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\microsoft.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\minus.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\minus.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\minus.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\mobile.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\mobile.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\mobile.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\money.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\money.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\money.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\more-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\more-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\more-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\more.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\more.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\more.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\mouse-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\mouse-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\mouse-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\mouse.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\mouse.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\mouse.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\music-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\music-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\music-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\music.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\music.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\music.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\na.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\na.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\na.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\new-window.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\new-window.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\new-window.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\notepad.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\notepad.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\notepad.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\package.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\package.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\package.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\paint-bucket.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\paint-bucket.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\paint-bucket.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\paint-roller.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\paint-roller.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\paint-roller.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\palette.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\palette.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\palette.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\panel.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\panel.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\panel.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\paragraph.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\paragraph.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\paragraph.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\pencil-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\pencil-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\pencil-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\pencil-alt2.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\pencil-alt2.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\pencil-alt2.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\pencil.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\pencil.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\pencil.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\pie-chart.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\pie-chart.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\pie-chart.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\pin-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\pin-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\pin-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\pin.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\pin.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\pin.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\pin2.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\pin2.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\pin2.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\pinterest-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\pinterest-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\pinterest-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\pinterest.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\pinterest.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\pinterest.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\plug.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\plug.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\plug.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\plus.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\plus.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\plus.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\power-off.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\power-off.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\power-off.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\printer.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\printer.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\printer.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\pulse.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\pulse.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\pulse.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\quote-left.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\quote-left.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\quote-left.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\quote-right.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\quote-right.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\quote-right.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\receipt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\receipt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\receipt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\reddit.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\reddit.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\reddit.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\reload.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\reload.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\reload.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\rocket.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\rocket.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\rocket.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\rss-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\rss-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\rss-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\rss.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\rss.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\rss.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\ruler-alt-2.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\ruler-alt-2.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\ruler-alt-2.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\ruler-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\ruler-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\ruler-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\ruler-pencil.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\ruler-pencil.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\ruler-pencil.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\ruler.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\ruler.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\ruler.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\save-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\save-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\save-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\save.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\save.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\save.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\search.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\search.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\search.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\server.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\server.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\server.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\settings.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\settings.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\settings.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\share-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\share-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\share-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\share.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\share.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\share.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\sharethis-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\sharethis-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\sharethis-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\sharethis.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\sharethis.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\sharethis.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\shield.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\shield.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\shield.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\shift-left-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\shift-left-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\shift-left-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\shift-left.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\shift-left.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\shift-left.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\shift-right-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\shift-right-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\shift-right-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\shift-right.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\shift-right.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\shift-right.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\shine.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\shine.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\shine.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\shopping-cart-full.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\shopping-cart-full.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\shopping-cart-full.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\shopping-cart.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\shopping-cart.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\shopping-cart.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\shortcode.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\shortcode.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\shortcode.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\signal.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\signal.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\signal.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\skype.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\skype.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\skype.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\slice.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\slice.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\slice.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\smallcap.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\smallcap.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\smallcap.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\soundcloud.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\soundcloud.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\soundcloud.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\split-h.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\split-h.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\split-h.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\split-v-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\split-v-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\split-v-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\split-v.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\split-v.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\split-v.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\spray.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\spray.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\spray.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\stack-overflow.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\stack-overflow.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\stack-overflow.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\stamp.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\stamp.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\stamp.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\star.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\star.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\star.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\stats-down.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\stats-down.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\stats-down.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\stats-up.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\stats-up.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\stats-up.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\support.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\support.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\support.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\tablet.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\tablet.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\tablet.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\tag.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\tag.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\tag.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\target.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\target.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\target.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\text.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\text.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\text.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\themify-favicon-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\themify-favicon-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\themify-favicon-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\themify-favicon.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\themify-favicon.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\themify-favicon.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\themify-logo.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\themify-logo.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\themify-logo.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\thought.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\thought.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\thought.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\thumb-down.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\thumb-down.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\thumb-down.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\thumb-up.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\thumb-up.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\thumb-up.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\ticket.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\ticket.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\ticket.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\time.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\time.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\time.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\timer.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\timer.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\timer.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\trash.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\trash.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\trash.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\trello.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\trello.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\trello.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\truck.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\truck.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\truck.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\tumblr-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\tumblr-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\tumblr-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\tumblr.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\tumblr.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\tumblr.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\twitter-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\twitter-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\twitter-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\twitter.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\twitter.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\twitter.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\underline.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\underline.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\underline.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\unlink.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\unlink.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\unlink.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\unlock.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\unlock.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\unlock.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\upload.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\upload.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\upload.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\uppercase.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\uppercase.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\uppercase.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\user.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\user.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\user.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\vector.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\vector.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\vector.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\video-camera.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\video-camera.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\video-camera.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\video-clapper.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\video-clapper.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\video-clapper.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\view-grid.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\view-grid.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\view-grid.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\view-list-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\view-list-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\view-list-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\view-list.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\view-list.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\view-list.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\vimeo-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\vimeo-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\vimeo-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\vimeo.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\vimeo.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\vimeo.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\volume.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\volume.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\volume.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\wallet.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\wallet.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\wallet.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\wand.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\wand.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\wand.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\wheelchair.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\wheelchair.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\wheelchair.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\widget-alt.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\widget-alt.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\widget-alt.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\widget.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\widget.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\widget.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\widgetized.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\widgetized.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\widgetized.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\window.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\window.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\window.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\wordpress.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\wordpress.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\wordpress.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\world.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\world.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\world.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\write.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\write.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\write.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\yahoo.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\yahoo.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\yahoo.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\youtube.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\youtube.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\youtube.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\zip.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\zip.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\zip.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\zoom-in.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\zoom-in.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\zoom-in.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\zoom-out.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\SVG\\zoom-out.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\SVG\\zoom-out.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\Themify IconFonts 5-23-2014.json",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\Themify IconFonts 5-23-2014.json",
       "PackagePath": "staticwebassets\\css\\themify-icons\\Themify IconFonts 5-23-2014.json"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\demo-files\\demo.css",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\demo-files\\demo.css",
       "PackagePath": "staticwebassets\\css\\themify-icons\\demo-files\\demo.css"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\fonts\\themify.eot",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\fonts\\themify.eot",
       "PackagePath": "staticwebassets\\css\\themify-icons\\fonts\\themify.eot"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\fonts\\themify.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\fonts\\themify.svg",
       "PackagePath": "staticwebassets\\css\\themify-icons\\fonts\\themify.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\fonts\\themify.ttf",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\fonts\\themify.ttf",
       "PackagePath": "staticwebassets\\css\\themify-icons\\fonts\\themify.ttf"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\fonts\\themify.woff",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\fonts\\themify.woff",
       "PackagePath": "staticwebassets\\css\\themify-icons\\fonts\\themify.woff"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\ie7\\ie7.css",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\ie7\\ie7.css",
       "PackagePath": "staticwebassets\\css\\themify-icons\\ie7\\ie7.css"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\ie7\\ie7.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\ie7\\ie7.js",
       "PackagePath": "staticwebassets\\css\\themify-icons\\ie7\\ie7.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\index.html",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\index.html",
       "PackagePath": "staticwebassets\\css\\themify-icons\\index.html"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\readme.txt",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\readme.txt",
       "PackagePath": "staticwebassets\\css\\themify-icons\\readme.txt"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\themify-icons.css",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\themify-icons\\themify-icons.css",
       "PackagePath": "staticwebassets\\css\\themify-icons\\themify-icons.css"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\favicon.ico",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\fonts\\icofont\\fonts\\icofont.eot",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\fonts\\icofont\\fonts\\icofont.eot",
       "PackagePath": "staticwebassets\\fonts\\icofont\\fonts\\icofont.eot"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\fonts\\icofont\\fonts\\icofont.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\fonts\\icofont\\fonts\\icofont.svg",
       "PackagePath": "staticwebassets\\fonts\\icofont\\fonts\\icofont.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\fonts\\icofont\\fonts\\icofont.ttf",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\fonts\\icofont\\fonts\\icofont.ttf",
       "PackagePath": "staticwebassets\\fonts\\icofont\\fonts\\icofont.ttf"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\fonts\\icofont\\fonts\\icofont.woff",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\fonts\\icofont\\fonts\\icofont.woff",
       "PackagePath": "staticwebassets\\fonts\\icofont\\fonts\\icofont.woff"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\fonts\\icofont\\fonts\\icofontd41d.eot",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\fonts\\icofont\\fonts\\icofontd41d.eot",
       "PackagePath": "staticwebassets\\fonts\\icofont\\fonts\\icofontd41d.eot"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\change-log.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\change-log.svg",
       "PackagePath": "staticwebassets\\images\\change-log.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\flag\\DE.png",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\flag\\DE.png",
       "PackagePath": "staticwebassets\\images\\flag\\DE.png"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\flag\\FR.png",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\flag\\FR.png",
       "PackagePath": "staticwebassets\\images\\flag\\FR.png"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\flag\\GB.png",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\flag\\GB.png",
       "PackagePath": "staticwebassets\\images\\flag\\GB.png"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\flag\\IT.png",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\flag\\IT.png",
       "PackagePath": "staticwebassets\\images\\flag\\IT.png"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\flag\\RU.png",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\flag\\RU.png",
       "PackagePath": "staticwebassets\\images\\flag\\RU.png"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\forgot-password.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\forgot-password.svg",
       "PackagePath": "staticwebassets\\images\\forgot-password.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\gallery\\1.jpg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\gallery\\1.jpg",
       "PackagePath": "staticwebassets\\images\\gallery\\1.jpg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\gallery\\10.jpg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\gallery\\10.jpg",
       "PackagePath": "staticwebassets\\images\\gallery\\10.jpg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\gallery\\2.jpg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\gallery\\2.jpg",
       "PackagePath": "staticwebassets\\images\\gallery\\2.jpg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\gallery\\3.jpg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\gallery\\3.jpg",
       "PackagePath": "staticwebassets\\images\\gallery\\3.jpg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\gallery\\4.jpg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\gallery\\4.jpg",
       "PackagePath": "staticwebassets\\images\\gallery\\4.jpg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\gallery\\5.jpg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\gallery\\5.jpg",
       "PackagePath": "staticwebassets\\images\\gallery\\5.jpg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\gallery\\6.jpg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\gallery\\6.jpg",
       "PackagePath": "staticwebassets\\images\\gallery\\6.jpg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\gallery\\7.jpg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\gallery\\7.jpg",
       "PackagePath": "staticwebassets\\images\\gallery\\7.jpg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\gallery\\8.jpg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\gallery\\8.jpg",
       "PackagePath": "staticwebassets\\images\\gallery\\8.jpg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\gallery\\9.jpg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\gallery\\9.jpg",
       "PackagePath": "staticwebassets\\images\\gallery\\9.jpg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\google.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\google.svg",
       "PackagePath": "staticwebassets\\images\\google.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\lg\\avatar1.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\lg\\avatar1.svg",
       "PackagePath": "staticwebassets\\images\\lg\\avatar1.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\lg\\avatar2.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\lg\\avatar2.svg",
       "PackagePath": "staticwebassets\\images\\lg\\avatar2.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\lg\\avatar4.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\lg\\avatar4.svg",
       "PackagePath": "staticwebassets\\images\\lg\\avatar4.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\lg\\avatar5.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\lg\\avatar5.svg",
       "PackagePath": "staticwebassets\\images\\lg\\avatar5.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\lg\\avatar6.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\lg\\avatar6.svg",
       "PackagePath": "staticwebassets\\images\\lg\\avatar6.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\lg\\avatar7.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\lg\\avatar7.svg",
       "PackagePath": "staticwebassets\\images\\lg\\avatar7.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\lg\\avatar8.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\lg\\avatar8.svg",
       "PackagePath": "staticwebassets\\images\\lg\\avatar8.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\lg\\avatar9.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\lg\\avatar9.svg",
       "PackagePath": "staticwebassets\\images\\lg\\avatar9.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\login-img.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\login-img.svg",
       "PackagePath": "staticwebassets\\images\\login-img.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\logo.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\logo.svg",
       "PackagePath": "staticwebassets\\images\\logo.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\no-data.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\no-data.svg",
       "PackagePath": "staticwebassets\\images\\no-data.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\not_found.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\not_found.svg",
       "PackagePath": "staticwebassets\\images\\not_found.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\Cropimg.jpg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\Cropimg.jpg",
       "PackagePath": "staticwebassets\\images\\product\\Cropimg.jpg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\cropimg-upload.jpg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\cropimg-upload.jpg",
       "PackagePath": "staticwebassets\\images\\product\\cropimg-upload.jpg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\product-1.jpg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\product-1.jpg",
       "PackagePath": "staticwebassets\\images\\product\\product-1.jpg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\product-2.jpg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\product-2.jpg",
       "PackagePath": "staticwebassets\\images\\product\\product-2.jpg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\product-3.jpg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\product-3.jpg",
       "PackagePath": "staticwebassets\\images\\product\\product-3.jpg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\product-4.jpg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\product-4.jpg",
       "PackagePath": "staticwebassets\\images\\product\\product-4.jpg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\product-5.jpg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\product-5.jpg",
       "PackagePath": "staticwebassets\\images\\product\\product-5.jpg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\product-6.jpg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\product-6.jpg",
       "PackagePath": "staticwebassets\\images\\product\\product-6.jpg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\product-7.jpg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\product-7.jpg",
       "PackagePath": "staticwebassets\\images\\product\\product-7.jpg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\product-8.jpg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\product-8.jpg",
       "PackagePath": "staticwebassets\\images\\product\\product-8.jpg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\product-items-1.jpg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\product-items-1.jpg",
       "PackagePath": "staticwebassets\\images\\product\\product-items-1.jpg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\product-items-2.jpg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\product-items-2.jpg",
       "PackagePath": "staticwebassets\\images\\product\\product-items-2.jpg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\product-items-3.jpg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\product-items-3.jpg",
       "PackagePath": "staticwebassets\\images\\product\\product-items-3.jpg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\productslide-1.jpg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\productslide-1.jpg",
       "PackagePath": "staticwebassets\\images\\product\\productslide-1.jpg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\productslide-2.jpg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\productslide-2.jpg",
       "PackagePath": "staticwebassets\\images\\product\\productslide-2.jpg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\productslide-3.jpg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\productslide-3.jpg",
       "PackagePath": "staticwebassets\\images\\product\\productslide-3.jpg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\productslide-5.jpg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\productslide-5.jpg",
       "PackagePath": "staticwebassets\\images\\product\\productslide-5.jpg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\shipping-1.png",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\shipping-1.png",
       "PackagePath": "staticwebassets\\images\\product\\shipping-1.png"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\shipping-2.png",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\shipping-2.png",
       "PackagePath": "staticwebassets\\images\\product\\shipping-2.png"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\shipping-3.png",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\shipping-3.png",
       "PackagePath": "staticwebassets\\images\\product\\shipping-3.png"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\shipping-4.png",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\shipping-4.png",
       "PackagePath": "staticwebassets\\images\\product\\shipping-4.png"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\thunb-1.jpg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\thunb-1.jpg",
       "PackagePath": "staticwebassets\\images\\product\\thunb-1.jpg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\thunb-2.jpg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\thunb-2.jpg",
       "PackagePath": "staticwebassets\\images\\product\\thunb-2.jpg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\thunb-3.jpg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\thunb-3.jpg",
       "PackagePath": "staticwebassets\\images\\product\\thunb-3.jpg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\thunb-4.jpg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\thunb-4.jpg",
       "PackagePath": "staticwebassets\\images\\product\\thunb-4.jpg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\thunb-5.jpg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\thunb-5.jpg",
       "PackagePath": "staticwebassets\\images\\product\\thunb-5.jpg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\upload.png",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\product\\upload.png",
       "PackagePath": "staticwebassets\\images\\product\\upload.png"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\profile_av.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\profile_av.svg",
       "PackagePath": "staticwebassets\\images\\profile_av.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\verify.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\verify.svg",
       "PackagePath": "staticwebassets\\images\\verify.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\xs\\avatar1.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\xs\\avatar1.svg",
       "PackagePath": "staticwebassets\\images\\xs\\avatar1.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\xs\\avatar10.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\xs\\avatar10.svg",
       "PackagePath": "staticwebassets\\images\\xs\\avatar10.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\xs\\avatar11.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\xs\\avatar11.svg",
       "PackagePath": "staticwebassets\\images\\xs\\avatar11.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\xs\\avatar12.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\xs\\avatar12.svg",
       "PackagePath": "staticwebassets\\images\\xs\\avatar12.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\xs\\avatar2.html",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\xs\\avatar2.html",
       "PackagePath": "staticwebassets\\images\\xs\\avatar2.html"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\xs\\avatar2.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\xs\\avatar2.svg",
       "PackagePath": "staticwebassets\\images\\xs\\avatar2.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\xs\\avatar3.html",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\xs\\avatar3.html",
       "PackagePath": "staticwebassets\\images\\xs\\avatar3.html"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\xs\\avatar3.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\xs\\avatar3.svg",
       "PackagePath": "staticwebassets\\images\\xs\\avatar3.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\xs\\avatar4.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\xs\\avatar4.svg",
       "PackagePath": "staticwebassets\\images\\xs\\avatar4.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\xs\\avatar5.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\xs\\avatar5.svg",
       "PackagePath": "staticwebassets\\images\\xs\\avatar5.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\xs\\avatar6.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\xs\\avatar6.svg",
       "PackagePath": "staticwebassets\\images\\xs\\avatar6.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\xs\\avatar7.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\xs\\avatar7.svg",
       "PackagePath": "staticwebassets\\images\\xs\\avatar7.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\xs\\avatar8.html",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\xs\\avatar8.html",
       "PackagePath": "staticwebassets\\images\\xs\\avatar8.html"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\xs\\avatar8.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\xs\\avatar8.svg",
       "PackagePath": "staticwebassets\\images\\xs\\avatar8.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\xs\\avatar9.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\xs\\avatar9.svg",
       "PackagePath": "staticwebassets\\images\\xs\\avatar9.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\js\\page\\chart-apex.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\js\\page\\chart-apex.js",
       "PackagePath": "staticwebassets\\js\\page\\chart-apex.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\js\\page\\google.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\js\\page\\google.js",
       "PackagePath": "staticwebassets\\js\\page\\google.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\js\\page\\index.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\js\\page\\index.js",
       "PackagePath": "staticwebassets\\js\\page\\index.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\js\\page\\profile.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\js\\page\\profile.js",
       "PackagePath": "staticwebassets\\js\\page\\profile.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\js\\page\\todo.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\js\\page\\todo.js",
       "PackagePath": "staticwebassets\\js\\page\\todo.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\js\\site.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\js\\template.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\js\\template.js",
       "PackagePath": "staticwebassets\\js\\template.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\LICENSE",
       "PackagePath": "staticwebassets\\lib\\bootstrap"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\bootstrap-tagsinput\\bootstrap-tagsinput.css",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\bootstrap-tagsinput\\bootstrap-tagsinput.css",
       "PackagePath": "staticwebassets\\plugin\\bootstrap-tagsinput\\bootstrap-tagsinput.css"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\bootstrap-tagsinput\\bootstrap-tagsinput.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\bootstrap-tagsinput\\bootstrap-tagsinput.js",
       "PackagePath": "staticwebassets\\plugin\\bootstrap-tagsinput\\bootstrap-tagsinput.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\cropper\\cropper-init.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\cropper\\cropper-init.js",
       "PackagePath": "staticwebassets\\plugin\\cropper\\cropper-init.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\cropper\\cropper.min.css",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\cropper\\cropper.min.css",
       "PackagePath": "staticwebassets\\plugin\\cropper\\cropper.min.css"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\cropper\\cropper.min.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\cropper\\cropper.min.js",
       "PackagePath": "staticwebassets\\plugin\\cropper\\cropper.min.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\datatables\\dataTables.bootstrap5.min.css",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\datatables\\dataTables.bootstrap5.min.css",
       "PackagePath": "staticwebassets\\plugin\\datatables\\dataTables.bootstrap5.min.css"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\datatables\\responsive.dataTables.min.css",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\datatables\\responsive.dataTables.min.css",
       "PackagePath": "staticwebassets\\plugin\\datatables\\responsive.dataTables.min.css"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\dropify\\dist\\css\\dropify.min.css",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\dropify\\dist\\css\\dropify.min.css",
       "PackagePath": "staticwebassets\\plugin\\dropify\\dist\\css\\dropify.min.css"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\dropify\\dist\\fonts\\dropify.eot",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\dropify\\dist\\fonts\\dropify.eot",
       "PackagePath": "staticwebassets\\plugin\\dropify\\dist\\fonts\\dropify.eot"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\dropify\\dist\\fonts\\dropify.svg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\dropify\\dist\\fonts\\dropify.svg",
       "PackagePath": "staticwebassets\\plugin\\dropify\\dist\\fonts\\dropify.svg"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\dropify\\dist\\fonts\\dropify.ttf",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\dropify\\dist\\fonts\\dropify.ttf",
       "PackagePath": "staticwebassets\\plugin\\dropify\\dist\\fonts\\dropify.ttf"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\dropify\\dist\\fonts\\dropify.woff",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\dropify\\dist\\fonts\\dropify.woff",
       "PackagePath": "staticwebassets\\plugin\\dropify\\dist\\fonts\\dropify.woff"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\fullcalendar\\main.min.css",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\fullcalendar\\main.min.css",
       "PackagePath": "staticwebassets\\plugin\\fullcalendar\\main.min.css"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\fullcalendar\\main.min.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\fullcalendar\\main.min.js",
       "PackagePath": "staticwebassets\\plugin\\fullcalendar\\main.min.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\multi-select\\css\\multi-select.css",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\multi-select\\css\\multi-select.css",
       "PackagePath": "staticwebassets\\plugin\\multi-select\\css\\multi-select.css"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\multi-select\\img\\switch.png",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\multi-select\\img\\switch.png",
       "PackagePath": "staticwebassets\\plugin\\multi-select\\img\\switch.png"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\multi-select\\js\\jquery.multi-select.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\multi-select\\js\\jquery.multi-select.js",
       "PackagePath": "staticwebassets\\plugin\\multi-select\\js\\jquery.multi-select.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\nouislider\\nouislider.min.css",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\nouislider\\nouislider.min.css",
       "PackagePath": "staticwebassets\\plugin\\nouislider\\nouislider.min.css"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\nouislider\\nouislider.min.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\nouislider\\nouislider.min.js",
       "PackagePath": "staticwebassets\\plugin\\nouislider\\nouislider.min.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\parsleyjs\\css\\parsley.css",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\parsleyjs\\css\\parsley.css",
       "PackagePath": "staticwebassets\\plugin\\parsleyjs\\css\\parsley.css"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\parsleyjs\\js\\parsley.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\parsleyjs\\js\\parsley.js",
       "PackagePath": "staticwebassets\\plugin\\parsleyjs\\js\\parsley.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\prism\\prism.css",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\prism\\prism.css",
       "PackagePath": "staticwebassets\\plugin\\prism\\prism.css"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\prism\\prism.js",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\prism\\prism.js",
       "PackagePath": "staticwebassets\\plugin\\prism\\prism.js"
     },
     {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\ANT2053-1-scaled.jpg",
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\ANT2053-1-scaled.jpg",
       "PackagePath": "staticwebassets\\uploaded\\ANT2053-1-scaled.jpg"
     },
     {
