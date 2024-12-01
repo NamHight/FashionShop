@@ -1,6 +1,7 @@
 ﻿using FashionShop.Context;
 using FashionShop.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace FashionShop.Repositories.Products
 {
@@ -22,5 +23,15 @@ namespace FashionShop.Repositories.Products
             return category;
         }
 
+        public  void AddNewProduct(Product product)
+        {
+            Create(product);
+        }
+        public async Task<bool> CheckSlug(string slug)
+        {
+            var result = await _context.Products.Where(item=> item.Slug.Equals(slug)).FirstOrDefaultAsync();
+            if (result!=null) return true;
+            return false;   
+        }
     }
 }

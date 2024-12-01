@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Hz8kcNqjoT5fhQpZ8bRPQ5y/fxSBC2je05LWZ+NDum8=",
+  "Hash": "NIg9EP5QULEIuQhvY9gOFzVS/vnSoDQqtghJGzT1aRs=",
   "Source": "FashionShop",
   "BasePath": "_content/FashionShop",
   "Mode": "Default",
@@ -10256,6 +10256,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\plugin\\prism\\prism.js"
+    },
+    {
+      "Identity": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\ANT2053-1-scaled.jpg",
+      "SourceId": "FashionShop",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\",
+      "BasePath": "_content/FashionShop",
+      "RelativePath": "uploaded/ANT2053-1-scaled.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploaded\\ANT2053-1-scaled.jpg"
     }
   ]
 }

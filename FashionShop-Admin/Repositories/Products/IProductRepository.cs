@@ -1,4 +1,5 @@
 ﻿using FashionShop.Models;
+using System.Threading.Tasks;
 
 namespace FashionShop.Repositories.Products
 {
@@ -6,5 +7,8 @@ namespace FashionShop.Repositories.Products
     {
         Task<List<Product>> GetAllAsync(bool trackChanges);
         Task<Product?> GetByIdAsync(long id, bool trackChanges);
+        void AddNewProduct(Product product);
+
+        Task<bool> CheckSlug(string slug);
     }
 }
