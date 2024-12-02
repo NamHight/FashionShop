@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2k19UvzxkDoCBFMSAPWunGoSeUoxj7hf7F9iGk6lTIk=",
+  "Hash": "GMOh/5IBGh3GpEb4JHVOvOIirnL42r6ngmTOMObVOVs=",
   "Source": "FashionShop",
   "BasePath": "_content/FashionShop",
   "Mode": "Default",
@@ -10296,6 +10296,63 @@
       "OriginalItemSpec": "wwwroot\\plugin\\prism\\prism.js"
     },
     {
+      "Identity": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\47bfcdaf-58ea-491c-a281-c76e5944c7a1.png",
+      "SourceId": "FashionShop",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\",
+      "BasePath": "_content/FashionShop",
+      "RelativePath": "uploaded/47bfcdaf-58ea-491c-a281-c76e5944c7a1.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploaded\\47bfcdaf-58ea-491c-a281-c76e5944c7a1.png"
+    },
+    {
+      "Identity": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\5840ddf1-6021-401f-97ab-98d132987820.png",
+      "SourceId": "FashionShop",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\",
+      "BasePath": "_content/FashionShop",
+      "RelativePath": "uploaded/5840ddf1-6021-401f-97ab-98d132987820.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploaded\\5840ddf1-6021-401f-97ab-98d132987820.png"
+    },
+    {
+      "Identity": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\78c3d429-b79b-4736-b1ff-65df2349449c.png",
+      "SourceId": "FashionShop",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\",
+      "BasePath": "_content/FashionShop",
+      "RelativePath": "uploaded/78c3d429-b79b-4736-b1ff-65df2349449c.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploaded\\78c3d429-b79b-4736-b1ff-65df2349449c.png"
+    },
+    {
       "Identity": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\ANT2053-1-scaled.jpg",
       "SourceId": "FashionShop",
       "SourceType": "Discovered",
@@ -10313,12 +10370,14 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploaded\\ANT2053-1-scaled.jpg"
-      "Identity": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\avatar-user.webp",
+    },
+    {
+      "Identity": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\z5933230010950_9f1a077c92f804ad465811ab35443b1b.jpg",
       "SourceId": "FashionShop",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\",
       "BasePath": "_content/FashionShop",
-      "RelativePath": "images/avatar-user.webp",
+      "RelativePath": "uploaded/z5933230010950_9f1a077c92f804ad465811ab35443b1b.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -10329,15 +10388,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\avatar-user.webp"
+      "OriginalItemSpec": "wwwroot\\uploaded\\z5933230010950_9f1a077c92f804ad465811ab35443b1b.jpg"
     },
     {
-      "Identity": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\plugin\\ckeditor5\\29.0.0\\classic\\ckeditor.js",
+      "Identity": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\z6027286591501_ae8afd1acccd45a4f55949a863fa45e1.jpg",
       "SourceId": "FashionShop",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\",
       "BasePath": "_content/FashionShop",
-      "RelativePath": "plugin/ckeditor5/29.0.0/classic/ckeditor.js",
+      "RelativePath": "uploaded/z6027286591501_ae8afd1acccd45a4f55949a863fa45e1.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -10348,9 +10407,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\plugin\\ckeditor5\\29.0.0\\classic\\ckeditor.js"
-    },
-    {
+      "OriginalItemSpec": "wwwroot\\uploaded\\z6027286591501_ae8afd1acccd45a4f55949a863fa45e1.jpg"
     }
   ]
 }

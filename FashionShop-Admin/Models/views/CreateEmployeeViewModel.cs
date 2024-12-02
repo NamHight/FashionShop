@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using FashionShop.Filters;
 using FashionShop.Models.Enum;
 
 namespace FashionShop.Models.views;
@@ -15,39 +16,36 @@ public class CreateEmployeeViewModel
     [DataType(DataType.Password)]
     public string? Password { get; set; }
     
-    
-    [DataType(DataType.ImageUrl)]
-    public string? Avatar { get; set; }
-    
-    [EnumDataType(typeof(EmployeeStatus),ErrorMessage = "Please Enter Valid Status")]
-    public string? Status { get; set; }
-    
-    public string? Gender { get; set; }
-    public long? StoreId { get; set; }
-    
-    [Required(ErrorMessage = "Please Select Role")]
-    public int RoleId { get; set; }
-    
     [Required(ErrorMessage = "Please Enter Confirm Password")]
     [Compare("Password",ErrorMessage = "Password and confirm password does not match")]
     [DataType(DataType.Password)]
     public string? ConfirmPassword { get; set; }
     
+    
+    [Required(ErrorMessage = "Please Enter Employee Name")]
+    [StringLength(255)]
+    public string? EmployeeName { get; set; }
+     
     [Required(ErrorMessage = "Please Enter Phone Number")]
     [StringLength(15)]
     [Phone(ErrorMessage = "Please Enter Valid Phone Number")]
     public string? Phone { get; set; }
     
-    [Required(ErrorMessage = "Please Enter Employee Name")]
-    [StringLength(255)]
-    public string? EmployeeName { get; set; }
-
     [Required(ErrorMessage = "Please Enter Employee Position")]
-    [EnumDataType(typeof(EmployeePosition))]
     public string? EmployeePosition { get; set; }
-
-    public IEnumerable<Role?> Roles { get; set; }
-
-    public IEnumerable<Store?> Stores { get; set; } 
+    public string? Status { get; set; }
+    public string? Gender { get; set; }
+     
+    [Required(ErrorMessage = "Please Select Role")]
+    public int? RoleId { get; set; }
+    public long? StoreId { get; set; }
+    
+    public string? Avatar { get; set; }
+    
+    [MaxFileSize(1 * 1024 * 1024)]
+    public IFormFile? AvatarFile { get; set; }
+    
+    public IEnumerable<Role>? Roles { get; set; }
+    public IEnumerable<Store>? Stores { get; set; }
 
 }

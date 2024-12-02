@@ -9,4 +9,5 @@ public interface IEmployeeService
     Task<IEnumerable<Employee>> GetAllAsync(bool trackChanges);
 
     Task CreateAsync(CreateEmployeeViewModel employee);
+    Task<string> HandleSaveFileAsync(IFormFile file, string directory, string[] allowedExtensions);
 }

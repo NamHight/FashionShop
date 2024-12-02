@@ -2161,8 +2161,28 @@
       "PackagePath": "staticwebassets\\plugin\\prism\\prism.js"
     },
     {
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\47bfcdaf-58ea-491c-a281-c76e5944c7a1.png",
+      "PackagePath": "staticwebassets\\uploaded\\47bfcdaf-58ea-491c-a281-c76e5944c7a1.png"
+    },
+    {
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\5840ddf1-6021-401f-97ab-98d132987820.png",
+      "PackagePath": "staticwebassets\\uploaded\\5840ddf1-6021-401f-97ab-98d132987820.png"
+    },
+    {
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\78c3d429-b79b-4736-b1ff-65df2349449c.png",
+      "PackagePath": "staticwebassets\\uploaded\\78c3d429-b79b-4736-b1ff-65df2349449c.png"
+    },
+    {
       "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\ANT2053-1-scaled.jpg",
       "PackagePath": "staticwebassets\\uploaded\\ANT2053-1-scaled.jpg"
+    },
+    {
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\z5933230010950_9f1a077c92f804ad465811ab35443b1b.jpg",
+      "PackagePath": "staticwebassets\\uploaded\\z5933230010950_9f1a077c92f804ad465811ab35443b1b.jpg"
+    },
+    {
+      "Id": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\z6027286591501_ae8afd1acccd45a4f55949a863fa45e1.jpg",
+      "PackagePath": "staticwebassets\\uploaded\\z6027286591501_ae8afd1acccd45a4f55949a863fa45e1.jpg"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.FashionShop.Microsoft.AspNetCore.StaticWebAssets.props",

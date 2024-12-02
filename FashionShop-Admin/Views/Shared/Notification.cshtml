@@ -1,0 +1,31 @@
+﻿@using FashionShop.Models.Enum
+@{
+    
+    var notification = TempData[nameof(NotificationTypes)] switch
+    {
+        "Success" => "bg-success",
+        "Error" => "bg-danger",
+        _ => "warning"
+    };
+    
+}
+@if (TempData[nameof(NotificationTypes.Success)] != null)
+{
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-body @notification">
+                @TempData[nameof(NotificationTypes.Success)]
+            </div>
+        </div>
+    </div> 
+}
+@if (TempData[nameof(NotificationTypes.Error)] != null)
+{
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-body @notification">
+                @TempData[nameof(NotificationTypes.Error)]
+            </div>
+        </div>
+    </div>
+}

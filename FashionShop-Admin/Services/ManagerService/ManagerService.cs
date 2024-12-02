@@ -16,12 +16,11 @@ public class ManagerService : IManagerService
     private readonly Lazy<IRoleService> _roleService;
     private readonly Lazy<IStoreService> _storeService;
     private readonly Lazy<IProductService> _productService;
-
-    public ManagerService(IManagerRepository managerRepository)
+    public ManagerService(IManagerRepository managerRepository,IWebHostEnvironment hostingEnvironment)
     {
         _categoryService = new Lazy<ICategoryService>(() => new CategoryService(managerRepository));
         _contactService = new Lazy<IContactService> (()=> new ContactService(managerRepository));
-        _employeeService = new Lazy<IEmployeeService>(() => new EmployeeService(managerRepository));
+        _employeeService = new Lazy<IEmployeeService>(() => new EmployeeService(managerRepository,hostingEnvironment));
         _roleService = new Lazy<IRoleService>(() => new RoleService(managerRepository));
         _storeService = new Lazy<IStoreService>(() => new StoreService(managerRepository));
         _productService = new Lazy<IProductService>(() => new ProductService(managerRepository));

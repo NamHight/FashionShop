@@ -20,9 +20,14 @@ public static class ServiceExtensions
             {
                 options.LoginPath = "/login";
                 options.AccessDeniedPath = "/login";
+                options.ExpireTimeSpan = TimeSpan.FromDays(7);
+                options.SlidingExpiration = true;
             });
-    
-    
+
+    public static void ConfigureCors(this IServiceCollection service) => service.AddCors(options =>
+    {
+        options.AddPolicy("CorsPolicy", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+    } );
     public static void ConfigureManagerRepository(this IServiceCollection services) =>
         services.AddScoped<IManagerRepository, ManagerRepository>();
     

@@ -69,10 +69,12 @@
                             {
                                 <tr>
                                     <td><strong>#@employee.EmployeeId</strong></td>
-                                    <td><img src="@( employee.Avatar.Equals("") ? Url.Content("~/images/avatar-user.webp") : employee.Avatar)" alt="@employee.EmployeeName" width="60" height="60" class="img-fluid">
-                                        <script>
-                                            console.log(@(employee.Avatar))
-                                        </script></td>
+                                    <td>
+                                        @{
+                                            var avatar = !string.IsNullOrEmpty(employee.Avatar) ? Url.Content("~/uploaded/" + employee.Avatar) : Url.Content("~/images/avatar-user.webp");
+                                        }
+                                        <img src="@avatar" alt="@employee.EmployeeName" width="60" height="60" class="img-fluid">
+                                    </td>
                                     <td>@employee.EmployeeName</td>
                                     <td>@employee.EmployeePosition</td>
                                     <td>@employee.Phone</td>
@@ -94,7 +96,6 @@
                                     </td>
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                            <a href="categories-edit.html" class="btn btn-outline-secondary"><i class="icofont-edit text-success"></i></a>
                                             <button type="button" class="btn btn-outline-secondary deleterow"><i class="icofont-ui-delete text-danger"></i></button>
                                         </div>
                                     </td>

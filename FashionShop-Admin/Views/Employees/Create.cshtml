@@ -1,5 +1,7 @@
 ﻿@model CreateEmployeeViewModel
-
+@{
+    ViewData["Title"] = "Create Employee";
+}
 @section Styles{
     <!--plugin css file -->
     <link rel="stylesheet" href="~/plugin/cropper/cropper.min.css">
@@ -29,7 +31,6 @@
         });
         $(function() {
             $('.dropify').dropify();
-
             var drEvent = $('#dropify-event').dropify();
             drEvent.on('dropify.beforeClear', function(event, element) {
                 return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
@@ -49,49 +50,11 @@
             });
         });
     </script>
-    <script>
-        $('#createEmployee').on('submit',(function (event){
-            event.preventDefault();
-            var formData = {
-                EmployeeName: $('#EmployeeName').val(),
-                Email: $('#Email').val(),
-                Phone: $('#Phone').val(),
-                EmployeePosition: $('#EmployeePosition').val(),
-                Status: $('input[name="radio-status"]:checked').val(),
-                Gender: $('input[name="radio-gender"]:checked').val(),
-                RoleId: $('#Role').val(),
-                StoreId: $('#Store').val(),
-                Password: $('#Password').val(),
-                ConfirmPassword: $('#ConfirmPassword').val(),
-            };
-            console.log({formData});
-            var url = "@(Url.Action("Create","Employees"))";
-            var token = $("input[name='__RequestVerificationToken']").val();
-            $.ajax({
-                method: "POST",
-                url: url ,
-                headers:{
-                    'RequestVerificationToken': token
-                },
-                contentType: "application/json",
-                data: JSON.stringify(formData),
-                success: function (res) {
-                   console.log(res.Status);
-                },
-                error: function (err){
-                    if (err.status === 400){
-                        var errors = JSON.parse(err);
-                        console.log(errors);
-                    }
-                }
-            });
-        }));
-    </script>
 }
 <!-- Body: Body -->
             <div class="body d-flex py-3">
                 <div class="container-xxl">
-                    <form id="createEmployee" enctype="multipart/form-data">
+                    <form enctype="multipart/form-data" method="post" asp-action="Create" asp-controller="Employees">
                         @Html.AntiForgeryToken()
                         <div class="row align-items-center">
                             <div class="border-0 mb-4">
@@ -110,24 +73,24 @@
                                         </div>
                                         <div class="card-body">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="active" asp-for="Status" name="radio-status" checked id="radio-active">
+                                                <input class="form-check-input" type="radio" value="active" asp-for="Status" checked id="radio-active">
                                                 <label class="form-check-label " style="cursor: pointer" for="radio-active">
                                                     Active
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="warnning" asp-for="Status" name="radio-status" id="radio-warning">
+                                                <input class="form-check-input" type="radio" value="warnning" asp-for="Status" id="radio-warning">
                                                 <label class="form-check-label" style="cursor: pointer" for="radio-warning">
                                                     Warning
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="banned" asp-for="Status" name="radio-status" id="radio-banned">
+                                                <input class="form-check-input" type="radio" value="banned" asp-for="Status" id="radio-banned">
                                                 <label class="form-check-label" style="cursor: pointer" for="radio-banned">
                                                     Banned
                                                 </label>
                                             </div>
-                                            <span id="Status" class="text-danger"></span>
+                                            <span id="Status" asp-validation-for="Status" class="text-danger"></span>
                                         </div>
                                     </div>
                                     <div class="card mb-3">
@@ -136,13 +99,13 @@
                                         </div>
                                         <div class="card-body">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="male" asp-for="Gender" name="radio-gender" checked id="radio-male">
+                                                <input class="form-check-input" type="radio" value="male" asp-for="Gender" checked id="radio-male">
                                                 <label class="form-check-label " style="cursor: pointer" for="radio-male">
                                                     Male
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="female" asp-for="Gender" name="radio-gender" id="radio-female">
+                                                <input class="form-check-input" type="radio" value="female" asp-for="Gender" id="radio-female">
                                                 <label class="form-check-label" style="cursor: pointer" for="radio-female">
                                                     Female
                                                 </label>
@@ -156,10 +119,9 @@
                                             <h6 class="m-0 fw-bold">Employee Avatar Upload</h6>
                                         </div>
                                         <div class="card-body">
-                                            <input type="file" id="dropify-event" accept="image/*" data-default-file="~/images/avatar-user.webp" asp-for="Avatar">
+                                            <input type="file" id="dropify-event" asp-for="AvatarFile">
+                                            <span asp-validation-for="AvatarFile" class="text-danger"></span>
                                         </div>
-                                        <span asp-validation-for="Avatar" class="text-danger"></span>
-
                                     </div>
                                 </div>
                             </div>
@@ -172,22 +134,22 @@
                                         <div class="row g-3 align-items-center">
                                             <div class="col-md-6">
                                                 <label class="form-label" for="EmployeeName">Name</label>
-                                                <input type="text" class="form-control" asp-for="EmployeeName" name="EmployeeName" id="EmployeeName" tabindex="1">
+                                                <input type="text" class="form-control" asp-for="EmployeeName" id="EmployeeName" tabindex="1">
                                                 <span asp-validation-for="EmployeeName" class="text-danger"></span>
                                             </div>
                                             <div class="col-md-6">
                                                 <label class="form-label" for="Email">Email</label>
-                                                <input type="text" class="form-control" asp-for="Email" name="Email" id="Email" tabindex="2">
+                                                <input type="text" class="form-control" asp-for="Email" id="Email" tabindex="2">
                                                 <span asp-validation-for="Email" class="text-danger"></span>
                                             </div>
                                             <div class="col-md-6">
                                                 <label class="form-label" for="Phone">Phone</label>
-                                                <input type="text" class="form-control" asp-for="Phone" name="Phone" id="Phone" tabindex="3">
+                                                <input type="text" class="form-control" asp-for="Phone" id="Phone" tabindex="3">
                                                 <span asp-validation-for="Phone" class="text-danger"></span>
                                             </div>
                                             <div class="col-md-6">
                                                 <label class="form-label" for="EmployeePosition">Position</label>
-                                                <select name="EmployeePosition" id="EmployeePosition" class="form-select" asp-for="EmployeePosition" tabindex="4">
+                                                <select id="EmployeePosition" class="form-select" asp-for="EmployeePosition" tabindex="4">
                                                     <option value="" selected></option>
                                                     <option value="manager">Manager</option>
                                                     <option value="sales">Sales</option>
@@ -200,43 +162,41 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="Role" class="form-label">Roles</label>
-                                                <select name="Role" id="Role" class="form-select" asp-for="RoleId">
-                                                    <option value="" selected></option>
-                                                    @if (Model?.Roles != null)
+                                                <select id="Role" class="form-select" asp-for="RoleId">
+                                                    <option value="" selected>Choose a role</option>
+                                                    @if (Model.Roles != null)
                                                     {
                                                         @foreach (var item in Model.Roles)
                                                         {
                                                             <option value="@item?.RoleId"> @item?.RoleName</option>
                                                         }
                                                     }
-
                                                 </select>
                                                 <span asp-validation-for="RoleId" class="text-danger"></span>
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="Store" class="form-label">Stores</label>
-                                                <select name="Store" id="Store" class="form-select" asp-for="StoreId">
-                                                    <option value="" selected></option>
-                                                    @if (Model?.Stores != null)
-                                                    {
-                                                        @foreach (var store in Model.Stores)
+                                                <select id="Store" class="form-select" asp-for="StoreId">
+                                                    <option value="" selected>Choose a store </option>
+                                                       @if (Model.Stores != null)
                                                         {
-                                                            <option value="@store?.StoreId">@store?.StoreName</option>
+                                                            @foreach (var store in Model.Stores)
+                                                            {
+                                                                <option value="@store?.StoreId">@store?.StoreName</option>
+                                                            }
                                                         }
-                                                    }
                                                 </select>
                                                 <span asp-validation-for="StoreId" class="text-danger"></span>
-
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="Password" class="form-label">Password</label>
-                                                <input type="password" class="form-control" asp-for="Password" name="Password" id="Password" tabindex="5">
+                                                <input type="password" class="form-control" asp-for="Password" id="Password" tabindex="5">
                                                 <span asp-validation-for="Password" class="text-danger"></span>
 
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="ConfirmPassword" class="form-label">Confirm Password</label>
-                                                <input type="password" class="form-control" asp-for="ConfirmPassword" name="ConfirmPassword" id="ConfirmPassword" tabindex="6">
+                                                <input type="password" class="form-control" asp-for="ConfirmPassword" id="ConfirmPassword" tabindex="6">
                                                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
 
                                             </div>

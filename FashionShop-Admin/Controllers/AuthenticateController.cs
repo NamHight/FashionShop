@@ -31,21 +31,21 @@ public class AuthenticateController : Controller
                 var employee = await _managerService.Employee.LoginAsync(login.Email, login.Password, false);
                 if (employee != null)
                 {
-                    var clams = new List<Claim>
+                    if (employee.Email != null && employee.EmployeeName != null && employee.Role != null)
                     {
-                        new Claim(ClaimTypes.Name, employee.EmployeeName),
-                        new Claim(ClaimTypes.NameIdentifier,employee.EmployeeId.ToString())
-                    };
-                    var roles = await _managerService.Role.GetAllAsync(false);
-                    foreach (var role in roles)
-                    {
-                        clams.Add(new Claim(ClaimTypes.Role, role.RoleName));
+                        var clams = new List<Claim>
+                        {
+                            new Claim(ClaimTypes.Name, employee.EmployeeName),
+                            new Claim(ClaimTypes.NameIdentifier,employee.EmployeeId.ToString()),
+                            new Claim(ClaimTypes.Email,employee.Email),
+                            new Claim(ClaimTypes.Role,employee.Role.RoleName)
+                        };
+                        var claimsIdentity = new ClaimsIdentity(clams,CookieAuthenticationDefaults.AuthenticationScheme);
+                        var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+
+                        await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,claimsPrincipal);
                     }
 
-                    var claimsIdentity = new ClaimsIdentity(clams,CookieAuthenticationDefaults.AuthenticationScheme);
-                    var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
-
-                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,claimsPrincipal);
                     return RedirectToAction("Index", "Dashboard");
                 }
                 ModelState.AddModelError("", "Email or Password is incorrect");
@@ -53,10 +53,9 @@ public class AuthenticateController : Controller
         }
         return View("Login",login);
     }
-
     public async Task<IActionResult> Logout()
     {
         await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-        return RedirectToAction("Logout", "Authenticate");
+        return RedirectToAction("Login", "Authenticate");
     }
 }
