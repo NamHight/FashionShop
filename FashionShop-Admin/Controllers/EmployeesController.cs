@@ -81,4 +81,14 @@ public class EmployeesController : Controller
             return View(model);
         }
     }
+
+    public async Task<IActionResult> CheckUniqueEmail(string email)
+    {
+        var check = await _managerService.Employee.CheckUniqueEmail(email, false);
+        if (check)
+        {
+            return Json(Ok(new {message = "Email is already exists"}));
+        }
+        return Json(Accepted(new {message = "Email is available"}));
+    }
 }

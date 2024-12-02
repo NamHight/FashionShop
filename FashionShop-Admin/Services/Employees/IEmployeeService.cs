@@ -10,4 +10,6 @@ public interface IEmployeeService
 
     Task CreateAsync(CreateEmployeeViewModel employee);
     Task<string> HandleSaveFileAsync(IFormFile file, string directory, string[] allowedExtensions);
+    
+    Task<bool> CheckUniqueEmail(string email,bool trackChanges);
 }

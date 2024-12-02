@@ -27,6 +27,20 @@ public class EmployeeRepository : GenericRepo<Employee> , IEmployeeRepository
         return employee;
     }
 
+    public async Task<Employee?> GetByIdAsync(long id, bool trackChanges)
+    {
+        var employee = await FindById(employee => employee.EmployeeId.Equals(id), trackChanges).FirstOrDefaultAsync();
+        return employee;
+    }
+
+    public async Task<bool> CheckUniqueEmail(string email, bool trackChanges)
+    {
+        var employee = await FindById(employee => employee.Email != null && employee.Email.Equals(email), trackChanges)
+            .FirstOrDefaultAsync();
+        return employee != null; 
+    }
+
+
     public void CreateAsync(Employee employee)
     {
         if (employee == null)

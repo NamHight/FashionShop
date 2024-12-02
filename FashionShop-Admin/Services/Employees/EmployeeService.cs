@@ -92,6 +92,12 @@ public class EmployeeService : IEmployeeService
         }
     }
 
+    public async Task<bool> CheckUniqueEmail(string email, bool trackChanges)
+    {
+        var employee = await _managerRepository.Employee.CheckUniqueEmail(email, trackChanges);
+        return employee;
+    }
+
     public void DeleteFile(string fileName, string directory)
     {
         var fullPath  = Path.Combine(_hostEnvironment.WebRootPath, directory, fileName);
