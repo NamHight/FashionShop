@@ -18,5 +18,11 @@ namespace FashionShop.Controllers
             var result = await _managerService.Contact.GetAllAsync(trackChanges: false);
             return View(result);
         }
+        [HttpPost]
+        public IActionResult Edit()
+        {
+
+            return View();
+        }
     }
 }
