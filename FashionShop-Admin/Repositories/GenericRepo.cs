@@ -6,7 +6,7 @@ namespace FashionShop.Repositories;
 
 public abstract class GenericRepo<T> : IGenericRepo<T> where T : class
 {
-    private readonly MyDbContext _context;
+    protected readonly MyDbContext _context;
     
     public GenericRepo(MyDbContext context)
     {

@@ -24,6 +24,7 @@
             @await Component.InvokeAsync("Header")
             
             @RenderBody()
+
             <!-- Modal Custom Settings-->
             <div class="modal fade right" id="Settingmodal" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog  modal-sm">
@@ -178,13 +179,13 @@
 @* Javascript *@
    
     <!-- Jquery Core Js -->
-    <script src="~/bundles/libscripts.bundle.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script  src="~/bundles/libscripts.bundle.js"></script>
     <script src="~/bundles/apexcharts.bundle.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
     <!-- Jquery Page Js -->
     <script src="~/js/template.js"></script>
     <script src="~/js/page/index.js"></script>
-    
     <script src="~/js/site.js" asp-append-version="true"></script>
     
 </body>
