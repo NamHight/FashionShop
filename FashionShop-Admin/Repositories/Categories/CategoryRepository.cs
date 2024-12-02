@@ -21,6 +21,6 @@ public class CategoryRepository : GenericRepo<Category>,ICategoryRepository
         var category = await FindById(item => item.CategoryId == id, trackChanges).FirstOrDefaultAsync();
         return category;
     }
+ 
 
-    
 }

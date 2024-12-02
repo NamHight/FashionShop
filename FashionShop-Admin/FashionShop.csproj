@@ -8,14 +8,18 @@
 
     <ItemGroup>
       <Compile Remove="Filters\**" />
+      <Compile Remove="Views\Shared\Partials\**" />
       <Content Remove="Filters\**" />
+      <Content Remove="Views\Shared\Partials\**" />
       <EmbeddedResource Remove="Filters\**" />
+      <EmbeddedResource Remove="Views\Shared\Partials\**" />
       <None Remove="Filters\**" />
+      <None Remove="Views\Shared\Partials\**" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="Context\" />
-      <Folder Include="Views\Shared\Partials\" />
+      <Folder Include="wwwroot\uploaded\" />
     </ItemGroup>
 
     <ItemGroup>
