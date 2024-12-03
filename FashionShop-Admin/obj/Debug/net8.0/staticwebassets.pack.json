@@ -1805,6 +1805,14 @@
       "PackagePath": "staticwebassets\\images\\xs\\avatar9.svg"
     },
     {
+      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\js\\HandlerCheckSlug.js",
+      "PackagePath": "staticwebassets\\js\\HandlerCheckSlug.js"
+    },
+    {
+      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\js\\HandlerUpdateProduct.js",
+      "PackagePath": "staticwebassets\\js\\HandlerUpdateProduct.js"
+    },
+    {
       "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\js\\page\\chart-apex.js",
       "PackagePath": "staticwebassets\\js\\page\\chart-apex.js"
     },
@@ -1831,10 +1839,6 @@
     {
       "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\js\\template.js",
       "PackagePath": "staticwebassets\\js\\template.js"
-    },
-    {
-      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\js\\updateProduct.js",
-      "PackagePath": "staticwebassets\\js\\updateProduct.js"
     },
     {
       "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\lib\\bootstrap\\LICENSE",
@@ -2159,6 +2163,22 @@
     {
       "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\ANT2053-1-scaled.jpg",
       "PackagePath": "staticwebassets\\uploaded\\ANT2053-1-scaled.jpg"
+    },
+    {
+      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\anh-dep-44.jpg.webp",
+      "PackagePath": "staticwebassets\\uploaded\\anh-dep-44.jpg.webp"
+    },
+    {
+      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\bien.jpg",
+      "PackagePath": "staticwebassets\\uploaded\\bien.jpg"
+    },
+    {
+      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\dong.jpg",
+      "PackagePath": "staticwebassets\\uploaded\\dong.jpg"
+    },
+    {
+      "Id": "D:\\Study\\HK5\\DoAnChung\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\images.jpg",
+      "PackagePath": "staticwebassets\\uploaded\\images.jpg"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.FashionShop.Microsoft.AspNetCore.StaticWebAssets.props",

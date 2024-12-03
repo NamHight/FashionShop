@@ -26,6 +26,11 @@ public class ManagerRepository : IManagerRepository
     public IProductRepository Product => _productRepository.Value;
     public IContactRepository Contact => _contactRepository.Value;
 
+    public async Task SaveAsync()
+    {
+        await _context.SaveChangesAsync();
+    }
+
     public async Task<int> SaveAsyncAndNumRowEffect()
     {
         try
@@ -35,23 +40,18 @@ public class ManagerRepository : IManagerRepository
         }
         catch (DbUpdateConcurrencyException ex)
         {
-            Console.WriteLine("Lỗi cạnh tranh dữ liệu: " + ex.Message);
+            Console.WriteLine("Loi canh tranh du lieu: " + ex.Message);
             return 0;
         }
         catch (DbUpdateException ex)
         {
-            Console.WriteLine("Lỗi cập nhật dữ liệu: " + ex.Message);
+            Console.WriteLine("Loi cap nhat du lieu: " + ex.Message);
             return 0;
         }
         catch (Exception ex)
         {
-            Console.WriteLine("Lỗi không xác định: " + ex.Message);
+            Console.WriteLine("Loi khong xac đinh: " + ex.Message);
             return 0;
         }
-    }
-
-    public async Task SaveAsync()
-    {
-        await _context.SaveChangesAsync();
     }
 }

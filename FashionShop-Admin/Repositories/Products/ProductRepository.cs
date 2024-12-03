@@ -19,22 +19,22 @@ namespace FashionShop.Repositories.Products
 
         public async Task<Product?> GetByIdAsync(long id, bool trackChanges)
         {
-            var category = await FindById(item => item.CategoryId == id, trackChanges).FirstOrDefaultAsync();
-            return category;
+            var product = await FindById(item => item.ProductId == id, trackChanges).FirstOrDefaultAsync();
+            return product;
         }
 
-        public  void AddNewProduct(Product product)
+        public  void AddNewProductAsync(Product product)
         {
             Create(product);
         }
-        public async Task<bool> CheckSlug(string slug)
+        public async Task<bool> CheckSlugAsync(string slug)
         {
             var result = await _context.Products.Where(item=> item.Slug.Equals(slug)).FirstOrDefaultAsync();
             if (result!=null) return true;
             return false;   
         }
 
-        public async Task UpdateCategoryId(long newCategoryID, long idProduct, bool trackChanges)
+        public async Task UpdateCategoryIdAsync(long newCategoryID, long idProduct, bool trackChanges)
         {
             var result = await FindById(item => item.ProductId == idProduct, trackChanges).FirstOrDefaultAsync(); 
             if (result!=null)
@@ -46,6 +46,21 @@ namespace FashionShop.Repositories.Products
                     Update(result); // nếu trackChanges = false thì phải tự update
                 }
             }
+        }
+
+        public async Task UpdateStatusAsync(string newData, long idProduct, bool trackChanges)
+        {
+            var result = await FindById(item => item.ProductId == idProduct, trackChanges).FirstOrDefaultAsync();
+            result.Status = newData;
+            if (!trackChanges)
+            {
+                Update(result); // nếu trackChanges = false thì phải tự update
+            }
+        }
+
+        public void UpdateProduct(Product product)
+        {
+            Update(product);
         }
     }
 }
