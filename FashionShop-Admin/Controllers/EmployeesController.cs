@@ -1,10 +1,12 @@
 ﻿using FashionShop.Models.Enum;
 using FashionShop.Models.views;
 using FashionShop.Services.ManagerService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FashionShop.Controllers;
 
+[Authorize(Roles = "Admin")]
 public class EmployeesController : Controller
 {
     private readonly IManagerService _managerService;
@@ -45,6 +47,7 @@ public class EmployeesController : Controller
             _logger.Log(LogLevel.Warning, "Đã vào else");
             model.Roles = await _managerService.Role.GetAllAsync(false);
             model.Stores = await _managerService.Store.GetAllAsync(false);
+            TempData[nameof(NotificationTypes.Error)] = "Create failed.";
             return View(model);
         }
         try
@@ -90,5 +93,43 @@ public class EmployeesController : Controller
             return Json(Ok(new {message = "Email is already exists"}));
         }
         return Json(Accepted(new {message = "Email is available"}));
+    }
+
+    public async Task<IActionResult> Edit(long id)
+    {
+        var employee = await GetEmployeeWithRolesAndStores(id);
+        return View(employee);
+    }
+
+    
+
+    [HttpPost]
+    public async Task<IActionResult> Edit(long id, EditEmployeeViewModel model)
+    {
+        if (!ModelState.IsValid)
+        {
+            var employee = await GetEmployeeWithRolesAndStores(id);
+            TempData[nameof(NotificationTypes.Error)] = "Update failed.";
+            return View(employee);
+        }
+        var result=  await _managerService.Employee.UpdateAsync(id,model,false);
+        if (result)
+        {
+            TempData[nameof(NotificationTypes.Success)] = "Update successfully.";
+            return RedirectToAction("Edit"); 
+        } 
+        var updateEmployee = await GetEmployeeWithRolesAndStores(id);
+        TempData[nameof(NotificationTypes.Warning)] = "Nothing to Update.";
+        return View(updateEmployee);
+    }
+    private async Task<EditEmployeeViewModel> GetEmployeeWithRolesAndStores(long id)
+    {
+        var employee = await _managerService.Employee.GetByIdEditAsync(id, false);
+        if (employee != null)
+        {
+            employee.Roles = await _managerService.Role.GetAllAsync(false);
+            employee.Stores = await _managerService.Store.GetAllAsync(false);
+        }
+        return employee;
     }
 }

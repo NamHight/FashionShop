@@ -7,4 +7,6 @@ public class HeaderViewModel
     public string? Email;
 
     public string? Role;
+
+    public string? Avatar;
 }

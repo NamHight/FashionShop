@@ -12,4 +12,10 @@ public interface IEmployeeService
     Task<string> HandleSaveFileAsync(IFormFile file, string directory, string[] allowedExtensions);
     
     Task<bool> CheckUniqueEmail(string email,bool trackChanges);
+
+    Task<EditEmployeeViewModel?> GetByIdEditAsync(long id, bool trackChanges);
+    
+    Task<bool> UpdateAsync(long id, EditEmployeeViewModel employee,bool trackChanges);
+
+    Task<bool> ChangeAvatar(string avatar, long id,bool trackChanges);
 }

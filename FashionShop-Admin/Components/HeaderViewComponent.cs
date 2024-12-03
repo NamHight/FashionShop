@@ -16,11 +16,13 @@ public class HeaderViewComponent : ViewComponent
         var claimsPrincipal = (ClaimsPrincipal)User;
         var email = claimsPrincipal.FindFirstValue(ClaimTypes.Email);
         var role = claimsPrincipal.FindFirstValue(ClaimTypes.Role);
+        var avatar = claimsPrincipal.FindFirstValue("AvatarUrl");
         var headerModel = new HeaderViewModel
         {
             Name = claimsPrincipal.Identity.Name,
             Email = email,
-            Role = role
+            Role = role,
+            Avatar = avatar
         };
         
         return View(headerModel);

@@ -48,6 +48,9 @@ public class EmployeeService : IEmployeeService
                 EmployeeName = employee.EmployeeName,
                 Gender = employee.Gender,
                 Avatar = employee.Avatar,
+                Birth = employee.Birth,
+                Address = employee.Address,
+                Description = employee.Description,
                 Status = employee.Status,
                 Phone = employee.Phone,
                 EmployeePosition = employee.EmployeePosition
@@ -96,6 +99,85 @@ public class EmployeeService : IEmployeeService
     {
         var employee = await _managerRepository.Employee.CheckUniqueEmail(email, trackChanges);
         return employee;
+    }
+
+    public async Task<EditEmployeeViewModel?> GetByIdEditAsync(long id, bool trackChanges)
+    {
+        var employee = await _managerRepository.Employee.GetByIdWithRoleAndStoreAsync(id, trackChanges);
+        if (employee == null)
+        {
+            return null;
+        }
+
+        var newEditEmployee = new EditEmployeeViewModel
+        {
+            Email = employee.Email,
+            EmployeePosition = employee.EmployeePosition,
+            Avatar = employee.Avatar,
+            Status = employee.Status,
+            Phone = employee.Phone,
+            EmployeeName = employee.EmployeeName,
+            Gender = employee.Gender,
+            RoleName = employee.Role?.RoleName,
+            StoreName = employee.Store?.StoreName,
+            Address = employee.Address,
+            Description = employee.Description,
+            Birth = employee.Birth,
+            EmployeeId = employee.EmployeeId,
+            StoreId = employee.StoreId,
+            RoleId = employee.RoleId
+        };
+
+        return newEditEmployee;
+    }
+
+    public async Task<bool> UpdateAsync(long id,EditEmployeeViewModel employee,bool trackChanges)
+    {
+        try
+        {
+            var currentEmployee = await _managerRepository.Employee.GetById(id, trackChanges);
+            if (currentEmployee == null)
+            {
+                return false;
+            };
+            if (employee.AvatarFile != null)
+            {
+                if (employee.Avatar != null && employee.Avatar.Length > 1 * 1024 * 1024)
+                {
+                    throw new InvalidOperationException("Avatar must be less than 1MB");
+                }
+                currentEmployee.Avatar = await HandleSaveFileAsync(employee.AvatarFile, "uploaded", new[] { ".jpg", ".png", ".jpeg" });
+            }
+            currentEmployee.EmployeePosition = employee.EmployeePosition;
+            currentEmployee.Status = employee.Status;
+            currentEmployee.Phone = employee.Phone;
+            currentEmployee.EmployeeName = employee.EmployeeName;
+            currentEmployee.Gender = employee.Gender;
+            currentEmployee.RoleId = employee.RoleId;
+            currentEmployee.StoreId = employee.StoreId;
+            currentEmployee.Address = employee.Address;
+            currentEmployee.Description = employee.Description;
+            currentEmployee.Birth = employee.Birth;
+            await _managerRepository.Employee.UpdateAsync(currentEmployee);
+            await _managerRepository.SaveAsync();
+            return true;
+        }catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return false;
+        }
+    }
+
+    public async Task<bool> ChangeAvatar(string avatar, long id,bool trackChanges)
+    {
+        var employee = await _managerRepository.Employee.GetById(id,trackChanges);
+        if (employee == null)
+        {
+            return false;
+        }
+        employee.Avatar = avatar;
+        await _managerRepository.SaveAsync();
+        return true;
     }
 
     public void DeleteFile(string fileName, string directory)

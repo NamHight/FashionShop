@@ -40,6 +40,10 @@ public class AuthenticateController : Controller
                             new Claim(ClaimTypes.Email,employee.Email),
                             new Claim(ClaimTypes.Role,employee.Role.RoleName)
                         };
+                        if (!string.IsNullOrEmpty(employee.Avatar))
+                        {
+                            clams.Add(new Claim("AvatarUrl",employee.Avatar));
+                        }
                         var claimsIdentity = new ClaimsIdentity(clams,CookieAuthenticationDefaults.AuthenticationScheme);
                         var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
 

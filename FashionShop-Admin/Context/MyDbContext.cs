@@ -114,6 +114,7 @@ public partial class MyDbContext : DbContext
         {
             entity.HasKey(e => e.EmployeeId).HasName("PRIMARY");
 
+            entity.Property(e => e.Birth).HasDefaultValueSql("'2000-01-01'");
             entity.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
             entity.Property(e => e.Email).HasDefaultValueSql("_utf8mb4\\'abc@gmail.com\\'");
             entity.Property(e => e.EmployeePosition).HasDefaultValueSql("'intern'");

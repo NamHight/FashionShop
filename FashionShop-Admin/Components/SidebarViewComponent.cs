@@ -1,6 +1,7 @@
 ﻿using FashionShop.Models.views;
 using Microsoft.AspNetCore.Mvc;
 using System.Drawing;
+using System.Security.Claims;
 using System.Security.Policy;
 
 namespace FashionShop.Components;
@@ -11,8 +12,8 @@ public class SidebarViewComponent : ViewComponent
     {
         new SidebarItem { title = "Dashboard", url = "/Dashboard", icon = "icofont-home" },
         new SidebarItem{ title = "Categories",url="/Categories", icon = "icofont-folder" },
+        new SidebarItem{ title = "Employees",url="/Employees", icon = "icofont-users" },
         new SidebarItem{ title = "Contacts",url="/Contacts", icon = "icofont-contacts" },
-        new SidebarItem{ title = "Employees",url="/Employees", icon = "icofont-users-alt-1" },
         new SidebarItem
         { 
             title = "Stores", url = "/Stores", icon = "icofont-brand-appstore",
@@ -45,7 +46,13 @@ public class SidebarViewComponent : ViewComponent
     public async Task<IViewComponentResult> InvokeAsync()
     {
         var routeValue = ViewContext.RouteData.Values["controller"];
+        var user = (ClaimsPrincipal)User;
+        var role = user.FindFirstValue(ClaimTypes.Role);
         ViewBag.selectedMenu = routeValue;
+        if (role.Equals("Admin"))
+        {
+            
+        }
         return View(_sidebarItems);
     }
     

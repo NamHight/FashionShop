@@ -1,4 +1,5 @@
-﻿using FashionShop.Context;
+﻿using System.Data.Common;
+using FashionShop.Context;
 using FashionShop.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -27,9 +28,9 @@ public class EmployeeRepository : GenericRepo<Employee> , IEmployeeRepository
         return employee;
     }
 
-    public async Task<Employee?> GetByIdAsync(long id, bool trackChanges)
+    public async Task<Employee?> GetByIdWithRoleAndStoreAsync(long id, bool trackChanges)
     {
-        var employee = await FindById(employee => employee.EmployeeId.Equals(id), trackChanges).FirstOrDefaultAsync();
+        var employee = await FindById(employee => employee.EmployeeId.Equals(id), trackChanges).Include(employee => employee.Role).Include(empl => empl.Store).FirstOrDefaultAsync();
         return employee;
     }
 
@@ -48,5 +49,37 @@ public class EmployeeRepository : GenericRepo<Employee> , IEmployeeRepository
             throw new ArgumentNullException(nameof(employee), "Employee cannot be null.");
         }
        Create(employee);
+    }
+
+    public async Task<Employee?> GetById(long id, bool trackChanges)
+    {
+        var employee = await FindById(employee => employee.EmployeeId.Equals(id), trackChanges).FirstOrDefaultAsync();
+        return employee;
+    }
+
+    public async Task UpdateAsync(Employee employee)
+    {
+        try
+        {
+            Update(employee);
+        }
+        catch (DbUpdateException e)
+        {
+            Console.WriteLine("Update failed " + e);
+        }
+        catch (DbException e)
+        {
+            Console.WriteLine("Update failed " +e);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Update failed " +e);
+        }
+       
+    }
+
+    public async Task DeleteAsync(Employee employee)
+    {
+        throw new NotImplementedException();
     }
 }

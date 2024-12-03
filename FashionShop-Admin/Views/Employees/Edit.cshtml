@@ -1,0 +1,297 @@
+﻿@model EditEmployeeViewModel
+
+@{
+    ViewData["Title"] = "Edit Employee";
+    var avatarUrl = string.IsNullOrEmpty(Model.Avatar) ? Url.Content("~/images/avatar-user.webp") : Url.Content("~/uploaded/") + Model.Avatar;
+    var status = Model.Status switch
+    {
+        "active" => "text-white bg-success px-2 rounded",
+        "warnning" => "text-white bg-warning px-2 rounded",
+        "banned" => "text-white bg-danger px-2 rounded",
+        _ => ""
+    };
+}
+@section Styles
+{
+    
+}
+@section Scripts
+{
+    <script src="~/plugin/ckeditor5/29.0.0/classic/ckeditor.js"></script>
+    <script src="~/js/template.js"></script>
+    <script>
+        $(document).ready(function() {
+            //Ch-editer
+            ClassicEditor
+                .create( document.querySelector( '#editor' ) )
+                .options({
+                    height: 500,
+                })
+                .catch( error => {
+                    console.error( error );
+                } );
+            //Deleterow
+            $("#tbproduct").on('click', '.deleterow', function () {
+                $(this).closest('tr').remove();
+            });
+        });
+    </script>
+    <script>
+        $("#AvatarFile").on("change",function(event){
+            var file = event.target.files[0];
+            $("#reviewAvatar").attr("src",URL.createObjectURL(file));
+        })
+    </script>
+}
+<!-- Body: Body -->
+<div class="body d-flex py-3">
+    <div class="container-xxl">
+        <div class="row align-items-center">
+            <div class="border-0 mb-4">
+                <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
+                    <h3 class="fw-bold mb-0">Employee Profile</h3>
+                </div>
+            </div>
+        </div> <!-- Row end  -->
+        <div class="row g-3">
+            <div class="col-xl-4 col-lg-5 col-md-12">
+                <div class="card profile-card flex-column mb-3">
+                    <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
+                        <h6 class="mb-0 fw-bold ">Profile</h6>
+                        <p class="@status">@Model.Status</p>
+                    </div>
+                    <div class="card-body d-flex profile-fulldeatil flex-column">
+                        <div class="profile-block text-center w220 mx-auto">
+                            <a href="#">
+                                <img src="@avatarUrl" alt="" class="avatar xl rounded img-thumbnail shadow-sm">
+                            </a>
+                            <div class="about-info d-flex align-items-center mt-3 justify-content-center flex-column">
+                                <span class="text-muted small">Employee ID : #@Model.EmployeeId</span>
+                            </div>
+                        </div>
+                        <div class="profile-info w-100">
+                            <h6  class="mb-0 mt-2  fw-bold d-block fs-6 text-center">@Model.EmployeeName</h6>
+                            <p class="mt-2">@Html.Raw(Model.Description)</p>
+                            <div class="row g-2 pt-2">
+                                <div class="col-xl-12">
+                                    <div class="d-flex align-items-center">
+                                        <i class="icofont-ui-touch-phone"></i>
+                                        <span class="ms-2">@Model.Phone</span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12">
+                                    <div class="d-flex align-items-center">
+                                        <i class="icofont-email"></i>
+                                        <span class="ms-2">@Model.Email</span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12">
+                                    <div class="d-flex align-items-center">
+                                        <i class="icofont-birthday-cake"></i>
+                                        <span class="ms-2">@Model.Birth</span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12">
+                                    <div class="d-flex align-items-center">
+                                        <i class="icofont-address-book"></i>
+                                        <span class="ms-2">@Model.Address</span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12">
+                                    <div class="d-flex align-items-center">
+                                        <i class="icofont-star"></i>
+                                        <span class="ms-2">(ROLE) - @Model.RoleName</span>
+                                    </div>
+                                </div>
+                                @if (!string.IsNullOrEmpty(Model.StoreName))
+                                {
+                                    <div class="col-xl-12">
+                                        <div class="d-flex align-items-center">
+                                            <i class="icofont-brand-pizza-hut"></i>
+                                            <span class="ms-2">@Model.StoreName</span>
+                                        </div>
+                                    </div>
+                                }
+                                <div class="col-xl-12">
+                                    <div class="d-flex align-items-center">
+                                        <i class="icofont-police"></i>
+                                        <span class="ms-2">@Model.EmployeePosition</span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12">
+                                    <div class="d-flex align-items-center">
+                                        <i class="icofont-butterfly"></i>
+                                        <span class="ms-2">@Model.Gender</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8 col-lg-7 col-md-12">
+                <div class="card mb-3">
+                    <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
+                        <h6 class="mb-0 fw-bold ">Profile Settings</h6>
+                    </div>
+                    <div class="card-body">
+                        <form class="row g-4" asp-action="Edit" method="post" enctype="multipart/form-data">
+                            <input type="hidden" asp-for="EmployeeId" value="@Model.EmployeeId">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label">Employee Name</label>
+                                    <input class="form-control" type="text" asp-for="EmployeeName" value="@Model.EmployeeName">
+                                    <span asp-validation-for="EmployeeName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="Phone">Employee Phone </label>
+                                    <input class="form-control" type="text" asp-for="Phone" id="Phone" value="@Model.Phone">
+                                    <span asp-validation-for="Phone" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-12">
+                                <div class="form-group">
+                                    <label class="form-label">Employee Position</label>
+                                    <select asp-for="EmployeePosition" id="EmployeePosition" class="form-select">
+                                        @if (Model.EmployeePositions != null)
+                                        {
+                                            @foreach (var item in Model.EmployeePositions)
+                                            {
+                                                <option value="@item">@item</option>
+                                            }
+                                        }
+                                    </select>
+                                    <span asp-validation-for="EmployeePosition" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="Gender">Employee Gender</label>
+                                    <select id="Gender" asp-for="Gender" class="form-select">
+                                        <option value="male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                    <span asp-validation-for="Gender" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="Role">Employee Role</label>
+                                    <select asp-for="RoleId" id="Role" class="form-select">
+                                        @if (Model.Roles != null)
+                                        {
+                                            @foreach (var role in Model.Roles)
+                                            {
+                                                <option value="@role.RoleId">@role.RoleName</option>
+                                            }
+                                        }
+                                    </select>
+                                    <span asp-validation-for="RoleId" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="Address">Employee Address</label>
+                                    <textarea class="form-control"  aria-label="With textarea" asp-for="Address" id="Address" value="@Model.Address"></textarea>
+                                    <span asp-validation-for="Address" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-4">
+                                <div class="form-group">
+                                    <label class="form-label">Employee Stores</label>
+                                    <select class="form-select" asp-for="StoreId">
+                                        <option value="" selected="">Select Store</option>
+                                        @if (Model.Stores != null)
+                                        {
+                                            @foreach (var store in Model.Stores)
+                                            {
+                                                <option value="@store.StoreId">@store.StoreName</option>
+                                            }
+                                        }
+                                    </select>
+                                    <span asp-validation-for="StoreId" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-4">
+                                <div class="form-group">
+                                    <label class="form-label" for="Birth">Employee Birth</label>
+                                    <input class="form-control" type="date" asp-for="Birth" id="Birth" value="@Model.Birth.ToString("yyyy-MM-dd")">
+                                    <span asp-validation-for="Birth" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-4">
+                                <div class="form-group">
+                                    <label class="form-label" for="Status">Status</label>
+                                    <select asp-for="Status" class="form-select" id="Status">
+                                        @if (Model.EmployeeStatus != null)
+                                        {
+                                            @foreach (var status in Model.EmployeeStatus)
+                                            {
+                                                <option value="@status">@status</option>
+                                            }
+                                        }
+                                    </select>
+                                    <span asp-validation-for="Status" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="Description">Employee Description</label>
+                                    <textarea class="form-control"  aria-label="With textarea" asp-for="Description" id="editor" value="@Model.Description"></textarea>
+                                    <span asp-validation-for="Description" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <div class="form-group">
+                                    <label class="form-label" for="AvatarFile">Change Avatar</label>
+                                    <input type="file" asp-for="AvatarFile" id="AvatarFile" class="form-control">
+                                    <span asp-validation-for="AvatarFile" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-7">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <img src="@avatarUrl" alt="@Model.EmployeeName" id="reviewAvatar" width="160" height="160">
+                                </div>
+                            </div>
+                            <div class="col-12 mt-4">
+                                <button type="submit" class="btn btn-primary text-uppercase px-5">SAVE</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="card auth-detailblock">
+                    <form >
+                        <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
+                            <h6 class="mb-0 fw-bold ">Change password</h6>
+                            <button type="button" class="btn btn-primary text-uppercase px-5">Change</button>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-12">
+                                        <label class="form-label col-6 col-sm-5">Old Password:</label>
+                                    <div class="col-md-6">
+                                        <input type="password" class="form-control" asp-for="Password" id="Password">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                        <label class="form-label col-6 col-sm-5">New Password:</label>
+                                    <div class="col-md-6">
+                                        <input type="password" class="form-control" asp-for="NewPassword" id="NewPassword">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label col-6 col-sm-5">Confirm Password:</label>
+                                    <div class="col-md-6">
+                                        <input type="password" class="form-control" asp-for="ConfirmPassword" id="ConfirmPassword">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
