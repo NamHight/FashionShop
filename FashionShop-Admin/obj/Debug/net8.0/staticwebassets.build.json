@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "xSrBvjUcN8OsOerpql38cqdwT3a+rLUYSXKJ/PtJZWQ=",
+  "Hash": "G+BLVH0ChBpP4AGcVxMe5Nz/myzrdNRmjUnbqxgV8B8=",
   "Source": "FashionShop",
   "BasePath": "_content/FashionShop",
   "Mode": "Default",
@@ -10258,10 +10258,10 @@
       "OriginalItemSpec": "wwwroot\\plugin\\prism\\prism.js"
     },
     {
-      "Identity": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\ANT2053-1-scaled.jpg",
+      "Identity": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\ANT2053-1-scaled.jpg",
       "SourceId": "FashionShop",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\",
+      "ContentRoot": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\wwwroot\\",
       "BasePath": "_content/FashionShop",
       "RelativePath": "uploaded/ANT2053-1-scaled.jpg",
       "AssetKind": "All",
