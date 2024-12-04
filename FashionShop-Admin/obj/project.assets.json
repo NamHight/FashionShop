@@ -6446,19 +6446,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Locbm\\.nuget\\packages\\": {}
+    "C:\\Users\\finsr\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\FashionShop.csproj",
+      "projectUniqueName": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\FashionShop.csproj",
       "projectName": "FashionShop",
-      "projectPath": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\FashionShop.csproj",
-      "packagesPath": "C:\\Users\\Locbm\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\obj\\",
+      "projectPath": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\FashionShop.csproj",
+      "packagesPath": "C:\\Users\\finsr\\.nuget\\packages\\",
+      "outputPath": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\obj\\",
       "projectStyle": "PackageReference",
+      "UsingMicrosoftNETSdk": false,
       "configFilePaths": [
-        "C:\\Users\\Locbm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\finsr\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6545,7 +6546,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
