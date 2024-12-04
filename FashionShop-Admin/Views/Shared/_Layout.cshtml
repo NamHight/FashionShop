@@ -4,17 +4,14 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>@ViewData["Title"] - FashionShop-Admin</title>
-    
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     @* my css *@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
     <!-- plugin css file  -->
-
     <link rel="stylesheet" href="~/css/themify-icons/themify-icons.css">
     <!-- project css file  -->
-    <link rel="stylesheet" href="~/css/ebazar.style.min.css">
-    
     @await RenderSectionAsync("Styles",required:false)
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/css/ebazar.style.min.css">
 </head>
 <body>
     <div id="ebazar-layout" class="theme-blue">
@@ -24,7 +21,6 @@
             @await Component.InvokeAsync("Header")
             
             @RenderBody()
-
             <!-- Modal Custom Settings-->
             <div class="modal fade right" id="Settingmodal" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog  modal-sm">
@@ -176,16 +172,11 @@
             </div>
         </div>
     </div>
-@* Javascript *@
-   
-    <!-- Jquery Core Js -->
+    @* Javascript *@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script  src="~/bundles/libscripts.bundle.js"></script>
-    <script src="~/bundles/apexcharts.bundle.js"></script>
+    <script src="~/bundles/libscripts.bundle.js"></script>
+    <!-- Jquery Core Js -->
     @await RenderSectionAsync("Scripts", required: false)
-    <!-- Jquery Page Js -->
-    <script src="~/js/template.js"></script>
-    <script src="~/js/page/index.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     
 </body>

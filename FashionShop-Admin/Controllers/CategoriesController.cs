@@ -1,4 +1,6 @@
-﻿using FashionShop.Services.ManagerService;
+﻿using FashionShop.Filters;
+using FashionShop.Models;
+using FashionShop.Services.ManagerService;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FashionShop.Controllers;

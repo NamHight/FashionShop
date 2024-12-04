@@ -1,5 +1,5 @@
 ﻿using FashionShop.Models;
-using FashionShop.Repositories.ManagerRepo;
+using FashionShop.Repositories.ManagerRepository;
 
 namespace FashionShop.Services.Categories;
 
@@ -13,5 +13,10 @@ public class CategoryService : ICategoryService
         var categories = await _managerRepository.Category.GetAllAsync(trackChanges);
         return categories;
     }
-    
+
+    public async Task CreateCategoryAsync(Category category)
+    { 
+        _managerRepository.Category.CreateCategoryAsync(category);
+        await _managerRepository.SaveAsync();
+    }
 }
