@@ -7,7 +7,7 @@ using Microsoft.DotNet.Scaffolding.Shared.Messaging;
 
 namespace FashionShop.Controllers;
 
-[Authorize(Roles = "Admin")]
+[Authorize]
 public class EmployeesController : Controller
 {
     private readonly IManagerService _managerService;
@@ -153,9 +153,15 @@ public class EmployeesController : Controller
         return Json(new {success = false, message = "Change password failed."});
     }
 
+    [HttpPost]
     public async Task<IActionResult> CheckPassword(long id, string password)
     {
         var result = await _managerService.Employee.CheckPassword(id, password, false);
-        return Json(new {Message = "test"});
+        if (!result)
+        {
+            return Json(BadRequest( new {Message = "password not duplicate old password"}));
+        }
+        return Json(Ok(new { message = "password duplicate old password" }));
+
     }
 }

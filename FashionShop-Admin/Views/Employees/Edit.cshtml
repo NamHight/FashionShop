@@ -26,9 +26,6 @@
             //Ch-editer
             ClassicEditor
                 .create( document.querySelector( '#editor' ) )
-                .options({
-                    height: 500,
-                })
                 .catch( error => {
                     console.error( error );
                 } );
@@ -60,10 +57,8 @@
                     } else if (response.errors) {
                         // Hiển thị lỗi từ ModelState
                         $.each(response.errors, function (key, errorMessages) {
-                            console.log({key})
-                            const errorSpan = $(`span[data-valmsg-for='${key}']`);
+                            const errorSpan = $(`span[data-valmsg-for='password-${key}']`);
                             errorSpan.text(errorMessages.value.join(", ")).show();
-                            console.log(errorSpan);
                         });
                     } else {
                          console.error(response.message); // Hiển thị lỗi khác (nếu có)
@@ -76,6 +71,28 @@
             
         })
     </script>
+<script>
+    const debounce = function(func,delay = 1000){
+        let timer;
+        return function (...args){
+            clearTimeout(timer);
+            timer = setTimeout(function (){
+                func.apply(this,args);
+            },delay);
+        }
+    }
+    const handlePasswordInput = debounce(function (event) {
+        const password = $("#Password").val();
+        if(password === event.target.value){
+            $("span[data-valmsg-for='password-1']").text("new Password must be different from old password");
+            $("#btn-change-password").prop("disabled",true);
+        }else{
+            $("#btn-change-password").prop("disabled",false);
+        }
+    });
+    $("#NewPassword").on("input",handlePasswordInput)
+</script>
+
 }
 <!-- Body: Body -->
 <div class="body d-flex py-3">

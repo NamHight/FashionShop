@@ -201,9 +201,14 @@ public class EmployeeService : IEmployeeService
         return true;
     }
 
-    public async Task<bool> CheckPassword(long id, string password)
+    public async Task<bool> CheckPassword(long id, string password,bool trackChanges)
     {
-        throw new NotImplementedException();
+        var employee = await _managerRepository.Employee.GetById(id,trackChanges);
+        if (employee == null)
+        {
+            return false;
+        }
+        return VerifyPassword(password, employee.Password);
     }
 
     public void DeleteFile(string fileName, string directory)

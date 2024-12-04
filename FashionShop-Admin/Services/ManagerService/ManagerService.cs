@@ -20,8 +20,7 @@ public class ManagerService : IManagerService
     private readonly Lazy<IProductService> _productService;
     private readonly Lazy<IReviewService> _reviewService;
     private readonly Lazy<ICustomerService> _customerService;
-
-    public ManagerService(IManagerRepository managerRepository)
+    
     public ManagerService(IManagerRepository managerRepository,IWebHostEnvironment hostingEnvironment)
     {
         _categoryService = new Lazy<ICategoryService>(() => new CategoryService(managerRepository));

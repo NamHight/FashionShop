@@ -21,5 +21,5 @@ public interface IEmployeeService
     
     Task<bool> ChangePassword(ChangePasswordModel model, long id,bool trackChanges);
 
-    Task<bool> CheckPassword(long id, string password);
+    Task<bool> CheckPassword(long id, string password,bool trackChanges);
 }
