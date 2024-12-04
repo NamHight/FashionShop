@@ -32,6 +32,7 @@ public partial class Category
 
     [Column("status", TypeName = "enum('active','inactive')")]
     public string? Status { get; set; }
+ 
 
     [InverseProperty("Category")]
     public virtual ICollection<Product> Products { get; set; } = new List<Product>();

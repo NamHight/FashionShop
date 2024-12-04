@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\FashionShop.csproj": {}
+    "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\FashionShop.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\FashionShop.csproj": {
+    "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\FashionShop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\FashionShop.csproj",
+        "projectUniqueName": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\FashionShop.csproj",
         "projectName": "FashionShop",
-        "projectPath": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\FashionShop.csproj",
-        "packagesPath": "C:\\Users\\Locbm\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\obj\\",
+        "projectPath": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\FashionShop.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Locbm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
