@@ -17,79 +17,79 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = FashionShop
 build_property.RootNamespace = FashionShop
-build_property.ProjectDir = D:\DoAnWeb\DoAnNhom\FashionShop\FashionShop-Admin\
+build_property.ProjectDir = D:\Project\FashionShop\FashionShop\FashionShop-Admin\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\DoAnWeb\DoAnNhom\FashionShop\FashionShop-Admin
+build_property.MSBuildProjectDirectory = D:\Project\FashionShop\FashionShop\FashionShop-Admin
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/DoAnWeb/DoAnNhom/FashionShop/FashionShop-Admin/Views/Categories/Index.cshtml]
+[D:/Project/FashionShop/FashionShop/FashionShop-Admin/Views/Categories/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/DoAnWeb/DoAnNhom/FashionShop/FashionShop-Admin/Views/Contacts/Index.cshtml]
+[D:/Project/FashionShop/FashionShop/FashionShop-Admin/Views/Contacts/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/DoAnWeb/DoAnNhom/FashionShop/FashionShop-Admin/Views/Dashboard/Index.cshtml]
+[D:/Project/FashionShop/FashionShop/FashionShop-Admin/Views/Dashboard/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/DoAnWeb/DoAnNhom/FashionShop/FashionShop-Admin/Views/Dashboard/Privacy.cshtml]
+[D:/Project/FashionShop/FashionShop/FashionShop-Admin/Views/Dashboard/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFByaXZhY3kuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/DoAnWeb/DoAnNhom/FashionShop/FashionShop-Admin/Views/Products/Create.cshtml]
+[D:/Project/FashionShop/FashionShop/FashionShop-Admin/Views/Products/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/DoAnWeb/DoAnNhom/FashionShop/FashionShop-Admin/Views/Products/Index.cshtml]
+[D:/Project/FashionShop/FashionShop/FashionShop-Admin/Views/Products/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/DoAnWeb/DoAnNhom/FashionShop/FashionShop-Admin/Views/Reviews/Index.cshtml]
+[D:/Project/FashionShop/FashionShop/FashionShop-Admin/Views/Reviews/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV2aWV3c1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/DoAnWeb/DoAnNhom/FashionShop/FashionShop-Admin/Views/Shared/Components/Header/Default.cshtml]
+[D:/Project/FashionShop/FashionShop/FashionShop-Admin/Views/Shared/Components/Header/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcSGVhZGVyXERlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/DoAnWeb/DoAnNhom/FashionShop/FashionShop-Admin/Views/Shared/Components/Sidebar/Default.cshtml]
+[D:/Project/FashionShop/FashionShop/FashionShop-Admin/Views/Shared/Components/Sidebar/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcU2lkZWJhclxEZWZhdWx0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/DoAnWeb/DoAnNhom/FashionShop/FashionShop-Admin/Views/Shared/Error.cshtml]
+[D:/Project/FashionShop/FashionShop/FashionShop-Admin/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/DoAnWeb/DoAnNhom/FashionShop/FashionShop-Admin/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/Project/FashionShop/FashionShop/FashionShop-Admin/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/DoAnWeb/DoAnNhom/FashionShop/FashionShop-Admin/Views/Stores/Analysis.cshtml]
+[D:/Project/FashionShop/FashionShop/FashionShop-Admin/Views/Stores/Analysis.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvcmVzXEFuYWx5c2lzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/DoAnWeb/DoAnNhom/FashionShop/FashionShop-Admin/Views/Stores/Create.cshtml]
+[D:/Project/FashionShop/FashionShop/FashionShop-Admin/Views/Stores/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvcmVzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/DoAnWeb/DoAnNhom/FashionShop/FashionShop-Admin/Views/Stores/Index.cshtml]
+[D:/Project/FashionShop/FashionShop/FashionShop-Admin/Views/Stores/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvcmVzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/DoAnWeb/DoAnNhom/FashionShop/FashionShop-Admin/Views/_ViewImports.cshtml]
+[D:/Project/FashionShop/FashionShop/FashionShop-Admin/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/DoAnWeb/DoAnNhom/FashionShop/FashionShop-Admin/Views/_ViewStart.cshtml]
+[D:/Project/FashionShop/FashionShop/FashionShop-Admin/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/DoAnWeb/DoAnNhom/FashionShop/FashionShop-Admin/Views/Shared/_Layout.cshtml]
+[D:/Project/FashionShop/FashionShop/FashionShop-Admin/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-fhh5t3bk50
