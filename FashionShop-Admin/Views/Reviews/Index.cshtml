@@ -1,0 +1,141 @@
+﻿@model FashionShop.Models.views.ReviewViewModels.ReviewViewModel
+@{
+    ViewBag.Title = "Reviews List";
+}
+@section Styles {
+    <!-- plugin css file  -->
+    <link rel="stylesheet" href="/plugin/datatables/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="/plugin/datatables/dataTables.bootstrap5.min.css">
+}
+@section Scripts {
+    <script src="~/bundles/dataTables.bundle.js"></script>
+    <script>
+        // $('#myDataTable')
+        //     .addClass('nowrap')
+        //     .dataTable({
+        //         searching:false,
+        //         paging: false,
+        //         responsive: true,
+        //         columnDefs: [
+        //             { targets: [-1, -3], className: 'dt-body-right' }
+        //         ]
+        //     });
+        // $('.deleterow').on('click', function () {
+        //     var tablename = $(this).closest('table').DataTable();
+        //     tablename
+        //         .row($(this)
+        //             .parents('tr'))
+        //         .remove()
+        //         .draw();
+
+        // });
+        $(document).on("change", ".state-update", function () {
+            var reviewId = $(this).data("id");
+            var newState = $(this).val();
+            $.ajax({
+                url: "/Reviews/UpdateState",
+                method: "POST",
+                data: { reviewId: reviewId, newState: newState },
+                success: function (response) {
+                    if (response.success) {
+                        alert(response.message);
+                    } else {
+                        alert("Errors : " + response.message);
+                    }
+                },
+                error: function () {
+                    alert("Error ,Vui lòng thử lại!" + newState)
+                }
+            });
+        });
+    </script>
+}
+<!-- Body: Body -->
+<div class="body d-flex py-3">
+    <div class="container-xxl">
+        <div class="row align-items-center">
+            <div class="border-0 mb-4">
+                <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
+                    <h3 class="fw-bold mb-0">Review List</h3>
+                </div>
+            </div>
+        </div> <!-- Row end  -->
+        <div class="row g-3 mb-3">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <table id="myDataTable" class="table table-hover align-middle mb-0" style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>ReviewId</th>
+                                    <th>Rating</th>
+                                    <th>ReviewText</th>
+                                    <th>ReviewDate</th>
+                                    <th>Product</th>
+                                    <th>Customer</th>
+                                    <th>CreatedDate</th>
+                                    <th>UpdatedDate</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach(var review in Model?.Reviews!)
+                                {
+                                    <tr id="row-@review.ReviewId">
+                                        <td><strong>@review.ReviewId</strong></td>
+                                        <td>@review.Rating</td>
+                                        <td>@review.ReviewText</td>
+                                        <td>@review.ReviewDate</td>
+                                        <td>
+                                            @foreach(var product in Model?.Products!)
+                                            {
+                                                @if(product.ProductId == review.ProductId){
+                                                    @product.ProductName
+                                                }
+                                            }
+                                        </td>
+                                        <td>
+                                            @foreach(var customer in Model?.Customers!)
+                                            {
+                                                @if(customer.CustomerId == review.CustomerId)
+                                                {
+                                                    @customer.CustomerName
+                                                }
+                                            }
+                                        </td>
+                                        <td>@review.CreatedAt</td>
+                                        <td>@review.UpdatedAt</td>
+                                        <td>
+                                            @{
+                                                string color = @review.Status switch
+                                                {
+                                                    "approved" => "bg-success",
+                                                    "pending" => "bg-warning",
+                                                    "rejected" => "bg-danger"
+                                                };
+                                            }
+                                            <select data-id="@review.ReviewId" class="text-white @color state-update" >
+                                                <option selected="@((review.Status == "approved") ? true : false)">approved</option>
+                                                <option selected="@((review.Status == "pending") ? true : false)">pending</option>
+                                                <option selected="@((review.Status == "rejected") ? true : false)">rejected</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <form asp-action="Delete" asp-controller="Reviews" method="post">
+                                                <input type="hidden" name="ReviewId" value="@review.ReviewId" />
+                                                <button type="submit" class="btn btn-outline-secondary deleterow"><i class="icofont-ui-delete text-danger"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <div page-model="@Model?.PagingInfo" page-action="Index" page-class="btn" page-classes-enabled="true" page-class-normal="btn-outline-dark" page-class-selected="btn-primary" class="btn-group m-1"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

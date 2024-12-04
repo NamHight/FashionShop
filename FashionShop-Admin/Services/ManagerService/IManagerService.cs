@@ -1,6 +1,8 @@
 ﻿using FashionShop.Services.Categories;
 using FashionShop.Services.Products;
 using FashionShop.Services.Contacts;
+using FashionShop.Services.Reviews;
+using FashionShop.Services.Customers;
 using FashionShop.Services.Employees;
 using FashionShop.Services.Roles;
 using FashionShop.Services.Stores;
@@ -15,4 +17,6 @@ public interface IManagerService
     IStoreService Store { get; }
     IRoleService Role { get; }
     IProductService Product { get; }
+    IReviewService Review { get; }
+    ICustomerService Customer { get; }
 }
