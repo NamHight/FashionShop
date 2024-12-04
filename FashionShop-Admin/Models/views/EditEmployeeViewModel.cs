@@ -9,19 +9,6 @@ public class EditEmployeeViewModel
     public long? EmployeeId { get; set; }
     public string? Email { get; set; }
     
-    [StringLength(40, MinimumLength = 8, ErrorMessage = "Password must be between 8 and 40 characters")]
-    [DataType(DataType.Password)]
-    public string? Password { get; set; }
-    
-    [Compare("Password",ErrorMessage = "Password and confirm password does not match")]
-    [DataType(DataType.Password)]
-    public string? ConfirmPassword { get; set; }
-    
-    [StringLength(40, MinimumLength = 8, ErrorMessage = "Password must be between 8 and 40 characters")]
-    [Compare("ConfirmPassword",ErrorMessage = "Password and confirm password does not match")]
-    [DataType(DataType.Password)]
-    public string? NewPassword { get; set; }
-    
     [Required(ErrorMessage = "Please Enter Employee Name")]
     [StringLength(255)]
     public string? EmployeeName { get; set; }

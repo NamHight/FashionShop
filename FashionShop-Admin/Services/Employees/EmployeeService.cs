@@ -180,6 +180,32 @@ public class EmployeeService : IEmployeeService
         return true;
     }
 
+    public async Task<bool> ChangePassword(ChangePasswordModel model, long id, bool trackChanges)
+    {
+        var employee = await _managerRepository.Employee.GetById(id, trackChanges);
+        if (employee == null)
+        {
+            return false;
+        }
+        if (string.IsNullOrWhiteSpace(model.Password) || !VerifyPassword(model.Password, employee.Password))
+        {
+            return false;
+        }
+
+        if (string.IsNullOrWhiteSpace(model.NewPassword))
+        {
+            return false;
+        }
+        employee.Password = HashPassword(model.NewPassword);
+        await _managerRepository.SaveAsync();
+        return true;
+    }
+
+    public async Task<bool> CheckPassword(long id, string password)
+    {
+        throw new NotImplementedException();
+    }
+
     public void DeleteFile(string fileName, string directory)
     {
         var fullPath  = Path.Combine(_hostEnvironment.WebRootPath, directory, fileName);

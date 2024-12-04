@@ -3,6 +3,7 @@ using FashionShop.Models.views;
 using FashionShop.Services.ManagerService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.DotNet.Scaffolding.Shared.Messaging;
 
 namespace FashionShop.Controllers;
 
@@ -131,5 +132,30 @@ public class EmployeesController : Controller
             employee.Stores = await _managerService.Store.GetAllAsync(false);
         }
         return employee;
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> ChangePassword(long EmployeeId, ChangePasswordModel model)
+    {
+        if (!ModelState.IsValid)
+        {
+            var errors = ModelState
+                .Where(m => m.Value.Errors.Count > 0)
+                .ToDictionary(m => m.Key, m => m.Value.Errors.Select(e => e.ErrorMessage))
+                .ToArray();
+            return Json(new { success = false, errors });
+        }
+        var result = await _managerService.Employee.ChangePassword(model, EmployeeId, false);
+        if (result)
+        {
+            return Json(new {success = true, message = "Change password successfully."});
+        }
+        return Json(new {success = false, message = "Change password failed."});
+    }
+
+    public async Task<IActionResult> CheckPassword(long id, string password)
+    {
+        var result = await _managerService.Employee.CheckPassword(id, password, false);
+        return Json(new {Message = "test"});
     }
 }

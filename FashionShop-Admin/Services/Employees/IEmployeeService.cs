@@ -18,4 +18,8 @@ public interface IEmployeeService
     Task<bool> UpdateAsync(long id, EditEmployeeViewModel employee,bool trackChanges);
 
     Task<bool> ChangeAvatar(string avatar, long id,bool trackChanges);
+    
+    Task<bool> ChangePassword(ChangePasswordModel model, long id,bool trackChanges);
+
+    Task<bool> CheckPassword(long id, string password);
 }

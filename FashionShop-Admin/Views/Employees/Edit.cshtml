@@ -17,6 +17,8 @@
 }
 @section Scripts
 {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/plugin/ckeditor5/29.0.0/classic/ckeditor.js"></script>
     <script src="~/js/template.js"></script>
     <script>
@@ -40,6 +42,38 @@
         $("#AvatarFile").on("change",function(event){
             var file = event.target.files[0];
             $("#reviewAvatar").attr("src",URL.createObjectURL(file));
+        })
+    </script>
+    <script>
+        $("#btn-change-password").on("click",function (e){
+            e.preventDefault();
+            var form = $("#changePasswordForm");
+            const formData = form.serialize();
+            $("span[data-valmsg-for]").text("");
+            $.ajax({
+                url: "@Url.Action("ChangePassword","Employees")",
+                method: "post",
+                data: formData,
+                success: function (response) {
+                    if (response.success) {
+                        location.reload(); // Reload trang
+                    } else if (response.errors) {
+                        // Hiển thị lỗi từ ModelState
+                        $.each(response.errors, function (key, errorMessages) {
+                            console.log({key})
+                            const errorSpan = $(`span[data-valmsg-for='${key}']`);
+                            errorSpan.text(errorMessages.value.join(", ")).show();
+                            console.log(errorSpan);
+                        });
+                    } else {
+                         console.error(response.message); // Hiển thị lỗi khác (nếu có)
+                    }
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            })
+            
         })
     </script>
 }
@@ -262,34 +296,13 @@
                     </div>
                 </div>
                 <div class="card auth-detailblock">
-                    <form >
-                        <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
-                            <h6 class="mb-0 fw-bold ">Change password</h6>
-                            <button type="button" class="btn btn-primary text-uppercase px-5">Change</button>
-                        </div>
-                        <div class="card-body">
-                            <div class="row g-3">
-                                <div class="col-12">
-                                        <label class="form-label col-6 col-sm-5">Old Password:</label>
-                                    <div class="col-md-6">
-                                        <input type="password" class="form-control" asp-for="Password" id="Password">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                        <label class="form-label col-6 col-sm-5">New Password:</label>
-                                    <div class="col-md-6">
-                                        <input type="password" class="form-control" asp-for="NewPassword" id="NewPassword">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <label class="form-label col-6 col-sm-5">Confirm Password:</label>
-                                    <div class="col-md-6">
-                                        <input type="password" class="form-control" asp-for="ConfirmPassword" id="ConfirmPassword">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+                    @await Html.PartialAsync("Partials/ChangePassword", new ChangePasswordModel
+                    {
+                        EmployeeId = Model.EmployeeId,
+                        Password = string.Empty,
+                        NewPassword = string.Empty,
+                        ConfirmPassword = string.Empty
+                    })
                 </div>
             </div>
         </div>
