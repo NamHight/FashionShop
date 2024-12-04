@@ -61,11 +61,25 @@
                                         <td>@contact.Description</td>
                                         <td>@contact.Phone</td>
                                         <td>@contact.CreatedAt</td>
-                                        <td><span class="badge bg-success">@contact.Status</span></td>
+                                        <td>
+                                            <form  asp-action="ChangeStatus" method="post" style="display:inline;">
+                                                    <input type="hidden" name="ContactId" value="@contact.ContactId" />
+                                                <select name="Status" class="form-select @(contact.Status == "pending" ? "bg-warning text-dark" : contact.Status == "resovle" ? "bg-success text-white" : contact.Status == "importain" ? "bg-primary text-white" : "")" onchange="this.form.submit()">
+                                                    <option value="pending" selected="@((contact.Status == "pending") ? true : false)" class="bg-warning text-dark">pending</option>
+                                                    <option value="resovle" selected="@((contact.Status == "resovle") ? true : false)" class="bg-success text-white">resovle</option>
+                                                    <option value="importain" selected="@((contact.Status == "importain") ? true : false)" class="bg-primary text-white">importain</option>
+                                                    </select>
+                                                   
+                                            </form>
+                                        </td>
                                         <td>
                                             <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                                <a href="contact-edit.html" class="btn btn-outline-secondary"><i class="icofont-edit text-success"></i></a>
-                                                <button type="button" class="btn btn-outline-secondary deleterow"><i class="icofont-ui-delete text-danger"></i></button>
+
+                                                <form asp-action="Delete" asp-route-id="@contact.ContactId" method="post">
+                                                    <input type="hidden" name="ContactId" value="@contact.ContactId" />
+                                                    <button type="submit" class="btn btn-outline-secondary"><i class="icofont-ui-delete text-danger"></i></button>
+                                                </form>
+                                                
                                             </div>
                                         </td>
                                     </tr>

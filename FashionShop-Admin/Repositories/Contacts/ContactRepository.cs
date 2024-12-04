@@ -22,5 +22,32 @@ namespace FashionShop.Repositories.Contacts
             var contact = await FindById(item => item.ContactId == id, trackChanges).FirstOrDefaultAsync();
             return contact;
         }
+        public void UpdateStatus(Contact contact)
+        {
+            //var contact = await GetByIdAsync(id, trackChanges);
+
+            //if (contact != null)
+            //{
+            //    contact.Status = status;
+            //    Update(contact);
+
+            //}
+            Update(contact);
+        
+        }
+
+        public async Task<bool> DeleteAsync(long id, bool trackChanges)
+        {
+            var contact = await _context.Contacts.FindAsync(id);
+
+            if (contact != null)
+            {
+                _context.Contacts.Remove(contact);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+
+            return false;
+        }
     }
 }

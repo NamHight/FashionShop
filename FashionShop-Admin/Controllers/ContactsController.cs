@@ -19,10 +19,24 @@ namespace FashionShop.Controllers
             return View(result);
         }
         [HttpPost]
-        public IActionResult Edit()
+        public async Task<IActionResult> ChangeStatus(long ContactId, string Status)
         {
-
-            return View();
+             await _managerService.Contact.UpdateStatusAsync(ContactId, Status, trackChanges: true);
+            
+            return RedirectToAction(nameof(Index));
+        }
+        [HttpPost]
+        public async Task<IActionResult> Delete(long id)
+        {
+            var result = await _managerService.Contact.DeleteAsync(id, false);  
+            if (result)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                return NotFound();
+            }
         }
     }
 }
