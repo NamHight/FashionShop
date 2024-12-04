@@ -14,6 +14,7 @@ namespace FashionShop.Repositories.Contacts
         public async Task<List<Contact>> GetAllAsync(bool trackChanges)
         {
             var contacts = await FindAll(trackChanges).ToListAsync();
+            
             return contacts;
         }
 
@@ -44,6 +45,7 @@ namespace FashionShop.Repositories.Contacts
             {
                 _context.Contacts.Remove(contact);
                 await _context.SaveChangesAsync();
+                //await _context.SaveChangesAsync();
                 return true;
             }
 
