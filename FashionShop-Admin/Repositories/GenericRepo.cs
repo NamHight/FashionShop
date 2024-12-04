@@ -17,12 +17,18 @@ public abstract class GenericRepo<T> : IGenericRepo<T> where T : class
     {
         return trackChanges ? _context.Set<T>() : _context.Set<T>().AsNoTracking();
     }
-    
+    public async Task<List<T>> PageLinkAsync(int page, int pageSize, bool trackChanges)
+    {
+        return await FindAll(trackChanges)
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
+    }
     public IQueryable<T> FindById(Expression<Func<T, bool>> expression, bool trackChanges)
     {
         return trackChanges ? _context.Set<T>().Where(expression) : _context.Set<T>().Where(expression).AsNoTracking();
     }
-    
+  
     public void Create(T entity)
     {
         _context.Set<T>().Add(entity);

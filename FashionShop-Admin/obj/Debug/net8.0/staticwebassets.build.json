@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "xSrBvjUcN8OsOerpql38cqdwT3a+rLUYSXKJ/PtJZWQ=",
+  "Hash": "RBkvtEXbPaC7F5+ZchgnSJr80Dgcxs03WkLYnR8WWKg=",
   "Source": "FashionShop",
   "BasePath": "_content/FashionShop",
   "Mode": "Default",
@@ -10258,10 +10258,10 @@
       "OriginalItemSpec": "wwwroot\\plugin\\prism\\prism.js"
     },
     {
-      "Identity": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\ANT2053-1-scaled.jpg",
+      "Identity": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\ANT2053-1-scaled.jpg",
       "SourceId": "FashionShop",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\wwwroot\\",
       "BasePath": "_content/FashionShop",
       "RelativePath": "uploaded/ANT2053-1-scaled.jpg",
       "AssetKind": "All",
@@ -10275,6 +10275,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploaded\\ANT2053-1-scaled.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\iphone-16-blue-600x600.png",
+      "SourceId": "FashionShop",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\wwwroot\\",
+      "BasePath": "_content/FashionShop",
+      "RelativePath": "uploaded/iphone-16-blue-600x600.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploaded\\iphone-16-blue-600x600.png"
     }
   ]
 }
