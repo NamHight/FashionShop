@@ -2213,6 +2213,10 @@
       "PackagePath": "staticwebassets\\uploaded\\z6027286591501_ae8afd1acccd45a4f55949a863fa45e1.jpg"
     },
     {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.FashionShop.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.FashionShop.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

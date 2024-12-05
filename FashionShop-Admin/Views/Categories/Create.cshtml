@@ -1,0 +1,100 @@
+﻿@model Category
+
+@{
+    ViewBag.Title = "Create Category";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/plugin/datatables/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="~/plugin/datatables/dataTables.bootstrap5.min.css">
+}
+
+<div class="body d-flex py-3">
+    <div class="container-xxl">
+        <div class="row g-3 mb-3">
+            <h3 class="fw-bold mb-0">Create Category</h3>
+        </div>
+        <div class="row g-3 mb-3">
+            <form asp-action="Create" method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label asp-for="CategoryName" class="form-label">Category Name</label>
+                    <input tabindex="1" asp-for="CategoryName" type="text" class="form-control" id="CategoryName" name="CategoryName" value="" />
+                    <span asp-validation-for="CategoryName" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Slug" class="form-label">Slug</label>
+                    <input readonly asp-for="Slug" type="text" class="form-control" id="Slug" name="Slug" value="" />
+                    <span id="errorSlug" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label">Description</label>
+                    <textarea asp-for="Description" class="form-control" id="Description" name="Description"></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Status" class="form-label">Status</label>
+                    <select asp-for="Status" class="form-select" id="Status" name="Status">
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary" id="submit_add">Add Category</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function xuLySlug(nameCategory) {
+            var result = nameCategory.toLowerCase();
+            result = result.replace(/à|ả|ã|á|ạ|ă|ằ|ẳ|ẵ|ắ|ặ|â|ầ|ẩ|ẫ|ấ|ậ/gi, 'a');
+            result = result.replace(/i|í|ì|ỉ|ĩ|ị/gi, 'i');
+            result = result.replace(/é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ/gi, 'e');
+            result = result.replace(/ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ/gi, 'o');
+            result = result.replace(/ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'u');
+            result = result.replace(/ý|ỳ|ỷ|ỹ|ỵ/gi, 'y');
+            result = result.replace(/đ/gi, 'd');
+            result = result.replace(/[^a-z0-9\s]/gi, '');
+            result = result.replace(/\s+/gi, "-");
+            return result;
+        }
+
+        function handleCheckSlug() {
+            var text = $("#CategoryName").val(); // Lấy giá trị trong trường CategoryName
+            text = xuLySlug(text); // Xử lý CategoryName thành slug
+            $("#Slug").val(text); // Chèn slug mới xử lý vào trường Slug
+
+            // Kiểm tra xem slug mới tạo có tồn tại chưa
+            $.ajax({
+                method: "POST",
+                url: "@Url.Action("CheckSlug", "Categories")",
+                data: {
+                    slug: text
+                },
+                success: function (res) {
+                    if (res.statusCode == 0) {
+                        $("#errorSlug").text("Please enter a unique category name, this slug already exists.");
+                        $("#CategoryName").val("");
+                        $("#Slug").val("");
+                        $("#CategoryName").focus();
+                    } else {
+                        $("#errorSlug").text("");
+                    }
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            document.getElementById('CategoryName').addEventListener('input', function () {
+                handleCheckSlug();
+            });
+        });
+    </script>
+}
