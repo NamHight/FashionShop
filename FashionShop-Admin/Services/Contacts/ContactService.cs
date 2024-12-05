@@ -25,10 +25,16 @@ namespace FashionShop.Services.Contacts
             if (contact != null)
             {
                 contact.Status = status;
+                _managerRepository.Contact.Edit(contact);
                 await _managerRepository.SaveAsync();
             }
 
             
+        }
+        public async Task EditAsync(Contact ct, bool trackChanges)
+        {
+                _managerRepository.Contact.Edit(ct);
+                await _managerRepository.SaveAsync();
         }
 
         public async Task<bool> DeleteAsync(long id, bool trackChanges)
