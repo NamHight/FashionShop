@@ -1,14 +1,19 @@
 using FashionShop.Extensions;
+using FashionShop.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews( );
+builder.Services.ConfigureCors();
 builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.ConfigureManagerRepository();
 builder.Services.ConfigureManagerService();
-
-
+builder.Services.ConfigureAuthenticate();
+builder.Services.AddAuthorization();
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
+builder.Logging.AddDebug();
 
 builder.Services.AddSession(option =>
 {
@@ -28,20 +33,22 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
 app.UseSession();
 app.UseRouting();
-
+app.UseCors("CorsPolicy");
+app.UseAuthentication();
 app.UseAuthorization();
-
+app.MapControllerRoute(
+    name:"Login",
+    pattern:"login",
+    defaults:new {Controller="Authenticate",Action="Login"}
+    );
 app.MapControllerRoute(
     "analysisRoute",
     "{controller}/analysis",
     new {Action="Analysis"}
 );
-app.MapControllerRoute(
-    name: "dashboard",
-    pattern: "dashboard",
-    defaults: new {Controller="Dashboard",Action="Index"});
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Dashboard}/{action=Index}/{id?}"

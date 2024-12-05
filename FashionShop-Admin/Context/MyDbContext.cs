@@ -56,7 +56,6 @@ public partial class MyDbContext : DbContext
     public virtual DbSet<View> Views { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseMySql("server=mysql-fashion-finsr8280-699e.h.aivencloud.com;port=13062;database=defaultdb;uid=avnadmin;pwd=AVNS_UIxLS_rvA7dyKjwnFDf", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.30-mysql"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -114,9 +113,10 @@ public partial class MyDbContext : DbContext
         {
             entity.HasKey(e => e.EmployeeId).HasName("PRIMARY");
 
+            entity.Property(e => e.Birth).HasDefaultValueSql("'2000-01-01'");
             entity.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
             entity.Property(e => e.Email).HasDefaultValueSql("_utf8mb4\\'abc@gmail.com\\'");
-            entity.Property(e => e.EmployeePosition).HasDefaultValueSql("_utf8mb4\\'intern\\'");
+            entity.Property(e => e.EmployeePosition).HasDefaultValueSql("'intern'");
             entity.Property(e => e.Status).HasDefaultValueSql("'active'");
             entity.Property(e => e.UpdatedAt)
                 .ValueGeneratedOnAddOrUpdate()

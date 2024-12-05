@@ -1,5 +1,5 @@
 ﻿using FashionShop.Models;
-using FashionShop.Repositories.ManagerRepo;
+using FashionShop.Repositories.ManagerRepository;
 
 namespace FashionShop.Services.Reviews
 {

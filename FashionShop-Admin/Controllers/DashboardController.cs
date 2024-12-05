@@ -1,9 +1,11 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using FashionShop.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FashionShop.Controllers;
 
+[Authorize]
 public class DashboardController : Controller
 {
     private readonly ILogger<DashboardController> _logger;

@@ -1,4 +1,4 @@
-﻿@model Product
+﻿@model FashionShop.Models.views.ProductViewModels.UpdateProductViewModel
 
 @{
     ViewBag.Title = "Products Create";
@@ -13,42 +13,52 @@
 <!-- Body: Body -->
 <div class="body d-flex py-3">
     <div class="container-xxl">
-        <div class="row g-3 mb-3">
-            <h3 class="fw-bold mb-0">Product Create</h3>
+        <div class="row g-3 mb-3 d-flex justify-content-between">
+            <h3 class="fw-bold mb-0" style="width: fit-content;">Product Create</h3>
+            <a asp-action="Index" class="btn btn-success" style="width: fit-content;">Về Trang Chủ</a>
         </div>
         <div class="row g-3 mb-3">
             <form asp-action="Create" method="post" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label asp-for="ProductName" class="form-label">ProductName</label>
-                    <input tabindex="1" asp-for="ProductName" type="text" class="form-control" id="ProductName" name="ProductName" value=""/>
+                    <input tabindex="1" asp-for="ProductName" type="text" class="form-control rounded-pill " id="ProductName" name="ProductName" value="" />
                     <span asp-validation-for="ProductName" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label asp-for="Slug" class="form-label">Slug</label>
-                    <input readonly asp-for="Slug" type="text" class="form-control" id="Slug" name="Slug" value="" />
+                    <input readonly asp-for="Slug" type="text" class="form-control rounded-pill " id="Slug" name="Slug" value="" />
                     <span id="errorSlug" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label asp-for="Banner" class="form-label">Banner</label>
-                    <input tabindex="2" asp-for="Banner" type="file" class="form-control" id="Banner" name="Banner" value="" />
+                    <input tabindex="2" asp-for="Banner" type="file" class="form-control rounded-pill " id="Banner" name="Banner" value="" />
                     <span asp-validation-for="Banner" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label asp-for="Description" class="form-label">Description</label>
-                    <input tabindex="3" asp-for="Description" type="text" class="form-control" id="Description" name="Description" value="" />
+                    <input tabindex="3" asp-for="Description" type="text" class="form-control rounded-pill" id="Description" name="Description" value="" />
                 </div>
                 <div class="mb-3">
                     <label asp-for="Price" class="form-label">Price</label>
-                    <input tabindex="4" asp-for="Price" type="number" class="form-control" id="Price" name="Price" value="" />
+                    <input tabindex="4" asp-for="Price" type="number" class="form-control rounded-pill" id="Price" name="Price" value="" />
                     <span asp-validation-for="Price" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
-                    <label asp-for="CategoryId" class="form-label">CategoryId</label>
-                    <input asp-for="CategoryId" type="number" class="form-control" id="CategoryId" name="CategoryId" value="" />
+                    <label asp-for="CategoryName" class="form-label">CategoryName</label>
+                    <select asp-for="CategoryName" name="CategoryName" class="form-select rounded-pill">
+                        <option selected>Select-CategoryName</option>
+                        @foreach(var category in Model?.Categories)
+                        {
+                            <option asp-for="CategoryName">@category.CategoryName</option>
+                        }
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label asp-for="Status" class="form-label">Status</label>
-                    <input tabindex="5" asp-for="Status" type="text" class="form-control" id="Status" name="Status" value="" />
+                    <select asp-for="Status" name="CategoryName" class="form-select rounded-pill">
+                        <option selected>available</option>
+                        <option>unavailable</option>
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-primary" id="submit_add">Thêm Sản Phẩm</button>
             </form>

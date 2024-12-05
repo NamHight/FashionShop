@@ -1,4 +1,5 @@
-﻿@model List<FashionShop.Models.views.SidebarItem>
+﻿@using System.Security.Claims
+@model List<FashionShop.Models.views.SidebarItem>
 
 @{
     
@@ -17,7 +18,7 @@
         <ul class="menu-list flex-grow-1 mt-3">
             @foreach (var item in Model)
             {
-                if (item.hasSubItems)
+                if (item.hasSubItems  )
                 {
                     <li class="collapsed">
                         <a class="m-link @( ViewBag.SelectedMenu == item.title ? "active" : "" )" data-bs-toggle="collapse" data-bs-target="#@item.title" href="@item.url">    

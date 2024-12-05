@@ -10,37 +10,8 @@
 }
 @section Scripts {
     <script src="~/bundles/dataTables.bundle.js"></script>
-    <script>
-        $('#myDataTable')
-            .addClass('nowrap')
-            .dataTable({
-                responsive: true,
-                columnDefs: [
-                    { targets: [-1, -3], className: 'dt-body-right' }
-                ]
-            });
-        $('.deleterow').on('click', function () {
-            var tablename = $(this).closest('table').DataTable();
-            tablename
-                .row($(this)
-                    .parents('tr'))
-                .remove()
-                .draw();
-
-        });
-    </script>
-    <script>
-        // xử lý ajax cho cập nhật category hoặc status
-        $(document).ready(function () {
-            $('select').change(function () { 
-                var id_select = $(this).attr('id');
-                if (id_select.includes("category-")) {
-                    alert("ban da thay doi category");
-                }else{
-                    alert("ban da thay doi status");
-                }
-            })
-        })
+   @* Xử lý cập nhật categoryID và status *@
+        <script src="~/js/HandlerUpdateProduct.js" type="module">
     </script>
 }
 <!-- Body: Body -->
@@ -77,7 +48,7 @@
                             <tbody>
                                 @foreach (var product in Model?.Products)
                                 {
-                                    <tr id="@product.ProductId">
+                                        <tr id="@product.ProductId">
                                         <td><strong>#@product.ProductId</strong></td>
                                         <td>@product.ProductName</td>
                                         <td>@product.Slug</td>
@@ -85,10 +56,13 @@
                                         <td>@product.Description</td>
                                         <td>@product.Price</td>
                                         <td>
-                                            <select id="category-@(product.CategoryId)" class="badge bg-success">
+                                            <select id="category-@(product.ProductId)" class="badge bg-success" value="">
                                                 @foreach (var category in Model?.Categories)
                                                 {
-                                                   <option selected=@(product.CategoryId == category.CategoryId ? true : false)>@category.CategoryName</option>
+                                                   <option selected=@(product.CategoryId == category.CategoryId ? true : false)
+                                                            value="@category.CategoryName">
+                                                            @category.CategoryName
+                                                   </option>
                                                 }
                                             </select>
                                         </td>
@@ -100,16 +74,17 @@
                                                 {
                                                     "available" => "bg-success",
                                                     "unavailable" => "bg-warning",
+                                                    _ => "Unknown"
                                                 };
                                             }
-                                            <select id="status-@(product.CategoryId)" class="badge @color">
+                                            <select id="status-@(product.ProductId)" class="badge @color">
                                                 <option selected="@(product.Status == "available" ? true : false)">available</option>
                                                 <option selected="@(product.Status == "unavailable" ? true : false)">unavailable</option>
                                             </select>
                                         </td>
                                         <td>
                                             <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                                <a href="categories-edit.html" class="btn btn-outline-secondary"><i class="icofont-edit text-success"></i></a>
+                                                <a asp-action="Edit" asp-route-id="@product.ProductId" class="btn btn-outline-secondary"><i class="icofont-edit text-success"></i></a>
                                                 <button type="button" class="btn btn-outline-secondary deleterow"><i class="icofont-ui-delete text-danger"></i></button>
                                             </div>
                                         </td>

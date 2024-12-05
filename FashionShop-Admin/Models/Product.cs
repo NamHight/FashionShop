@@ -17,8 +17,6 @@ public partial class Product
     public long ProductId { get; set; }
 
     [Column("product_name")]
-    [Required(ErrorMessage = "Không được để trống tên sản phẩm")]
-    [StringLength(100)]
     public string ProductName { get; set; } = null!;
 
     [Column("slug")]
@@ -26,7 +24,6 @@ public partial class Product
 
     [Column("banner")]
     [StringLength(255)]
-
     public string? Banner { get; set; }
 
     [Column("description", TypeName = "text")]
@@ -34,7 +31,6 @@ public partial class Product
 
     [Column("price")]
     [Precision(10, 2)]
-    [Required(ErrorMessage = "Không được để trống giá sản phẩm")]
     public decimal? Price { get; set; }
 
     [Column("category_id")]

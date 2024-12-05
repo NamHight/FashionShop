@@ -20,7 +20,7 @@ public partial class Employee
     [StringLength(255)]
     public string EmployeeName { get; set; } = null!;
 
-    [Column("employee_position", TypeName = "enum('manager','sales','customer care','deliver','intern','stock')")]
+    [Column("employee_position", TypeName = "enum('manager','sales','customer_care','deliver','intern','stock')")]
     public string? EmployeePosition { get; set; }
 
     [Column("phone")]
@@ -38,6 +38,9 @@ public partial class Employee
     [Column("email")]
     public string Email { get; set; } = null!;
 
+    [Column("gender", TypeName = "enum('male','Female')")]
+    public string? Gender { get; set; }
+
     [Column("store_id")]
     public long? StoreId { get; set; }
 
@@ -52,6 +55,15 @@ public partial class Employee
 
     [Column("status", TypeName = "enum('active','warnning','banned')")]
     public string? Status { get; set; }
+
+    [Column("description", TypeName = "text")]
+    public string? Description { get; set; }
+
+    [Column("birth")]
+    public DateOnly Birth { get; set; }
+
+    [Column("address", TypeName = "text")]
+    public string? Address { get; set; }
 
     [InverseProperty("Employee")]
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();

@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "yIU+e/2IkDA=",
+  "dgSpecHash": "aTJZhWDQH2A=",
   "success": true,
   "projectFilePath": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\FashionShop.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Locbm\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
     "C:\\Users\\Locbm\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\Locbm\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Locbm\\.nuget\\packages\\humanizer.core.af\\2.14.1\\humanizer.core.af.2.14.1.nupkg.sha512",
