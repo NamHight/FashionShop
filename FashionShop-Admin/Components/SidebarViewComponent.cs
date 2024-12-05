@@ -49,10 +49,6 @@ public class SidebarViewComponent : ViewComponent
         var user = (ClaimsPrincipal)User;
         var role = user.FindFirstValue(ClaimTypes.Role);
         ViewBag.selectedMenu = routeValue;
-        if (role.Equals("Admin"))
-        {
-            
-        }
         return View(_sidebarItems);
     }
     

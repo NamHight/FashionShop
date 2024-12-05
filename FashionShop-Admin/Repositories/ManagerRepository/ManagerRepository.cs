@@ -7,6 +7,8 @@ using FashionShop.Repositories.Stores;
 using FashionShop.Repositories.Customers;
 using FashionShop.Repositories.Products;
 using FashionShop.Repositories.Reviews;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace FashionShop.Repositories.ManagerRepository;
 
@@ -47,5 +49,28 @@ public class ManagerRepository : IManagerRepository
     public async Task SaveAsync()
     {
         await _context.SaveChangesAsync();
+    }
+    public async Task<int> SaveAsyncAndNumRowEffect()
+    {
+        try
+        {
+            var rowsAffected = await _context.SaveChangesAsync();
+            return rowsAffected;
+        }
+        catch (DbUpdateConcurrencyException ex)
+        {
+            Console.WriteLine("Loi canh tranh du lieu: " + ex.Message);
+            return 0;
+        }
+        catch (DbUpdateException ex)
+        {
+            Console.WriteLine("Loi cap nhat du lieu: " + ex.Message);
+            return 0;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Loi khong xac đinh: " + ex.Message);
+            return 0;
+        }
     }
 }

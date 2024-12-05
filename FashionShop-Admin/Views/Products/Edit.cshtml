@@ -1,7 +1,7 @@
 ﻿@model FashionShop.Models.views.ProductViewModels.UpdateProductViewModel
 
 @{
-    ViewBag.Title = "Products Create";
+    ViewBag.Title = "Products Update";
 }
 @section Styles {
     <!-- plugin css file  -->
@@ -14,64 +14,65 @@
 <div class="body d-flex py-3">
     <div class="container-xxl">
         <div class="row g-3 mb-3 d-flex justify-content-between">
-            <h3 class="fw-bold mb-0" style="width: fit-content;">Product Create</h3>
+            <h3 class="fw-bold mb-0" style="width: fit-content;">Product Update</h3>
             <a asp-action="Index" class="btn btn-success" style="width: fit-content;">Về Trang Chủ</a>
         </div>
         <div class="row g-3 mb-3">
-            <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <form asp-action="Edit" asp-route-id="@Model.ProductId" method="post" enctype="multipart/form-data">
+                <input hidden value="@Model.ProductId" asp-for="ProductId"/>
                 <div class="mb-3">
                     <label asp-for="ProductName" class="form-label">ProductName</label>
-                    <input tabindex="1" asp-for="ProductName" type="text" class="form-control rounded-pill " id="ProductName" name="ProductName" value="" />
+                    <input tabindex="1" asp-for="ProductName" type="text" class="form-control rounded-pill " id="ProductName" name="ProductName" value="@Model.ProductName" />
                     <span asp-validation-for="ProductName" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label asp-for="Slug" class="form-label">Slug</label>
-                    <input readonly asp-for="Slug" type="text" class="form-control rounded-pill " id="Slug" name="Slug" value="" />
+                    <input readonly asp-for="Slug" type="text" class="form-control rounded-pill " id="Slug" name="Slug" value="@Model.Slug" />
                     <span id="errorSlug" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label asp-for="Banner" class="form-label">Banner</label>
-                    <input tabindex="2" asp-for="Banner" type="file" class="form-control rounded-pill " id="Banner" name="Banner" value="" />
-                    <span asp-validation-for="Banner" class="text-danger"></span>
+                    <input tabindex="2" asp-for="Banner" type="file" class="form-control rounded-pill " id="Banner" name="Banner" value="@Model.BannerUrl" />
+                   
                 </div>
                 <div class="mb-3">
                     <label asp-for="Description" class="form-label">Description</label>
-                    <input tabindex="3" asp-for="Description" type="text" class="form-control rounded-pill" id="Description" name="Description" value="" />
+                    <input tabindex="3" asp-for="Description" type="text" class="form-control rounded-pill" id="Description" name="Description" value="@Model.Description" />
                 </div>
                 <div class="mb-3">
                     <label asp-for="Price" class="form-label">Price</label>
-                    <input tabindex="4" asp-for="Price" type="number" class="form-control rounded-pill" id="Price" name="Price" value="" />
+                    <input tabindex="4" asp-for="Price" type="number" class="form-control rounded-pill" id="Price" name="Price" value="@Model.Price" />
                     <span asp-validation-for="Price" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label asp-for="CategoryName" class="form-label">CategoryName</label>
                     <select asp-for="CategoryName" name="CategoryName" class="form-select rounded-pill">
-                        <option selected>Select-CategoryName</option>
-                        @foreach(var category in Model?.Categories)
+                        @foreach (var category in Model?.Categories)
                         {
-                            <option asp-for="CategoryName">@category.CategoryName</option>
+                            <option asp-for="CategoryName" selected="@(category.CategoryId== Model.CategoryId ? true : false)">@category.CategoryName</option>
                         }
                     </select>
                 </div>
                 <div class="mb-3">
                     <label asp-for="Status" class="form-label">Status</label>
-                    <select asp-for="Status" name="CategoryName" class="form-select rounded-pill">
-                        <option selected>available</option>
-                        <option>unavailable</option>
+                    <select asp-for="Status" name="Status" class="form-select rounded-pill">
+                        <option asp-for="Status" selected="@(Model.Status== "available" ? true: false)">available</option>
+                        <option asp-for="Status" selected="@(Model.Status== "unavailable" ? true: false)">unavailable</option>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary" id="submit_add">Thêm Sản Phẩm</button>
+                <button type="submit" class="btn btn-primary" id="submit_add">Cập Nhật Sản Phẩm</button>
             </form>
         </div>
     </div>
 </div>
 
 @section Scripts {
+   @*  <script src="~/js/handlercheckslug.js" type="module"></script> *@
     <script>
         function xuLySlug(nameProduct) {
             var result = nameProduct.toLowerCase();
-            result = result.replace(/à|ả|ã|á|ạ|ă|ằ|ẳ|ẵ|ắ|ặ|â|ầ|ẩ|ẫ|ấ|ậ/gi,'a');
-            result = result.replace(/i|í|ì|ỉ|ĩ|ị/gi,'i');
+            result = result.replace(/à|ả|ã|á|ạ|ă|ằ|ẳ|ẵ|ắ|ặ|â|ầ|ẩ|ẫ|ấ|ậ/gi, 'a');
+            result = result.replace(/i|í|ì|ỉ|ĩ|ị/gi, 'i');
             result = result.replace(/é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ/gi, 'e');
             result = result.replace(/ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ/gi, 'o');
             result = result.replace(/ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'u');
@@ -89,7 +90,7 @@
             // Kiểm tra xem slug mới tạo có tồn tại chưa
             $.ajax({
                 method: "POST",
-                url: "@Url.Action("CheckSlug", "Products")",
+                url: "Products/CheckSlug",
                 data: {
                     slug: text
                 },
@@ -109,14 +110,14 @@
             })
         }
 
-        $(document).ready(function () {
-            document.getElementById('ProductName').addEventListener('input', function (e) {
-              handleCheckSlug();
+        document.addEventListener("DOMContentLoaded", function () {
+            $('#ProductName').off('input').on('input', function () {
+                handleCheckSlug();
             })
         })
     </script>
 }
-  
-   
+
+
 
 

@@ -1,12 +1,17 @@
 ﻿using FashionShop.Models;
+using FashionShop.Models.views.ProductViewModels;
 using FashionShop.Services.ManagerService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting.Internal;
+using System.Reflection;
 
 namespace FashionShop.Controllers
 {
+    [Authorize]
     public class ProductsController : Controller
     {
         private IWebHostEnvironment hostingEnvironment; //xử lý đường dẫn ảnh
@@ -28,95 +33,159 @@ namespace FashionShop.Controllers
             };
             return View(resutl);
         }
-        // GET: ProductsController/Details/5
 
-        // GET: ProductsController/Create
         public async Task<IActionResult> Create()
         {
-            return View();
+            var resutl = new UpdateProductViewModel()
+            {
+                Categories = await _managerService.Category.GetAllAsync(false)
+            };
+            return View(resutl);
         }
+
         [HttpPost]
         public async Task<JsonResult> CheckSlug(string slug)
         {
-            if(await _managerService.Product.CheckSlug(slug))
+            if (await _managerService.Product.CheckSlug(slug))
             {
-                return Json(new { statusCode = 0, slugg = slug});
+                return Json(new { statusCode = 0, slugg = slug });
             }
             return Json(new { statusCode = 1, slugg = slug });
         }
-        // POST: ProductsController/Create
+
+        [HttpPost]
+        public async Task<JsonResult> UpdateCategoryId(string newData, long idProduct)
+        {
+            var newCategoryID = await _managerService.Category.FindByNameAsync(newData);
+            // lấy id category dựa theo name_category mới cập nhật.
+
+            // cho phép trackChanges nên chỉ cần gán lại thuộc tính cần update, k cần gọi hàm update
+            if (await _managerService.Product.UpdateCategoryId(newCategoryID, idProduct, false))
+            {
+                // nếu cập nhật thành công thì trả về statusCode = 1 ngược lại trả về 0
+                return Json(new { statusCode = 1, newCategory = newData, idProduct = idProduct, id_category = newCategoryID });
+            }
+            return Json(new { statusCode = 0, newCategory = newData, idProduct = idProduct, id_category = newCategoryID });
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> UpdateStatus(string newData, long idProduct)
+        {
+            if (await _managerService.Product.UpdateStatus(newData, idProduct, false))
+            {
+                return Json(new { statusCode = 0, newStatus = newData });
+            }
+            return Json(new { statusCode = 1, newStatus = newData });
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult>  Create(Product collection, IFormFile Banner)
+        public async Task<IActionResult> Create(UpdateProductViewModel collection)
+        {
+            if (ModelState.IsValid)
+            {
+                var fileName = await _managerService.Product.HandleUploadImage(hostingEnvironment, collection.Banner);
+                var product = new Product()
+                {
+                    ProductName = collection.ProductName ?? "null",
+                    Slug = collection.Slug ?? "null",
+                    Status = collection.Status,
+                    Description = collection.Description ?? "null",
+                    Banner = fileName,
+                    CategoryId = await _managerService.Category.FindByNameAsync(collection.CategoryName ?? "null"),
+                    Price = collection.Price,
+                };
+                // lưu đối tượng product vào csdl
+                await _managerService.Product.AddNewProduct(product);
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                foreach (var key in ModelState.Keys) // in ra danh sách lỗi nếu như ModelState.IsValid = false
+                {
+                    var errors = ModelState[key]?.Errors;
+                    foreach (var error in errors)
+                    {
+                        // Log hoặc hiển thị lỗi
+                        Console.WriteLine($"Key: {key}, Error: {error.ErrorMessage}");
+                    }
+                }
+                var resutl = new UpdateProductViewModel()
+                {
+                    Categories = await _managerService.Category.GetAllAsync(false)
+                };
+                return View(resutl);
+            }
+        }
+
+
+        public async Task<IActionResult> Edit(int id)
         {
             try
             {
-                if(ModelState.IsValid)
+                var product = await _managerService.Product.GetByIdAsync(id, false);
+                var resutl = new UpdateProductViewModel()
                 {
-                    var product = new Product();
-                    product = collection; // gán trị trị của đối tượng nhận từ model bindding cho product
-                    if (Banner != null && Banner.Length > 0) // xử lý lưu ảnh nếu ảnh tồn tại
-                    {
-                        // Lưu file: hostingEnvironment.WebRootPath = localhost:3000/wwwroot
-                        var fullpath = Path.Combine(hostingEnvironment.WebRootPath, "uploaded"); // fullpath = localhost:3000/wwwroot/updloaded
-                        using (var stream = new FileStream(Path.Combine(fullpath,Banner.FileName), FileMode.Create))
-                        {
-                            await Banner.CopyToAsync(stream); // lưu ảnh vào localhost:3000/wwwroot/updloaded/fileName
-                        }
-                        product.Banner = Banner.FileName; // lưu tên ảnh vào database
-                    }
-                    await _managerService.Product.AddNewProduct(product);
-                    return RedirectToAction(nameof(Index));
+                    ProductId = product!.ProductId,
+                    ProductName = product.ProductName,
+                    Slug = product.Slug,
+                    Status = product.Status,
+                    Description = product.Description,
+                    BannerUrl = product.Banner,
+                    Price = product.Price,
+                    CategoryId = product.CategoryId,
+                    Categories = await _managerService.Category.GetAllAsync(false)
+                };
+                return View(resutl);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Loi la {ex.Message}");
+                throw;
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit(int id, UpdateProductViewModel collection)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    Console.WriteLine("Sai rang buoc");
+                    collection.Categories = await _managerService.Category.GetAllAsync(false);
+                    return View("Edit", collection);
                 }
                 else
                 {
-                    foreach (var key in ModelState.Keys) // in ra danh sách lỗi nếu như ModelState.IsValid = false
+                    var image = await _managerService.Product.HandleUploadImage(hostingEnvironment, collection.Banner);
+                    if (await _managerService.Product.UpdateProductAsync(id, collection, image))
                     {
-                        var errors = ModelState[key].Errors;
-                        foreach (var error in errors)
-                        {
-                            // Log hoặc hiển thị lỗi
-                            Console.WriteLine($"Key: {key}, Error: {error.ErrorMessage}");
-                        }
+                        return RedirectToAction(nameof(Index));
                     }
-                    return View();
+                    else
+                    {
+                        Console.WriteLine("Truy van loi");
+                        collection.Categories = await _managerService.Category.GetAllAsync(false);
+                        return View(collection);
+                    }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Unexpected Error: {ex.Message}");
-                return View();
+                Console.WriteLine($"Loi khong xac dinh {ex}");
+                throw;
             }
         }
 
-        // GET: ProductsController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
 
-        // POST: ProductsController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: ProductsController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: ProductsController/Delete/5
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
