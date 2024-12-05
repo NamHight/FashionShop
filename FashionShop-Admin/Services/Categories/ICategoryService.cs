@@ -16,6 +16,5 @@ public interface ICategoryService
 
     Task<long> FindByNameAsync(string newCategoryName);
 
-    Task<long> FindByNameAsync(string newCategoryName);
 
 }
