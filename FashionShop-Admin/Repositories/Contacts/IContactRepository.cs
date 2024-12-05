@@ -6,7 +6,7 @@ namespace FashionShop.Repositories.Contacts
     {
         Task<List<Contact>> GetAllAsync(bool trackChanges);
         Task<Contact?> GetByIdAsync(long id, bool trackChanges);
-        void UpdateStatus(Contact contact);
+        void Edit(Contact ct);
         Task<bool> DeleteAsync(long id, bool trackChanges);
 
     }
