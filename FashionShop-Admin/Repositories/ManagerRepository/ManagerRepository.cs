@@ -9,6 +9,7 @@ using FashionShop.Repositories.Products;
 using FashionShop.Repositories.Reviews;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace FashionShop.Repositories.ManagerRepository;
 
 public class ManagerRepository : IManagerRepository
