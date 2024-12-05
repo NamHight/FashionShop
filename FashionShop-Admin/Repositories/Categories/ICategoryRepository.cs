@@ -8,4 +8,6 @@ public interface ICategoryRepository
     Task<Category?> GetByIdAsync(long id, bool trackChanges);
 
     void CreateCategoryAsync(Category category);
+
+    Task<long> FindByNameAsync(string newCategoryName);
 }

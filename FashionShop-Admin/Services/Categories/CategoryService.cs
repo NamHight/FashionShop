@@ -19,4 +19,8 @@ public class CategoryService : ICategoryService
         _managerRepository.Category.CreateCategoryAsync(category);
         await _managerRepository.SaveAsync();
     }
+    public async Task<long> FindByNameAsync(string newCategoryName)
+    {
+        return await _managerRepository.Category.FindByNameAsync(newCategoryName);
+    }
 }
