@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "HSfbFjV3SPy9Xnp4rTe5TWGLBFH8BDYSDDHycHGRyKc=",
+  "Hash": "RmUbaKm73aCQYGqkxtVafmfR2Q4xswxxdHSPHaqmH50=",
   "Source": "FashionShop",
   "BasePath": "_content/FashionShop",
   "Mode": "Default",
@@ -7997,6 +7997,27 @@
       "OriginalItemSpec": "wwwroot\\images\\change-log.svg"
     },
     {
+      "Identity": "D:\\Study\\Năm III\\DoAn\\Ver 2\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\FashionShop.jpg",
+      "SourceId": "FashionShop",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Study\\Năm III\\DoAn\\Ver 2\\FashionShop\\FashionShop-Admin\\wwwroot\\",
+      "BasePath": "_content/FashionShop",
+      "RelativePath": "images/FashionShop#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "rbsum5vrb9",
+      "Integrity": "56ThnoHvpKEyZjmz9hj1ByNhbJsMqPODBRrQLLk7HeQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\FashionShop.jpg"
+    },
+    {
       "Identity": "D:\\Study\\Năm III\\DoAn\\Ver 2\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\flag\\DE.png",
       "SourceId": "FashionShop",
       "SourceType": "Discovered",
@@ -11651,6 +11672,27 @@
       "OriginalItemSpec": "wwwroot\\uploaded\\dong.jpg"
     },
     {
+      "Identity": "D:\\Study\\Năm III\\DoAn\\Ver 2\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\FashionShop.jpg",
+      "SourceId": "FashionShop",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Study\\Năm III\\DoAn\\Ver 2\\FashionShop\\FashionShop-Admin\\wwwroot\\",
+      "BasePath": "_content/FashionShop",
+      "RelativePath": "uploaded/FashionShop#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "rbsum5vrb9",
+      "Integrity": "56ThnoHvpKEyZjmz9hj1ByNhbJsMqPODBRrQLLk7HeQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploaded\\FashionShop.jpg"
+    },
+    {
       "Identity": "D:\\Study\\Năm III\\DoAn\\Ver 2\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\hinh-dep-5.jpg",
       "SourceId": "FashionShop",
       "SourceType": "Discovered",
@@ -11733,6 +11775,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploaded\\nam.jpg"
+    },
+    {
+      "Identity": "D:\\Study\\Năm III\\DoAn\\Ver 2\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\sneakers.jpg",
+      "SourceId": "FashionShop",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Study\\Năm III\\DoAn\\Ver 2\\FashionShop\\FashionShop-Admin\\wwwroot\\",
+      "BasePath": "_content/FashionShop",
+      "RelativePath": "uploaded/sneakers#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "y73evfkx6a",
+      "Integrity": "zqJlpT+Wc2pGUzaWYbEiWGPJUlNDZY92Fo9sPnFeQBo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploaded\\sneakers.jpg"
     },
     {
       "Identity": "D:\\Study\\Năm III\\DoAn\\Ver 2\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\z5933230010950_9f1a077c92f804ad465811ab35443b1b.jpg",
@@ -42939,6 +43002,88 @@
       ]
     },
     {
+      "Route": "images/FashionShop.jpg",
+      "AssetFile": "D:\\Study\\Năm III\\DoAn\\Ver 2\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\FashionShop.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "11931"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"56ThnoHvpKEyZjmz9hj1ByNhbJsMqPODBRrQLLk7HeQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 05 Dec 2024 02:59:11 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-56ThnoHvpKEyZjmz9hj1ByNhbJsMqPODBRrQLLk7HeQ="
+        }
+      ]
+    },
+    {
+      "Route": "images/FashionShop.rbsum5vrb9.jpg",
+      "AssetFile": "D:\\Study\\Năm III\\DoAn\\Ver 2\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\FashionShop.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "11931"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"56ThnoHvpKEyZjmz9hj1ByNhbJsMqPODBRrQLLk7HeQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 05 Dec 2024 02:59:11 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "rbsum5vrb9"
+        },
+        {
+          "Name": "label",
+          "Value": "images/FashionShop.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-56ThnoHvpKEyZjmz9hj1ByNhbJsMqPODBRrQLLk7HeQ="
+        }
+      ]
+    },
+    {
       "Route": "images/flag/DE.png",
       "AssetFile": "D:\\Study\\Năm III\\DoAn\\Ver 2\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\flag\\DE.png",
       "Selectors": [],
@@ -57207,6 +57352,88 @@
       ]
     },
     {
+      "Route": "uploaded/FashionShop.jpg",
+      "AssetFile": "D:\\Study\\Năm III\\DoAn\\Ver 2\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\FashionShop.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "11931"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"56ThnoHvpKEyZjmz9hj1ByNhbJsMqPODBRrQLLk7HeQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 05 Dec 2024 02:59:11 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-56ThnoHvpKEyZjmz9hj1ByNhbJsMqPODBRrQLLk7HeQ="
+        }
+      ]
+    },
+    {
+      "Route": "uploaded/FashionShop.rbsum5vrb9.jpg",
+      "AssetFile": "D:\\Study\\Năm III\\DoAn\\Ver 2\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\FashionShop.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "11931"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"56ThnoHvpKEyZjmz9hj1ByNhbJsMqPODBRrQLLk7HeQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 05 Dec 2024 02:59:11 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "rbsum5vrb9"
+        },
+        {
+          "Name": "label",
+          "Value": "uploaded/FashionShop.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-56ThnoHvpKEyZjmz9hj1ByNhbJsMqPODBRrQLLk7HeQ="
+        }
+      ]
+    },
+    {
       "Route": "uploaded/hinh-dep-5.jpg",
       "AssetFile": "D:\\Study\\Năm III\\DoAn\\Ver 2\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\hinh-dep-5.jpg",
       "Selectors": [],
@@ -57531,6 +57758,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-Qx4S30pzv6AJeFpqQN8Sa/P6TOQw9tWyvySpTf3kSwY="
+        }
+      ]
+    },
+    {
+      "Route": "uploaded/sneakers.jpg",
+      "AssetFile": "D:\\Study\\Năm III\\DoAn\\Ver 2\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\sneakers.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10675"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"zqJlpT+Wc2pGUzaWYbEiWGPJUlNDZY92Fo9sPnFeQBo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 05 Dec 2024 02:39:43 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-zqJlpT+Wc2pGUzaWYbEiWGPJUlNDZY92Fo9sPnFeQBo="
+        }
+      ]
+    },
+    {
+      "Route": "uploaded/sneakers.y73evfkx6a.jpg",
+      "AssetFile": "D:\\Study\\Năm III\\DoAn\\Ver 2\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\sneakers.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10675"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"zqJlpT+Wc2pGUzaWYbEiWGPJUlNDZY92Fo9sPnFeQBo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 05 Dec 2024 02:39:43 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "y73evfkx6a"
+        },
+        {
+          "Name": "label",
+          "Value": "uploaded/sneakers.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-zqJlpT+Wc2pGUzaWYbEiWGPJUlNDZY92Fo9sPnFeQBo="
         }
       ]
     },

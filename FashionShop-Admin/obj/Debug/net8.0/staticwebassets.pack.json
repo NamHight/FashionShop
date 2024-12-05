@@ -1509,6 +1509,10 @@
       "PackagePath": "staticwebassets\\fonts\\icofont\\fonts\\icofontd41d.eot"
     },
     {
+      "Id": "D:\\Study\\Năm III\\DoAn\\Ver 2\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\FashionShop.jpg",
+      "PackagePath": "staticwebassets\\images\\FashionShop.jpg"
+    },
+    {
       "Id": "D:\\Study\\Năm III\\DoAn\\Ver 2\\FashionShop\\FashionShop-Admin\\wwwroot\\images\\avatar-user.webp",
       "PackagePath": "staticwebassets\\images\\avatar-user.webp"
     },
@@ -2201,6 +2205,10 @@
       "PackagePath": "staticwebassets\\uploaded\\ANT2053-1-scaled.jpg"
     },
     {
+      "Id": "D:\\Study\\Năm III\\DoAn\\Ver 2\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\FashionShop.jpg",
+      "PackagePath": "staticwebassets\\uploaded\\FashionShop.jpg"
+    },
+    {
       "Id": "D:\\Study\\Năm III\\DoAn\\Ver 2\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\anh-dep-44.jpg.webp",
       "PackagePath": "staticwebassets\\uploaded\\anh-dep-44.jpg.webp"
     },
@@ -2227,6 +2235,10 @@
     {
       "Id": "D:\\Study\\Năm III\\DoAn\\Ver 2\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\nam.jpg",
       "PackagePath": "staticwebassets\\uploaded\\nam.jpg"
+    },
+    {
+      "Id": "D:\\Study\\Năm III\\DoAn\\Ver 2\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\sneakers.jpg",
+      "PackagePath": "staticwebassets\\uploaded\\sneakers.jpg"
     },
     {
       "Id": "D:\\Study\\Năm III\\DoAn\\Ver 2\\FashionShop\\FashionShop-Admin\\wwwroot\\uploaded\\z5933230010950_9f1a077c92f804ad465811ab35443b1b.jpg",
