@@ -23,5 +23,6 @@ public interface IManagerRepository
     
     IReviewRepository Review { get; }
     ICustomerRepository Customer { get; }
+    Task<int> SaveAsyncAndNumRowEffect();
     Task SaveAsync();
 }

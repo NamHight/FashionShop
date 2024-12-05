@@ -13,4 +13,8 @@ public interface ICategoryService
     Task<bool> DeleteAsync(long id, bool trackChanges);
     Task UpdateStatusAsync(long id, string status, bool trackChanges);
 
+
+    Task<long> FindByNameAsync(string newCategoryName);
+
+
 }
