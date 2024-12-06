@@ -15,7 +15,7 @@ public partial class Role
     public int RoleId { get; set; }
 
     [Column("role_name")]
-    public string RoleName { get; set; } = null!;
+    public string? RoleName { get; set; } = null!;
 
     [Column("description", TypeName = "text")]
     public string? Description { get; set; }

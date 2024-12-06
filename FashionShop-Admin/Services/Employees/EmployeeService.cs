@@ -1,6 +1,7 @@
 ﻿using System.Security.Policy;
 using FashionShop.Models;
 using FashionShop.Models.views;
+using FashionShop.Models.views.EmployeeViewModel;
 using FashionShop.Repositories.ManagerRepository;
 
 namespace FashionShop.Services.Employees;
@@ -158,6 +159,7 @@ public class EmployeeService : IEmployeeService
             currentEmployee.Address = employee.Address;
             currentEmployee.Description = employee.Description;
             currentEmployee.Birth = employee.Birth;
+            currentEmployee.UpdatedAt = new DateTime().ToLocalTime();
             await _managerRepository.Employee.UpdateAsync(currentEmployee);
             await _managerRepository.SaveAsync();
             return true;
@@ -209,6 +211,25 @@ public class EmployeeService : IEmployeeService
             return false;
         }
         return VerifyPassword(password, employee.Password);
+    }
+
+    public async Task<EmployeeViewModel> GetPaginateAllAsync(int page, int limit, bool trackChanges)
+    {
+        var employees = await _managerRepository.Employee.GetPaginateAllAsync(page, limit, trackChanges);
+        var count = await _managerRepository.Employee.CountAsync();
+        
+        var result = new EmployeeViewModel
+        {
+            Employees =employees,
+            PagingInfo = new PagingInfo
+            {
+                TotalItems = count,
+                CurrentPage = page,
+                ItemsPerPage = limit,
+            }
+            
+        };
+        return result;
     }
 
     public void DeleteFile(string fileName, string directory)

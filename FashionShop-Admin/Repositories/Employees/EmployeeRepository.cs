@@ -19,13 +19,25 @@ public class EmployeeRepository : GenericRepo<Employee> , IEmployeeRepository
 
     public async Task<IEnumerable<Employee>> GetAllAsync(bool trackChanges)
     {
-        var employee = await FindAll(trackChanges)
+        var employees = await FindAll(trackChanges).ToListAsync();
+        return employees;
+    }
+
+    public async Task<IEnumerable<Employee>> GetPaginateAllAsync(int page, int limit,bool trackChanges)
+    {
+        var employees = await FindAll(trackChanges)
             .Include(employee => employee.Role)
             .Include(employee => employee.Store)
             .OrderByDescending(item=>item.CreatedAt)
+            .Skip((page - 1 )* limit)
             .Take(10)
             .ToListAsync();
-        return employee;
+        return employees;
+    }
+
+    public async Task<int> CountAsync()
+    {
+        return await Count();
     }
 
     public async Task<Employee?> GetByIdWithRoleAndStoreAsync(long id, bool trackChanges)
@@ -77,7 +89,6 @@ public class EmployeeRepository : GenericRepo<Employee> , IEmployeeRepository
         }
        
     }
-
     public async Task DeleteAsync(Employee employee)
     {
         throw new NotImplementedException();
