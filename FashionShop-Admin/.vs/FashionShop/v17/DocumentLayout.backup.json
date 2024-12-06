@@ -1,10 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\",
+  "WorkspaceRootPath": "D:\\Study\\N\u0103m III\\DoAn\\FashionShop\\FashionShop-Admin\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|d:\\project\\fashionshop\\fashionshop\\fashionshop-admin\\controllers\\employeescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|solutionrelative:controllers\\employeescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|d:\\study\\n\u0103m iii\\doan\\fashionshop\\fashionshop-admin\\models\\views\\ordersviewmodels\\ordersviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|solutionrelative:models\\views\\ordersviewmodels\\ordersviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|d:\\study\\n\u0103m iii\\doan\\fashionshop\\fashionshop-admin\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|solutionrelative:controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|d:\\study\\n\u0103m iii\\doan\\fashionshop\\fashionshop-admin\\views\\orders\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|solutionrelative:views\\orders\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|d:\\study\\n\u0103m iii\\doan\\fashionshop\\fashionshop-admin\\models\\ordersdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|solutionrelative:models\\ordersdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|d:\\study\\n\u0103m iii\\doan\\fashionshop\\fashionshop-admin\\services\\managerservice\\managerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|solutionrelative:services\\managerservice\\managerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,28 +30,76 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "EmployeesController.cs",
-              "DocumentMoniker": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\Controllers\\EmployeesController.cs",
-              "RelativeDocumentMoniker": "Controllers\\EmployeesController.cs",
-              "ToolTip": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\Controllers\\EmployeesController.cs",
-              "RelativeToolTip": "Controllers\\EmployeesController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAANAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "Ordersdetail.cs",
+              "DocumentMoniker": "D:\\Study\\N\u0103m III\\DoAn\\FashionShop\\FashionShop-Admin\\Models\\Ordersdetail.cs",
+              "RelativeDocumentMoniker": "Models\\Ordersdetail.cs",
+              "ToolTip": "D:\\Study\\N\u0103m III\\DoAn\\FashionShop\\FashionShop-Admin\\Models\\Ordersdetail.cs",
+              "RelativeToolTip": "Models\\Ordersdetail.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T17:55:38.269Z",
+              "WhenOpened": "2024-12-06T02:29:59.563Z",
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "OrdersViewModel.cs",
+              "DocumentMoniker": "D:\\Study\\N\u0103m III\\DoAn\\FashionShop\\FashionShop-Admin\\Models\\views\\OrdersViewModels\\OrdersViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\views\\OrdersViewModels\\OrdersViewModel.cs",
+              "ToolTip": "D:\\Study\\N\u0103m III\\DoAn\\FashionShop\\FashionShop-Admin\\Models\\views\\OrdersViewModels\\OrdersViewModel.cs",
+              "RelativeToolTip": "Models\\views\\OrdersViewModels\\OrdersViewModel.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBAAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T02:29:37.501Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "OrdersController.cs",
+              "DocumentMoniker": "D:\\Study\\N\u0103m III\\DoAn\\FashionShop\\FashionShop-Admin\\Controllers\\OrdersController.cs",
+              "RelativeDocumentMoniker": "Controllers\\OrdersController.cs",
+              "ToolTip": "D:\\Study\\N\u0103m III\\DoAn\\FashionShop\\FashionShop-Admin\\Controllers\\OrdersController.cs",
+              "RelativeToolTip": "Controllers\\OrdersController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T02:29:30.101Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\Study\\N\u0103m III\\DoAn\\FashionShop\\FashionShop-Admin\\Views\\Orders\\Details.cshtml",
+              "RelativeDocumentMoniker": "Views\\Orders\\Details.cshtml",
+              "ToolTip": "D:\\Study\\N\u0103m III\\DoAn\\FashionShop\\FashionShop-Admin\\Views\\Orders\\Details.cshtml",
+              "RelativeToolTip": "Views\\Orders\\Details.cshtml",
+              "ViewState": "AgIAABQBAAAAAAAAAAAAACsBAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-06T02:29:02.069Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ManagerService.cs",
+              "DocumentMoniker": "D:\\Study\\N\u0103m III\\DoAn\\FashionShop\\FashionShop-Admin\\Services\\ManagerService\\ManagerService.cs",
+              "RelativeDocumentMoniker": "Services\\ManagerService\\ManagerService.cs",
+              "ToolTip": "D:\\Study\\N\u0103m III\\DoAn\\FashionShop\\FashionShop-Admin\\Services\\ManagerService\\ManagerService.cs",
+              "RelativeToolTip": "Services\\ManagerService\\ManagerService.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAQwDEAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T02:23:57.55Z",
+              "EditorCaption": ""
             }
           ]
         }

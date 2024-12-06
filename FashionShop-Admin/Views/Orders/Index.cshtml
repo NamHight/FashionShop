@@ -74,7 +74,7 @@
 								@foreach (var order in Model)
 								{
 									<tr data-id="@order.OrderId">
-										<td><a asp-action="Details" asp-controller="Orders" asp-route-id="@order.OrderId"><strong>#@order.OrderId</strong></a></td>
+										<td><strong>#@order.OrderId</strong></td>
 										<td>@order.Store.StoreName</td>
 										<td>@order.Customer.CustomerName</td>
 										<td>@order.Employee.EmployeeName</td>
@@ -96,6 +96,7 @@
 										</td>
 										<td>
 											<div class="btn-group" role="group" aria-label="Basic outlined example">
+												<a asp-action="Details" asp-controller="Orders" asp-route-id="@order.OrderId" class="btn btn-outline-secondary">Details</a>
 												<button type="submit" class="btn btn-outline-secondary" id="@order.OrderId"><i class="icofont-ui-delete text-danger" id="@order.OrderId"></i></button>
 											</div>
 										</td>
