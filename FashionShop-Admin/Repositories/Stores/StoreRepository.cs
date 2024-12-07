@@ -19,6 +19,7 @@ public class StoreRepository : GenericRepo<Store>, IStoreRepository
     public async Task<IEnumerable<Store>> GetAllPaginateAsync(int page, int limit, bool trackChanges)
     {
         var stores = await FindAll(trackChanges)
+            .Include(store => store.Employees)
             .OrderByDescending(store => store.CreatedAt)
             .Skip((page - 1) * limit)
             .Take(limit)

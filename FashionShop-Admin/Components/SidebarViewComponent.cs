@@ -42,7 +42,7 @@ public class SidebarViewComponent : ViewComponent
                 new SidebarItem {title = "Analysis Products", url="/Products/Analysis"}
             }
         },
-        
+        new SidebarItem{ title = "Website Info",url="/WebsiteInfo", icon = "icofont-info" },
     };
     public async Task<IViewComponentResult> InvokeAsync()
     {

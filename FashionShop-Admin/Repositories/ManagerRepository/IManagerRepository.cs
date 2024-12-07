@@ -8,6 +8,7 @@ using FashionShop.Repositories.Products;
 using FashionShop.Repositories.Reviews;
 using FashionShop.Repositories.Orders;
 using FashionShop.Repositories.OrdersDetails;
+using FashionShop.Repositories.WebsiteInfos;
 
 namespace FashionShop.Repositories.ManagerRepository;
 
@@ -27,6 +28,7 @@ public interface IManagerRepository
     ICustomerRepository Customer { get; }
     IOrdersRepository Orders { get; }
     IOrdersDetailsRepository OrdersDetails { get; }
+    IWebsiteRepository Website { get; }
     Task<int> SaveAsyncAndNumRowEffect();
     Task SaveAsync();
 }

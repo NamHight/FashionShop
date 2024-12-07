@@ -9,6 +9,8 @@ using FashionShop.Services.Products;
 using FashionShop.Services.Reviews;
 using FashionShop.Services.Orders;
 using FashionShop.Services.OrdersDetails;
+using FashionShop.Services.WebsiteInfos;
+
 namespace FashionShop.Services.ManagerService;
 
 public class ManagerService : IManagerService
@@ -23,6 +25,7 @@ public class ManagerService : IManagerService
     private readonly Lazy<ICustomerService> _customerService;
     private readonly Lazy<IOrdersService> _ordersService;
     private readonly Lazy<IOrdersDetailsService> _ordersDetailsService;
+    private readonly Lazy<IWebsiteService> _websiteService;
 
     public ManagerService(IManagerRepository managerRepository,IWebHostEnvironment hostingEnvironment)
     {
@@ -36,6 +39,7 @@ public class ManagerService : IManagerService
         _customerService = new Lazy<ICustomerService>(()=> new CustomerService(managerRepository));
         _ordersService = new Lazy<IOrdersService>(() => new OrdersService(managerRepository));
         _ordersDetailsService = new Lazy<IOrdersDetailsService>(() => new OrdersDetailsService(managerRepository));
+        _websiteService = new Lazy<IWebsiteService>(() => new WebsiteService(managerRepository,hostingEnvironment));
     }
     
     public ICategoryService Category => _categoryService.Value;
@@ -48,5 +52,6 @@ public class ManagerService : IManagerService
     public IRoleService Role => _roleService.Value;
     public IOrdersService Orders => _ordersService.Value;
     public IOrdersDetailsService OrdersDetails => _ordersDetailsService.Value;
+    public IWebsiteService Website => _websiteService.Value;
 
 }

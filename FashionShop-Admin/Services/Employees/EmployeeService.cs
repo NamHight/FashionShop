@@ -54,7 +54,8 @@ public class EmployeeService : IEmployeeService
                 Description = employee.Description,
                 Status = employee.Status,
                 Phone = employee.Phone,
-                EmployeePosition = employee.EmployeePosition
+                EmployeePosition = employee.EmployeePosition,
+                CreatedAt = DateTime.Now
             };
             _managerRepository.Employee.CreateAsync(newEmployee);
             await _managerRepository.SaveAsync();
@@ -159,7 +160,7 @@ public class EmployeeService : IEmployeeService
             currentEmployee.Address = employee.Address;
             currentEmployee.Description = employee.Description;
             currentEmployee.Birth = employee.Birth;
-            currentEmployee.UpdatedAt = new DateTime().ToLocalTime();
+            currentEmployee.UpdatedAt = DateTime.Now;
             await _managerRepository.Employee.UpdateAsync(currentEmployee);
             await _managerRepository.SaveAsync();
             return true;

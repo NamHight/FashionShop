@@ -42,7 +42,7 @@ public partial class Product
     [Column("updated_at", TypeName = "timestamp")]
     public DateTime? UpdatedAt { get; set; }
 
-    [Column("status", TypeName = "enum('available','unavailable')")]
+    [Column("status", TypeName = "enum('available','unavailable','watting')")]
     public string? Status { get; set; }
 
     [ForeignKey("CategoryId")]
