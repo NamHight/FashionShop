@@ -1,7 +1,7 @@
 ﻿using FashionShop.Context;
 using FashionShop.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
+
 
 namespace FashionShop.Repositories.Products
 {
@@ -66,6 +66,13 @@ namespace FashionShop.Repositories.Products
         public void DeleteProduct(Product product)
         {
             Delete(product);
+        }
+
+        public async Task<int> CountByDateAsync(DateTime date, bool trackChanges)
+        {
+            var count = await FindById(product => product.CreatedAt.Value.Date.Equals(date.Date), trackChanges)
+                .CountAsync();
+            return count;
         }
     }
 }

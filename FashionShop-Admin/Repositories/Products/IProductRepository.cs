@@ -18,5 +18,6 @@ namespace FashionShop.Repositories.Products
         void UpdateProduct(Product product);
 
         void DeleteProduct(Product product);
+        Task<int> CountByDateAsync(DateTime date, bool trackChanges);
     }
 }
