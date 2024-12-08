@@ -1,5 +1,6 @@
 ﻿using FashionShop.Models.Enum;
 using FashionShop.Models.views;
+using FashionShop.Models.views.EmployeeViewModel;
 using FashionShop.Services.ManagerService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -19,9 +20,10 @@ public class EmployeesController : Controller
         _logger = logger;
     }
 
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(int page = 1, int limit = 10)
     {
-        var employees = await _managerService.Employee.GetAllAsync(false);
+        var employees = await _managerService.Employee.GetPaginateAllAsync(page,limit,false);
+        
         return View(employees);
     }
 

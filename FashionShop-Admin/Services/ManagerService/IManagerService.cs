@@ -8,6 +8,7 @@ using FashionShop.Services.Roles;
 using FashionShop.Services.Stores;
 using FashionShop.Services.Orders;
 using FashionShop.Services.OrdersDetails;
+using FashionShop.Services.WebsiteInfos;
 
 namespace FashionShop.Services.ManagerService;
 
@@ -23,4 +24,5 @@ public interface IManagerService
     ICustomerService Customer { get; }
     IOrdersService Orders { get; }
     IOrdersDetailsService OrdersDetails { get; }
+    IWebsiteService Website { get; }
 }

@@ -10,6 +10,7 @@ using FashionShop.Repositories.Reviews;
 using Microsoft.EntityFrameworkCore;
 using FashionShop.Repositories.Orders;
 using FashionShop.Repositories.OrdersDetails;
+using FashionShop.Repositories.WebsiteInfos;
 
 
 namespace FashionShop.Repositories.ManagerRepository;
@@ -28,6 +29,7 @@ public class ManagerRepository : IManagerRepository
     private readonly Lazy<ICustomerRepository> _customerRepository;
     private readonly Lazy<IOrdersRepository> _ordersRepository;
     private readonly Lazy<IOrdersDetailsRepository> _ordersDetailsRepository;
+    private readonly Lazy<IWebsiteRepository> _websiteRepository;
     public ManagerRepository(MyDbContext context)
     {
         _context = context;
@@ -41,6 +43,7 @@ public class ManagerRepository : IManagerRepository
         _customerRepository = new Lazy<ICustomerRepository> ( () => new CustomerRepository(context));
         _ordersRepository = new Lazy<IOrdersRepository>(() => new OrdersRepository(context));
         _ordersDetailsRepository = new Lazy<IOrdersDetailsRepository>(() => new OrdersDetailsRepository(context));
+        _websiteRepository = new Lazy<IWebsiteRepository>(() => new WebsiteRepository(context));
     }
     
     public ICategoryRepository Category => _categoryRepository.Value;
@@ -53,6 +56,7 @@ public class ManagerRepository : IManagerRepository
     public IOrdersDetailsRepository OrdersDetails => _ordersDetailsRepository.Value;
     public IReviewRepository Review => _reviewRepository.Value;
     public ICustomerRepository Customer => _customerRepository.Value;
+    public IWebsiteRepository Website => _websiteRepository.Value;
     public async Task SaveAsync()
     {
         await _context.SaveChangesAsync();
