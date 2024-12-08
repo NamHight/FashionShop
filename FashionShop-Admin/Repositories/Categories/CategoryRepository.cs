@@ -54,11 +54,24 @@ public class CategoryRepository : GenericRepo<Category>,ICategoryRepository
     {
         Update(category);
     }
-    public async Task<List<Category>> GetPageLinkAsync(int page, int pageSize, bool trackChanges)
+    public async Task<List<Category>> GetPageLinkAsync(int page, int pageSize, string nameSearch, bool trackChanges)
     {
-        var categories = await PageLinkAsync(page, pageSize, trackChanges);
-        return categories;
+        if (!string.IsNullOrEmpty(nameSearch))
+        {
+            return await PageLinkAsync(page, pageSize, trackChanges).Where(item => item.CategoryName.Contains(nameSearch)).ToListAsync();
+        }
+        return await PageLinkAsync(page, pageSize, trackChanges).ToListAsync();
     }
+
+    public async Task<int> GetCountAsync(string nameSearch, bool trackChanges)
+    {
+        if (!string.IsNullOrEmpty(nameSearch))
+        {
+            return await FindById(item => item.CategoryName.Contains(nameSearch),trackChanges).CountAsync();
+        }
+        return await FindAll(trackChanges).CountAsync();
+    }
+
     public async Task<long> FindByNameAsync(string newCategoryName)
     {
         var category = await _context.Categories.Where(item => item.CategoryName == newCategoryName).FirstOrDefaultAsync();
