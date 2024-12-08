@@ -16,6 +16,6 @@ html {
   list-style-type: none;
 }
 .hover:hover {
-    transform: scale(1.022);
+    transform: scale(1.02);
     box-shadow: 2px 2px 12px rgba(0,0,0,0.2), -1px -1px 8px rgba(0,0,0,0.8);
 }

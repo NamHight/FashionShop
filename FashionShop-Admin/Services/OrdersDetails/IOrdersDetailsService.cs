@@ -5,6 +5,5 @@ namespace FashionShop.Services.OrdersDetails;
 
 public interface IOrdersDetailsService
 {
-
     Task RemoveByIdOrdersDetails(long id, bool trackChanges);
 }

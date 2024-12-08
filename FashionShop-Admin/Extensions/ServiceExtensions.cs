@@ -34,6 +34,4 @@ public static class ServiceExtensions
     public static void ConfigureManagerService(this IServiceCollection services) =>
         services.AddScoped<IManagerService, ManagerService>();
     
-   
-    
 }

@@ -12,6 +12,7 @@ public class OrdersDetailsService : IOrdersDetailsService
     public OrdersDetailsService(IManagerRepository managerRepository) {
         _managerRepository = managerRepository;
     }
+
     public async Task RemoveByIdOrdersDetails(long id, bool trackChanges)
     {
         try

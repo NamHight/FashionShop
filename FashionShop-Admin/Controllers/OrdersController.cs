@@ -43,13 +43,12 @@ namespace FashionShop.Controllers
             return Json(new { status = 201, data = result, message = "Update status thanh công" });
         }
 
-        [HttpDelete]
-        public async Task<JsonResult> RemoveById(long id)
+        public async Task<IActionResult> RemoveById(long id)
         {
             try
             {
                 await _managerService.Orders.RemoveIdOrders(id, false);
-                return Json(new { status = 201, message = "Xoá thành công" });
+                return RedirectToAction("Index");
             }
             catch(Exception error)
             {
@@ -57,5 +56,6 @@ namespace FashionShop.Controllers
                 return Json(new { message = error.Message });
             } 
         }
+        
     }
 }
