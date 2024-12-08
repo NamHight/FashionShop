@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using FashionShop.Models;
+using FashionShop.Services.ManagerService;
 using Microsoft.AspNetCore.Authorization;
 
 namespace FashionShop.Controllers;
@@ -8,11 +9,13 @@ namespace FashionShop.Controllers;
 [Authorize]
 public class DashboardController : Controller
 {
+    private readonly IManagerService _managerService;
     private readonly ILogger<DashboardController> _logger;
 
-    public DashboardController(ILogger<DashboardController> logger)
+    public DashboardController(ILogger<DashboardController> logger,IManagerService managerService)
     {
         _logger = logger;
+        _managerService = managerService;
     }
 
     public IActionResult Index()

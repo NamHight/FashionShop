@@ -188,14 +188,23 @@ namespace FashionShop.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<ActionResult> Delete(int id, IFormCollection collection)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                if (await _managerService.Product.DeleteProductAsync(id))
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    Console.WriteLine($"Loi truy van loi");
+                    return NotFound();
+                }
             }
-            catch
+            catch (Exception ex)
             {
+                Console.WriteLine($"Loi {ex}");
                 return View();
             }
         }

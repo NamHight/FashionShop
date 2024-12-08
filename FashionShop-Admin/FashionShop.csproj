@@ -28,6 +28,7 @@
     
     <ItemGroup>
       <_ContentIncludedByDefault Remove="Services\Authenticate\Login.cshtml" />
+      <_ContentIncludedByDefault Remove="Pages\WebsiteInfo\Index.cshtml" />
     </ItemGroup>
     
 </Project>

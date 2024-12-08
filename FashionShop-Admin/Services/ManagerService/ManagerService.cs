@@ -4,10 +4,13 @@ using FashionShop.Services.Contacts;
 using FashionShop.Services.Employees;
 using FashionShop.Services.Roles;
 using FashionShop.Services.Stores;
-
 using FashionShop.Services.Customers;
 using FashionShop.Services.Products;
 using FashionShop.Services.Reviews;
+using FashionShop.Services.Orders;
+using FashionShop.Services.OrdersDetails;
+using FashionShop.Services.WebsiteInfos;
+
 namespace FashionShop.Services.ManagerService;
 
 public class ManagerService : IManagerService
@@ -20,7 +23,10 @@ public class ManagerService : IManagerService
     private readonly Lazy<IProductService> _productService;
     private readonly Lazy<IReviewService> _reviewService;
     private readonly Lazy<ICustomerService> _customerService;
-    
+    private readonly Lazy<IOrdersService> _ordersService;
+    private readonly Lazy<IOrdersDetailsService> _ordersDetailsService;
+    private readonly Lazy<IWebsiteService> _websiteService;
+
     public ManagerService(IManagerRepository managerRepository,IWebHostEnvironment hostingEnvironment)
     {
         _categoryService = new Lazy<ICategoryService>(() => new CategoryService(managerRepository));
@@ -31,6 +37,9 @@ public class ManagerService : IManagerService
         _productService = new Lazy<IProductService>(() => new ProductService(managerRepository));
         _reviewService = new Lazy<IReviewService>(()=> new ReviewService(managerRepository));
         _customerService = new Lazy<ICustomerService>(()=> new CustomerService(managerRepository));
+        _ordersService = new Lazy<IOrdersService>(() => new OrdersService(managerRepository));
+        _ordersDetailsService = new Lazy<IOrdersDetailsService>(() => new OrdersDetailsService(managerRepository));
+        _websiteService = new Lazy<IWebsiteService>(() => new WebsiteService(managerRepository,hostingEnvironment));
     }
     
     public ICategoryService Category => _categoryService.Value;
@@ -38,10 +47,11 @@ public class ManagerService : IManagerService
     public IContactService Contact => _contactService.Value;
     public IReviewService Review => _reviewService.Value;
     public ICustomerService Customer => _customerService.Value;
-
     public IEmployeeService Employee => _employeeService.Value;
     public IStoreService Store => _storeService.Value;
-
     public IRoleService Role => _roleService.Value;
+    public IOrdersService Orders => _ordersService.Value;
+    public IOrdersDetailsService OrdersDetails => _ordersDetailsService.Value;
+    public IWebsiteService Website => _websiteService.Value;
 
 }

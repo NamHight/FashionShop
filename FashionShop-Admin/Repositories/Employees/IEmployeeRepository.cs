@@ -12,4 +12,6 @@ public interface IEmployeeRepository
     Task<Employee?> GetById(long id, bool trackChanges);
     Task UpdateAsync(Employee employee);
     Task DeleteAsync(Employee employee);
+    Task<IEnumerable<Employee>> GetPaginateAllAsync(int page, int limit, bool trackChanges);
+    Task<int> CountAsync();
 }

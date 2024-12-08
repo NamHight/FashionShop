@@ -1,25 +1,51 @@
-# Ignore build output directories
-bin/
-obj/
-
-# Ignore specific files
-*.dll
-*.exe
-*.pdb
-*.cache
-*.json
-*.nuget.g.props
-
-# Ignore Visual Studio and IDE-specific files
-.vs/
-*.user
-*.suo
-
-# Ignore temporary files
-*.tmp
-*.temp
+# Bỏ qua tất cả file log
 *.log
 
+# Bỏ qua thư mục node_modules
 node_modules/
-/FashionShop-Admin/obj/Debug/net8.0/FashionShop.AssemblyInfoInputs.cache
-/FashionShop-Admin/obj/Debug/net8.0/FashionShop.AssemblyInfo.cs
+
+# Bỏ qua thư mục tạm thời
+/tmp
+
+# Bỏ qua file IDE cấu hình
+.idea/
+.vscode/
+
+# Debug files
+bin/
+obj/
+*.pdb
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code settings
+.vscode/
+*.code-workspace
+
+# Rider settings
+.idea/
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*.obj
+*.pyc
+*.class
+*.idb
+*.ilk
+*.tlog
+/FashionShop-Admin/.vs/FashionShop/FileContentIndex/2181e909-dbf8-4dfc-b258-5c97346d0833.vsidx
+/FashionShop-Admin/.vs/FashionShop/FileContentIndex/2ca63ebf-723f-4626-902f-c28e394bbfdf.vsidx
+/FashionShop-Admin/.vs/FashionShop/FileContentIndex/72ae3b1e-ae98-4721-a1e2-c53ddddf3c6d.vsidx
+/FashionShop-Admin/.vs/FashionShop/FileContentIndex/7fe972ad-57f8-4c66-a6e2-f4ae40c6fa41.vsidx
+/FashionShop-Admin/.vs/FashionShop/FileContentIndex/98aa3bf8-b549-40bf-b86b-26a17fdf91ed.vsidx
+/FashionShop-Admin/.vs/FashionShop/FileContentIndex
+/FashionShop-Admin/.vs/FashionShop/FileContentIndex/aaddb0ee-40d0-4101-911b-b5fd4b7c17a2.vsidx
+/FashionShop-Admin/.vs/ProjectEvaluation/fashionshop.metadata.v9.bin
+/FashionShop-Admin/.vs/ProjectEvaluation/fashionshop.projects.v9.bin
+/FashionShop-Admin/.vs/ProjectEvaluation/fashionshop.strings.v9.bin

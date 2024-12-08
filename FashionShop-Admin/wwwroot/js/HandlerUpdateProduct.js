@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function handleUpdateProduct() {
         //  Khi DataTables vẽ lại, các phần tử select được thay thế, nhưng container cha (bảng) vẫn giữ nguyên.
         //Gắn sự kiện vào container cha sẽ đảm bảo tất cả các phần tử con mới được tạo đều kế thừa sự kiện.
-        $('#myDataTable').on("mouseenter", "select", function () { 
+        $('#myDataTable').on("mouseenter", "select", function () {
             //e.preventDefault();
             oldValue = $(this).val();
             console.log("gia tri cu la", oldValue);
@@ -39,6 +39,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 cancelButtonText: "No",
             }).then((result) => {   // Phần 2 xử lý nếu người dùng đồng ý hoặc không đồng ý
                 if (result.isConfirmed) {
+                    if (action === "UpdateStatus") {
+                        var oldClass = select.attr('class').slice(6);
+                        if (newData == "available") {
+                            select.removeClass(oldClass).addClass("bg-success");
+                        } else if (newData == "watting") {
+                            select.removeClass(oldClass).addClass("bg-warning");
+                        } else {
+                            select.removeClass(oldClass).addClass("bg-danger");
+                        }
+                    }
                     $.ajax({
                         method: "POST",
                         url: `Products/${action}`,
@@ -68,13 +78,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Khởi tạo dataTable với element table
     const table = $('#myDataTable')
-            .addClass('nowrap')
-            .dataTable({
-                responsive: true,
-                columnDefs: [
-                    { targets: [-1, -3], className: 'dt-body-right' }
-                ]
-            });
+        .addClass('nowrap')
+        .dataTable({
+            ordering: false,
+            responsive: true,
+            columnDefs: [
+                { targets: [-1, -3], className: 'dt-body-right' }
+            ]
+        });
 
     $('.deleterow').on('click', function () {
         var tablename = $(this).closest('table').DataTable();
@@ -87,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Gọi hàm gắn sự kiện ngay sau khi bảng được tải lần đầu
     handleUpdateProduct();
-    
+
     // Gắn lại sự kiện mỗi khi bảng được vẽ lại, bao nhiêu hàm xử lý thì cần gọi lại bấy nhiêu hàm trong sự kiện draw
     table.on('draw', function () {
         handleUpdateProduct();

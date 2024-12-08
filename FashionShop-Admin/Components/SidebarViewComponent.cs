@@ -14,6 +14,7 @@ public class SidebarViewComponent : ViewComponent
         new SidebarItem{ title = "Categories",url="/Categories", icon = "icofont-folder" },
         new SidebarItem{ title = "Employees",url="/Employees", icon = "icofont-users" },
         new SidebarItem{ title = "Contacts",url="/Contacts", icon = "icofont-contacts" },
+        new SidebarItem{ title = "Roles",url="/Roles", icon = "icofont-police" },
         new SidebarItem
         { 
             title = "Stores", url = "/Stores", icon = "icofont-brand-appstore",
@@ -41,7 +42,7 @@ public class SidebarViewComponent : ViewComponent
                 new SidebarItem {title = "Analysis Products", url="/Products/Analysis"}
             }
         },
-        
+        new SidebarItem{ title = "Website Info",url="/WebsiteInfo", icon = "icofont-info" },
     };
     public async Task<IViewComponentResult> InvokeAsync()
     {

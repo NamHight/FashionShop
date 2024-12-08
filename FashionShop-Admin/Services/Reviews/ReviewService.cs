@@ -6,7 +6,6 @@ namespace FashionShop.Services.Reviews
     public class ReviewService : IReviewService
     {
         private readonly IManagerRepository _managerRepository;
-
         public ReviewService(IManagerRepository managerRepository)
         {
             _managerRepository = managerRepository;
