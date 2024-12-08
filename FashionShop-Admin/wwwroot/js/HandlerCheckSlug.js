@@ -26,8 +26,8 @@ function handleCheckSlug() {
         success: function (res) {
             if (res.statusCode == 0) {
                 $("#errorSlug").text("Vui long nhap lai ten san pham, vi slug nay da ton tai");
-                $("#ProductName").val("");
-                $("#Slug").val("");
+                /*$("#ProductName").val("");*/
+                /* $("#Slug").val("");*/
                 $("#ProductName").focus();
             } else {
                 $("#errorSlug").text("");
