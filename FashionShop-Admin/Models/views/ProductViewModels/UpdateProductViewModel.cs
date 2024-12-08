@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FashionShop.Models.views.ProductViewModels
 {
@@ -19,7 +20,7 @@ namespace FashionShop.Models.views.ProductViewModels
 
         public string? Description { get; set; }
 
-      
+
         [Precision(10, 2)]
         [Required(ErrorMessage = "Không được để trống giá sản phẩm")]
         public decimal? Price { get; set; }
