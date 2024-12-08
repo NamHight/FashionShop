@@ -43,4 +43,9 @@ public abstract class GenericRepo<T> : IGenericRepo<T> where T : class
         _context.Set<T>().Remove(entity);
     }
 
+
+    public Task<int> Count()
+    {
+        return _context.Set<T>().AsNoTracking().CountAsync();
+    }
 }

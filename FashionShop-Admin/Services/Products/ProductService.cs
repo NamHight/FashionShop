@@ -113,5 +113,14 @@ namespace FashionShop.Services.Products
             };
             return result;
         }
+
+        public async Task<bool> DeleteProductAsync(int productId)
+        {
+            Product product = await _managerRepository.Product.GetByIdAsync(productId, false);
+            _managerRepository.Product.DeleteProduct(product);
+            int numRowEffect = await _managerRepository.SaveAsyncAndNumRowEffect();
+            if (numRowEffect > 0) return true;
+            return false;
+        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using FashionShop.Context;
 using FashionShop.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
+
 
 namespace FashionShop.Repositories.Products
 {
@@ -13,7 +13,7 @@ namespace FashionShop.Repositories.Products
 
         public async Task<List<Product>> GetAllAsync(bool trackChanges)
         {
-            var products = await FindAll(trackChanges).ToListAsync();
+            var products = await FindAll(trackChanges).OrderByDescending(e => e.ProductId).ToListAsync();
             return products;
         }
 
@@ -77,6 +77,18 @@ namespace FashionShop.Repositories.Products
                 return await FindById(item => item.ProductName.Contains(nameSearch), trackChanges).CountAsync();
             }
             return await FindAll(trackChanges).CountAsync();
+        }
+
+        public void DeleteProduct(Product product)
+        {
+            Delete(product);
+        }
+
+        public async Task<int> CountByDateAsync(DateTime date, bool trackChanges)
+        {
+            var count = await FindById(product => product.CreatedAt.Value.Date.Equals(date.Date), trackChanges)
+                .CountAsync();
+            return count;
         }
     }
 }
