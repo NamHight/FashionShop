@@ -13,7 +13,7 @@ namespace FashionShop.Repositories.Products
 
         public async Task<List<Product>> GetAllAsync(bool trackChanges)
         {
-            var products = await FindAll(trackChanges).ToListAsync();
+            var products = await FindAll(trackChanges).OrderByDescending(e => e.ProductId).ToListAsync();
             return products;
         }
 
@@ -61,6 +61,11 @@ namespace FashionShop.Repositories.Products
         public void UpdateProduct(Product product)
         {
             Update(product);
+        }
+
+        public void DeleteProduct(Product product)
+        {
+            Delete(product);
         }
     }
 }

@@ -2,7 +2,6 @@
 using FashionShop.Models.views.ProductViewModels;
 using FashionShop.Repositories.ManagerRepository;
 
-
 namespace FashionShop.Services.Products
 {
     public class ProductService : IProductService
@@ -90,6 +89,15 @@ namespace FashionShop.Services.Products
             product.Description = abc.Description;
             product.CategoryId = await _managerRepository.Category.FindByNameAsync(abc.CategoryName);
             _managerRepository.Product.UpdateProduct(product);
+            int numRowEffect = await _managerRepository.SaveAsyncAndNumRowEffect();
+            if (numRowEffect > 0) return true;
+            return false;
+        }
+
+        public async Task<bool> DeleteProductAsync(int productId)
+        {
+            Product product = await _managerRepository.Product.GetByIdAsync(productId, false);
+            _managerRepository.Product.DeleteProduct(product);
             int numRowEffect = await _managerRepository.SaveAsyncAndNumRowEffect();
             if (numRowEffect > 0) return true;
             return false;
