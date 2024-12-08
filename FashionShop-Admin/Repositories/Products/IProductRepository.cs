@@ -16,5 +16,7 @@ namespace FashionShop.Repositories.Products
         Task UpdateStatusAsync(string newData, long idProduct, bool trackChanges);
 
         void UpdateProduct(Product product);
+        Task<List<Product>> GetPageLinkAsync(int page, int pageSize, string nameSearch, bool trackChanges);
+        Task<int> GetCountAsync(string nameSearch, bool trackChanges);
     }
 }

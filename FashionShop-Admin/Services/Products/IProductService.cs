@@ -20,5 +20,7 @@ namespace FashionShop.Services.Products
         Task<Product?> GetByIdAsync(long id, bool trackChanges);
 
         Task<bool> UpdateProductAsync(int id, UpdateProductViewModel abc, string image);
+
+        Task<ProductViewModel> GetPageLinkAsync(string nameSearch, int page, int pageSize, bool trackChanges);
     }
 }

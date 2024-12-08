@@ -1,10 +1,82 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\",
+  "WorkspaceRootPath": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|d:\\project\\fashionshop\\fashionshop\\fashionshop-admin\\controllers\\employeescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|solutionrelative:controllers\\employeescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|d:\\doanweb\\doannhom\\fashionshop\\fashionshop-admin\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|solutionrelative:controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|d:\\doanweb\\doannhom\\fashionshop\\fashionshop-admin\\views\\products\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|solutionrelative:views\\products\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|d:\\doanweb\\doannhom\\fashionshop\\fashionshop-admin\\views\\reviews\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|solutionrelative:views\\reviews\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|d:\\doanweb\\doannhom\\fashionshop\\fashionshop-admin\\views\\contacts\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|solutionrelative:views\\contacts\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|d:\\doanweb\\doannhom\\fashionshop\\fashionshop-admin\\services\\products\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|solutionrelative:services\\products\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|d:\\doanweb\\doannhom\\fashionshop\\fashionshop-admin\\services\\products\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|solutionrelative:services\\products\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|d:\\doanweb\\doannhom\\fashionshop\\fashionshop-admin\\repositories\\products\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|solutionrelative:repositories\\products\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|d:\\doanweb\\doannhom\\fashionshop\\fashionshop-admin\\models\\views\\productviewmodels\\productviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|solutionrelative:models\\views\\productviewmodels\\productviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|d:\\doanweb\\doannhom\\fashionshop\\fashionshop-admin\\repositories\\categories\\icategoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|solutionrelative:repositories\\categories\\icategoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|d:\\doanweb\\doannhom\\fashionshop\\fashionshop-admin\\services\\reviews\\ireviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|solutionrelative:services\\reviews\\ireviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|d:\\doanweb\\doannhom\\fashionshop\\fashionshop-admin\\repositories\\products\\iproductrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|solutionrelative:repositories\\products\\iproductrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|d:\\doanweb\\doannhom\\fashionshop\\fashionshop-admin\\repositories\\reviews\\ireviewrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|solutionrelative:repositories\\reviews\\ireviewrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|d:\\doanweb\\doannhom\\fashionshop\\fashionshop-admin\\models\\views\\categoryviewmodels\\categoryviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|solutionrelative:models\\views\\categoryviewmodels\\categoryviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|d:\\doanweb\\doannhom\\fashionshop\\fashionshop-admin\\models\\views\\reviewviewmodels\\reviewviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|solutionrelative:models\\views\\reviewviewmodels\\reviewviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|d:\\doanweb\\doannhom\\fashionshop\\fashionshop-admin\\services\\categories\\icategoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|solutionrelative:services\\categories\\icategoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|d:\\doanweb\\doannhom\\fashionshop\\fashionshop-admin\\controllers\\reviewscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|solutionrelative:controllers\\reviewscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|d:\\doanweb\\doannhom\\fashionshop\\fashionshop-admin\\components\\sidebarviewcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|solutionrelative:components\\sidebarviewcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|d:\\doanweb\\doannhom\\fashionshop\\fashionshop-admin\\repositories\\genericrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|solutionrelative:repositories\\genericrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|d:\\doanweb\\doannhom\\fashionshop\\fashionshop-admin\\repositories\\igenericrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|solutionrelative:repositories\\igenericrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,28 +86,238 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 6,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Views\\Reviews\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Reviews\\Index.cshtml",
+              "ToolTip": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Views\\Reviews\\Index.cshtml",
+              "RelativeToolTip": "Views\\Reviews\\Index.cshtml",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAAAHcAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-06T14:21:04.619Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Views\\Products\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Products\\Index.cshtml",
+              "ToolTip": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Views\\Products\\Index.cshtml",
+              "RelativeToolTip": "Views\\Products\\Index.cshtml",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAswGcAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-06T14:18:20.311Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ProductService.cs",
+              "DocumentMoniker": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Services\\Products\\ProductService.cs",
+              "RelativeDocumentMoniker": "Services\\Products\\ProductService.cs",
+              "ToolTip": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Services\\Products\\ProductService.cs",
+              "RelativeToolTip": "Services\\Products\\ProductService.cs",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAIwG4AAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T14:06:32.032Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IProductService.cs",
+              "DocumentMoniker": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Services\\Products\\IProductService.cs",
+              "RelativeDocumentMoniker": "Services\\Products\\IProductService.cs",
+              "ToolTip": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Services\\Products\\IProductService.cs",
+              "RelativeToolTip": "Services\\Products\\IProductService.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAA1wBcAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T14:03:31.485Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ProductRepository.cs",
+              "DocumentMoniker": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Repositories\\Products\\ProductRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\Products\\ProductRepository.cs",
+              "ToolTip": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Repositories\\Products\\ProductRepository.cs",
+              "RelativeToolTip": "Repositories\\Products\\ProductRepository.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAADwv1AAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T13:55:30.72Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "IProductRepository.cs",
+              "DocumentMoniker": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Repositories\\Products\\IProductRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\Products\\IProductRepository.cs",
+              "ToolTip": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Repositories\\Products\\IProductRepository.cs",
+              "RelativeToolTip": "Repositories\\Products\\IProductRepository.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAgwBMAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T13:53:37.177Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "EmployeesController.cs",
-              "DocumentMoniker": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\Controllers\\EmployeesController.cs",
-              "RelativeDocumentMoniker": "Controllers\\EmployeesController.cs",
-              "ToolTip": "D:\\Project\\FashionShop\\FashionShop\\FashionShop-Admin\\Controllers\\EmployeesController.cs",
-              "RelativeToolTip": "Controllers\\EmployeesController.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAqwCYAAAAIAAAAAAAAAA==",
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProductsController.cs",
+              "ToolTip": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Controllers\\ProductsController.cs",
+              "RelativeToolTip": "Controllers\\ProductsController.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAABgAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T17:55:38.269Z",
+              "WhenOpened": "2024-12-06T13:48:10.304Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ProductViewModel.cs",
+              "DocumentMoniker": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Models\\views\\ProductViewModels\\ProductViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\views\\ProductViewModels\\ProductViewModel.cs",
+              "ToolTip": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Models\\views\\ProductViewModels\\ProductViewModel.cs",
+              "RelativeToolTip": "Models\\views\\ProductViewModels\\ProductViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T14:11:05.922Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Views\\Contacts\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Contacts\\Index.cshtml",
+              "ToolTip": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Views\\Contacts\\Index.cshtml",
+              "RelativeToolTip": "Views\\Contacts\\Index.cshtml",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA4AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-06T14:23:31.491Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ICategoryRepository.cs",
+              "DocumentMoniker": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Repositories\\Categories\\ICategoryRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\Categories\\ICategoryRepository.cs",
+              "ToolTip": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Repositories\\Categories\\ICategoryRepository.cs",
+              "RelativeToolTip": "Repositories\\Categories\\ICategoryRepository.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAQwA4AAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T13:22:56.466Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IReviewService.cs",
+              "DocumentMoniker": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Services\\Reviews\\IReviewService.cs",
+              "RelativeDocumentMoniker": "Services\\Reviews\\IReviewService.cs",
+              "ToolTip": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Services\\Reviews\\IReviewService.cs",
+              "RelativeToolTip": "Services\\Reviews\\IReviewService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T03:46:16.476Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "CategoryViewModel.cs",
+              "DocumentMoniker": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Models\\views\\CategoryViewModels\\CategoryViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\views\\CategoryViewModels\\CategoryViewModel.cs",
+              "ToolTip": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Models\\views\\CategoryViewModels\\CategoryViewModel.cs",
+              "RelativeToolTip": "Models\\views\\CategoryViewModels\\CategoryViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAkAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T13:33:06.666Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "IReviewRepository.cs",
+              "DocumentMoniker": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Repositories\\Reviews\\IReviewRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\Reviews\\IReviewRepository.cs",
+              "ToolTip": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Repositories\\Reviews\\IReviewRepository.cs",
+              "RelativeToolTip": "Repositories\\Reviews\\IReviewRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T03:44:19.419Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ICategoryService.cs",
+              "DocumentMoniker": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Services\\Categories\\ICategoryService.cs",
+              "RelativeDocumentMoniker": "Services\\Categories\\ICategoryService.cs",
+              "ToolTip": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Services\\Categories\\ICategoryService.cs",
+              "RelativeToolTip": "Services\\Categories\\ICategoryService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAABqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T13:32:12.726Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ReviewViewModel.cs",
+              "DocumentMoniker": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Models\\views\\ReviewViewModels\\ReviewViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\views\\ReviewViewModels\\ReviewViewModel.cs",
+              "ToolTip": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Models\\views\\ReviewViewModels\\ReviewViewModel.cs",
+              "RelativeToolTip": "Models\\views\\ReviewViewModels\\ReviewViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T03:47:32.369Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ReviewsController.cs",
+              "DocumentMoniker": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Controllers\\ReviewsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ReviewsController.cs",
+              "ToolTip": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Controllers\\ReviewsController.cs",
+              "RelativeToolTip": "Controllers\\ReviewsController.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAA+wBUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T03:46:49.807Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "SidebarViewComponent.cs",
+              "DocumentMoniker": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Components\\SidebarViewComponent.cs",
+              "RelativeDocumentMoniker": "Components\\SidebarViewComponent.cs",
+              "ToolTip": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Components\\SidebarViewComponent.cs",
+              "RelativeToolTip": "Components\\SidebarViewComponent.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAAwDcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T03:48:11.655Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "GenericRepo.cs",
+              "DocumentMoniker": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Repositories\\GenericRepo.cs",
+              "RelativeDocumentMoniker": "Repositories\\GenericRepo.cs",
+              "ToolTip": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Repositories\\GenericRepo.cs",
+              "RelativeToolTip": "Repositories\\GenericRepo.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAswCIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T03:43:58.492Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "IGenericRepo.cs",
+              "DocumentMoniker": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Repositories\\IGenericRepo.cs",
+              "RelativeDocumentMoniker": "Repositories\\IGenericRepo.cs",
+              "ToolTip": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Repositories\\IGenericRepo.cs",
+              "RelativeToolTip": "Repositories\\IGenericRepo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T03:43:47.345Z"
             }
           ]
         }

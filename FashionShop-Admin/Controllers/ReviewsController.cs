@@ -15,32 +15,17 @@ namespace FashionShop.Controllers
             _logger = logger;
         }
 
-        public async Task<IActionResult> Index(int Page = 1, int PageSize = 10)
+        public async Task<IActionResult> Index(string nameSearch, int page = 1, int pageSize = 10)
         {
-            var reviewPages = await _serviceManager.Review.GetPageLinkAsync(Page, PageSize, trackChanges : false);
-            var reviews = await _serviceManager.Review.GetAllAsync(trackChanges: false);
-            var result = new ReviewViewModel
-            {
-                Reviews = reviewPages,
-                Products = await _serviceManager.Product.GetAllAsync(trackChanges: false),
-                Customers = await _serviceManager.Customer.GetAllAsync(trackChanges: false),
-                PagingInfo = new PagingInfo
-                {
-                    TotalItems = reviews.Count(),
-                    ItemsPerPage = PageSize,
-                    CurrentPage = Page,
-                }
-            };
+            var result = await _serviceManager.Review.GetPageLinkAsync(nameSearch, page, pageSize, trackChanges: false);
             return View(result);
         }
         [HttpPost]
-        public async Task<IActionResult> UpdateState(long reviewId,string newState)
+        public async Task<IActionResult> UpdateState(long reviewId, string newState)
         {
-            var result = await _serviceManager.Review.GetByIdAsync(reviewId, trackChanges: true);
-            if (result != null)
+            var result = await _serviceManager.Review.UpdateReview(reviewId, newState, trackChanges: true);
+            if (result)
             {
-                result.Status = newState;
-                await _serviceManager.Review.UpdateReview(result);
                 return Json(new { success = true, message = "Trạng thái đã được cập nhật!" });
             }
             return Json(new { success = false, message = "Không tìm thấy đánh giá cần đổi trạng thái!" });
@@ -49,12 +34,9 @@ namespace FashionShop.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(long ReviewId)
         {
-            var result = await _serviceManager.Review.GetByIdAsync(ReviewId, trackChanges: false);
-            if (result != null)
-            {
-                await _serviceManager.Review.DeleteReview(result);
-            }
+            await _serviceManager.Review.DeleteReview(ReviewId, trackChanges: false);
             return RedirectToAction("Index");
         }
+
     }
 }

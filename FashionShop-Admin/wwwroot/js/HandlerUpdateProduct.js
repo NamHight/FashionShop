@@ -66,30 +66,33 @@ document.addEventListener("DOMContentLoaded", function () {
         })
     }
 
-    // Khởi tạo dataTable với element table
-    const table = $('#myDataTable')
-            .addClass('nowrap')
-            .dataTable({
-                responsive: true,
-                columnDefs: [
-                    { targets: [-1, -3], className: 'dt-body-right' }
-                ]
-            });
+    //// Khởi tạo dataTable với element table
+    //const table = $('#myDataTable')
+    //        .addClass('nowrap')
+    //        .dataTable({
+    //            paging: false,
+    //            searching: false,
+    //            lengthChange: false,
+    //            responsive: false,
+    //            columnDefs: [
+    //                { targets: [-1, -3], className: 'dt-body-right' }
+    //            ]
+    //        });
 
-    $('.deleterow').on('click', function () {
-        var tablename = $(this).closest('table').DataTable();
-        tablename
-            .row($(this)
-                .parents('tr'))
-            .remove()
-            .draw();
-    });
+    //$('.deleterow').on('click', function () {
+    //    var tablename = $(this).closest('table').DataTable();
+    //    tablename
+    //        .row($(this)
+    //            .parents('tr'))
+    //        .remove()
+    //        .draw();
+    //});
 
     // Gọi hàm gắn sự kiện ngay sau khi bảng được tải lần đầu
     handleUpdateProduct();
     
     // Gắn lại sự kiện mỗi khi bảng được vẽ lại, bao nhiêu hàm xử lý thì cần gọi lại bấy nhiêu hàm trong sự kiện draw
-    table.on('draw', function () {
-        handleUpdateProduct();
-    });
+    //table.on('draw', function () {
+    //    handleUpdateProduct();
+    //});
 })

@@ -3,33 +3,12 @@
     ViewBag.Title = "Reviews List";
 }
 @section Styles {
-    <!-- plugin css file  -->
-    <link rel="stylesheet" href="/plugin/datatables/responsive.dataTables.min.css">
-    <link rel="stylesheet" href="/plugin/datatables/dataTables.bootstrap5.min.css">
+   
 }
 @section Scripts {
-    <script src="~/bundles/dataTables.bundle.js"></script>
     <script>
-        // $('#myDataTable')
-        //     .addClass('nowrap')
-        //     .dataTable({
-        //         searching:false,
-        //         paging: false,
-        //         responsive: true,
-        //         columnDefs: [
-        //             { targets: [-1, -3], className: 'dt-body-right' }
-        //         ]
-        //     });
-        // $('.deleterow').on('click', function () {
-        //     var tablename = $(this).closest('table').DataTable();
-        //     tablename
-        //         .row($(this)
-        //             .parents('tr'))
-        //         .remove()
-        //         .draw();
-
-        // });
         $(document).on("change", ".state-update", function () {
+            var $this = $(this);
             var reviewId = $(this).data("id");
             var newState = $(this).val();
             $.ajax({
@@ -39,6 +18,16 @@
                 success: function (response) {
                     if (response.success) {
                         alert(response.message);
+                        $this.removeClass("bg-success bg-warning bg-danger");
+                        if (newState === "approved") {
+                            $this.addClass("bg-success");
+                        }
+                        else if (newState === "pending") {
+                            $this.addClass("bg-warning");
+                        }
+                        else if (newState === "rejected") {
+                            $this.addClass("bg-danger")
+                        }
                     } else {
                         alert("Errors : " + response.message);
                     }
@@ -63,6 +52,16 @@
         <div class="row g-3 mb-3">
             <div class="col-md-12">
                 <div class="card">
+                    <div class="card-header">
+                        <div style="float:left">
+                            <form asp-action="Index" method="get">
+                                <div class="input-group">
+                                    <input name="nameSearch" placeholder="Search for name..." />
+                                    <input type="submit" value="Search" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                     <div class="card-body">
                         <table id="myDataTable" class="table table-hover align-middle mb-0" style="width: 100%;">
                             <thead>
@@ -80,7 +79,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach(var review in Model?.Reviews!)
+                                @foreach (var review in Model?.Reviews!)
+
                                 {
                                     <tr id="row-@review.ReviewId">
                                         <td><strong>@review.ReviewId</strong></td>
@@ -88,37 +88,19 @@
                                         <td>@review.ReviewText</td>
                                         <td>@review.ReviewDate</td>
                                         <td>
-                                            @foreach(var product in Model?.Products!)
-                                            {
-                                                @if(product.ProductId == review.ProductId){
-                                                    @product.ProductName
-                                                }
-                                            }
+                                            @review.Product?.ProductName
                                         </td>
                                         <td>
-                                            @foreach(var customer in Model?.Customers!)
-                                            {
-                                                @if(customer.CustomerId == review.CustomerId)
-                                                {
-                                                    @customer.CustomerName
-                                                }
-                                            }
+                                            @review.Customer?.CustomerName
                                         </td>
                                         <td>@review.CreatedAt</td>
                                         <td>@review.UpdatedAt</td>
                                         <td>
-                                            @{
-                                                string color = @review.Status switch
-                                                {
-                                                    "approved" => "bg-success",
-                                                    "pending" => "bg-warning",
-                                                    "rejected" => "bg-danger"
-                                                };
-                                            }
-                                            <select data-id="@review.ReviewId" class="text-white @color state-update" >
-                                                <option selected="@((review.Status == "approved") ? true : false)">approved</option>
-                                                <option selected="@((review.Status == "pending") ? true : false)">pending</option>
-                                                <option selected="@((review.Status == "rejected") ? true : false)">rejected</option>
+
+                                            <select data-id="@review.ReviewId" class="text-white state-update @(review.Status == "approved" ? "bg-success" : review.Status == "pending" ? "bg-warning" : "bg-danger")">
+                                                <option selected="@((review.Status == "approved") ? true : false)" class="bg-success">approved</option>
+                                                <option selected="@((review.Status == "pending") ? true : false)" class="bg-warning">pending</option>
+                                                <option selected="@((review.Status == "rejected") ? true : false)" class="bg-danger">rejected</option>
                                             </select>
                                         </td>
                                         <td>
@@ -131,7 +113,7 @@
                                 }
                             </tbody>
                         </table>
-                        <div page-model="@Model?.PagingInfo" page-action="Index" page-class="btn" page-classes-enabled="true" page-class-normal="btn-outline-dark" page-class-selected="btn-primary" class="btn-group m-1"></div>
+                        <div page-model="@Model?.PagingInfo" page-action="Index" page-search="@Model?.NameSearch" page-class="btn" page-classes-enabled="true" page-class-normal="btn-outline-dark" page-class-selected="btn-primary" class="btn-group m-1"></div>
                     </div>
                 </div>
             </div>

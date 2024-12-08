@@ -1,7 +1,7 @@
 ﻿using FashionShop.Models;
 using FashionShop.Models.views.ProductViewModels;
 using FashionShop.Repositories.ManagerRepository;
-
+using FashionShop.Models.views;
 
 namespace FashionShop.Services.Products
 {
@@ -93,6 +93,25 @@ namespace FashionShop.Services.Products
             int numRowEffect = await _managerRepository.SaveAsyncAndNumRowEffect();
             if (numRowEffect > 0) return true;
             return false;
+        }
+        public async Task<ProductViewModel> GetPageLinkAsync(string nameSearch, int page, int pageSize, bool trackChanges)
+        {
+            var productList = await _managerRepository.Product.GetPageLinkAsync(page, pageSize, nameSearch, trackChanges);
+            var productCounts = await _managerRepository.Product.GetCountAsync(nameSearch, trackChanges);
+            var categories = await _managerRepository.Category.GetAllAsync(trackChanges);
+            var result = new ProductViewModel
+            {
+                Products = productList,
+                Categories = categories,
+                NameSearch = nameSearch,
+                PagingInfo = new PagingInfo
+                {
+                    TotalItems = productCounts,
+                    ItemsPerPage = pageSize,
+                    CurrentPage = page,
+                }
+            };
+            return result;
         }
     }
 }
