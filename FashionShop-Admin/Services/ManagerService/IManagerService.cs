@@ -3,6 +3,7 @@ using FashionShop.Services.Products;
 using FashionShop.Services.Contacts;
 using FashionShop.Services.Reviews;
 using FashionShop.Services.Customers;
+using FashionShop.Services.Dashboards;
 using FashionShop.Services.Employees;
 using FashionShop.Services.Roles;
 using FashionShop.Services.Stores;
@@ -25,4 +26,5 @@ public interface IManagerService
     IOrdersService Orders { get; }
     IOrdersDetailsService OrdersDetails { get; }
     IWebsiteService Website { get; }
+    IDashboardService Dashboard { get; }
 }
