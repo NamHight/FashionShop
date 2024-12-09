@@ -1,5 +1,6 @@
 ﻿using FashionShop.Context;
 using FashionShop.Models;
+using FashionShop.Models.views;
 using FashionShop.Repositories.ManagerRepository;
 using FashionShop.Services.ManagerService;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -10,6 +11,7 @@ namespace FashionShop.Extensions;
 
 public static class ServiceExtensions
 {
+    public static void ConfigureEmailService(this IServiceCollection service,IConfiguration configuration) => service.Configure<SMTPConfigModel>(configuration.GetSection("SMTPConfig"));
     public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration)
         => services.AddDbContext<MyDbContext>(options => options.UseMySql(configuration.GetConnectionString("DefaultConnection"),
             ServerVersion.AutoDetect(configuration.GetConnectionString("DefaultConnection"))));
