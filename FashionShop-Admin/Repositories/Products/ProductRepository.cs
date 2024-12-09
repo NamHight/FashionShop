@@ -62,6 +62,22 @@ namespace FashionShop.Repositories.Products
         {
             Update(product);
         }
+        public async Task<List<Product>> GetPageLinkAsync(int page, int pageSize, string nameSearch, bool trackChanges)
+        {
+            if (!string.IsNullOrEmpty(nameSearch))
+            {
+                return await PageLinkAsync(page, pageSize, trackChanges).Where(item => item.ProductName.Contains(nameSearch)).ToListAsync();
+            }
+            return await PageLinkAsync(page, pageSize, trackChanges).ToListAsync();
+        }
+        public async Task<int> GetCountAsync(string nameSearch, bool trackChanges)
+        {
+            if (!string.IsNullOrEmpty(nameSearch))
+            {
+                return await FindById(item => item.ProductName.Contains(nameSearch), trackChanges).CountAsync();
+            }
+            return await FindAll(trackChanges).CountAsync();
+        }
 
         public void DeleteProduct(Product product)
         {

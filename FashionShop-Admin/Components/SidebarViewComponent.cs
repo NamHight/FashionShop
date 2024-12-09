@@ -43,6 +43,8 @@ public class SidebarViewComponent : ViewComponent
             }
         },
         new SidebarItem{ title = "Website Info",url="/WebsiteInfo", icon = "icofont-info" },
+        new SidebarItem{ title = "Reviews",url="/Reviews", icon = "icofont-comment" },
+
     };
     public async Task<IViewComponentResult> InvokeAsync()
     {

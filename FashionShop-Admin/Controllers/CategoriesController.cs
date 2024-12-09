@@ -20,22 +20,10 @@ public class CategoriesController : Controller
         _managerService = managerService;
         _logger = logger;
     }
-    public async Task<IActionResult> Index(int page = 1, int pageSize = 10)
+    public async Task<IActionResult> Index(string nameSearch, int page = 1, int pageSize = 10)
     {
-        var categoryPages = await _managerService.Category.GetPageLinkAsync(page, pageSize, trackChanges: false);
-        var categories = await _managerService.Category.GetAllAsync(trackChanges: false);
-        //var result = await _managerService.Category.GetAllAsync(trackChanges:false);
-        var result = new CategoryViewModel
-        {
-            Categories = categoryPages,
-            PagingInfo = new PagingInfo
-            {
-                TotalItems = categories.Count(),
-                ItemsPerPage = pageSize,
-                CurrentPage = page,
-            }
-        };
-        return View(result); 
+        var result = await _managerService.Category.GetPageLinkAsync(page, pageSize, nameSearch, trackChanges: false);
+        return View(result);
     }
     public async Task<IActionResult> Create()
     {
