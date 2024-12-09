@@ -19,7 +19,7 @@ public partial class Review
     public sbyte? Rating { get; set; }
 
     [Column("review_text", TypeName = "text")]
-    public string? ReviewText { get; set; }
+    public string ReviewText { get; set; } = string.Empty;
 
     [Column("review_date", TypeName = "datetime")]
     public DateTime? ReviewDate { get; set; }

@@ -5,9 +5,8 @@ namespace FashionShop.Models.views.ReviewViewModels
 {
     public class ReviewViewModel
     {
-        public List<Review>? Reviews { get; set; }
-        public List<Product>? Products { get; set; }
-        public List<Customer>? Customers { get; set; }
+        public IEnumerable<Review>? Reviews { get; set; }
+        public string? NameSearch { get; set; }
         public PagingInfo? PagingInfo { get; set; }
     }
 }
