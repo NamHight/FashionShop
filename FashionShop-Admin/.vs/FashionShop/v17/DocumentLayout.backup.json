@@ -89,106 +89,6 @@
           "SelectedChildIndex": 6,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "D:\\Study\\HK5\\DoAnCuoi\\FashionShop3\\FashionShop\\FashionShop-Admin\\Views\\Products\\Create.cshtml",
-              "RelativeDocumentMoniker": "Views\\Products\\Create.cshtml",
-              "ToolTip": "D:\\Study\\HK5\\DoAnCuoi\\FashionShop3\\FashionShop\\FashionShop-Admin\\Views\\Products\\Create.cshtml",
-              "RelativeToolTip": "Views\\Products\\Create.cshtml",
-              "ViewState": "AQIAAF8AAAAAAAAAAAAUwHkAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-06T03:27:21.752Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "D:\\Study\\HK5\\DoAnCuoi\\FashionShop3\\FashionShop\\FashionShop-Admin\\Views\\Products\\Edit.cshtml",
-              "RelativeDocumentMoniker": "Views\\Products\\Edit.cshtml",
-              "ToolTip": "D:\\Study\\HK5\\DoAnCuoi\\FashionShop3\\FashionShop\\FashionShop-Admin\\Views\\Products\\Edit.cshtml",
-              "RelativeToolTip": "Views\\Products\\Edit.cshtml",
-              "ViewState": "AQIAAGAAAAAAAAAAAAAxwHwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-06T03:27:07.746Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\Study\\HK5\\DoAnCuoi\\FashionShop3\\FashionShop\\FashionShop-Admin\\Views\\Products\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Products\\Index.cshtml",
-              "ToolTip": "D:\\Study\\HK5\\DoAnCuoi\\FashionShop3\\FashionShop\\FashionShop-Admin\\Views\\Products\\Index.cshtml",
-              "RelativeToolTip": "Views\\Products\\Index.cshtml",
-              "ViewState": "AQIAAFMAAAAAAAAAAAAAAGkAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-06T03:26:41.965Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ProductService.cs",
-              "DocumentMoniker": "D:\\Study\\HK5\\DoAnCuoi\\FashionShop3\\FashionShop\\FashionShop-Admin\\Services\\Products\\ProductService.cs",
-              "RelativeDocumentMoniker": "Services\\Products\\ProductService.cs",
-              "ToolTip": "D:\\Study\\HK5\\DoAnCuoi\\FashionShop3\\FashionShop\\FashionShop-Admin\\Services\\Products\\ProductService.cs",
-              "RelativeToolTip": "Services\\Products\\ProductService.cs",
-              "ViewState": "AQIAAFUAAAAAAAAAAAAAAAEAAAAxAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-06T03:25:40.508Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "IProductService.cs",
-              "DocumentMoniker": "D:\\Study\\HK5\\DoAnCuoi\\FashionShop3\\FashionShop\\FashionShop-Admin\\Services\\Products\\IProductService.cs",
-              "RelativeDocumentMoniker": "Services\\Products\\IProductService.cs",
-              "ToolTip": "D:\\Study\\HK5\\DoAnCuoi\\FashionShop3\\FashionShop\\FashionShop-Admin\\Services\\Products\\IProductService.cs",
-              "RelativeToolTip": "Services\\Products\\IProductService.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAAAAABoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-06T03:25:19.21Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ProductRepository.cs",
-              "DocumentMoniker": "D:\\Study\\HK5\\DoAnCuoi\\FashionShop3\\FashionShop\\FashionShop-Admin\\Repositories\\Products\\ProductRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\Products\\ProductRepository.cs",
-              "ToolTip": "D:\\Study\\HK5\\DoAnCuoi\\FashionShop3\\FashionShop\\FashionShop-Admin\\Repositories\\Products\\ProductRepository.cs",
-              "RelativeToolTip": "Repositories\\Products\\ProductRepository.cs",
-              "ViewState": "AQIAACsAAAAAAAAAAAAxwEcAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-06T03:23:48.052Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "IProductRepository.cs",
-              "DocumentMoniker": "D:\\Study\\HK5\\DoAnCuoi\\FashionShop3\\FashionShop\\FashionShop-Admin\\Repositories\\Products\\IProductRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\Products\\IProductRepository.cs",
-              "ToolTip": "D:\\Study\\HK5\\DoAnCuoi\\FashionShop3\\FashionShop\\FashionShop-Admin\\Repositories\\Products\\IProductRepository.cs",
-              "RelativeToolTip": "Repositories\\Products\\IProductRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-06T03:21:51.767Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "UpdateProductViewModel.cs",
-              "DocumentMoniker": "D:\\Study\\HK5\\DoAnCuoi\\FashionShop3\\FashionShop\\FashionShop-Admin\\Models\\views\\ProductViewModels\\UpdateProductViewModel.cs",
-              "RelativeDocumentMoniker": "Models\\views\\ProductViewModels\\UpdateProductViewModel.cs",
-              "ToolTip": "D:\\Study\\HK5\\DoAnCuoi\\FashionShop3\\FashionShop\\FashionShop-Admin\\Models\\views\\ProductViewModels\\UpdateProductViewModel.cs",
-              "RelativeToolTip": "Models\\views\\ProductViewModels\\UpdateProductViewModel.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAiwCAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-06T03:21:32.683Z"
-            },
-            {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Index.cshtml",
@@ -270,7 +170,7 @@
               "RelativeDocumentMoniker": "Controllers\\ProductsController.cs",
               "ToolTip": "D:\\DoAnWeb\\DoAnNhom\\FashionShop\\FashionShop-Admin\\Controllers\\ProductsController.cs",
               "RelativeToolTip": "Controllers\\ProductsController.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAAwB0AAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAABgAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-06T13:48:10.304Z",
               "EditorCaption": ""
