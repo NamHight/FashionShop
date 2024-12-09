@@ -18,5 +18,8 @@ namespace FashionShop.Repositories.Products
         void UpdateProduct(Product product);
 
         void DeleteProduct(Product product);
+        Task<int> CountByDateAsync(DateTime date, bool trackChanges);
+        Task<List<Product>> GetPageLinkAsync(int page, int pageSize, string nameSearch, bool trackChanges);
+        Task<int> GetCountAsync(string nameSearch, bool trackChanges);
     }
 }

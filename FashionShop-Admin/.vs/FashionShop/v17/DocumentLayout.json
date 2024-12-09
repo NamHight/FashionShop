@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|c:\\users\\locbm\\onedrive\\desktop\\doanweb - local\\fashionshop\\fashionshop-admin\\views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|solutionrelative:views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|c:\\users\\locbm\\onedrive\\desktop\\doanweb - local\\fashionshop\\fashionshop-admin\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|solutionrelative:controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|c:\\users\\locbm\\onedrive\\desktop\\doanweb - local\\fashionshop\\fashionshop-admin\\services\\dashboards\\dashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|solutionrelative:services\\dashboards\\dashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|c:\\users\\locbm\\onedrive\\desktop\\doanweb - local\\fashionshop\\fashionshop-admin\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B23C0B80-3A63-4EBC-AD26-1F63BFC2D74A}|FashionShop.csproj|solutionrelative:controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -198,7 +210,44 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DashboardService.cs",
+              "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Services\\Dashboards\\DashboardService.cs",
+              "RelativeDocumentMoniker": "Services\\Dashboards\\DashboardService.cs",
+              "ToolTip": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Services\\Dashboards\\DashboardService.cs",
+              "RelativeToolTip": "Services\\Dashboards\\DashboardService.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAgwEYAAABWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-08T13:14:58.246Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "DashboardController.cs",
+              "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Controllers\\DashboardController.cs",
+              "RelativeDocumentMoniker": "Controllers\\DashboardController.cs",
+              "ToolTip": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Controllers\\DashboardController.cs",
+              "RelativeToolTip": "Controllers\\DashboardController.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAkwCkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-08T13:14:36.009Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Views\\Dashboard\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Dashboard\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Views\\Dashboard\\Index.cshtml",
+              "RelativeToolTip": "Views\\Dashboard\\Index.cshtml",
+              "ViewState": "AgIAAK4AAAAAAAAAAAAAALoAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-08T13:14:28.371Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "IProductRepository.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Repositories\\Products\\IProductRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\Products\\IProductRepository.cs",
@@ -210,7 +259,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Views\\Products\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Products\\Index.cshtml",
@@ -222,20 +271,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "ProductsController.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Controllers\\ProductsController.cs",
               "RelativeDocumentMoniker": "Controllers\\ProductsController.cs",
               "ToolTip": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Controllers\\ProductsController.cs",
               "RelativeToolTip": "Controllers\\ProductsController.cs",
-              "ViewState": "AgIAAD4AAAAAAAAAAAAowGMAAAA3AAAAAAAAAA==",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAkwE8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-05T03:48:19.226Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-05T03:48:19.226Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Views\\Products\\Create.cshtml",
               "RelativeDocumentMoniker": "Views\\Products\\Create.cshtml",
@@ -247,7 +295,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "ProductRepository.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Repositories\\Products\\ProductRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\Products\\ProductRepository.cs",
@@ -259,7 +307,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "ContactService.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Services\\Contacts\\ContactService.cs",
               "RelativeDocumentMoniker": "Services\\Contacts\\ContactService.cs",
@@ -271,7 +319,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "IContactService.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Services\\Contacts\\IContactService.cs",
               "RelativeDocumentMoniker": "Services\\Contacts\\IContactService.cs",
@@ -283,7 +331,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "ContactsController.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Controllers\\ContactsController.cs",
               "RelativeDocumentMoniker": "Controllers\\ContactsController.cs",
@@ -295,7 +343,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "ContactRepository.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Repositories\\Contacts\\ContactRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\Contacts\\ContactRepository.cs",
@@ -307,7 +355,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Views\\Contacts\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Contacts\\Index.cshtml",
@@ -319,7 +367,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "Contact.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Models\\Contact.cs",
               "RelativeDocumentMoniker": "Models\\Contact.cs",
@@ -331,7 +379,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "GenericRepo.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Repositories\\GenericRepo.cs",
               "RelativeDocumentMoniker": "Repositories\\GenericRepo.cs",
@@ -343,7 +391,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 15,
               "Title": "IContactRepository.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Repositories\\Contacts\\IContactRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\Contacts\\IContactRepository.cs",
@@ -355,7 +403,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "ProductService.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Services\\Products\\ProductService.cs",
               "RelativeDocumentMoniker": "Services\\Products\\ProductService.cs",
@@ -367,7 +415,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "IManagerRepository.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Repositories\\ManagerRepository\\IManagerRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\ManagerRepository\\IManagerRepository.cs",
@@ -379,7 +427,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 18,
               "Title": "ManagerRepository.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Repositories\\ManagerRepository\\ManagerRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\ManagerRepository\\ManagerRepository.cs",
@@ -391,7 +439,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 19,
               "Title": "ICategoryService.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Services\\Categories\\ICategoryService.cs",
               "RelativeDocumentMoniker": "Services\\Categories\\ICategoryService.cs",
@@ -403,7 +451,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 22,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
@@ -415,7 +463,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 21,
               "Title": "site.css",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "wwwroot\\css\\site.css",
@@ -427,7 +475,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 20,
               "Title": "ebazar.style.min.css",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\wwwroot\\css\\ebazar.style.min.css",
               "RelativeDocumentMoniker": "wwwroot\\css\\ebazar.style.min.css",
@@ -439,7 +487,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 23,
               "Title": "Supplier.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Models\\Supplier.cs",
               "RelativeDocumentMoniker": "Models\\Supplier.cs",
@@ -451,7 +499,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 24,
               "Title": "Store.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Models\\Store.cs",
               "RelativeDocumentMoniker": "Models\\Store.cs",
@@ -463,7 +511,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 25,
               "Title": "Stock.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Models\\Stock.cs",
               "RelativeDocumentMoniker": "Models\\Stock.cs",
@@ -475,7 +523,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 27,
               "Title": "Review.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Models\\Review.cs",
               "RelativeDocumentMoniker": "Models\\Review.cs",
@@ -487,7 +535,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 28,
               "Title": "Purchaseorderdetail.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Models\\Purchaseorderdetail.cs",
               "RelativeDocumentMoniker": "Models\\Purchaseorderdetail.cs",
@@ -499,7 +547,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 29,
               "Title": "Purchaseorder.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Models\\Purchaseorder.cs",
               "RelativeDocumentMoniker": "Models\\Purchaseorder.cs",
@@ -511,7 +559,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 30,
               "Title": "Promotion.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Models\\Promotion.cs",
               "RelativeDocumentMoniker": "Models\\Promotion.cs",
@@ -523,7 +571,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 31,
               "Title": "Product.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Models\\Product.cs",
               "RelativeDocumentMoniker": "Models\\Product.cs",
@@ -535,7 +583,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 32,
               "Title": "Ordersdetail.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Models\\Ordersdetail.cs",
               "RelativeDocumentMoniker": "Models\\Ordersdetail.cs",
@@ -547,7 +595,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 33,
               "Title": "Order.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Models\\Order.cs",
               "RelativeDocumentMoniker": "Models\\Order.cs",
@@ -559,7 +607,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 34,
               "Title": "Image.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Models\\Image.cs",
               "RelativeDocumentMoniker": "Models\\Image.cs",
@@ -571,7 +619,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 26,
               "Title": "Role.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Models\\Role.cs",
               "RelativeDocumentMoniker": "Models\\Role.cs",
@@ -583,7 +631,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 35,
               "Title": "Favorite.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Models\\Favorite.cs",
               "RelativeDocumentMoniker": "Models\\Favorite.cs",
@@ -595,7 +643,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 36,
               "Title": "Employee.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Models\\Employee.cs",
               "RelativeDocumentMoniker": "Models\\Employee.cs",
@@ -607,7 +655,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 37,
               "Title": "Customer.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Models\\Customer.cs",
               "RelativeDocumentMoniker": "Models\\Customer.cs",
@@ -619,7 +667,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 38,
               "Title": "Cart.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Models\\Cart.cs",
               "RelativeDocumentMoniker": "Models\\Cart.cs",
@@ -631,7 +679,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 40,
               "Title": "View.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Models\\View.cs",
               "RelativeDocumentMoniker": "Models\\View.cs",
@@ -643,7 +691,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 39,
               "Title": "Brand.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Models\\Brand.cs",
               "RelativeDocumentMoniker": "Models\\Brand.cs",
@@ -655,7 +703,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 41,
               "Title": "ErrorViewModel.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Models\\ErrorViewModel.cs",
               "RelativeDocumentMoniker": "Models\\ErrorViewModel.cs",
@@ -667,7 +715,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 42,
               "Title": "SessionExtensions.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Extensions\\SessionExtensions.cs",
               "RelativeDocumentMoniker": "Extensions\\SessionExtensions.cs",
@@ -679,7 +727,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 43,
               "Title": "ManagerService.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Services\\ManagerService\\ManagerService.cs",
               "RelativeDocumentMoniker": "Services\\ManagerService\\ManagerService.cs",
@@ -691,7 +739,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 44,
               "Title": "IManagerService.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Services\\ManagerService\\IManagerService.cs",
               "RelativeDocumentMoniker": "Services\\ManagerService\\IManagerService.cs",
@@ -703,7 +751,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 45,
               "Title": "CategoriesController.cs",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Controllers\\CategoriesController.cs",
               "RelativeDocumentMoniker": "Controllers\\CategoriesController.cs",
@@ -715,7 +763,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 46,
               "Title": "Default.cshtml",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Views\\Shared\\Components\\Header\\Default.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\Components\\Header\\Default.cshtml",
@@ -727,7 +775,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 47,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Locbm\\OneDrive\\Desktop\\DoAnWeb - local\\FashionShop\\FashionShop-Admin\\Views\\Categories\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Categories\\Index.cshtml",
