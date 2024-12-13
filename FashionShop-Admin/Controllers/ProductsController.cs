@@ -24,14 +24,10 @@ namespace FashionShop.Controllers
             _logger = logger;
             hostingEnvironment = environment;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string nameSearch, int page = 1, int pageSize = 10)
         {
-            var resutl = new ProductViewModel()
-            {
-                Products = await _managerService.Product.GetAllAsync(trackChanges: false),
-                Categories = await _managerService.Category.GetAllAsync(trackChanges: false)
-            };
-            return View(resutl);
+            var result = await _managerService.Product.GetPageLinkAsync(nameSearch, page, pageSize, trackChanges: false);
+            return View(result);
         }
 
         public async Task<IActionResult> Create()

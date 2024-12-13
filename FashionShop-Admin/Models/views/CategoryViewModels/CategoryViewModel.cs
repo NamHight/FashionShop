@@ -7,7 +7,7 @@ namespace FashionShop.Models
 {
     public class CategoryViewModel
     {
-
+        public string? NameSearch { get; set; }
         public PagingInfo? PagingInfo { get; set; }
         public List<Category>? Categories { get; set; }
     }

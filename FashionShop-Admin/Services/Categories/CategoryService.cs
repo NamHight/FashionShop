@@ -1,6 +1,6 @@
 ﻿using FashionShop.Models;
 using FashionShop.Repositories.ManagerRepository;
-
+using FashionShop.Models.views;
 namespace FashionShop.Services.Categories;
 
 public class CategoryService : ICategoryService
@@ -47,10 +47,22 @@ public class CategoryService : ICategoryService
 
 
     }
-    public async Task<List<Category>> GetPageLinkAsync(int page, int pageSize, bool trackChanges)
+    public async Task<CategoryViewModel> GetPageLinkAsync(int page, int pageSize, string nameSearch, bool trackChanges)
     {
-        var categories = await _managerRepository.Category.GetPageLinkAsync(page, pageSize, trackChanges);
-        return categories;
+        var categoryPages = await _managerRepository.Category.GetPageLinkAsync(page, pageSize, nameSearch, trackChanges);
+        var categoryCounts = await _managerRepository.Category.GetCountAsync(nameSearch, trackChanges);
+        var result = new CategoryViewModel
+        {
+            Categories = categoryPages,
+            NameSearch = nameSearch,
+            PagingInfo = new PagingInfo
+            {
+                TotalItems = categoryCounts,
+                ItemsPerPage = pageSize,
+                CurrentPage = page,
+            }
+        };
+        return result;
     }
     public async Task<long> FindByNameAsync(string newCategoryName)
     {
