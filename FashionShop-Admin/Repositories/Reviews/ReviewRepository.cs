@@ -17,6 +17,7 @@ namespace FashionShop.Repositories.Reviews
             var reviews = await PageLinkAsync(page, pageSize, trackChanges);
             return reviews;
         }
+        
         public async Task<Review?> GetByIdAsync(long id,bool trackChanges)
         {
             var review = await FindById(item => item.ReviewId == id,trackChanges).FirstOrDefaultAsync();

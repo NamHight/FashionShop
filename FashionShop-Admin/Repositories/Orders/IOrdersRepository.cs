@@ -11,5 +11,12 @@ public interface IOrdersRepository
     Task<Order?> GetByIdOrdersViewModel(long id, bool trackChanges);
     Task Remove(Order order);
 
- 
+    Task<int> CountByMonthInYearAsync(int year, int month, bool trackChanges);
+    Task<decimal?> SumByMonthInYearAsync(int year, int month, bool trackChanges);
+    Task<int> CountByDateAsync(DateTime date, bool trackChanges);
+
+    Task<decimal?> TotalSaleAsync(DateTime date, bool trackChanges);
+    
+    Task<decimal?> AvgSaleAsync(DateTime date,bool trackChanges);
+
 }

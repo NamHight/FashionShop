@@ -12,20 +12,6 @@ public class OrdersDetailsRepository : GenericRepo<Ordersdetail>,IOrdersDetailsR
     {
     }
 
-    public async Task<int> CountOrderDetailsByID(long id, bool trackChanges)
-    {
-        try
-        {
-            var countProductsByID = await FindById(item => item.ProductId.Equals(id), trackChanges).CountAsync();
-            return countProductsByID;
-        }
-        catch(Exception ex)
-        {
-            Console.WriteLine("=== Error: " + ex.Message + "===");
-            throw;
-        }
-    }
-
     public async Task RemoveDetails(long id,bool trackChanges)
     {
         try
