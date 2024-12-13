@@ -64,6 +64,13 @@ public class OrdersRepository : GenericRepo<Order>,IOrdersRepository
         return count;
     }
 
+    public async Task<decimal?> SumByMonthInYearAsync(int year, int month, bool trackChanges)
+    {
+        var query = FindById(order => order.CreatedAt != null && order.CreatedAt.Value.Year.Equals(year) && order.CreatedAt.Value.Month.Equals(month), trackChanges);
+        var sum = await query.Select(order => order.TotalAmount).SumAsync();
+        return sum;
+    }
+
     public async Task<int> CountByDateAsync(DateTime date, bool trackChanges)
     {
        var count = await FindById(order => order.CreatedAt != null && order.CreatedAt.Value.Date.Equals(date.Date), trackChanges).CountAsync();
