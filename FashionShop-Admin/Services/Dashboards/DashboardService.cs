@@ -37,7 +37,31 @@ public class DashboardService : IDashboardService
             throw;
         }
     }
+    public async Task<List<RevenuaData>> GetListRevenuaDataByMonthInYear(int year, bool trackChanges)
+    {
+        try
+        {
+            var months = new[]
+            {
+                "January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
+                "November", "December"
+            };
+            var listRevenue = new List<RevenuaData>();
+            foreach (var month in months)
+            {
+                var sum = await _managerRepository.Orders.SumByMonthInYearAsync(year,
+                    months.ToList().IndexOf(month) + 1, trackChanges);
+                    listRevenue.Add(new RevenuaData(month, sum));
+            }
 
+            return listRevenue;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
     public async Task<List<StatusCustomer>> GetListStatusCustomer()
     {
         try

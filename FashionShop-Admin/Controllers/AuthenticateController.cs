@@ -3,6 +3,7 @@ using FashionShop.Models.views;
 using FashionShop.Services.ManagerService;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FashionShop.Controllers;
@@ -46,7 +47,6 @@ public class AuthenticateController : Controller
                         }
                         var claimsIdentity = new ClaimsIdentity(clams,CookieAuthenticationDefaults.AuthenticationScheme);
                         var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
-
                         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,claimsPrincipal);
                     }
 
@@ -61,5 +61,51 @@ public class AuthenticateController : Controller
     {
         await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
         return RedirectToAction("Login", "Authenticate");
+    }
+
+    [AllowAnonymous]
+    public async Task<IActionResult> ForgetPassword()
+    {
+        return View(new ForgotPasswordModel());
+    }
+
+    [HttpPost]
+    [AllowAnonymous]
+    public async Task<IActionResult> ForgetPassword(ForgotPasswordModel model)
+    {
+        if (ModelState.IsValid)
+        {
+            ModelState.Clear();
+            model.EmailSent = true;
+            var result = await _managerService.Employee.handleSendEmail(model.Email, false);
+            if (result != null)
+            {
+                await _managerService.Email.SendEmailForgotPasswordEmail(result); 
+            }
+
+            return View(model);
+        }
+        return View(model);
+    }
+
+    public async Task<IActionResult> ResetPassword(long id , string token)
+    {
+        return View(new ResetPassword{IsSuccess = false, employeeId = id, token = token});
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> ResetPassword(ResetPassword model)
+    {
+        if (ModelState.IsValid)
+        {
+            ModelState.Clear();
+            var employee = await _managerService.Employee.confirmTokenAsync(model.employeeId, model.token);
+            if (employee)
+            {
+                await _managerService.Employee.ResetPassword(model, true);
+            }
+            return RedirectToAction("Login");
+        }
+        return View(model);
     }
 }

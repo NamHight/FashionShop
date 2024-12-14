@@ -20,32 +20,29 @@
 		]
 		});
 	</script>
-	<script>
-		$(document).on('click','button', function (event) {
-			event.preventDefault();
-			console.log("đã xoá")
-			var id = event.target.id;
-			console.log('tepm1 ' + id)
-			var url = "@Url.Action("RemoveById", "Orders")";
-			console.log(url)
-			$.ajax({
-				method: "delete",
-				url: url,
-				data: {
-					id: id
-				},
-				success:function (reponse){
-					console.log("Successfully")
-					var deleteRow += "
-					
-					";
-				},
-				error: function(error){
-					console.log("Error: " + error)
-				}
-			})
-		});
-	</script>
+	@* <script> *@
+	@* 	$(document).on('click','button', function (event) { *@
+	@* 		event.preventDefault(); *@
+	@* 		console.log("đã xoá") *@
+	@* 		var id = event.target.id; *@
+	@* 		console.log('tepm1 ' + id) *@
+	@* 		var url = "@Url.Action("RemoveById", "Orders")"; *@
+	@* 		console.log(url) *@
+	@* 		$.ajax({ *@
+	@* 			method: "delete", *@
+	@* 			url: url, *@
+	@* 			data: { *@
+	@* 				id: id *@
+	@* 			}, *@
+	@* 			success:function (response){ *@
+	@* 				console.log("Successfully") *@
+	@* 			}, *@
+	@* 			error: function(error){ *@
+	@* 				console.log("Error: " + error) *@
+	@* 			} *@
+	@* 		}) *@
+	@* 	}); *@
+	@* </script> *@
 }
 <!-- Body: Body -->
 
@@ -70,11 +67,11 @@
 									<th>Action</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody class="tbody-order">
 								@foreach (var order in Model)
 								{
-									<tr data-id="@order.OrderId">
-										<td><a asp-action="Details" asp-controller="Orders" asp-route-id="@order.OrderId"><strong>#@order.OrderId</strong></a></td>
+									<tr class="hover" id="tr_@order.OrderId">
+										<td><strong>#@order.OrderId</strong></td>
 										<td>@order.Store.StoreName</td>
 										<td>@order.Customer.CustomerName</td>
 										<td>@order.Employee.EmployeeName</td>
@@ -96,7 +93,8 @@
 										</td>
 										<td>
 											<div class="btn-group" role="group" aria-label="Basic outlined example">
-												<button type="submit" class="btn btn-outline-secondary" id="@order.OrderId"><i class="icofont-ui-delete text-danger" id="@order.OrderId"></i></button>
+												<a asp-action="Details" asp-controller="Orders" asp-route-id="@order.OrderId" class="btn btn-outline-secondary">Details</a>
+												<a asp-action="RemoveById" asp-route-id="@order.OrderId" class="btn btn-outline-secondary"><i class="icofont-ui-delete text-danger" id="@order.OrderId"></i></a>
 											</div>
 										</td>
 									</tr>
