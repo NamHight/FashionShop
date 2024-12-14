@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews( );
 builder.Services.ConfigureCors();
 builder.Services.ConfigureSqlContext(builder.Configuration);
+builder.Services.ConfigureEmailService(builder.Configuration);
 builder.Services.ConfigureManagerRepository();
 builder.Services.ConfigureManagerService();
 builder.Services.ConfigureAuthenticate();
