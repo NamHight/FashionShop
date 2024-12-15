@@ -115,11 +115,11 @@ namespace FashionShop.Controllers
         }
 
 
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> Edit(string slug)
         {
             try
             {
-                var product = await _managerService.Product.GetByIdAsync(id, false);
+                var product = await _managerService.Product.GetBySlugAsync(slug, false);
                 var resutl = new UpdateProductViewModel()
                 {
                     ProductId = product!.ProductId,
