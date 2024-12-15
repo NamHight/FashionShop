@@ -97,5 +97,5 @@ namespace FashionShop.Repositories.Products
                 : await _context.Products.AsNoTracking().SingleOrDefaultAsync(item => item.Slug.Equals(slug));
             return result;
         }
-    }
+	}
 }

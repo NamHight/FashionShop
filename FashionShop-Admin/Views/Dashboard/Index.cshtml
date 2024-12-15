@@ -367,6 +367,74 @@
 			}
 		});
 	</script>
+	<script>
+		// thống kế số lượng sản phẩm bán mỗi tháng - Nam
+		$(document).ready(function() {
+			var sparklineData = [];
+			$.ajax({
+				method: "get",
+				url: "@Url.Action("getCountProductPerMonth", "Dashboard")",
+				success: function(res) {
+					console.log("Ket qua la", " ", res.data);
+					res.data.map(item => sparklineData.push(item)); // thêm số lượng sp bán được mỗi tháng vào mảng
+					var sum = res.data.reduce((sum, item) => sum  += item);
+					$("#all-product").text(sum); // tính tổng toàn bộ sp đã bán trong năm in ra
+				},
+				error: function(err){
+					console.log("Error: " + err.messege);
+				}
+			})
+			var setup = {
+				chart: {
+					type: 'area',
+					height: 160,
+					sparkline: {
+					enabled: true,
+					},
+				},
+				stroke: {
+					width: 2
+				},
+				colors: ['#f7c56b'],
+				series: [{
+					name: "Procuct",
+					data: sparklineData,
+				}],
+				xaxis: {
+					categories: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
+				"November", "December"],
+				},
+				dataLabels: {
+					enabled: true, // Bật hiển thị số liệu
+					style: {
+						colors: ['#007bff'], // Màu chữ của số liệu
+						fontSize: '12px',
+						textAnchor: 'end', // Căn giữa (các giá trị khác: 'start', 'end')
+					},
+					offsetY: -2, // Điều chỉnh vị trí của số liệu (cao hơn so với đỉnh sóng),
+					offsetX: 0,
+				},
+				title: {
+					text: '',
+					offsetX: 0,
+					style: {
+						fontSize: '24px',
+						cssClass: 'apexcharts-yaxis-title'
+					}
+				},
+				subtitle: {
+					offsetX: 0,
+					style: {
+						fontSize: '14px',
+						cssClass: 'apexcharts-yaxis-title'
+					}
+				}
+			}
+
+		var demo = new ApexCharts(document.querySelector("#testdemo"), setup);
+		demo.render();
+		})
+	</script>
 }
 <!-- Body: Body -->
 <div class="body d-flex py-3">
@@ -595,6 +663,21 @@
 						<p class="h2 mb-0 px-2 fw-bold">$<span id="all-revenua-month"></span></p>
 						<span class="text-muted small">Revenua All Month in @DateTime.Now.Year</span>
 						<div id="apex-basic-bar"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row g-3 ">
+			<div class="col">
+				<div class="card mb-3">
+					<div class="card-header d-flex justify-content-between align-items-center bg-transparent border-bottom-0">
+						<h6 class="m-0 fw-bold">Products sold every month</h6>
+					</div>
+					<div class="card-body">
+						<p class="h2 mb-0 px-2 fw-bold"><span id="all-product"></span></p>
+						<span class="text-muted small">Total Product All Month in @DateTime.Now.Year</span>
+						<div id="testdemo"></div>
 					</div>
 				</div>
 			</div>

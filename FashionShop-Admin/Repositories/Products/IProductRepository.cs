@@ -22,5 +22,7 @@ namespace FashionShop.Repositories.Products
         Task<List<Product>> GetPageLinkAsync(int page, int pageSize, string nameSearch, bool trackChanges);
         Task<int> GetCountAsync(string nameSearch, bool trackChanges);
         Task<Product?> GetBySlugAsync(string slug, bool trackChanges);
-    }
+
+	
+	}
 }

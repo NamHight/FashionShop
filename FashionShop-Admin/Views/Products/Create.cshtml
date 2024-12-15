@@ -33,6 +33,7 @@
                     <label asp-for="Banner" class="form-label">Banner</label>
                     <input tabindex="2" asp-for="Banner" type="file" class="form-control rounded-pill " id="Banner" name="Banner" value="" />
                     <span asp-validation-for="Banner" class="text-danger"></span>
+                    <span id="errorBanner1" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label asp-for="Description" class="form-label">Description</label>
@@ -68,6 +69,7 @@
 </div>
 
 @section Scripts {
+    <script src="~/js/ValidateProduct.js" type="module"></script>
     <script>
         function xuLySlug(nameProduct) {
             var result = nameProduct.toLowerCase();
