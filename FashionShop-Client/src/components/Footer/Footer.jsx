@@ -6,9 +6,36 @@ import { MdOutlineLocationOn } from "react-icons/md";
 import { MdLocalPhone } from "react-icons/md";
 import { MdAlternateEmail } from "react-icons/md";
 const YEAR = new Date().getFullYear();
+const List = [
+    {
+        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab doloremque, " +
+            "earum enim libero necessitatibus nobis non quasi quibusd am quidem recusandae repellat, voluptas voluptate? " +
+            "Culpa distinctio dolorum impedit iure quidem sapiente?",
+        classname: "text-sm",
+        title: "description",
+    },
+    {
+        description: "+0123 456 789",
+        classname: "ml-2",
+        title: "phone",
+        icon: <MdLocalPhone className={'size-5'}/>,
+    },
+    {
+        description: "123 Street, New York, USA",
+        classname: "ml-2",
+        title: "address",
+        icon: <MdOutlineLocationOn className={'size-5'}/>,
+    },
+    {
+        description: " WQ6pN@example.com",
+        classname: "ml-2",
+        title: "email",
+        icon: <MdAlternateEmail className={'size-5'}/>,
+    }
+];
 const Footer = () => {
     return (
-        <footer className="w-full mt-3 bg-emerald-400 text-white absolute bottom-0">
+        <footer className="w-full mt-3 bg-emerald-400 text-white max-w-full">
             <div className="mx-72 pt-6">
                 <div className="grid grid-cols-4 justify-between gap-x-6 gap-y-4">
                     <div className={"flex justify-center items-center"}>
@@ -19,28 +46,23 @@ const Footer = () => {
                     <ul>
                         <Typography className="relative mb-2 font-bold text-white text-xl">
                             {"Fashion Shop"}
-                            <div className="absolute left-0 bottom-0 w-1/3 border-b-2 border-white"></div>
+                            <span className="absolute left-0 bottom-0 w-1/3 border-b-2 border-white"></span>
                         </Typography>
-                        <li className={'flex justify-start items-center mb-2'}>
-                            <Typography className={'text-sm'}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab doloremque, earum enim libero necessitatibus nobis non quasi quibusdam quidem recusandae repellat, voluptas voluptate? Culpa distinctio dolorum impedit iure quidem sapiente?</Typography>
-                        </li>
-                        <li className={'flex justify-start items-center mb-2'}>
-                            <MdOutlineLocationOn className={'size-5'}/>
-                            <Typography className={'ml-2'}> 123 Street, New York, USA</Typography>
-                        </li>
-                        <li className={'flex justify-start items-center mb-2'}>
-                            <MdLocalPhone className={'size-5'}/>
-                            <Typography className={'ml-2'}> +0123 456 789</Typography>
-                        </li>
-                        <li className={'flex justify-start items-center'}>
-                            <MdAlternateEmail className={'size-5'}/>
-                            <Typography className={'ml-2'}> WQ6pN@example.com</Typography>
-                        </li>
+                        {
+                            List.map((item) => (
+                                <li key={item.title} className={'flex justify-start items-center mb-2'}>
+                                    {item.icon && item.icon}
+                                    <Typography className={item.classname}>
+                                        {item.description}
+                                    </Typography>
+                                </li>
+                            ))
+                        }
                     </ul>
                     <ul>
                         <Typography className="relative mb-2 font-bold text-white text-xl">
                             {"Support"}
-                            <div className="absolute left-0 bottom-0 w-1/3 border-b-2 border-white"></div>
+                            <span className="absolute left-0 bottom-0 w-1/3 border-b-2 border-white"></span>
                         </Typography>
                         <li>
                             <Link to={"/"} className="py-1 hover:text-primary">
@@ -51,7 +73,7 @@ const Footer = () => {
                     <div>
                         <Typography className={'relative text-xl font-bold mb-2'}>
                             Sign up for newsletter
-                            <div className="absolute left-0 bottom-0 w-1/3 border-b-2 border-white"></div>
+                            <span className="absolute left-0 bottom-0 w-1/3 border-b-2 border-white"></span>
                         </Typography>
                         <form
                             action="#"
