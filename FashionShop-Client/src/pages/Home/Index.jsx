@@ -9,7 +9,7 @@ const routeVariants = {
 };
 const Home = () => {
     return (
-        <motion.div variants={routeVariants} className={'flex justify-center items-center text-red-500'}>
+        <motion.div variants={routeVariants} className={'flex justify-center items-center text-red-500 h-[1000px]'}>
             Hello Home
         </motion.div>
     );

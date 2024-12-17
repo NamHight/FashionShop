@@ -1,11 +1,10 @@
 import React from 'react';
 import {Link} from "react-router";
-import {List,Input, Tooltip, IconButton, Button,Typography} from "@material-tailwind/react";
-import { IoSearch } from "react-icons/io5";
-import { MdShoppingCart } from "react-icons/md";
-import { RxAvatar } from "react-icons/rx";
+import {List,Input, Tooltip} from "@material-tailwind/react";
 import { IoIosArrowDown } from "react-icons/io";
 import ModalLogin from "../Modal/ModalLogin";
+import PopoverCart from "../Popover/PopoverCart";
+import {IoSearch} from "react-icons/io5";
 
 const Links = [
     {name: "BLOG", path: "/blog"},
@@ -66,10 +65,7 @@ const Header = () => {
                     </div>
                 </div>
                 <div className={"flex justify-center items-center gap-1 ml-3"}>
-                    <IconButton variant="ghost" className={'relative'}>
-                        <span className={'absolute top-0 right-1 bg-red-800 rounded-full h-[13px] p-2 w-[13px] flex justify-center items-center text-[12px] text-white'}>0</span>
-                        <MdShoppingCart className="h-6 w-6 text-white hover:text-red-500" />
-                    </IconButton>
+                    <PopoverCart/>
                     <ModalLogin/>
                 </div>
             </div>
