@@ -1,4 +1,6 @@
-﻿namespace FashionShop_API.Exceptions;
+﻿using FashionShop_API.Exceptions.Base;
+
+namespace FashionShop_API.Exceptions;
 
 public class CategoryNotFoundException : NotFoundException
 {

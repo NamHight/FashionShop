@@ -41,6 +41,7 @@
         $("#selectedStatus").on("change",function (){
             var selectedValue = $(this).val();
             var getId = $(this).data("web-id");
+            console.log(getId);
             Swal.fire({
                 title: "Are you sure?",
                 text: "You won't be able to revert this!",
