@@ -90,5 +90,12 @@ namespace FashionShop.Repositories.Products
                 .CountAsync();
             return count;
         }
-    }
+
+        public async Task<Product?> GetBySlugAsync(string slug, bool trackChanges)
+        {
+            var result = trackChanges ? await _context.Products.SingleOrDefaultAsync(item => item.Slug.Equals(slug))
+                : await _context.Products.AsNoTracking().SingleOrDefaultAsync(item => item.Slug.Equals(slug));
+            return result;
+        }
+	}
 }

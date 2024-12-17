@@ -90,4 +90,10 @@ public class OrdersRepository : GenericRepo<Order>,IOrdersRepository
             .AverageAsync(order => order.TotalAmount);
         return avg;
     }
+
+	public async Task<int?> countProductPerMonth(int month, int year)
+    {
+        var result =  _context.Orders.Where(p => p.OrderDate.Value.Month.Equals(month) && p.OrderDate.Value.Year.Equals(year)).SelectMany(p => p.Ordersdetails).Sum(x => x.Quantity);
+        return result ?? 0;
+    }
 }
