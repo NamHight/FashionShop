@@ -13,4 +13,5 @@ public interface IOrdersService
     Task<Order?> UpdateStatus(long id, string status, bool trackChanges);
     Task<OrdersViewModel?> GetByIdOrdersViewModel(long id, bool trackChanges);
     Task RemoveIdOrders(long id, bool trackChanges);
+    Task<int> GetOrderCountAsync();
 }

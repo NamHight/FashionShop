@@ -15,6 +15,7 @@ public interface IOrdersRepository
     Task<int> CountByDateAsync(DateTime date, bool trackChanges);
     Task<decimal?> TotalSaleAsync(DateTime date, bool trackChanges);
     Task<decimal?> AvgSaleAsync(DateTime date,bool trackChanges);
+    Task<int> CountOrderAsync();
 
 	Task<int?> countProductPerMonth(int month, int year);
 

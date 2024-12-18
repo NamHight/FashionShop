@@ -38,5 +38,9 @@ namespace FashionShop.Services.Customers
                 throw;
             }
         }
+        public async Task<int> GetCustomerCountAsync()
+        {
+            return await _managerRepository.Customer.CountCustomerAsync();
+        }
     }
 }

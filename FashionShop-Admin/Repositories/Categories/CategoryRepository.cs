@@ -38,17 +38,30 @@ public class CategoryRepository : GenericRepo<Category>,ICategoryRepository
     }
     public async Task<bool> DeleteAsync(long id, bool trackChanges)
     {
+        // Tìm danh mục theo ID
         var category = await _context.Categories.FindAsync(id);
 
-        if (category != null)
+        if (category == null)
         {
-            _context.Categories.Remove(category);
-            await _context.SaveChangesAsync();
-            //await _context.SaveChangesAsync();
-            return true;
+            return false;  // Nếu không tìm thấy danh mục
         }
 
-        return false;
+        // Kiểm tra nếu có sản phẩm nào đang sử dụng danh mục này
+        var productWithCategory = await _context.Products
+            .Where(p => p.CategoryId == id)
+            .FirstOrDefaultAsync();
+
+        if (productWithCategory != null)
+        {
+            // Nếu có sản phẩm liên quan, không cho phép xóa
+            return false;
+        }
+
+        // Nếu không có sản phẩm liên quan, tiến hành xóa danh mục
+        _context.Categories.Remove(category);
+        await _context.SaveChangesAsync();
+
+        return true;
     }
     public void UpdateStatus(Category category)
     {
@@ -78,4 +91,9 @@ public class CategoryRepository : GenericRepo<Category>,ICategoryRepository
         long id_category = category?.CategoryId ?? -1;
         return id_category;
     }
+    public async Task<int> CountCategoryAsync()
+    {
+        return await _context.Categories.CountAsync();
+    }
+
 }

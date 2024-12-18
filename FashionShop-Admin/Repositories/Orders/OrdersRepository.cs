@@ -96,4 +96,8 @@ public class OrdersRepository : GenericRepo<Order>,IOrdersRepository
         var result =  _context.Orders.Where(p => p.OrderDate.Value.Month.Equals(month) && p.OrderDate.Value.Year.Equals(year)).SelectMany(p => p.Ordersdetails).Sum(x => x.Quantity);
         return result ?? 0;
     }
+    public async Task<int> CountOrderAsync()
+    {
+        return await _context.Orders.CountAsync();
+    }
 }
