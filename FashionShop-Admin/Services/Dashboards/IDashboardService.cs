@@ -10,4 +10,6 @@ public interface IDashboardService
     Task<List<RevenuaData>> GetListRevenuaDataByMonthInYear(int year, bool trackChanges);
 
     Task<DataAllStatic> GetDataAllStatic(DateTime date, bool trackChanges);
+
+	Task<List<int?>> getCountProductPerMonth();
 }

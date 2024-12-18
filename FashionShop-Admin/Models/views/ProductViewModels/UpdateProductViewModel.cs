@@ -16,14 +16,15 @@ namespace FashionShop.Models.views.ProductViewModels
 
         public string? BannerUrl { get; set; }
 
+
         public IFormFile? Banner { get; set; }
 
         public string? Description { get; set; }
 
-
         [Precision(10, 2)]
         [Required(ErrorMessage = "Không được để trống giá sản phẩm")]
-        public decimal? Price { get; set; }
+		[Range(0, double.MaxValue, ErrorMessage = "Giá phải lớn hơn hoặc bằng 0.")]
+		public decimal? Price { get; set; }
         public long? CategoryId { get; set; }
         public string? CategoryName { get; set; }
         public string? Status { get; set; }

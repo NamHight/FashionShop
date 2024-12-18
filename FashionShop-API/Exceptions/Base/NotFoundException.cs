@@ -1,4 +1,4 @@
-﻿namespace FashionShop_API.Exceptions;
+﻿namespace FashionShop_API.Exceptions.Base;
 
 public abstract class NotFoundException : Exception
 {
