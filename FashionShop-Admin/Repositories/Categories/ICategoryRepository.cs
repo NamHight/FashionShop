@@ -13,6 +13,7 @@ public interface ICategoryRepository
     Task<bool> DeleteAsync(long id, bool trackChanges);
     Task<List<Category>> GetPageLinkAsync(int page, int pageSize, string nameSearch, bool trackChanges);
     Task<int> GetCountAsync(string nameSearch, bool trackChanges);
-
+   
     Task<long> FindByNameAsync(string newCategoryName);
+    Task<int> CountCategoryAsync();
 }

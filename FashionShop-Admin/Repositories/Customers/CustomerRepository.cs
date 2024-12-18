@@ -27,5 +27,9 @@ namespace FashionShop.Repositories.Customers
         {
             return await _context.Customers.Where(cus => cus.CreatedAt.Value.Date.Equals(date.Date)).AsNoTracking().CountAsync();
         }
+        public async Task<int> CountCustomerAsync()
+        {
+            return await _context.Customers.CountAsync();
+        }
     }
 }

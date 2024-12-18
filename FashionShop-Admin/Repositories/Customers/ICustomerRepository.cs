@@ -9,5 +9,6 @@ namespace FashionShop.Repositories.Customers
         Task<int> CountAsync();
         Task<int> CountStatusAsync(string status);
         Task<int> CountCustomerByMonthInYearAsync(DateTime date);
+        Task<int> CountCustomerAsync();
     }
 }

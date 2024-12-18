@@ -25,4 +25,6 @@ namespace FashionShop.Repositories.Products
 
 	
 	}
+        Task<int> CountProductsAsync();
+    }
 }

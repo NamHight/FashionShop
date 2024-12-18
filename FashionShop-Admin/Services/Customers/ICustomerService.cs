@@ -7,5 +7,6 @@ namespace FashionShop.Services.Customers
         Task<List<Customer>> GetAllAsync(bool trackChanges);
         
         Task<int> CountAsync();
+        Task<int> GetCustomerCountAsync();
     }
 }

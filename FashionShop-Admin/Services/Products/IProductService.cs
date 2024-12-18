@@ -1,4 +1,5 @@
 ﻿using FashionShop.Models;
+using FashionShop.Models.views.DashboardViewModel;
 using FashionShop.Models.views.ProductViewModels;
 
 namespace FashionShop.Services.Products
@@ -26,5 +27,6 @@ namespace FashionShop.Services.Products
         Task<bool> DeleteProductAsync(int productId);
 
         Task<Product?> GetBySlugAsync(string slug, bool trackChanges);
+        Task<int> GetProductCountAsync();
     }
 }

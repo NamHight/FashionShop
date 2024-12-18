@@ -1,6 +1,7 @@
 ﻿using FashionShop.Models;
 using FashionShop.Repositories.ManagerRepository;
 using FashionShop.Models.views;
+using FashionShop.Models.views.CategoryViewModels;
 namespace FashionShop.Services.Categories;
 
 public class CategoryService : ICategoryService
@@ -64,8 +65,32 @@ public class CategoryService : ICategoryService
         };
         return result;
     }
+    public async Task<Category?> GetByIdAsync(long id, bool trackChanges)
+    {
+        var category =  await _managerRepository.Category.GetByIdAsync(id, trackChanges);
+        return category;
+    }
     public async Task<long> FindByNameAsync(string newCategoryName)
     {
         return await _managerRepository.Category.FindByNameAsync(newCategoryName);
+    }
+    public async Task<bool> UpdateCategoryAsync(int id, UpdateCategoryViewModel abc, bool trackChanges)
+    {
+        var category = await _managerRepository.Category.GetByIdAsync(id, true);
+        if (category != null)
+        {
+            category.CategoryName = abc.CategoryName;
+            category.Slug = abc.Slug;
+            category.Description = abc.Description;
+            category.Status = abc.Status;
+            _managerRepository.Category.UpdateStatus(category);
+            await _managerRepository.SaveAsync();
+            return true;
+        }
+        return false;
+    }
+    public async Task<int> GetCategoryCountAsync()
+    {
+        return await _managerRepository.Category.CountCategoryAsync();
     }
 }

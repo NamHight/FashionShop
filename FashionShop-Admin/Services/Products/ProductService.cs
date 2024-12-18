@@ -2,6 +2,7 @@
 using FashionShop.Models.views.ProductViewModels;
 using FashionShop.Repositories.ManagerRepository;
 using FashionShop.Models.views;
+using FashionShop.Models.views.DashboardViewModel;
 
 namespace FashionShop.Services.Products
 {
@@ -127,6 +128,10 @@ namespace FashionShop.Services.Products
         {
             Product product = await _managerRepository.Product.GetBySlugAsync(slug, trackChanges);
             return product;
+        }
+        public async Task<int> GetProductCountAsync()
+        {
+            return await _managerRepository.Product.CountProductsAsync();
         }
     }
 }
