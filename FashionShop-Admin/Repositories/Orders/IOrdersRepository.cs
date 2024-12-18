@@ -18,5 +18,6 @@ public interface IOrdersRepository
     Task<decimal?> TotalSaleAsync(DateTime date, bool trackChanges);
     
     Task<decimal?> AvgSaleAsync(DateTime date,bool trackChanges);
+    Task<int> CountOrderAsync();
 
 }

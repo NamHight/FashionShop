@@ -7,7 +7,8 @@ using FashionShop.Services.ManagerService;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Hosting.Internal;
-
+using FashionShop.Models.views.CategoryViewModels;
+using FashionShop.Models.views.ProductViewModels;
 namespace FashionShop.Controllers;
 
 public class CategoriesController : Controller
@@ -71,22 +72,48 @@ public class CategoriesController : Controller
             return View();
         }
     }
-    public ActionResult Edit(int id)
+    public async Task<ActionResult> Edit(int id)
     {
-        return View();
+        try
+        {
+            var category = await _managerService.Category.GetByIdAsync(id, false);
+            var resutl = new UpdateCategoryViewModel()
+            {
+                CategoryId = category.CategoryId,
+                CategoryName = category.CategoryName,
+                Slug = category.Slug,
+                Description = category.Description,
+                Status = category.Status,
+            };
+            return View(resutl);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Loi la {ex.Message}");
+            throw;
+        }
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Edit(int id, IFormCollection collection)
+    public async Task<ActionResult> Edit(int id, UpdateCategoryViewModel collection)
     {
         try
         {
-            return RedirectToAction(nameof(Index));
+            var a= await _managerService.Category.UpdateCategoryAsync(id, collection,true);
+            if(a==true)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(collection);
+            }
         }
-        catch
+        catch (Exception ex)
         {
-            return View();
+            Console.WriteLine($"Loi khong xac dinh {ex}");
+            throw;
         }
     }
     // POST: ProductsController/Delete/5

@@ -78,4 +78,9 @@ public class CategoryRepository : GenericRepo<Category>,ICategoryRepository
         long id_category = category?.CategoryId ?? -1;
         return id_category;
     }
+    public async Task<int> CountCategoryAsync()
+    {
+        return await _context.Categories.CountAsync();
+    }
+
 }

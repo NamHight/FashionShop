@@ -90,5 +90,9 @@ namespace FashionShop.Repositories.Products
                 .CountAsync();
             return count;
         }
+        public async Task<int> CountProductsAsync()
+        {
+            return await _context.Products.CountAsync();
+        }
     }
 }

@@ -90,4 +90,8 @@ public class OrdersRepository : GenericRepo<Order>,IOrdersRepository
             .AverageAsync(order => order.TotalAmount);
         return avg;
     }
+    public async Task<int> CountOrderAsync()
+    {
+        return await _context.Orders.CountAsync();
+    }
 }

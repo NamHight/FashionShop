@@ -1,4 +1,5 @@
 ﻿using FashionShop.Models;
+using FashionShop.Models.views.DashboardViewModel;
 using FashionShop.Models.views.ProductViewModels;
 
 namespace FashionShop.Services.Products
@@ -24,5 +25,6 @@ namespace FashionShop.Services.Products
         Task<ProductViewModel> GetPageLinkAsync(string nameSearch, int page, int pageSize, bool trackChanges);
 
         Task<bool> DeleteProductAsync(int productId);
+        Task<int> GetProductCountAsync();
     }
 }

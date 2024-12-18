@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using FashionShop.Models;
 using FashionShop.Services.ManagerService;
 using Microsoft.AspNetCore.Authorization;
+using FashionShop.Models.views.DashboardViewModel;
 
 namespace FashionShop.Controllers;
 
@@ -20,7 +21,14 @@ public class DashboardController : Controller
 
     public async Task<IActionResult> Index()
     {
-        return View();
+        var viewModel = new CountDashboardViewModel
+        {
+            CountProduct=await _managerService.Product.GetProductCountAsync(),
+            CountCategory=await _managerService.Category.GetCategoryCountAsync(),
+            CountCustomer=await _managerService.Customer.GetCustomerCountAsync(),
+            CountOrder=await _managerService.Orders.GetOrderCountAsync(),
+        };
+        return View(viewModel);
     }
 
     public async Task<IActionResult> GetPurchaseStatic()

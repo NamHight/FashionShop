@@ -88,4 +88,8 @@ public class OrdersService : IOrdersService
         }
         
     }
+    public async Task<int> GetOrderCountAsync()
+    {
+        return await _managerRepository.Orders.CountOrderAsync();
+    }
 }
