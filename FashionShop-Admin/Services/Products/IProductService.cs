@@ -28,5 +28,7 @@ namespace FashionShop.Services.Products
 
         Task<Product?> GetBySlugAsync(string slug, bool trackChanges);
         Task<int> GetProductCountAsync();
+
+        Task<int> GetProductCountById(int id);
     }
 }
