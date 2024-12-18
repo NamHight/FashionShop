@@ -1,5 +1,8 @@
+using System.Net;
+using FashionShop_API.Dto;
+using FashionShop_API.Dto.RequestDto;
+using FashionShop_API.Exceptions;
 using FashionShop_API.Services.ServiceManager;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FashionShop_API.Controllers
@@ -18,19 +21,38 @@ namespace FashionShop_API.Controllers
         }
         
         [HttpGet]
-        public async Task<IActionResult> GetAllAsync()
+        public async Task<IActionResult> GetAllAsync(int page = 1,int limit = 10)
         {
-            var categories = await _serviceManager.Category.GetAllCategoryAsync(trackChanges: false);
+            if (page <= 0)
+            {
+                throw new PageNotFoundException(page.ToString());
+            }
+            var categories = await _serviceManager.Category.GetAllPaginatedAsync(page,limit);
             _logger.Log(LogLevel.Information,"Controller Category: " + nameof(GetAllAsync) + " Success");
             return Ok(categories);
         }
 
-        [HttpGet("{id}", Name = "GetCategoryById")]
+        [HttpGet("{name}", Name = "GetCategoryById")]
         public async Task<IActionResult> GetCategoryByIdAsync(long id)
         {
             var category = await _serviceManager.Category.GetCategoryByIdAsync(id, trackChanges: false);
             _logger.Log(LogLevel.Information,"Controller Category: " + nameof(GetCategoryByIdAsync) + " Success");
             return Ok(category);
         }
+        [HttpPost]
+        public async Task<IActionResult> CreateCategory([FromBody]RequestCategoryDto? requestCategoryDto)
+        {
+            if (requestCategoryDto is null)
+            {
+                return BadRequest("Category is null");
+            }
+            if (!ModelState.IsValid)
+            {
+                return UnprocessableEntity(ModelState);
+            }
+            var category = await _serviceManager.Category.CreateAsync(requestCategoryDto);
+            return CreatedAtRoute("GetCategoryById", new { id = category.CategoryId }, category);
+        }
+        
     }
 }

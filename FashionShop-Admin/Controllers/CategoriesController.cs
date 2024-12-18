@@ -4,6 +4,7 @@ using FashionShop.Models;
 using FashionShop.Models.views.ReviewViewModels;
 using FashionShop.Models.views;
 using FashionShop.Services.ManagerService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Hosting.Internal;
@@ -11,6 +12,7 @@ using FashionShop.Models.views.CategoryViewModels;
 using FashionShop.Models.views.ProductViewModels;
 namespace FashionShop.Controllers;
 
+[Authorize]
 public class CategoriesController : Controller
 {
     private readonly IManagerService _managerService;

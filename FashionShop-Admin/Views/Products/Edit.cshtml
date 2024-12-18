@@ -27,13 +27,13 @@
                 </div>
                 <div class="mb-3">
                     <label asp-for="Slug" class="form-label">Slug</label>
-                    <input readonly asp-for="Slug" type="text" class="form-control rounded-pill " id="Slug" name="Slug" value="@Model.Slug" />
-                    <span id="errorSlug" class="text-danger"></span>
+                    <input readonly asp-for="Slug" type="text" class="form-control rounded-pill " id="Slug_edit" name="Slug" value="@Model.Slug" />
+                    <span id="errorSlug1" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label asp-for="Banner" class="form-label">Banner</label>
                     <input tabindex="2" asp-for="Banner" type="file" class="form-control rounded-pill " id="Banner" name="Banner" value="@Model.BannerUrl" />
-
+                     <span id="errorBanner1" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label asp-for="Description" class="form-label">Description</label>
@@ -68,7 +68,8 @@
 </div>
 
 @section Scripts {
-    @*  <script src="~/js/handlercheckslug.js" type="module"></script> *@
+
+    <script src="~/js/ValidateProduct.js" type="module"></script>
     <script>
         function xuLySlug(nameProduct) {
             var result = nameProduct.toLowerCase();
@@ -87,22 +88,20 @@
         function handleCheckSlug() {
             text = $("#ProductName").val(); // lấy giá trị trong trường productname
             text = xuLySlug(text); // xử lý tên productname thành slug
-            $("#Slug").val(text); // chèn slug mới xử lý vào trường Slug
+            $("#Slug_edit").val(text); // chèn slug mới xử lý vào trường Slug
             // Kiểm tra xem slug mới tạo có tồn tại chưa
             $.ajax({
                 method: "POST",
-                url: "Products/CheckSlug",
+                    url: "@Url.Action("CheckSlug", "Products")",
                 data: {
                     slug: text
                 },
                 success: function (res) {
                     if (res.statusCode == 0) {
-                        $("#errorSlug").text("Vui long nhap lai ten san pham, vi slug nay da ton tai");
-                        $("#ProductName").val("");
-                        $("#Slug").val("");
+                            $("#errorSlug1").text("Vui long nhap lai ten san pham, vi slug nay da ton tai");
                         $("#ProductName").focus();
                     } else {
-                        $("#errorSlug").text("");
+                        $("#errorSlug1").text("");
                     }
                 },
                 error: function (err) {

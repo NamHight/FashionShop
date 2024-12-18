@@ -123,6 +123,12 @@ namespace FashionShop.Services.Products
             if (numRowEffect > 0) return true;
             return false;
         }
+
+        public async Task<Product?> GetBySlugAsync(string slug, bool trackChanges)
+        {
+            Product product = await _managerRepository.Product.GetBySlugAsync(slug, trackChanges);
+            return product;
+        }
         public async Task<int> GetProductCountAsync()
         {
             return await _managerRepository.Product.CountProductsAsync();

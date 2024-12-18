@@ -64,4 +64,12 @@ public class DashboardController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+
+ 
+	public async Task<IActionResult> getCountProductPerMonth()
+	{
+        var result = await _managerService.Dashboard.getCountProductPerMonth();
+		return Json(new { data = result, message = "Get data all static successfully"});
+	}
+
 }

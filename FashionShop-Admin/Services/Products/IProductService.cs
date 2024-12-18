@@ -25,6 +25,8 @@ namespace FashionShop.Services.Products
         Task<ProductViewModel> GetPageLinkAsync(string nameSearch, int page, int pageSize, bool trackChanges);
 
         Task<bool> DeleteProductAsync(int productId);
+
+        Task<Product?> GetBySlugAsync(string slug, bool trackChanges);
         Task<int> GetProductCountAsync();
     }
 }

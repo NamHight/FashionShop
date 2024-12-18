@@ -105,4 +105,25 @@ public class DashboardService : IDashboardService
             throw;
         }
     }
+
+	public async Task<List<int?>> getCountProductPerMonth()
+    {
+        try
+        {
+            List<int?> countProductPerMonth = new List<int?>();
+            for(var x=1; x <13; x++)
+            {
+                countProductPerMonth.Add(await _managerRepository.Orders.countProductPerMonth(x, 2024));
+			}
+            return countProductPerMonth;
+
+		}
+		catch(Exception err)
+        {
+			Console.WriteLine(err);
+			throw;
+		}
+    }
+
+
 }

@@ -21,6 +21,10 @@ namespace FashionShop.Repositories.Products
         Task<int> CountByDateAsync(DateTime date, bool trackChanges);
         Task<List<Product>> GetPageLinkAsync(int page, int pageSize, string nameSearch, bool trackChanges);
         Task<int> GetCountAsync(string nameSearch, bool trackChanges);
+        Task<Product?> GetBySlugAsync(string slug, bool trackChanges);
+
+	
+	}
         Task<int> CountProductsAsync();
     }
 }
