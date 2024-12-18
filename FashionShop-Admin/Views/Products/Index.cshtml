@@ -4,43 +4,11 @@
     ViewBag.Title = "Products List";
 }
 @section Styles {
-    <!-- plugin css file  -->
-    <link rel="stylesheet" href="~/plugin/datatables/responsive.dataTables.min.css">
-    <link rel="stylesheet" href="~/plugin/datatables/dataTables.bootstrap5.min.css">
+    
 }
 @section Scripts {
-    <script src="~/bundles/dataTables.bundle.js"></script>
-    <script>
-        $('#myDataTable')
-            .addClass('nowrap')
-            .dataTable({
-                responsive: true,
-                columnDefs: [
-                    { targets: [-1, -3], className: 'dt-body-right' }
-                ]
-            });
-        $('.deleterow').on('click', function () {
-            var tablename = $(this).closest('table').DataTable();
-            tablename
-                .row($(this)
-                    .parents('tr'))
-                .remove()
-                .draw();
-
-        });
-    </script>
-    <script>
-        // xử lý ajax cho cập nhật category hoặc status
-        $(document).ready(function () {
-            $('select').change(function () { 
-                var id_select = $(this).attr('id');
-                if (id_select.includes("category-")) {
-                    alert("ban da thay doi category");
-                }else{
-                    alert("ban da thay doi status");
-                }
-            })
-        })
+   @* Xử lý cập nhật categoryID và status *@
+        <script src="~/js/HandlerUpdateProduct.js" type="module">
     </script>
 }
 <!-- Body: Body -->
@@ -57,6 +25,16 @@
         <div class="row g-3 mb-3">
             <div class="col-md-12">
                 <div class="card">
+                    <div class="card-header">
+                        <div style="float:left">
+                            <form asp-action="Index" method="get">
+                                <div class="input-group">
+                                    <input name="nameSearch" placeholder="Search for name..." />
+                                    <input type="submit" value="Search" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                     <div class="card-body">
                         <table id="myDataTable" class="table table-hover align-middle mb-0" style="width: 100%;">
                             <thead>
@@ -85,10 +63,13 @@
                                         <td>@product.Description</td>
                                         <td>@product.Price</td>
                                         <td>
-                                            <select id="category-@(product.CategoryId)" class="badge bg-success">
+                                            <select id="category-@(product.ProductId)" class="badge bg-success" value="">
                                                 @foreach (var category in Model?.Categories)
                                                 {
-                                                   <option selected=@(product.CategoryId == category.CategoryId ? true : false)>@category.CategoryName</option>
+                                                    <option selected=@(product.CategoryId == category.CategoryId ? true : false)
+                                                            value="@category.CategoryName">
+                                                        @category.CategoryName
+                                                    </option>
                                                 }
                                             </select>
                                         </td>
@@ -99,24 +80,30 @@
                                                 string color = product.Status switch
                                                 {
                                                     "available" => "bg-success",
-                                                    "unavailable" => "bg-warning",
+                                                    "unavailable" => "bg-danger",
+                                                    "watting" => "bg-warning",
+                                                    _ => "Unknown"
                                                 };
                                             }
-                                            <select id="status-@(product.CategoryId)" class="badge @color">
+                                            <select id="status-@(product.ProductId)" class="badge @color">
                                                 <option selected="@(product.Status == "available" ? true : false)">available</option>
                                                 <option selected="@(product.Status == "unavailable" ? true : false)">unavailable</option>
+                                                <option selected="@(product.Status == "watting" ? true : false)">watting</option>
                                             </select>
                                         </td>
                                         <td>
                                             <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                                <a href="categories-edit.html" class="btn btn-outline-secondary"><i class="icofont-edit text-success"></i></a>
-                                                <button type="button" class="btn btn-outline-secondary deleterow"><i class="icofont-ui-delete text-danger"></i></button>
+                                                <a asp-action="Edit" asp-route-slug="@product.Slug" class="btn btn-outline-secondary"><i class="icofont-edit text-success"></i></a>
+                                                <form asp-action="Delete" asp-route-id="@product.ProductId" method="post">
+                                                    <button type="submit" class="btn btn-outline-secondary deleterow"><i class="icofont-ui-delete text-danger"></i></button>
+                                                </form>
                                             </div>
                                         </td>
                                     </tr>
                                 }
                             </tbody>
                         </table>
+                        <div page-model="@Model?.PagingInfo" page-action="Index" page-search="@Model?.NameSearch" page-class="btn" page-classes-enabled="true" page-class-normal="btn-outline-dark" page-class-selected="btn-primary" class="btn-group m-1"></div>
                     </div>
                 </div>
             </div>

@@ -13,8 +13,34 @@ namespace FashionShop.Services.Customers
         }
         public async Task<List<Customer>> GetAllAsync(bool trackChanges)
         {
-            var customers = await _managerRepository.Customer.GetAllAsync(trackChanges);
-            return customers;
+            try
+            {
+                var customers = await _managerRepository.Customer.GetAllAsync(trackChanges);
+                return customers;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public async Task<int> CountAsync()
+        {
+            try
+            {
+                var count = await _managerRepository.Customer.CountAsync();
+                return count;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+        public async Task<int> GetCustomerCountAsync()
+        {
+            return await _managerRepository.Customer.CountCustomerAsync();
         }
     }
 }

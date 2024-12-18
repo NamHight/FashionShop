@@ -1,712 +1,695 @@
-﻿@{
-    ViewData["Title"] = "Dashboard";
+﻿@model FashionShop.Models.views.DashboardViewModel.CountDashboardViewModel
+@{
+	ViewData["Title"] = "Dashboard";
 }
-@section Styles{
-    <link rel="stylesheet" href="~/plugin/datatables/responsive.dataTables.min.css">
-    <link rel="stylesheet" href="~/plugin/datatables/dataTables.bootstrap5.min.css">
+@section Styles {
+
 }
-@section Scripts{
-    <!-- Plugin Js -->
-    <script src="~/bundles/apexcharts.bundle.js"></script>
-    <script src="~/js/page/index.js"></script>
-    <script src="~/bundles/dataTables.bundle.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1Jr7axGGkwvHRnNfoOzoVRFV3yOPHJEU&amp;callback=myMap"></script>
-    <script>
-        $('#myDataTable')
-            .addClass( 'nowrap')
-            .dataTable( {
-                responsive: true,
-                columnDefs: [
-                    { targets: [-1, -3], className: 'dt-body-right' }
-                ]
-            });
-    </script>
+@section Scripts {
+	<!-- Plugin Js -->
+	<script src="~/bundles/apexcharts.bundle.js"></script>
+	<script src="~/js/template.js"></script>
+	<!-- Jquery Page Js -->
+	<script>
+		$(function () {
+			"use strict";
+			$(document).ready(function() {
+				var options = {
+					series: [{
+						name: 'Order',
+						data: [0,0,0,0,0,0,0,0,0,0,0,0]
+					}],
+					chart: {
+						height: 350,
+						type: 'bar',
+						toolbar: {
+							show: false,
+						},
+						animations: {
+							enabled: true,
+							speed: 800,
+							animateGradually: {
+								enabled: true,
+								delay: 150
+							},
+							dynamicAnimation: {
+								enabled: true,
+								speed: 350
+							}
+						}
+					},
+					colors: ['var(--chart-color2)'],
+					plotOptions: {
+						bar: {
+							dataLabels: {
+								position: 'top', // top, center, bottom
+							},
+						}
+					},
+					dataLabels: {
+						enabled: true,
+						formatter: function (val) {
+							return val;
+						},
+						offsetY: -20,
+						style: {
+							fontSize: '12px',
+							colors: ['var(--color-500)'],
+						}
+					},
+					xaxis: {
+						categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+						position: 'bottom',
+						axisBorder: {
+							show: false
+						},
+						axisTicks: {
+							show: false
+						},
+						tooltip: {
+							enabled: true,
+						}
+					},
+					yaxis: {
+						axisBorder: {
+							show: false
+						},
+						axisTicks: {
+							show: false,
+						},
+						labels: {
+							show: false,
+							formatter: function (val) {
+								return val;
+							}
+						}
+					}
+				};
+
+				var chart = new ApexCharts(document.querySelector("#apex-expense-update"), options);
+				chart.render();
+
+				function getPuchaseStatic(){
+					return new Promise(function (resolve,reject){
+						$.ajax({
+							url: "@Url.Action("GetPurchaseStatic", "Dashboard")",
+							method: "GET",
+							dataType: "json",
+							success: function (data) {
+								if (data.statusCode === 200){
+									resolve(data.value.data);
+								}else{
+									resolve([0,0,0,0,0,0,0,0,0,0,0,0]);
+								}
+							},
+							error: function (res) {
+								reject(res);
+								console.log(res)
+							}
+						})
+					});
+				}
+
+				getPuchaseStatic().then(function(result) {
+					var amount = result.map(item => item.amount);
+					var month = result.map(item => item.month);
+					$("#all-purchase-month").text(amount.reduce((amount, item) => amount + item, 0));
+					chart.updateSeries([{
+						name: 'Order',
+						data: amount
+					}]);
+					chart.updateOptions({
+						xaxis: {
+							categories: month
+						}
+					});
+				}).catch(function (err) {
+					console.log(err);
+				})
+			});
+		})
+	</script>
+	<script>
+		$(document).ready(function (){
+		   $.ajax({
+			   url: "@Url.Action("GetCountCustomer", "Customer")",
+			   method: "GET",
+			   dataType: "json",
+			   success: function (data) {
+				   if (data.statusCode === 200){
+					   $("#count-customer").text(data.value.data);
+				   }else{
+					   $("#count-customer").text(0);
+				   }
+			   },
+			   error: function () {
+				   $("#count-customer").text(0);
+				   console.log("Error");
+			   }
+		   })
+		});
+
+	</script>
+	<script>
+
+		// SIMPLE DONUT
+		$(document).ready(function() {
+			var options = {
+				chart: {
+					height: 250,
+					type: 'donut',
+					animations: {
+						enabled: true,
+						speed: 800,
+						animateGradually: {
+							enabled: true,
+							delay: 150
+						},
+						dynamicAnimation: {
+							enabled: true,
+							speed: 350
+						}
+					}
+				},
+				dataLabels: {
+					enabled: false,
+				},
+				legend: {
+					position: 'top',
+					horizontalAlign: 'center',
+					show: true,
+				},
+				colors: ['var(--chart-color1)', 'var(--chart-color2)', 'var(--chart-color3)', 'var(--chart-color4)'],
+				series: [0,0,0],
+				labels:["active","warning","banned"],
+				responsive: [{
+					breakpoint: 480,
+					options: {
+						chart: {
+							width: 200
+						},
+						legend: {
+							position: 'bottom'
+						}
+					}
+				}]
+			}
+			var chart = new ApexCharts(
+				document.querySelector("#apex-simple-donut-customer"),
+				options
+			);
+			chart.render();
+
+			function getCustomerStatus(){
+				return new Promise(function (resolve,reject){
+					$.ajax({
+						url: "@Url.Action("GetCustomerStatus", "Dashboard")",
+						method: "GET",
+						dataType: "json",
+						success: function (data) {
+							if (data.statusCode === 200){
+								resolve(data.value.data);
+							}else{
+								resolve([0,0,0]);
+							}
+						},
+						error: function (res) {
+							console.log(res);
+							reject(res)
+						}
+					})
+				});
+			}
+			getCustomerStatus().then(function (result){
+				chart.updateSeries(
+					result.map(item => item.count)
+				);
+				chart.updateOptions({
+					chart: {
+						animations: {
+							enabled: true,
+							speed: 800,
+							animateGradually: {
+								enabled: true,
+								delay: 150
+							},
+							dynamicAnimation: {
+								enabled: true,
+								speed: 350
+							}
+						}
+					}
+				});
+			}).catch(function (err){
+				console.log(err);
+			});
+		});
+	</script>
+	<script>
+		$(document).ready(function() {
+			$.ajax({
+				url: "@Url.Action("GetDataAllStatic", "Dashboard")",
+				method: "GET",
+				dataTypes: "json",
+				data:{
+					date: $("#dateData").val()
+				},
+				success: function (res){
+					if (res.statusCode === 200){
+						var data = res.value.data;
+						$("#customer").text(data.customer || 0);
+						$("#order").text(data.order || 0);
+						$("#totalSale").text( "$" +data.totalSales || 0);
+						$("#totalProduct").text(data.totalProduct || 0);
+						$("#avgSale").text(`$${data.avgSales || 0}`);
+					}
+				},
+				error: function (res){
+					console.error({res});
+				}
+			})
+		});
+		$("#dateData").on("change",function (event){
+			event.preventDefault();
+			$.ajax({
+				url: "@Url.Action("GetDataAllStatic", "Dashboard")",
+				method: "GET",
+				dataTypes: "json",
+				data:{
+					date: event.target.value
+				},
+				success: function (res){
+					console.log(res);
+					if (res.statusCode === 200){
+						var data = res.value.data;
+						$("#customer").text(data.customer);
+						$("#order").text(data.order);
+						$("#totalSale").text( "$" +data.totalSales);
+						$("#totalProduct").text(data.totalProduct);
+						$("#avgSale").text(`$${data.avgSales || 0}`);
+					}
+				},
+				error: function (res){
+					console.error({res});
+				}
+			})
+		});
+	</script>
+	<script>
+		$("#active-input-date").on("click",function (){
+			$("#dateData").focus();
+		});
+	</script>
+	<script>
+			$(document).ready(function() {
+			$.ajax({
+				url: "@Url.Action("GetRevenuaPrice", "Dashboard")",
+				method: "get",
+				dataType: "json",
+				success: function(res){
+					console.log("Revenua chart " + JSON.stringify(res.value.data));
+					var amount = res.value.data.map(item => item.amount);
+					console.log("Revenua chart 2 " + amount);
+					var month = res.value.data.map(item => item.month);
+					$("#all-revenua-month").text(amount.reduce((amount, item) => amount + item, 0));
+					RevuaneTotal(amount);
+				},
+				error: function(err){
+					console.log("Error: " + err.messege);
+				}
+			})
+			function RevuaneTotal(amount){
+			var options = {
+				chart: {
+					height: 350,
+					type: 'bar',
+					toolbar: {
+						show: false,
+					},
+				},
+				colors: ['var(--chart-color2)'],
+				grid: {
+					yaxis: {
+						lines: {
+							show: false,
+						}
+					},
+					padding: {
+						top: 0,
+						right: 0,
+						bottom: 0,
+						left: 0
+					},
+				},
+				plotOptions: {
+					bar: {
+						horizontal: true,
+					}
+				},
+				dataLabels: {
+					enabled: false
+				},
+				series: [{
+					name: 'Order',
+					data: amount
+				}],
+				xaxis: {
+					categories: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
+				"November", "December"],
+				}
+			}
+
+		   var chart = new ApexCharts(
+				document.querySelector("#apex-basic-bar"),
+				options
+			);
+
+			chart.render();
+			}
+		});
+	</script>
+	<script>
+		// thống kế số lượng sản phẩm bán mỗi tháng - Nam
+		$(document).ready(function() {
+			var sparklineData = [];
+			$.ajax({
+				method: "get",
+				url: "@Url.Action("getCountProductPerMonth", "Dashboard")",
+				success: function(res) {
+					console.log("Ket qua la", " ", res.data);
+					res.data.map(item => sparklineData.push(item)); // thêm số lượng sp bán được mỗi tháng vào mảng
+					var sum = res.data.reduce((sum, item) => sum  += item);
+					$("#all-product").text(sum); // tính tổng toàn bộ sp đã bán trong năm in ra
+				},
+				error: function(err){
+					console.log("Error: " + err.messege);
+				}
+			})
+			var setup = {
+				chart: {
+					type: 'area',
+					height: 160,
+					sparkline: {
+					enabled: true,
+					},
+				},
+				stroke: {
+					width: 2
+				},
+				colors: ['#f7c56b'],
+				series: [{
+					name: "Procuct",
+					data: sparklineData,
+				}],
+				xaxis: {
+					categories: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
+				"November", "December"],
+				},
+				dataLabels: {
+					enabled: true, // Bật hiển thị số liệu
+					style: {
+						colors: ['#007bff'], // Màu chữ của số liệu
+						fontSize: '12px',
+						textAnchor: 'end', // Căn giữa (các giá trị khác: 'start', 'end')
+					},
+					offsetY: -2, // Điều chỉnh vị trí của số liệu (cao hơn so với đỉnh sóng),
+					offsetX: 0,
+				},
+				title: {
+					text: '',
+					offsetX: 0,
+					style: {
+						fontSize: '24px',
+						cssClass: 'apexcharts-yaxis-title'
+					}
+				},
+				subtitle: {
+					offsetX: 0,
+					style: {
+						fontSize: '14px',
+						cssClass: 'apexcharts-yaxis-title'
+					}
+				}
+			}
+
+		var demo = new ApexCharts(document.querySelector("#testdemo"), setup);
+		demo.render();
+		})
+	</script>
 }
 <!-- Body: Body -->
 <div class="body d-flex py-3">
-    <div class="container-xxl">
+	<div class="container-xxl">
 
-        <div class="row g-3 mb-3 row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 row-cols-xl-4">
-            <div class="col">
-                <div class="alert-success alert mb-0">
-                    <div class="d-flex align-items-center">
-                        <div class="avatar rounded no-thumbnail bg-success text-light"><i class="fa fa-dollar fa-lg"></i></div>
-                        <div class="flex-fill ms-3 text-truncate">
-                            <div class="h6 mb-0">Revenue</div>
-                            <span class="small">$18,925</span>
-                        </div>
+		<div class="row g-3 mb-3 row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 row-cols-xl-4">
+			<div class="col">
+                <a asp-controller="Products" asp-action="Index">
+				<div class="alert-success alert mb-0">
+					<div class="d-flex align-items-center">
+						<div class="avatar rounded no-thumbnail bg-success text-light"><i class="fa fa-dollar fa-lg"></i></div>
+						<div class="flex-fill ms-3 text-truncate">
+							<div class="h6 mb-0">Products</div>
+							<span class="small">@Model.CountProduct</span>
+						</div>
+					</div>
                     </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="alert-danger alert mb-0">
-                    <div class="d-flex align-items-center">
-                        <div class="avatar rounded no-thumbnail bg-danger text-light"><i class="fa fa-credit-card fa-lg"></i></div>
-                        <div class="flex-fill ms-3 text-truncate">
-                            <div class="h6 mb-0">Expense</div>
-                            <span class="small">$11,024</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="alert-warning alert mb-0">
-                    <div class="d-flex align-items-center">
-                        <div class="avatar rounded no-thumbnail bg-warning text-light"><i class="fa fa-smile-o fa-lg"></i></div>
-                        <div class="flex-fill ms-3 text-truncate">
-                            <div class="h6 mb-0">Happy Clients</div>
-                            <span class="small">8,925</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="alert-info alert mb-0">
-                    <div class="d-flex align-items-center">
-                        <div class="avatar rounded no-thumbnail bg-info text-light"><i class="fa fa-shopping-bag" aria-hidden="true"></i></div>
-                        <div class="flex-fill ms-3 text-truncate">
-                            <div class="h6 mb-0">New StoreOpen</div>
-                            <span class="small">8,925</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><!-- Row end  -->
+                </a>
+			</div>
+			<div class="col">
+				<a asp-controller="Categories" asp-action="Index">
+				<div class="alert-danger alert mb-0">
+					<div class="d-flex align-items-center">
+						<div class="avatar rounded no-thumbnail bg-danger text-light"><i class="fa fa-credit-card fa-lg"></i></div>
+						<div class="flex-fill ms-3 text-truncate">
+							<div class="h6 mb-0">Categories</div>
+							<span class="small">@Model.CountCategory</span>
+						</div>
+					</div>
+				</div>
+				</a>
+			</div>
+			<div class="col">
+				<a asp-controller="Orders" asp-action="Index">
+				<div class="alert-warning alert mb-0">
+					<div class="d-flex align-items-center">
+						<div class="avatar rounded no-thumbnail bg-warning text-light"><i class="fa fa-smile-o fa-lg"></i></div>
+						<div class="flex-fill ms-3 text-truncate">
+							<div class="h6 mb-0">Orders</div>
+							<span class="small">@Model.CountOrder</span>
+						</div>
+					</div>
+				</div>
+				</a>
+			</div>
+			<div class="col">
+				@* <a asp-controller="Customers" asp-action="Index"> *@
+				<div class="alert-info alert mb-0">
+					<div class="d-flex align-items-center">
+						<div class="avatar rounded no-thumbnail bg-info text-light"><i class="fa fa-shopping-bag" aria-hidden="true"></i></div>
+						<div class="flex-fill ms-3 text-truncate">
+							<div class="h6 mb-0">Customers</div>
+							<span class="small">@Model.CountCustomer</span>
+						</div>
+					</div>
+				</div>
+				@* </a> *@
+			</div>
+		</div><!-- Row end  -->
 
-        <div class="row g-3">
-            <div class="col-lg-12 col-md-12">
-                <div class="tab-filter d-flex align-items-center justify-content-between mb-3 flex-wrap">
-                    <ul class="nav nav-tabs tab-card tab-body-header rounded  d-inline-flex w-sm-100">
-                        <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#summery-today" >Today</a></li>
-                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#summery-week" >Week</a></li>
-                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#summery-month" >Month</a></li>
-                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#summery-year" >Year</a></li>
-                    </ul>
-                    <div class="date-filter d-flex align-items-center mt-2 mt-sm-0 w-sm-100">
-                        <div class="input-group">
-                            <input type="date" class="form-control">
-                            <button class="btn btn-primary" type="button"><i class="icofont-filter fs-5"></i></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-content mt-1">
-                    <div class="tab-pane fade show active" id="summery-today">
-                        <div class="row g-1 g-sm-3 mb-3 row-deck">
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Customers</span>
-                                            <div><span class="fs-6 fw-bold me-2">14,208</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-student-alt fs-3 color-light-orange"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Order</span>
-                                            <div><span class="fs-6 fw-bold me-2">2314</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-shopping-cart fs-3 color-lavender-purple"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Avg Sale</span>
-                                            <div><span class="fs-6 fw-bold me-2">$1770</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-sale-discount fs-3 color-santa-fe"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Avg Item Sale</span>
-                                            <div><span class="fs-6 fw-bold me-2">185</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-calculator-alt-2 fs-3 color-danger"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Total Sale</span>
-                                            <div><span class="fs-6 fw-bold me-2">$35000</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-calculator-alt-1 fs-3 color-lightblue"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Visitors</span>
-                                            <div><span class="fs-6 fw-bold me-2">11452</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-users-social fs-3 color-light-success"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Total Products</span>
-                                            <div><span class="fs-6 fw-bold me-2">184511</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-bag fs-3 color-light-orange"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Top Selling Item</span>
-                                            <div><span class="fs-6 fw-bold me-2">122</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-star fs-3 color-lightyellow"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Dealership</span>
-                                            <div><span class="fs-6 fw-bold me-2">32</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-handshake-deal fs-3 color-lavender-purple"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- row end -->
-                    </div>
-                    <div class="tab-pane fade" id="summery-week">
-                        <div class="row g-3 mb-4 row-deck">
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Customers</span>
-                                            <div><span class="fs-6 fw-bold me-2">54,208</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-student-alt fs-3 color-light-orange"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Order</span>
-                                            <div><span class="fs-6 fw-bold me-2">12314</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-shopping-cart fs-3 color-lavender-purple"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Avg Sale</span>
-                                            <div><span class="fs-6 fw-bold me-2">$11770</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-sale-discount fs-3 color-santa-fe"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Avg Item Sale</span>
-                                            <div><span class="fs-6 fw-bold me-2">1185</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-calculator-alt-2 fs-3 color-danger"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Total Sale</span>
-                                            <div><span class="fs-6 fw-bold me-2">$135000</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-calculator-alt-1 fs-3 color-lightblue"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Visitors</span>
-                                            <div><span class="fs-6 fw-bold me-2">111452</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-users-social fs-3 color-light-success"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Total Products</span>
-                                            <div><span class="fs-6 fw-bold me-2">194511</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-bag fs-3 color-light-orange"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Top Selling Item</span>
-                                            <div><span class="fs-6 fw-bold me-2">1122</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-star fs-3 color-lightyellow"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Dealership</span>
-                                            <div><span class="fs-6 fw-bold me-2">132</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-handshake-deal fs-3 color-lavender-purple"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- row end -->
-                    </div>
-                    <div class="tab-pane fade" id="summery-month">
-                        <div class="row g-3 mb-4 row-deck">
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Customers</span>
-                                            <div><span class="fs-6 fw-bold me-2">74,208</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-student-alt fs-3 color-light-orange"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Order</span>
-                                            <div><span class="fs-6 fw-bold me-2">22314</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-shopping-cart fs-3 color-lavender-purple"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Avg Sale</span>
-                                            <div><span class="fs-6 fw-bold me-2">$21770</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-sale-discount fs-3 color-santa-fe"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Avg Item Sale</span>
-                                            <div><span class="fs-6 fw-bold me-2">2185</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-calculator-alt-2 fs-3 color-danger"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Total Sale</span>
-                                            <div><span class="fs-6 fw-bold me-2">$235000</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-calculator-alt-1 fs-3 color-lightblue"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Visitors</span>
-                                            <div><span class="fs-6 fw-bold me-2">211452</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-users-social fs-3 color-light-success"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Total Products</span>
-                                            <div><span class="fs-6 fw-bold me-2">284511</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-bag fs-3 color-light-orange"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Top Selling Item</span>
-                                            <div><span class="fs-6 fw-bold me-2">222</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-star fs-3 color-lightyellow"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Dealership</span>
-                                            <div><span class="fs-6 fw-bold me-2">232</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-handshake-deal fs-3 color-lavender-purple"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- row end -->
-                    </div>
-                    <div class="tab-pane fade" id="summery-year">
-                        <div class="row g-3 mb-4 row-deck">
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Customers</span>
-                                            <div><span class="fs-6 fw-bold me-2">104,208</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-student-alt fs-3 color-light-orange"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Order</span>
-                                            <div><span class="fs-6 fw-bold me-2">252314</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-shopping-cart fs-3 color-lavender-purple"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Avg Sale</span>
-                                            <div><span class="fs-6 fw-bold me-2">$852770</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-sale-discount fs-3 color-santa-fe"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Avg Item Sale</span>
-                                            <div><span class="fs-6 fw-bold me-2">75885</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-calculator-alt-2 fs-3 color-danger"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Total Sale</span>
-                                            <div><span class="fs-6 fw-bold me-2">$350000</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-calculator-alt-1 fs-3 color-lightblue"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Visitors</span>
-                                            <div><span class="fs-6 fw-bold me-2">114521452</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-users-social fs-3 color-light-success"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Total Products</span>
-                                            <div><span class="fs-6 fw-bold me-2">884511</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-bag fs-3 color-light-orange"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Top Selling Item</span>
-                                            <div><span class="fs-6 fw-bold me-2">7522</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-star fs-3 color-lightyellow"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
-                                        <div class="left-info">
-                                            <span class="text-muted">Dealership</span>
-                                            <div><span class="fs-6 fw-bold me-2">1832</span></div>
-                                        </div>
-                                        <div class="right-icon">
-                                            <i class="icofont-handshake-deal fs-3 color-lavender-purple"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- row end -->
-                    </div>
-                </div>
-            </div>
-        </div><!-- Row end  -->
+		<div class="row g-3">
+			<div class="col-lg-12 col-md-12">
+				<div class="tab-filter d-flex align-items-center justify-content-between mb-3 flex-wrap">
+					<h5 class="fw-bold">Dashboard Static All</h5>
+					<div class="date-filter d-flex align-items-center mt-2 mt-sm-0 w-sm-100">
+						<div class="input-group">
+							<input type="date" id="dateData" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")">
+							<button class="btn btn-primary" type="button" id="active-input-date"><i class="icofont-filter fs-5"></i></button>
+						</div>
+					</div>
+				</div>
+				<div class="tab-content mt-1">
+					<div class="tab-pane fade show active" id="summery">
+						<div class="row g-1 g-sm-3 mb-3 row-deck">
+							<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+								<div class="card">
+									<div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
+										<div class="left-info">
+											<span class="text-muted">Customers</span>
+											<div><span class="fs-6 fw-bold me-2" id="customer">0</span></div>
+										</div>
+										<div class="right-icon">
+											<i class="icofont-student-alt fs-3 color-light-orange"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+								<div class="card">
+									<div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
+										<div class="left-info">
+											<span class="text-muted">Order</span>
+											<div><span class="fs-6 fw-bold me-2" id="order">0</span></div>
+										</div>
+										<div class="right-icon">
+											<i class="icofont-shopping-cart fs-3 color-lavender-purple"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+								<div class="card">
+									<div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
+										<div class="left-info">
+											<span class="text-muted">Avg Sale</span>
+											<div><span class="fs-6 fw-bold me-2" id="avgSale">$0</span></div>
+										</div>
+										<div class="right-icon">
+											<i class="icofont-sale-discount fs-3 color-santa-fe"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+								<div class="card">
+									<div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
+										<div class="left-info">
+											<span class="text-muted">Avg Item Sale</span>
+											<div><span class="fs-6 fw-bold me-2" id="avgItemSale">0</span></div>
+										</div>
+										<div class="right-icon">
+											<i class="icofont-calculator-alt-2 fs-3 color-danger"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+								<div class="card">
+									<div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
+										<div class="left-info">
+											<span class="text-muted">Total Sale</span>
+											<div><span class="fs-6 fw-bold me-2" id="totalSale">$0</span></div>
+										</div>
+										<div class="right-icon">
+											<i class="icofont-calculator-alt-1 fs-3 color-lightblue"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+								<div class="card">
+									<div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
+										<div class="left-info">
+											<span class="text-muted">Visitors</span>
+											<div><span class="fs-6 fw-bold me-2" id="visitor">0</span></div>
+										</div>
+										<div class="right-icon">
+											<i class="icofont-users-social fs-3 color-light-success"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+								<div class="card">
+									<div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
+										<div class="left-info">
+											<span class="text-muted">Total Products</span>
+											<div><span class="fs-6 fw-bold me-2" id="totalProduct">0</span></div>
+										</div>
+										<div class="right-icon">
+											<i class="icofont-bag fs-3 color-light-orange"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+								<div class="card">
+									<div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
+										<div class="left-info">
+											<span class="text-muted">Top Selling Item</span>
+											<div><span class="fs-6 fw-bold me-2" id="topSellItem">0</span></div>
+										</div>
+										<div class="right-icon">
+											<i class="icofont-star fs-3 color-lightyellow"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+								<div class="card">
+									<div class="card-body py-xl-4 py-3 d-flex flex-wrap align-items-center justify-content-between">
+										<div class="left-info">
+											<span class="text-muted">Dealership</span>
+											<div><span class="fs-6 fw-bold me-2" id="dealerShip">0</span></div>
+										</div>
+										<div class="right-icon">
+											<i class="icofont-handshake-deal fs-3 color-lavender-purple"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div> <!-- row end -->
+					</div>
+				</div>
+			</div>
+		</div><!-- Row end  -->
+		<div class="row g-3 mb-3 row-deck">
+			<div class="col-lg-4 col-md-12">
+				<div class="card">
+					<div class="card-header py-3 d-flex justify-content-between align-items-center bg-transparent border-bottom-0">
+						<h6 class="m-0 fw-bold">Active Customer Status</h6>
+					</div>
+					<div class="card-body">
+						<div class="p-4 active-user bg-lightblue rounded-2 mb-2">
+							<span class="fw-bold d-flex justify-content-center fs-3" id="count-customer">0</span>
+						</div>
+						<div class="mt-4">
+							<h6 class="m-0 fw-bold mb-3">Static Customer Status</h6>
+							<div id="apex-simple-donut-customer"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-8 col-md-12">
+				<div class="card">
+					<div class="card-header py-3 d-flex justify-content-between align-items-center bg-transparent border-bottom-0">
+						<h6 class="m-0 fw-bold">Purchase Static</h6>
+					</div>
+					<div class="card-body">
+						<div class="h2 mb-0 px-2" id="all-purchase-month"></div>
+						<span class="text-muted small">Purchase All Month in @DateTime.Now.Year</span>
+						<div id="apex-expense-update"></div>
+					</div>
+				</div>
+			</div>
+		</div><!-- Row end  -->
+		<div class="row g-3 ">
+			<div class="col">
+				<div class="card mb-3">
+					<div class="card-header d-flex justify-content-between align-items-center bg-transparent border-bottom-0">
+						<h6 class="m-0 fw-bold">Sum Revenue Costs</h6>
+					</div>
+					<div class="card-body">
+						<p class="h2 mb-0 px-2 fw-bold">$<span id="all-revenua-month"></span></p>
+						<span class="text-muted small">Revenua All Month in @DateTime.Now.Year</span>
+						<div id="apex-basic-bar"></div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-        <div class="row g-3 mb-3">
-            <div class="col-xl-12">
-                <div class="card">
-                    <div class="card-header py-3 d-flex justify-content-between align-items-center bg-transparent border-bottom-0">
-                        <h6 class="m-0 fw-bold">Sales Status</h6>
-                    </div>
-                    <div class="card-body">
-                        <div id="apex-GenderOverview"></div>
-                    </div>
-                </div>
-            </div>
-        </div><!-- Row end  -->
-
-        <div class="row g-3 mb-3">
-            <div class="col-xxl-8 col-xl-8">
-                <div class="card mb-3">
-                    <div class="card-header py-3 d-flex justify-content-between align-items-center bg-transparent border-bottom-0">
-                        <h6 class="m-0 fw-bold">Shopping Status</h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="ac-line-transparent" id="apex-shoppingstatus"></div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header py-3 d-flex justify-content-between align-items-center bg-transparent border-bottom-0">
-                        <h6 class="m-0 fw-bold">Top Selling Product</h6>
-                    </div>
-                    <div class="card-body">
-                        <div id="topselling"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xxl-4 col-xl-4">
-                <div class="card">
-                    <div class="card-header py-3 d-flex justify-content-between align-items-center bg-transparent border-bottom-0">
-                        <h6 class="m-0 fw-bold">Our Branch Location & Revenue</h6>
-                    </div>
-                    <div class="card-body">
-                        <div id="googleMap" style="width:100%;height:397px;"></div>
-                        <div class="location-revenue mt-5">
-                            <label class="fw-bold">India</label>
-                            <div class="progress mb-4" style="height: 8px;">
-                                <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 30%" aria-valuenow="30"
-                                     aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <label class="fw-bold">Mauritius</label>
-                            <div class="progress mb-4" style="height: 8px;">
-                                <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 45%" aria-valuenow="45"
-                                     aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <label class="fw-bold">Colombia</label>
-                            <div class="progress mb-4" style="height: 8px;">
-                                <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 60%" aria-valuenow="60"
-                                     aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <label class="fw-bold">Russia</label>
-                            <div class="progress mb-4" style="height: 8px;">
-                                <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75"
-                                     aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <label class="fw-bold">France</label>
-                            <div class="progress mb-3" style="height: 8px;">
-                                <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 98%" aria-valuenow="98"
-                                     aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><!-- Row end  -->
-
-        <div class="row g-3 mb-3 row-deck">
-            <div class="col-lg-4 col-md-12">
-                <div class="card">
-                    <div class="card-header py-3 d-flex justify-content-between align-items-center bg-transparent border-bottom-0">
-                        <h6 class="m-0 fw-bold">Active Users Status</h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="p-4 active-user bg-lightblue rounded-2 mb-2">
-                            <span class="fw-bold d-flex justify-content-center fs-3">1345</span>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                <tr>
-                                    <th scope="col">Active pages</th>
-                                    <th scope="col">Users</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td><a href="#">/dist/product.html</a></td>
-                                    <td>245</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">/dist/product-cart.html</a></td>
-                                    <td>455</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">/dist/admin-profile.html</a></td>
-                                    <td>45</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">/dist/order-history.html</a></td>
-                                    <td>545</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">/dist/product-detail.html</a></td>
-                                    <td>55</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-8 col-md-12">
-                <div class="card">
-                    <div class="card-header py-3 d-flex justify-content-between align-items-center bg-transparent border-bottom-0">
-                        <h6 class="m-0 fw-bold">Avg Expense Costs</h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="h2 mb-0">$1105.5</div>
-                        <span class="text-muted small">Avg Expense Costs All Month</span>
-                        <div id="apex-expense"></div>
-                    </div>
-                </div>
-            </div>
-        </div><!-- Row end  -->
-        
-    </div>
+		<div class="row g-3 ">
+			<div class="col">
+				<div class="card mb-3">
+					<div class="card-header d-flex justify-content-between align-items-center bg-transparent border-bottom-0">
+						<h6 class="m-0 fw-bold">Products sold every month</h6>
+					</div>
+					<div class="card-body">
+						<p class="h2 mb-0 px-2 fw-bold"><span id="all-product"></span></p>
+						<span class="text-muted small">Total Product All Month in @DateTime.Now.Year</span>
+						<div id="testdemo"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

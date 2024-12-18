@@ -1,6 +1,8 @@
 ﻿using System.Security.Policy;
 using FashionShop.Models;
 using FashionShop.Models.views;
+using FashionShop.Models.views.EmployeeViewModel;
+using FashionShop.Models.views.EmployeeViewModels;
 using FashionShop.Repositories.ManagerRepository;
 
 namespace FashionShop.Services.Employees;
@@ -53,7 +55,8 @@ public class EmployeeService : IEmployeeService
                 Description = employee.Description,
                 Status = employee.Status,
                 Phone = employee.Phone,
-                EmployeePosition = employee.EmployeePosition
+                EmployeePosition = employee.EmployeePosition,
+                CreatedAt = DateTime.Now
             };
             _managerRepository.Employee.CreateAsync(newEmployee);
             await _managerRepository.SaveAsync();
@@ -158,6 +161,7 @@ public class EmployeeService : IEmployeeService
             currentEmployee.Address = employee.Address;
             currentEmployee.Description = employee.Description;
             currentEmployee.Birth = employee.Birth;
+            currentEmployee.UpdatedAt = DateTime.Now;
             await _managerRepository.Employee.UpdateAsync(currentEmployee);
             await _managerRepository.SaveAsync();
             return true;
@@ -211,6 +215,104 @@ public class EmployeeService : IEmployeeService
         return VerifyPassword(password, employee.Password);
     }
 
+    public async Task<EmployeeViewModel> GetPaginateAllAsync(int page, int limit, bool trackChanges)
+    {
+        var employees = await _managerRepository.Employee.GetPaginateAllAsync(page, limit, trackChanges);
+        var count = await _managerRepository.Employee.CountAsync();
+        
+        var result = new EmployeeViewModel
+        {
+            Employees =employees,
+            PagingInfo = new PagingInfo
+            {
+                TotalItems = count,
+                CurrentPage = page,
+                ItemsPerPage = limit,
+            }
+            
+        };
+        return result;
+    }
+
+    private string TokenGenerate()
+    {
+        return Guid.NewGuid().ToString("N");
+    }
+
+    public async Task<bool> confirmTokenAsync(long? employeeId, string? token)
+    {
+        var confirmation = await _managerRepository.Employee.GetConfirmationWithToken(employeeId, token);
+        if (confirmation == null || confirmation.IsUsed.Equals(false) || confirmation.ExpireAt < DateTime.Now)
+        {
+            return false;
+        }
+
+        confirmation.IsUsed = true;
+        await _managerRepository.SaveAsync();
+        return true;
+    }
+
+    public async Task ResetPassword(ResetPassword model, bool trackChanges)
+    {
+        try
+        {
+            var emp = await _managerRepository.Employee.GetById(model.employeeId, trackChanges);
+            if (emp == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            emp.Password = HashPassword(model.Password);
+            await _managerRepository.SaveAsync();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+    
+    
+    public async Task<EmployeeWithToken?> handleSendEmail(string email,bool trackChanges)
+    {
+        try
+        {
+            var employee = await _managerRepository.Employee.GetByEmailAsync(email, trackChanges);
+            if (employee == null)
+            {
+                return null;
+            }
+            var token = TokenGenerate();
+            await SaveConfirmationTokenAsync(employee.EmployeeId,token, DateTime.UtcNow.AddHours(1));
+            var result = new EmployeeWithToken(employee, token);
+            return result;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+    private async Task SaveConfirmationTokenAsync(long id, string token, DateTime expireAt)
+    {
+        try
+        {
+            var confirmToken = new Confirmation
+            {
+                EmployeeId = id,
+                Token = token,
+                ExpireAt = expireAt,
+                IsUsed = false
+            };
+            await _managerRepository.Employee.CreateConfirmation(confirmToken);
+            await _managerRepository.SaveAsync();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
     public void DeleteFile(string fileName, string directory)
     {
         var fullPath  = Path.Combine(_hostEnvironment.WebRootPath, directory, fileName);

@@ -4,12 +4,15 @@ using FashionShop.Models;
 using FashionShop.Models.views.ReviewViewModels;
 using FashionShop.Models.views;
 using FashionShop.Services.ManagerService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Hosting.Internal;
-
+using FashionShop.Models.views.CategoryViewModels;
+using FashionShop.Models.views.ProductViewModels;
 namespace FashionShop.Controllers;
 
+[Authorize]
 public class CategoriesController : Controller
 {
     private readonly IManagerService _managerService;
@@ -20,22 +23,10 @@ public class CategoriesController : Controller
         _managerService = managerService;
         _logger = logger;
     }
-    public async Task<IActionResult> Index(int page = 1, int pageSize = 10)
+    public async Task<IActionResult> Index(string nameSearch, int page = 1, int pageSize = 10)
     {
-        var categoryPages = await _managerService.Category.GetPageLinkAsync(page, pageSize, trackChanges: false);
-        var categories = await _managerService.Category.GetAllAsync(trackChanges: false);
-        //var result = await _managerService.Category.GetAllAsync(trackChanges:false);
-        var result = new CategoryViewModel
-        {
-            Categories = categoryPages,
-            PagingInfo = new PagingInfo
-            {
-                TotalItems = categories.Count(),
-                ItemsPerPage = pageSize,
-                CurrentPage = page,
-            }
-        };
-        return View(result); 
+        var result = await _managerService.Category.GetPageLinkAsync(page, pageSize, nameSearch, trackChanges: false);
+        return View(result);
     }
     public async Task<IActionResult> Create()
     {
@@ -83,37 +74,69 @@ public class CategoriesController : Controller
             return View();
         }
     }
-    public ActionResult Edit(int id)
+    public async Task<ActionResult> Edit(int id)
     {
-        return View();
+        try
+        {
+            var category = await _managerService.Category.GetByIdAsync(id, false);
+            var resutl = new UpdateCategoryViewModel()
+            {
+                CategoryId = category.CategoryId,
+                CategoryName = category.CategoryName,
+                Slug = category.Slug,
+                Description = category.Description,
+                Status = category.Status,
+            };
+            return View(resutl);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Loi la {ex.Message}");
+            throw;
+        }
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Edit(int id, IFormCollection collection)
+    public async Task<ActionResult> Edit(int id, UpdateCategoryViewModel collection)
     {
         try
         {
-            return RedirectToAction(nameof(Index));
+            var a= await _managerService.Category.UpdateCategoryAsync(id, collection,true);
+            if(a==true)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(collection);
+            }
         }
-        catch
+        catch (Exception ex)
         {
-            return View();
+            Console.WriteLine($"Loi khong xac dinh {ex}");
+            throw;
         }
     }
     // POST: ProductsController/Delete/5
     [HttpPost]
     public async Task<IActionResult> Delete(long id)
     {
+        var productCount = await _managerService.Product.GetProductCountById((int)id);
+        if (productCount > 0)
+        {
+            TempData["ErrorMessage"] = $"Không thể xóa danh mục vì có {productCount} sản phẩm đang sử dụng. Vui lòng thay đổi danh mục hoặc xóa các sản phẩm liên quan !";
+            return RedirectToAction("Index"); 
+        }
         var result = await _managerService.Category.DeleteAsync(id, false);
-        if (result)
+        if (!result)
         {
-            return RedirectToAction(nameof(Index));
+          
+            TempData["ErrorMessage"] = "Lỗi khi xóa danh mục.";
+            return RedirectToAction("Index");  
         }
-        else
-        {
-            return NotFound();
-        }
+        TempData["SuccessMessage"] = "Danh mục đã được xóa thành công.";
+        return RedirectToAction("Index"); 
     }
     [HttpPost]
     public async Task<IActionResult> ChangeStatus(long CategoryId, string Status)

@@ -1,0 +1,314 @@
+﻿@using FashionShop.Models.views.OrderDetails;
+@model OrdersViewModel
+@{
+	ViewBag.Title = "Order Detail";
+}
+
+@section Styles {
+	<link rel="stylesheet" href="~/plugin/datatables/responsive.dataTables.min.css">
+	<link rel="stylesheet" href="~/plugin/datatables/dataTables.bootstrap5.min.css">
+	<link rel="stylesheet" href="~/css/ebazar.style.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+}
+
+@section Scripts {
+	<!-- Jquery Core Js -->
+	<script src="~/bundles/libscripts.bundle.js"></script>
+
+	<!-- Plugin Js-->
+	<script src="~/bundles/dataTables.bundle.js"></script>
+
+	<!-- Jquery Page Js -->
+	<script src="~/js/template.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+	<script>
+		$(document).ready(function() {
+		$('#myCartTable')
+		.addClass( 'nowrap' )
+		.dataTable( {
+		responsive: true,
+		columnDefs: [
+		{ targets: [-1, -3], className: 'dt-body-right' }
+		]
+		});
+		});
+	</script>
+	<script>
+		var valueCurrent;
+		$(document).on('mousedown','select',function() {
+		valueCurrent = $(this).val()
+		console.log('valueCurrent' + valueCurrent);
+		});
+		const handleChangePaymentMethod = (event) => {
+		event.preventDefault();
+		console.log("thay doi " + event.target.value + event.target.id);
+		var id = event.target.id;
+		Swal.fire({
+		title: 'Xác nhận thay đổi',
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonText: 'Yes',
+		cancelButtonText: 'No'
+		}).then((result) => {
+		if (result.isConfirmed) {
+		$.ajax({
+		method: "post",
+		url: "@Url.Action("UpdateStatusPayment", "Orders")",
+		data: {
+		id : id,
+		payment: event.target.value
+		},
+		success: function (response) {
+		console.log("Successfully")
+		},
+		error: function(){
+		console.log("error")
+		}
+		});
+		Swal.fire({title:'Thành công!',icon: 'success'});
+		}
+		else
+		{
+		Swal.fire({title:'Đã hủy thành công',icon: 'success'});
+		$(event.target).val(valueCurrent); // Khôi phục giá trị cũ
+		console.log("valueCurrent" + valueCurrent );
+		}
+		});
+		}
+	</script>
+	<script>
+		var valueCurrent;
+		$(document).on('mousedown','select',function() {
+		valueCurrent = $(this).val()
+		console.log('valueCurrent status' + valueCurrent);
+		});
+		const handleChangeStatus = (event) => {
+		event.preventDefault();
+		console.log("thay doi " + event.target.value + event.target.id);
+		var id = event.target.id;
+		Swal.fire({
+		title: 'Xác nhận thay đổi',
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonText: 'Yes',
+		cancelButtonText: 'No'
+		}).then((result) => {
+		if (result.isConfirmed) {
+		$.ajax({
+		method: "post",
+		url: "@Url.Action("UpdateStatus", "Orders")",
+		data: {
+		id : id,
+		status: event.target.value
+		},
+		success: function (response) {
+		console.log("Successfully")
+		},
+		error: function(){
+		console.log("error")
+		}
+		});
+		Swal.fire({title:'Thành công!',icon: 'success'});
+		}
+		else
+		{
+		Swal.fire({title:'Đã hủy thành công',icon: 'success'});
+		$(event.target).val(valueCurrent); // Khôi phục giá trị cũ
+		console.log("valueCurrent" + valueCurrent );
+		}
+		});
+		}
+	</script>
+}
+
+<div class="body d-flex py-3">
+	<div class="container-xxl">
+
+		@{
+		}
+		<div class="row align-items-center">
+			<div class="border-0 mb-4">
+				<div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
+					<a asp-action="Index" asp-controller="Orders" class="btn btn-primary"><i class="icofont-bubble-left "></i> Orders List</a>
+					<h3 class="fw-bold mb-0">Order Details: #@Model.OrderId</h3>
+				</div>
+			</div>
+		</div> <!-- Row end  -->
+		<div class="row g-3 mb-3 row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 row-cols-xl-4">
+			<div class="col">
+				<div class="alert-success alert mb-0">
+					<div class="d-flex align-items-center">
+						<div class="avatar rounded no-thumbnail bg-success text-light"><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i></div>
+						<div class="flex-fill ms-3 text-truncate">
+							<div class="h6 mb-0">Order Created at</div>
+							<span class="small">@Model.OrderDate</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="alert-danger alert mb-0">
+					<div class="d-flex align-items-center">
+						<div class="avatar rounded no-thumbnail bg-danger text-light"><i class="fa fa-user fa-lg" aria-hidden="true"></i></div>
+						<div class="flex-fill ms-3 text-truncate">
+							<div class="h6 mb-0">Name</div>
+							<span class="small">@Model.CustomerName</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="alert-info alert mb-0">
+					<div class="d-flex align-items-center">
+						<div class="avatar rounded no-thumbnail bg-info text-light"><i class="fa fa-phone-square fa-lg" aria-hidden="true"></i></div>
+						<div class="flex-fill ms-3 text-truncate">
+							<div class="h6 mb-0">Phone Number</div>
+							<span class="small">@Model.PhoneCustomer</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> <!-- Row end  -->
+		<div class="row g-3 mb-3 row-cols-1 row-cols-md-1 row-cols-lg-3 row-cols-xl-3 row-cols-xxl-3 row-deck">
+			<div class="col">
+				<div class="card auth-detailblock">
+					<div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
+						<h6 class="mb-0 fw-bold ">Store Address</h6>
+					</div>
+					<div class="card-body">
+						<div class="row g-3">
+							<div class="col-12">
+								<label class="form-label col-6 col-sm-5">Store Name:</label>
+								<span><strong>@Model.StoreName</strong></span>
+							</div>
+							<div class="col-12">
+								<label class="form-label col-6 col-sm-5">Address:</label>
+								<span><strong>@Model.AddressStore</strong></span>
+							</div>
+							<div class="col-12">
+								<label class="form-label col-6 col-sm-5">Phone Number:</label>
+								<span><strong>@Model.PhoneStore</strong></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="card">
+					<div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
+						<h6 class="mb-0 fw-bold ">Customer Address</h6>
+					</div>
+					<div class="card-body">
+						<div class="row g-3">
+							<div class="col-12">
+								<label class="form-label col-6 col-sm-5">Customer Name:</label>
+								<span><strong>@Model.CustomerName</strong></span>
+							</div>
+							<div class="col-12">
+								<label class="form-label col-6 col-sm-5">Address:</label>
+								<span><strong>@Model.CustomerAddress</strong></span>
+							</div>
+							<div class="col-12">
+								<label class="form-label col-6 col-sm-5">Phone Number:</label>
+								<span><strong>@Model.PhoneCustomer</strong></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="card">
+					<div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
+						<h6 class="mb-0 fw-bold ">Status Orders</h6>
+					</div>
+					<div class="card-body">
+						<div class="row g-3 align-items-center">
+							<div class="col-md-12">
+								<label class="form-label">Order ID: #@Model.OrderId</label>
+							</div>
+							<div class="col-md-12">
+								<label class="form-label">Payment Method</label>
+								<select name="PaymentMethod" class="text-center form-select" id="@Model.OrderId" onchange="return handleChangePaymentMethod(event)">
+									<option value="cash" selected="@(Model.PaymentMethod == "cash" ? true:false)">cash</option>
+									<option value="credit_card" selected="@(Model.PaymentMethod == "credit_card" ? true:false)">credit_card</option>
+									<option value="debit_card" selected="@(Model.PaymentMethod == "debit_card" ? true:false)">debit_card</option>
+									<option value="online" selected="@(Model.PaymentMethod == "online" ? true:false)">online</option>
+								</select>
+							</div>
+							<div class="col-md-12">
+								<label class="form-label">Order Status</label>
+								<select name="Status" class="text-center form-select" id="@Model.OrderId" onchange="return handleChangeStatus(event)">
+									<option value="pending" selected="@(Model.OrdersStatus == "pending" ? true:false)">pending</option>
+									<option value="completed" selected="@(Model.OrdersStatus == "completed" ? true:false)">completed</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> <!-- Row end  -->
+		<div class="row g-3 mb-3">
+			<div class="col">
+				<div class="card">
+					<div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
+						<h6 class="mb-0 fw-bold ">Order Summary</h6>
+					</div>
+					<div class="card-body">
+						<div class="product-cart">
+							<div class="checkout-table table-responsive">
+								<table id="myCartTable" class="table display dataTable table-hover align-middle text-center" style="width:100%">
+									<thead>
+										<tr class="fw-bold">
+											<td class="product">Product Image</td>
+											<td>Product Name</td>
+											<td>Quantity</td>
+											<td>Price</td>
+											<td>Total Price</td>
+										</tr>
+									</thead>
+									<tbody>
+
+										@foreach (var item in Model.Details)
+										{
+
+											<tr>
+												<td>
+													@{
+														string banner = string.IsNullOrEmpty(item.Product?.Banner) ? Url.Content("~/uploaded/FashionShop.jpg") : Url.Content("~/uploaded/") + item.Product.Banner;
+													}
+													<img src="@banner" class="avatar rounded xxl" alt="@item.Product.ProductName">
+												</td>
+												<td>
+													<h6 class="title">@item.Product.ProductName</h6>
+												</td>
+												<td>
+													@item.Quantity
+												</td>
+												<td>
+													<p class="price">$@item.Product.Price</p>
+												</td>
+												<td>
+													<p class="price">$@item.TotalPrice</p>
+												</td>
+											</tr>
+										}
+									</tbody>
+								</table>
+							</div>
+							<div class="checkout-coupon-total checkout-coupon-total-2 d-flex flex-wrap justify-content-end m-4">
+								<div class="checkout-total border rounded">
+									<div class="single-total p-3 fw-bold">
+										<p class="m-0">Total Amount:</p>
+										<p class="m-0 text-danger">$@Model.TotalAmount</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div> <!-- Row end  -->
+	</div>
+
+</div>	

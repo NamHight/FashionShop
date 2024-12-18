@@ -6,7 +6,7 @@ namespace FashionShop_API.Repositories;
 
 public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
 {
-    private readonly MyDbContext _context;
+    protected readonly MyDbContext _context;
     
     public RepositoryBase(MyDbContext context)
     {
@@ -22,14 +22,14 @@ public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
         return trackChanges ? _context.Set<T>().Where(expression) : _context.Set<T>().Where(expression).AsNoTracking();
     }
 
-    public void Create(T entity)
+    public async Task Create(T entity)
     {
-        _context.Set<T>().Add(entity);
+        await _context.Set<T>().AddAsync(entity);
     }
 
     public void Update(T entity)
     {
-        _context.Set<T>().Update(entity);
+         _context.Set<T>().Update(entity);
     }
 
     public void Delete(T entity)

@@ -12,35 +12,40 @@ public abstract class GenericRepo<T> : IGenericRepo<T> where T : class
     {
         this._context = context;
     }
-    
+
     public IQueryable<T> FindAll(bool trackChanges)
     {
         return trackChanges ? _context.Set<T>() : _context.Set<T>().AsNoTracking();
     }
-    public async Task<List<T>> PageLinkAsync(int page, int pageSize, bool trackChanges)
+    public IQueryable<T> PageLinkAsync(int page, int pageSize, bool trackChanges)
     {
-        return await FindAll(trackChanges)
+        return FindAll(trackChanges)
             .Skip((page - 1) * pageSize)
-            .Take(pageSize)
-            .ToListAsync();
+            .Take(pageSize);
     }
     public IQueryable<T> FindById(Expression<Func<T, bool>> expression, bool trackChanges)
     {
         return trackChanges ? _context.Set<T>().Where(expression) : _context.Set<T>().Where(expression).AsNoTracking();
     }
-  
+
     public void Create(T entity)
     {
         _context.Set<T>().Add(entity);
     }
-    
+
     public void Update(T entity)
     {
         _context.Set<T>().Update(entity);
     }
-    
+
     public void Delete(T entity)
     {
         _context.Set<T>().Remove(entity);
+    }
+
+
+    public Task<int> Count()
+    {
+        return _context.Set<T>().AsNoTracking().CountAsync();
     }
 }

@@ -7,6 +7,11 @@ using FashionShop.Repositories.Stores;
 using FashionShop.Repositories.Customers;
 using FashionShop.Repositories.Products;
 using FashionShop.Repositories.Reviews;
+using Microsoft.EntityFrameworkCore;
+using FashionShop.Repositories.Orders;
+using FashionShop.Repositories.OrdersDetails;
+using FashionShop.Repositories.WebsiteInfos;
+
 
 namespace FashionShop.Repositories.ManagerRepository;
 
@@ -22,6 +27,9 @@ public class ManagerRepository : IManagerRepository
     private readonly Lazy<IProductRepository> _productRepository;
     private readonly Lazy<IReviewRepository> _reviewRepository;
     private readonly Lazy<ICustomerRepository> _customerRepository;
+    private readonly Lazy<IOrdersRepository> _ordersRepository;
+    private readonly Lazy<IOrdersDetailsRepository> _ordersDetailsRepository;
+    private readonly Lazy<IWebsiteRepository> _websiteRepository;
     public ManagerRepository(MyDbContext context)
     {
         _context = context;
@@ -33,6 +41,9 @@ public class ManagerRepository : IManagerRepository
         _productRepository = new Lazy<IProductRepository>(() => new ProductRepository(context));
         _reviewRepository = new Lazy<IReviewRepository>(() => new ReviewRepository(context));
         _customerRepository = new Lazy<ICustomerRepository> ( () => new CustomerRepository(context));
+        _ordersRepository = new Lazy<IOrdersRepository>(() => new OrdersRepository(context));
+        _ordersDetailsRepository = new Lazy<IOrdersDetailsRepository>(() => new OrdersDetailsRepository(context));
+        _websiteRepository = new Lazy<IWebsiteRepository>(() => new WebsiteRepository(context));
     }
     
     public ICategoryRepository Category => _categoryRepository.Value;
@@ -41,11 +52,36 @@ public class ManagerRepository : IManagerRepository
     public IEmployeeRepository Employee => _employeeRepository.Value;
     public IRoleRepository Role => _roleRepository.Value;
     public IStoreRepository Store => _storeRepository.Value;
-    
+    public IOrdersRepository Orders => _ordersRepository.Value;
+    public IOrdersDetailsRepository OrdersDetails => _ordersDetailsRepository.Value;
     public IReviewRepository Review => _reviewRepository.Value;
     public ICustomerRepository Customer => _customerRepository.Value;
+    public IWebsiteRepository Website => _websiteRepository.Value;
     public async Task SaveAsync()
     {
         await _context.SaveChangesAsync();
+    }
+    public async Task<int> SaveAsyncAndNumRowEffect()
+    {
+        try
+        {
+            var rowsAffected = await _context.SaveChangesAsync();
+            return rowsAffected;
+        }
+        catch (DbUpdateConcurrencyException ex)
+        {
+            Console.WriteLine("Loi canh tranh du lieu: " + ex.Message);
+            return 0;
+        }
+        catch (DbUpdateException ex)
+        {
+            Console.WriteLine("Loi cap nhat du lieu: " + ex.Message);
+            return 0;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Loi khong xac đinh: " + ex.Message);
+            return 0;
+        }
     }
 }

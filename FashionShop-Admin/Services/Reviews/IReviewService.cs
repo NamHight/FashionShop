@@ -1,14 +1,14 @@
 ﻿using FashionShop.Models;
+using FashionShop.Models.views.ReviewViewModels;
 
 namespace FashionShop.Services.Reviews
 {
     public interface IReviewService
     {
-        Task<List<Review>> GetAllAsync(bool trackChanges);
-        Task<List<Review>> GetPageLinkAsync(int page, int pageSize, bool trackChanges);
+        Task<ReviewViewModel> GetPageLinkAsync(string nameSearch, int page, int pageSize, bool trackChanges);
         Task<Review?> GetByIdAsync(long id, bool trackChanges);
-        Task UpdateReview(Review review);
-        Task DeleteReview(Review review);
-        
+        Task<bool> UpdateReview(long reviewId, string newState, bool trackChanges);
+        Task DeleteReview(long id, bool trackChanges);
+
     }
 }
