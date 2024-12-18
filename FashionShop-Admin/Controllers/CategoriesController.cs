@@ -122,15 +122,21 @@ public class CategoriesController : Controller
     [HttpPost]
     public async Task<IActionResult> Delete(long id)
     {
+        var productCount = await _managerService.Product.GetProductCountById((int)id);
+        if (productCount > 0)
+        {
+            TempData["ErrorMessage"] = $"Không thể xóa danh mục vì có {productCount} sản phẩm đang sử dụng. Vui lòng thay đổi danh mục hoặc xóa các sản phẩm liên quan !";
+            return RedirectToAction("Index"); 
+        }
         var result = await _managerService.Category.DeleteAsync(id, false);
-        if (result)
+        if (!result)
         {
-            return RedirectToAction(nameof(Index));
+          
+            TempData["ErrorMessage"] = "Lỗi khi xóa danh mục.";
+            return RedirectToAction("Index");  
         }
-        else
-        {
-            return NotFound();
-        }
+        TempData["SuccessMessage"] = "Danh mục đã được xóa thành công.";
+        return RedirectToAction("Index"); 
     }
     [HttpPost]
     public async Task<IActionResult> ChangeStatus(long CategoryId, string Status)

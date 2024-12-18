@@ -3,6 +3,7 @@ using FashionShop.Models.views.ProductViewModels;
 using FashionShop.Repositories.ManagerRepository;
 using FashionShop.Models.views;
 using FashionShop.Models.views.DashboardViewModel;
+using Microsoft.EntityFrameworkCore;
 
 namespace FashionShop.Services.Products
 {
@@ -133,5 +134,11 @@ namespace FashionShop.Services.Products
         {
             return await _managerRepository.Product.CountProductsAsync();
         }
+        public async Task<int> GetProductCountById(int id)
+        {
+            return await _managerRepository.Product.CountId(id);
+
+        }
+
     }
 }

@@ -97,10 +97,18 @@ namespace FashionShop.Repositories.Products
                 : await _context.Products.AsNoTracking().SingleOrDefaultAsync(item => item.Slug.Equals(slug));
             return result;
         }
-	}
+	
         public async Task<int> CountProductsAsync()
         {
             return await _context.Products.CountAsync();
+        }
+        public async Task<int> CountAsync(int id)
+        {
+            return await _context.Products.CountAsync();
+        }
+        public async Task<int> CountId(int id)
+        {
+            return await _context.Products.CountAsync(p => p.CategoryId == id);
         }
     }
 }
