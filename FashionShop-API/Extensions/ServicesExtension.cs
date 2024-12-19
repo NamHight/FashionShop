@@ -1,4 +1,5 @@
 ﻿using FashionShop_API.Context;
+using FashionShop_API.Filters;
 using FashionShop_API.Repositories.RepositoryManager;
 using FashionShop_API.Services.ServiceLogger;
 using FashionShop_API.Services.ServiceManager;
@@ -15,7 +16,11 @@ public static class ServicesExtension
         => services.AddCors(options =>
         {
             options.AddPolicy("CorsPolicy", builder 
-            => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .WithExposedHeaders("X-Pagination"));
         });
 
     public static void ConfigureRepositoryManager(this IServiceCollection service)
@@ -26,6 +31,9 @@ public static class ServicesExtension
 
     public static void ConfigureLoggerManager(this IServiceCollection service)
         => service.AddSingleton<ILoggerManager, LoggerManager>();
-
+    public static void ConfigureFilter(this IServiceCollection service)
+    {
+        service.AddScoped<ValidationFilter>();
+    }
 
 }

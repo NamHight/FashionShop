@@ -12,6 +12,7 @@ builder.Services.ConfigureCors();
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureLoggerManager();
+builder.Services.ConfigureFilter();
 builder.Services.AddControllers().AddNewtonsoftJson();
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

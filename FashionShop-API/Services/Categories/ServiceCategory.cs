@@ -21,12 +21,12 @@ public class ServiceCategory  : IServiceCategory
         this._logger = logger;
         this._mapper = mapper;
     }
-    public async Task<IEnumerable<CategoryDto>> GetAllCategoryAsync(bool trackChanges)
+    public async Task<IEnumerable<ReponseCategoryDto>> GetAllCategoryAsync(bool trackChanges)
     {
         try
         {
             var categories = await _repositoryManager.Category.GetAllCategoriesAsync(trackChanges);
-            var categoriesDto = _mapper.Map<IEnumerable<CategoryDto>>(categories);
+            var categoriesDto = _mapper.Map<IEnumerable<ReponseCategoryDto>>(categories);
             return categoriesDto;
         }
         catch (Exception e)
@@ -37,28 +37,19 @@ public class ServiceCategory  : IServiceCategory
        
     }
 
-    public async Task<CategoryDto?> GetCategoryByIdAsync(long id, bool trackChanges)
+    public async Task<ReponseCategoryDto?> GetCategoryByIdAsync(long id, bool trackChanges)
     {
             var category = await _repositoryManager.Category.GetCategoryByIdAsync(id, trackChanges);
             if (category is null) throw new CategoryNotFoundException(id);
-            var categoryDto = _mapper.Map<CategoryDto>(category);
+            var categoryDto = _mapper.Map<ReponseCategoryDto>(category);
             return categoryDto;
     }
 
-    public async Task<ResponsePage<CategoryDto>> GetAllPaginatedAsync(int page, int limit)
+    public async Task<(IEnumerable<ReponseCategoryDto> data,PageInfo meta)> GetAllPaginatedAsync(int page, int limit)
     {
         var categories = await _repositoryManager.Category.GetAllPaginatedAsync(page, limit);
-        var categoriesDto = _mapper.Map<IEnumerable<CategoryDto>>(categories);
-        return ResponsePage<CategoryDto>
-            .Builder
-            .Empty()
-            .SetData(categoriesDto.ToList())
-            .SetCurrentPage(categories.PageInfo.CurrentPage)
-            .SetPageSize(categories.PageInfo.PageSize)
-            .SetTotalPages(categories.PageInfo.TotalPages)
-            .SetHasNext(categories.PageInfo.HasNextpage)
-            .SetHasPrevious(categories.PageInfo.HasPreviouspage)
-            .Build();
+        var categoriesDto = _mapper.Map<IEnumerable<ReponseCategoryDto>>(categories);
+        return (data: categoriesDto, meta: categories.PageInfo);
     }
 
     public async Task<RequestCategoryDto> CreateAsync(RequestCategoryDto categoryDto)

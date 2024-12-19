@@ -1,7 +1,9 @@
-using System.Net;
-using FashionShop_API.Dto;
+
+using System.Text.Json;
+using FashionShop_API.Dto.QueryParam;
 using FashionShop_API.Dto.RequestDto;
 using FashionShop_API.Exceptions;
+using FashionShop_API.Filters;
 using FashionShop_API.Services.ServiceManager;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,15 +23,16 @@ namespace FashionShop_API.Controllers
         }
         
         [HttpGet]
-        public async Task<IActionResult> GetAllAsync(int page = 1,int limit = 10)
+        public async Task<IActionResult> GetAllAsync([FromQuery]ParamCategoryDto paramCategoryDto)
         {
-            if (page <= 0)
+            if (paramCategoryDto.Page <= 0)
             {
-                throw new PageNotFoundException(page.ToString());
+                throw new PageNotFoundException(paramCategoryDto.Page.ToString());
             }
-            var categories = await _serviceManager.Category.GetAllPaginatedAsync(page,limit);
+            var categories = await _serviceManager.Category.GetAllPaginatedAsync(paramCategoryDto.Page,10);
+            Response.Headers.Append("X-Pagination", JsonSerializer.Serialize(categories.meta));
             _logger.Log(LogLevel.Information,"Controller Category: " + nameof(GetAllAsync) + " Success");
-            return Ok(categories);
+            return Ok(categories.data);
         }
 
         [HttpGet("{name}", Name = "GetCategoryById")]
@@ -40,16 +43,9 @@ namespace FashionShop_API.Controllers
             return Ok(category);
         }
         [HttpPost]
+        [ServiceFilter(typeof(ValidationFilter))]
         public async Task<IActionResult> CreateCategory([FromBody]RequestCategoryDto? requestCategoryDto)
         {
-            if (requestCategoryDto is null)
-            {
-                return BadRequest("Category is null");
-            }
-            if (!ModelState.IsValid)
-            {
-                return UnprocessableEntity(ModelState);
-            }
             var category = await _serviceManager.Category.CreateAsync(requestCategoryDto);
             return CreatedAtRoute("GetCategoryById", new { id = category.CategoryId }, category);
         }
