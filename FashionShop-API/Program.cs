@@ -10,7 +10,6 @@ builder.Services.ConfigureGetConnection(builder.Configuration);
 builder.Services.ConfigureReponseCaching();
 builder.Services.ConfigureCors();
 builder.Services.AddAuthentication();
-builder.Services.ConfigureIdentity();
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureLoggerManager();
