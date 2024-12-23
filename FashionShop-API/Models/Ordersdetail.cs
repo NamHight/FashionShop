@@ -18,10 +18,6 @@ public partial class Ordersdetail
     [Column("quantity")]
     public int? Quantity { get; set; }
 
-    [Column("unit_price")]
-    [Precision(10, 2)]
-    public decimal? UnitPrice { get; set; }
-
     [Column("total_price")]
     [Precision(10, 2)]
     public decimal? TotalPrice { get; set; }

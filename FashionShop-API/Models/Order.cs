@@ -33,7 +33,7 @@ public partial class Order
     public long? EmployeeId { get; set; }
 
     [Column("customer_id")]
-    public long? CustomerId { get; set; }
+    public long CustomerId { get; set; }
 
     [Column("created_at", TypeName = "timestamp")]
     public DateTime? CreatedAt { get; set; }
@@ -46,7 +46,7 @@ public partial class Order
 
     [ForeignKey("CustomerId")]
     [InverseProperty("Orders")]
-    public virtual Customer? Customer { get; set; }
+    public virtual Customer Customer { get; set; } = null!;
 
     [ForeignKey("EmployeeId")]
     [InverseProperty("Orders")]
