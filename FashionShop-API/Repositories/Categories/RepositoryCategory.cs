@@ -24,13 +24,25 @@ public class RepositoryCategory : RepositoryBase<Category> , IRepositoryCategory
         var category = await FindByCondition(c => c.CategoryId.Equals(id),trackChanges).FirstOrDefaultAsync();
         return category;
     }
-
+    
     public async Task<PagedListAsync<Category>> GetAllPaginatedAsync(int page, int limit)
     {
         var categories = await PagedListAsync<Category>.ToPagedListAsync(_context.Categories.AsQueryable(),page,limit);
         return categories;
     }
 
+    public async Task<PagedListAsync<Category>> GetAllPaginatedAndSearchAndSortAsync(string? searchTearm,
+        int page, int limit, string? sortBy,string? sortOrder)
+    {
+        var query = _context
+            .Categories
+            .SearchByName(searchTearm)
+            .SortById(sortOrder)
+            .SortByOptions(sortBy, sortOrder);
+        var categories = await PagedListAsync<Category>.ToPagedListAsync(query, page, limit);
+        return categories;
+    }
+    
     public async Task CreateAsync(Category category)
     {
         await Create(category);

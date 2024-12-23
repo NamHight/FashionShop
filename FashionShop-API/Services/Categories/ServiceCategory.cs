@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FashionShop_API.Context;
 using FashionShop_API.Dto;
+using FashionShop_API.Dto.QueryParam;
 using FashionShop_API.Dto.RequestDto;
 using FashionShop_API.Exceptions;
 using FashionShop_API.Models;
@@ -50,6 +51,15 @@ public class ServiceCategory  : IServiceCategory
         var categories = await _repositoryManager.Category.GetAllPaginatedAsync(page, limit);
         var categoriesDto = _mapper.Map<IEnumerable<ReponseCategoryDto>>(categories);
         return (data: categoriesDto, meta: categories.PageInfo);
+    }
+
+    public async Task<(IEnumerable<ReponseCategoryDto> data ,PageInfo meta)> GetAllPaginatedAndSearchAndSortAsync(ParamCategoryDto paramCategoryDto)
+    {
+        var categories = await _repositoryManager
+            .Category
+            .GetAllPaginatedAndSearchAndSortAsync(paramCategoryDto.SearchTerm, paramCategoryDto.Page, paramCategoryDto.Limit, paramCategoryDto.SortBy, paramCategoryDto.SortOrder);
+        var categoriesDto = _mapper.Map<IEnumerable<ReponseCategoryDto>>(categories);
+        return (data: categoriesDto,meta:categories.PageInfo);
     }
 
     public async Task<RequestCategoryDto> CreateAsync(RequestCategoryDto categoryDto)

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FashionShop_API.Models;
 
-[Table("contact")]
+[Table("contacts")]
 public partial class Contact
 {
     [Key]

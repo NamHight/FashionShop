@@ -1,4 +1,5 @@
 ﻿using FashionShop_API.Dto;
+using FashionShop_API.Dto.QueryParam;
 using FashionShop_API.Dto.RequestDto;
 using FashionShop_API.Models;
 
@@ -9,6 +10,6 @@ public interface IServiceCategory
     Task<IEnumerable<ReponseCategoryDto>> GetAllCategoryAsync(bool trackChanges);
     Task<ReponseCategoryDto?> GetCategoryByIdAsync(long id, bool trackChanges);
     Task<(IEnumerable<ReponseCategoryDto> data,PageInfo meta)> GetAllPaginatedAsync(int page, int limit);
+    Task<(IEnumerable<ReponseCategoryDto> data ,PageInfo meta)> GetAllPaginatedAndSearchAndSortAsync(ParamCategoryDto paramCategoryDto);
     Task<RequestCategoryDto> CreateAsync(RequestCategoryDto categoryDto);
-    
 }

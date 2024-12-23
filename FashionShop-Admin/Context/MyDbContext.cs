@@ -113,6 +113,7 @@ public partial class MyDbContext : DbContext
         {
             entity.HasKey(e => e.CustomerId).HasName("PRIMARY");
 
+            entity.Property(e => e.Birth).HasDefaultValueSql("'2000-01-01'");
             entity.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
             entity.Property(e => e.Email).HasDefaultValueSql("_utf8mb4\\'abc@gmail.com\\'");
             entity.Property(e => e.Status).HasDefaultValueSql("'active'");
@@ -177,7 +178,9 @@ public partial class MyDbContext : DbContext
                 .ValueGeneratedOnAddOrUpdate()
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
-            entity.HasOne(d => d.Customer).WithMany(p => p.Orders).HasConstraintName("fk_orders_customer");
+            entity.HasOne(d => d.Customer).WithMany(p => p.Orders)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_orders_customer");
 
             entity.HasOne(d => d.Employee).WithMany(p => p.Orders).HasConstraintName("fk_orders_employee");
 

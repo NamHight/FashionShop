@@ -19,16 +19,16 @@ public partial class Review
     public sbyte? Rating { get; set; }
 
     [Column("review_text", TypeName = "text")]
-    public string ReviewText { get; set; } = string.Empty;
+    public string? ReviewText { get; set; }
 
     [Column("review_date", TypeName = "datetime")]
     public DateTime? ReviewDate { get; set; }
 
-    [Column("product_id")]
-    public long? ProductId { get; set; }
-
     [Column("customer_id")]
     public long? CustomerId { get; set; }
+
+    [Column("product_id")]
+    public long? ProductId { get; set; }
 
     [Column("created_at", TypeName = "timestamp")]
     public DateTime? CreatedAt { get; set; }

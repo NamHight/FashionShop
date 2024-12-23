@@ -21,6 +21,8 @@ public partial class MyDbContext : DbContext
 
     public virtual DbSet<Category> Categories { get; set; }
 
+    public virtual DbSet<Confirmation> Confirmations { get; set; }
+
     public virtual DbSet<Contact> Contacts { get; set; }
 
     public virtual DbSet<Customer> Customers { get; set; }
@@ -55,6 +57,8 @@ public partial class MyDbContext : DbContext
 
     public virtual DbSet<View> Views { get; set; }
 
+    public virtual DbSet<WebsiteInfo> WebsiteInfos { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseMySql("server=mysql-fashion-finsr8280-699e.h.aivencloud.com;port=13062;database=defaultdb;uid=avnadmin;pwd=AVNS_UIxLS_rvA7dyKjwnFDf", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.30-mysql"));
@@ -87,6 +91,13 @@ public partial class MyDbContext : DbContext
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
         });
 
+        modelBuilder.Entity<Confirmation>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.Property(e => e.IsUsed).HasDefaultValueSql("'0'");
+        });
+
         modelBuilder.Entity<Contact>(entity =>
         {
             entity.HasKey(e => e.ContactId).HasName("PRIMARY");
@@ -102,6 +113,7 @@ public partial class MyDbContext : DbContext
         {
             entity.HasKey(e => e.CustomerId).HasName("PRIMARY");
 
+            entity.Property(e => e.Birth).HasDefaultValueSql("'2000-01-01'");
             entity.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
             entity.Property(e => e.Email).HasDefaultValueSql("_utf8mb4\\'abc@gmail.com\\'");
             entity.Property(e => e.Status).HasDefaultValueSql("'active'");
@@ -114,9 +126,10 @@ public partial class MyDbContext : DbContext
         {
             entity.HasKey(e => e.EmployeeId).HasName("PRIMARY");
 
+            entity.Property(e => e.Birth).HasDefaultValueSql("'2000-01-01'");
             entity.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
             entity.Property(e => e.Email).HasDefaultValueSql("_utf8mb4\\'abc@gmail.com\\'");
-            entity.Property(e => e.EmployeePosition).HasDefaultValueSql("_utf8mb4\\'intern\\'");
+            entity.Property(e => e.EmployeePosition).HasDefaultValueSql("'intern'");
             entity.Property(e => e.Status).HasDefaultValueSql("'active'");
             entity.Property(e => e.UpdatedAt)
                 .ValueGeneratedOnAddOrUpdate()
@@ -165,7 +178,9 @@ public partial class MyDbContext : DbContext
                 .ValueGeneratedOnAddOrUpdate()
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
-            entity.HasOne(d => d.Customer).WithMany(p => p.Orders).HasConstraintName("fk_orders_customer");
+            entity.HasOne(d => d.Customer).WithMany(p => p.Orders)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_orders_customer");
 
             entity.HasOne(d => d.Employee).WithMany(p => p.Orders).HasConstraintName("fk_orders_employee");
 
@@ -188,7 +203,7 @@ public partial class MyDbContext : DbContext
             entity.HasKey(e => e.ProductId).HasName("PRIMARY");
 
             entity.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
-            entity.Property(e => e.Status).HasDefaultValueSql("'available'");
+            entity.Property(e => e.Status).HasDefaultValueSql("'watting'");
             entity.Property(e => e.UpdatedAt)
                 .ValueGeneratedOnAddOrUpdate()
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
@@ -305,6 +320,17 @@ public partial class MyDbContext : DbContext
             entity.HasOne(d => d.Product).WithMany(p => p.Views).HasConstraintName("fk_views_product");
 
             entity.HasOne(d => d.Store).WithMany(p => p.Views).HasConstraintName("fk_views_store");
+        });
+
+        modelBuilder.Entity<WebsiteInfo>(entity =>
+        {
+            entity.HasKey(e => e.WebsiteId).HasName("PRIMARY");
+
+            entity.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
+            entity.Property(e => e.Status).HasDefaultValueSql("'inactive'");
+            entity.Property(e => e.UpdateAt)
+                .ValueGeneratedOnAddOrUpdate()
+                .HasDefaultValueSql("CURRENT_TIMESTAMP");
         });
 
         OnModelCreatingPartial(modelBuilder);
