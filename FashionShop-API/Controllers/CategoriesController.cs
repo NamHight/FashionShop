@@ -7,10 +7,12 @@ using FashionShop_API.Exceptions;
 using FashionShop_API.Filters;
 using FashionShop_API.Services.Caching;
 using FashionShop_API.Services.ServiceManager;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FashionShop_API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CategoriesController : ControllerBase
@@ -24,6 +26,7 @@ namespace FashionShop_API.Controllers
             _serviceManager = serviceManager;
             _serviceCacheRedis = serviceCacheRedis;
         }
+        private bool CheckRedisConnection() => _serviceCacheRedis.CheckConnection();
         [HttpGet]
         public async Task<IActionResult> GetAllAsync([FromQuery]ParamCategoryDto paramCategoryDto)
         {
@@ -32,20 +35,25 @@ namespace FashionShop_API.Controllers
                 throw new PageNotFoundException(paramCategoryDto.Page.ToString());
             }
             string keyCaching = $"Categories-{paramCategoryDto.SearchTerm}-{paramCategoryDto.Page}-{paramCategoryDto.Limit}-{paramCategoryDto.SortBy}-{paramCategoryDto.SortOrder}";
-            var categoriesCache = await _serviceCacheRedis.GetData<CacheCategoryDto>(keyCaching);
-            if (categoriesCache is not null)
+            if (CheckRedisConnection())
             {
-                Response.Headers.Append("X-Pagination", JsonSerializer.Serialize(categoriesCache.PageInfo));
-                return Ok(categoriesCache.CategoriesDto);
+                var categoriesCache = await _serviceCacheRedis.GetData<CacheCategoryDto>(keyCaching);
+                if (categoriesCache is not null)
+                {
+                    Response.Headers.Append("X-Pagination", JsonSerializer.Serialize(categoriesCache.PageInfo));
+                    return Ok(categoriesCache.CategoriesDto);
+                } 
             }
             var categories = await _serviceManager.Category.GetAllPaginatedAndSearchAndSortAsync(paramCategoryDto);
             var cacheCategory = new CacheCategoryDto(categories.data, categories.meta);
             Response.Headers.Append("X-Pagination", JsonSerializer.Serialize(categories.meta));
-            await _serviceCacheRedis.SetData(keyCaching,cacheCategory);
+            if (CheckRedisConnection())
+            {
+                await _serviceCacheRedis.SetData(keyCaching,cacheCategory);
+            }
             _logger.Log(LogLevel.Information,"Controller Category: " + nameof(GetAllAsync) + " Success");
             return Ok(categories.data);
         }
-        
         [ResponseCache(Duration = 30)]
         [HttpGet("{id}", Name = "GetCategoryById")]
         public async Task<IActionResult> GetCategoryByIdAsync(long id)

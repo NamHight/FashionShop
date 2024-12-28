@@ -113,10 +113,14 @@ public partial class MyDbContext : DbContext
         {
             entity.HasKey(e => e.CustomerId).HasName("PRIMARY");
 
+            entity.Property(e => e.AccessFailedCount).HasDefaultValueSql("'0'");
             entity.Property(e => e.Birth).HasDefaultValueSql("'2000-01-01'");
             entity.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
             entity.Property(e => e.Email).HasDefaultValueSql("_utf8mb4\\'abc@gmail.com\\'");
+            entity.Property(e => e.LockoutEnabled).HasDefaultValueSql("'0'");
+            entity.Property(e => e.RefreshTokenExpirytime).HasDefaultValueSql("CURRENT_TIMESTAMP");
             entity.Property(e => e.Status).HasDefaultValueSql("'active'");
+            entity.Property(e => e.TwoFactorEnabled).HasDefaultValueSql("'0'");
             entity.Property(e => e.UpdatedAt)
                 .ValueGeneratedOnAddOrUpdate()
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");

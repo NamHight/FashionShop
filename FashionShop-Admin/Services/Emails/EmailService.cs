@@ -1,7 +1,6 @@
 using System.Net;
 using System.Net.Mail;
 using System.Text;
-using FashionShop.Models;
 using FashionShop.Models.views;
 using FashionShop.Models.views.EmployeeViewModels;
 using FashionShop.Repositories.ManagerRepository;
