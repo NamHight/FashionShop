@@ -22,12 +22,12 @@ public class ServiceCategory  : IServiceCategory
         this._logger = logger;
         this._mapper = mapper;
     }
-    public async Task<IEnumerable<ReponseCategoryDto>> GetAllCategoryAsync(bool trackChanges)
+    public async Task<IEnumerable<ResponseCategoryDto>> GetAllCategoryAsync(bool trackChanges)
     {
         try
         {
             var categories = await _repositoryManager.Category.GetAllCategoriesAsync(trackChanges);
-            var categoriesDto = _mapper.Map<IEnumerable<ReponseCategoryDto>>(categories);
+            var categoriesDto = _mapper.Map<IEnumerable<ResponseCategoryDto>>(categories);
             return categoriesDto;
         }
         catch (Exception e)
@@ -38,27 +38,27 @@ public class ServiceCategory  : IServiceCategory
        
     }
 
-    public async Task<ReponseCategoryDto?> GetCategoryByIdAsync(long id, bool trackChanges)
+    public async Task<ResponseCategoryDto?> GetCategoryByIdAsync(long id, bool trackChanges)
     {
             var category = await _repositoryManager.Category.GetCategoryByIdAsync(id, trackChanges);
             if (category is null) throw new CategoryNotFoundException(id);
-            var categoryDto = _mapper.Map<ReponseCategoryDto>(category);
+            var categoryDto = _mapper.Map<ResponseCategoryDto>(category);
             return categoryDto;
     }
 
-    public async Task<(IEnumerable<ReponseCategoryDto> data,PageInfo meta)> GetAllPaginatedAsync(int page, int limit)
+    public async Task<(IEnumerable<ResponseCategoryDto> data,PageInfo meta)> GetAllPaginatedAsync(int page, int limit)
     {
         var categories = await _repositoryManager.Category.GetAllPaginatedAsync(page, limit);
-        var categoriesDto = _mapper.Map<IEnumerable<ReponseCategoryDto>>(categories);
+        var categoriesDto = _mapper.Map<IEnumerable<ResponseCategoryDto>>(categories);
         return (data: categoriesDto, meta: categories.PageInfo);
     }
 
-    public async Task<(IEnumerable<ReponseCategoryDto> data ,PageInfo meta)> GetAllPaginatedAndSearchAndSortAsync(ParamCategoryDto paramCategoryDto)
+    public async Task<(IEnumerable<ResponseCategoryDto> data ,PageInfo meta)> GetAllPaginatedAndSearchAndSortAsync(ParamCategoryDto paramCategoryDto)
     {
         var categories = await _repositoryManager
             .Category
             .GetAllPaginatedAndSearchAndSortAsync(paramCategoryDto.SearchTerm, paramCategoryDto.Page, paramCategoryDto.Limit, paramCategoryDto.SortBy, paramCategoryDto.SortOrder);
-        var categoriesDto = _mapper.Map<IEnumerable<ReponseCategoryDto>>(categories);
+        var categoriesDto = _mapper.Map<IEnumerable<ResponseCategoryDto>>(categories);
         return (data: categoriesDto,meta:categories.PageInfo);
     }
 

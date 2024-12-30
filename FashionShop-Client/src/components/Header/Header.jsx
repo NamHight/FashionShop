@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Link} from "react-router";
-import {List,Input, Tooltip} from "@material-tailwind/react";
+import {List,Input, Tooltip,Spinner} from "@material-tailwind/react";
 import { IoIosArrowDown } from "react-icons/io";
-import ModalLogin from "../Modal/ModalLogin";
+import ModalLoginRegister from "../Modal/ModalLoginRegister";
 import PopoverCart from "../Popover/PopoverCart";
 import {IoSearch} from "react-icons/io5";
+import {useAuth} from "../../context/AuthContext";
+import PopoverUserInfo from "../Popover/PopoverUserInfo";
 
 const Links = [
     {name: "BLOG", path: "/blog"},
@@ -26,7 +28,12 @@ function NavLinks(){
 }
 
 const Header = () => {
-
+    const {user,isLoading,error} = useAuth();
+    const userInfo = isLoading ? <Spinner /> : user != null ? (
+        <PopoverUserInfo name={user?.customerName} avatar={user?.avatar} id={user?.customerId}/>
+    ) : (
+        <ModalLoginRegister/>
+    )
     return (
             <div className={'flex justify-between items-center mx-72 h-full'}>
                 <div className={'flex justify-center items-center mx-12'}>
@@ -49,7 +56,9 @@ const Header = () => {
                                 </List.Item>
                             </Tooltip.Trigger>
                             <Tooltip.Content className="z-[100000] grid max-w-screen-xl rounded-lg border border-surface bg-background p-2 shadow-xl shadow-surface/10 dark:border-surface dark:bg-background">
-                                <ul className="grid grid-cols-3 gap-y-2 text-black w-36">{"Tuấn"}</ul>
+                                <ul className="grid grid-cols-3 gap-y-2 text-black w-36">
+                                    {"Tuấn"}
+                                </ul>
                                 <Tooltip.Arrow />
                             </Tooltip.Content>
                         </Tooltip>
@@ -66,7 +75,7 @@ const Header = () => {
                 </div>
                 <div className={"flex justify-center items-center gap-1 ml-3"}>
                     <PopoverCart/>
-                    <ModalLogin/>
+                    {userInfo}
                 </div>
             </div>
     );
