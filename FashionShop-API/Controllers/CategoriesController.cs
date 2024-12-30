@@ -12,9 +12,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FashionShop_API.Controllers
 {
-    [Authorize]
+    
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CategoriesController : ControllerBase
     {
         private readonly ILogger<CategoriesController> _logger;

@@ -12,7 +12,7 @@ using FashionShop_API.Services.ServiceLogger;
 using Microsoft.IdentityModel.Tokens;
 
 
-namespace FashionShop_API.Services.ServiceAuthenticate;
+namespace FashionShop_API.Services.Authenticates;
 
 public class ServiceAuthenticate : IServiceAuthenticate
 {
@@ -49,10 +49,14 @@ public class ServiceAuthenticate : IServiceAuthenticate
             {
                 foundCustomer.LockoutEnabled = true;
                 foundCustomer.LockoutEnd = DateTime.Now.AddMinutes(5);
+                _repositoryManager.Customer.UpdateCustomer(foundCustomer);
+                await _repositoryManager.SaveChanges();
                 throw new LoginManyTimeException("Too many failed login attempts . Please try again later 5 minutes.");
             }
             if (foundCustomer.AccessFailedCount > 2)
             {
+                _repositoryManager.Customer.UpdateCustomer(foundCustomer);
+                await _repositoryManager.SaveChanges();
                 throw new LoginManyTimeException($"Too many failed login attempts . Please try again later {foundCustomer.AccessFailedCount}/5 times.");
             }
             _repositoryManager.Customer.UpdateCustomer(foundCustomer);
@@ -70,7 +74,36 @@ public class ServiceAuthenticate : IServiceAuthenticate
         var result = _mapper.Map<ResponseCustomerDto>(foundCustomer);
         return result;
     }
-    public async Task<ResponseTokenDto> CreateTokenAsync(ResponseCustomerDto? customer,bool populateExp,bool trackChanges)
+
+    public async Task RemoveTokenCookie(long id ,HttpContext httpContext,bool trackChanges)
+    {
+        httpContext.Response.Cookies.Delete("access_token",new CookieOptions
+        {
+            HttpOnly = true,
+            IsEssential = true,
+            Secure = true,
+            SameSite = SameSiteMode.None,
+            Path = "/"
+        });
+        httpContext.Response.Cookies.Delete("refresh_token",new CookieOptions
+        {
+            HttpOnly = true,
+            IsEssential = true,
+            Secure = true,
+            SameSite = SameSiteMode.None,
+            Path = "/"
+        });
+        var customer = await _repositoryManager.Customer.GetCustomerByIdAsync(id, trackChanges);
+        if (customer is null)
+        {
+            throw new CustomerNotFoundException("");
+        }
+        customer.RefreshToken = null;
+        customer.RefreshTokenExpirytime = null;
+        _repositoryManager.Customer.UpdateCustomer(customer);
+        await _repositoryManager.SaveChanges();
+    }
+    public async Task<ResponseTokenDto> CreateTokenAsync(ResponseCustomerDto? customer,bool populateExp,bool remember,bool trackChanges)
     {
         var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetSection("Jwt:SecretKey").Value!));
         var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
@@ -91,7 +124,7 @@ public class ServiceAuthenticate : IServiceAuthenticate
         foundCustomer.RefreshToken = refreshToken;
         if (populateExp)
         {
-            foundCustomer.RefreshTokenExpirytime = DateTime.Now.AddDays(7);
+            foundCustomer.RefreshTokenExpirytime = DateTime.Now.AddDays(remember ? 30 : 7);
         }
         _repositoryManager.Customer.UpdateCustomer(foundCustomer);
         await _repositoryManager.SaveChanges();
@@ -181,7 +214,28 @@ public class ServiceAuthenticate : IServiceAuthenticate
             throw new RefreshTokenException(requestTokenDto.Token);
         }
         var customerDto = _mapper.Map<ResponseCustomerDto>(customer);
-        return await CreateTokenAsync(customerDto, false,false);
+        return await CreateTokenAsync(customerDto, true,false,false);
+    }
+    public void SetTokenCookie(ResponseTokenDto tokenDto,HttpContext httpContext,bool remember)
+    {
+        httpContext.Response.Cookies.Append("access_token",tokenDto.Token, new CookieOptions
+        {
+            Expires = DateTimeOffset.Now.AddMinutes(35),
+            HttpOnly = true,
+            IsEssential = true,
+            Secure = true,
+            SameSite = SameSiteMode.None,
+            Path = "/"
+        });
+        httpContext.Response.Cookies.Append("refresh_token",tokenDto.RefreshToken, new CookieOptions
+        {
+            Expires = DateTimeOffset.Now.AddDays(remember ? 30: 7),
+            HttpOnly = true,
+            IsEssential = true,
+            Secure = true,
+            SameSite = SameSiteMode.None,
+            Path = "/"
+        });
     }
     private async Task<TokenValidationResult> GetPrincipalFromExpiredToken(string token)
     {
@@ -193,7 +247,7 @@ public class ServiceAuthenticate : IServiceAuthenticate
             ValidateIssuer = true,
             ValidateIssuerSigningKey = true,
             IssuerSigningKey = tokenValidate,
-            ValidateLifetime = true,
+            ValidateLifetime = false,
             ValidIssuer = tokenSetting["Issuer"],
             ValidAudience = tokenSetting["Audience"]
         };
@@ -210,6 +264,7 @@ public class ServiceAuthenticate : IServiceAuthenticate
     private JwtSecurityToken GenerateTokenOptions(SigningCredentials credentials,List<Claim> claims)
     {
         var jwtSettings = _configuration.GetSection("Jwt");
+        Console.WriteLine(DateTime.Now.AddMinutes(Convert.ToDouble(jwtSettings["expires"])));
         var tokenOptions = new JwtSecurityToken(
             claims:claims,
             issuer:jwtSettings["Issuer"],

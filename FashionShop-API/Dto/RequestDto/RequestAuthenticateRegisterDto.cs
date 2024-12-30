@@ -20,13 +20,13 @@ public class RequestAuthenticateRegisterDto
         public string ConfirmPassword { get; set; }
 
         [StringLength(255, ErrorMessage = "Customer name must be less than 255 characters")]
+        [MinLength(5, ErrorMessage = "Customer name must be at least 5 characters")]
         public string? CustomerName { get; set; }
 
         [Phone(ErrorMessage = "Invalid phone number")]
         [Required(ErrorMessage = "Phone is required")]
-        [DataType(DataType.PhoneNumber, ErrorMessage = "Invalid phone number")]
         [MinLength(10, ErrorMessage = "Phone number must be at least 10 characters")]
         [MaxLength(15, ErrorMessage = "Phone number must be at most 15 characters")]
-        [RegularExpression(@"^\d+$", ErrorMessage = "Phone number must contain only digits.")]
+        [RegularExpression(@"^09\d*$", ErrorMessage = "Phone number must start with '09' and contain only digits.")]
         public string? Phone { get; set; }
 }

@@ -12,6 +12,4 @@ public class ResponseCustomerDto
     public string? Address { get; set; }
     public bool ConfirmEmail { get; set; }
     public string? Status { get; set; }
-    public string? RefreshToken { get; set; }
-    public DateTime? RefreshTokenExpirytime { get; set; }
 }

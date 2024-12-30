@@ -52,6 +52,15 @@ public static class ServicesExtension
                     ValidAudience = jwtSetting["Audience"],
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSetting["SecretKey"]!))
                 };
+                options.Events = new JwtBearerEvents
+                {
+                    OnMessageReceived = context =>
+                    {
+                        context.Request.Cookies.TryGetValue("access_token", out var accessToken);
+                        if (!string.IsNullOrEmpty(accessToken)) context.Token = accessToken;
+                        return Task.CompletedTask;
+                    } 
+                };
             });
         services.AddAuthorization();
     }
@@ -71,9 +80,10 @@ public static class ServicesExtension
         {
             options.AddPolicy("CorsPolicy", builder 
             => builder
-                .AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader()
+                .AllowCredentials()
+                .WithOrigins("https://localhost:3000","http://localhost:3000")
                 .WithExposedHeaders("X-Pagination"));
         });
 

@@ -4,6 +4,7 @@ using FashionShop_API.Filters;
 using FashionShop_API.Services.Caching;
 using FashionShop_API.Services.Emails;
 using FashionShop_API.Services.ServiceManager;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,7 +27,7 @@ namespace FashionShop_API.Controllers
         }
 
         private bool IsCheckConnectionRedis() => _cacheRedis.CheckConnection();
-        [HttpPost("register")]
+        [HttpPost("Register")]
         [ServiceFilter(typeof(ValidationFilter))]
         public async Task<IActionResult> RegisterAsync([FromBody] RequestAuthenticateRegisterDto requestAuthenticateRegisterDto)
         {
@@ -44,18 +45,19 @@ namespace FashionShop_API.Controllers
             _logger.Log(LogLevel.Information,"Controller Authenticate: " + nameof(RegisterAsync) + " Success");
             return StatusCode(201);
         }
-        [HttpPost("login")]
+        [HttpPost("Login")]
         [ServiceFilter(typeof(ValidationFilter))]
-        public async Task<IActionResult> LoginAsync([FromBody] RequestAuthenticateLoginDto requestAuthenticateLoginDto)
+        public async Task<IActionResult> LoginAsync([FromBody] RequestAuthenticateLoginDto requestAuthenticateLoginDto,bool remember)
         {
-            string keyRedis = $"Authenticate-{requestAuthenticateLoginDto.Email}";
+            string keyRedis = $"Authenticate-{requestAuthenticateLoginDto.Email}-{requestAuthenticateLoginDto.Password}-{remember}";
             if (IsCheckConnectionRedis())
             {
                 var resultCaching = await _cacheRedis.GetData<ResponseCustomerDto>(keyRedis);
                 _logger.Log(LogLevel.Information,"Controller Authenticate: " + nameof(LoginAsync) + " Success");
                 if (resultCaching is not null)
                 {
-                    var tokenCaching = await _serviceManager.Authenticate.CreateTokenAsync(resultCaching,false,false);
+                    var tokenCaching = await _serviceManager.Authenticate.CreateTokenAsync(resultCaching,false,remember,false);
+                    _serviceManager.Authenticate.SetTokenCookie(tokenCaching, HttpContext,remember);
                     return Ok(tokenCaching);
                 }
             }
@@ -65,18 +67,26 @@ namespace FashionShop_API.Controllers
                 await _cacheRedis.SetData(keyRedis, result);
             }
             _logger.Log(LogLevel.Information,"Controller Authenticate: " + nameof(LoginAsync) + " Success");
-            var tokenDto = await _serviceManager.Authenticate.CreateTokenAsync(result,true,false);
+            var tokenDto = await _serviceManager.Authenticate.CreateTokenAsync(result,true,remember,false);
+            _serviceManager.Authenticate.SetTokenCookie(tokenDto,HttpContext,remember);
             return Ok(tokenDto);
         }
-        
+        [HttpPost("Logout")]
+        [Authorize]
+        public async Task<IActionResult> Logout(long id)
+        {
+            await _serviceManager.Authenticate.RemoveTokenCookie(id,HttpContext,false);
+            _logger.Log(LogLevel.Information,"Controller Authenticate: " + nameof(Logout) + " Success");
+            return Ok("Logout success");
+        }
         [HttpGet("ConfirmEmail")]
         public async Task<IActionResult> ConfirmEmail(string token)
         {
             if (!await _serviceManager.Authenticate.ValidateTokenAsync(token))
             {
-                return BadRequest("Invalid token");
-            }
-            return Ok("Email confirmed");
+                return Redirect("http://localhost:3000/email-confirmation-error");
+            }   
+            return Redirect("http://localhost:3000/email-confirmation");
         }
     }
 }
