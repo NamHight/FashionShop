@@ -9,9 +9,13 @@ public class MapperProfile : Profile
 {
     public MapperProfile()
     {
-        CreateMap<Category, ReponseCategoryDto>()
+        CreateMap<Category, ResponseCategoryDto>()
             .ReverseMap();
         CreateMap<Category, RequestCategoryDto>()
+            .ReverseMap();
+        CreateMap<Customer, RequestAuthenticateRegisterDto>()
+            .ReverseMap();
+        CreateMap<Customer, ResponseCustomerDto>()
             .ReverseMap();
     }
 }

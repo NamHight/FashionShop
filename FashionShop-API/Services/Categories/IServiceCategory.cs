@@ -7,9 +7,9 @@ namespace FashionShop_API.Services.Categories;
 
 public interface IServiceCategory
 {
-    Task<IEnumerable<ReponseCategoryDto>> GetAllCategoryAsync(bool trackChanges);
-    Task<ReponseCategoryDto?> GetCategoryByIdAsync(long id, bool trackChanges);
-    Task<(IEnumerable<ReponseCategoryDto> data,PageInfo meta)> GetAllPaginatedAsync(int page, int limit);
-    Task<(IEnumerable<ReponseCategoryDto> data ,PageInfo meta)> GetAllPaginatedAndSearchAndSortAsync(ParamCategoryDto paramCategoryDto);
+    Task<IEnumerable<ResponseCategoryDto>> GetAllCategoryAsync(bool trackChanges);
+    Task<ResponseCategoryDto?> GetCategoryByIdAsync(long id, bool trackChanges);
+    Task<(IEnumerable<ResponseCategoryDto> data,PageInfo meta)> GetAllPaginatedAsync(int page, int limit);
+    Task<(IEnumerable<ResponseCategoryDto> data ,PageInfo meta)> GetAllPaginatedAndSearchAndSortAsync(ParamCategoryDto paramCategoryDto);
     Task<RequestCategoryDto> CreateAsync(RequestCategoryDto categoryDto);
 }

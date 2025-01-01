@@ -1,0 +1,12 @@
+import React from 'react';
+import {Typography} from "@material-tailwind/react";
+
+const EmailConfirm = () => {
+    return (
+        <div>
+            <Typography>Your email has been successfully verified. You can now log in to your account.</Typography>
+        </div>
+    );
+};
+
+export default EmailConfirm;
