@@ -16,7 +16,7 @@ const TitleUpdater = () => {
       "/blog": "Fashion - Blog",
       "/verify-password": "Fashion - Verify Password",
       "/account": "Fashion - My Profile",
-      "/account/orders": "Fashion - Ordersl",
+      "/account/orders": "Fashion - Orders",
       "/account/listfavorite": "Fashion - List Favorite"
     };
     document.title = titles[location.pathname] || "Fashion";
