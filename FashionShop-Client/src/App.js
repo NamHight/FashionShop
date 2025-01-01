@@ -1,7 +1,9 @@
-import {Route, Routes, useLocation} from "react-router";
+import {replace, Route, Routes, useLocation, useNavigate} from "react-router";
 import Layout from "./pages/Layout";
 import {Router} from "./router/Router";
 import {useEffect} from "react";
+import {useAuth} from "./context/AuthContext";
+import VerifyPassword from "./pages/VerifyPassword";
 
 const TitleUpdater = () => {
     const location = useLocation();
@@ -11,12 +13,22 @@ const TitleUpdater = () => {
             '/': 'Fashion - Home',
             '/about': 'Fashion - About',
             '/blog': 'Fashion - Blog',
+            '/verify-password': 'Fashion - Verify Password',
         };
         document.title = titles[location.pathname] || 'Fashion';
     }, [location]);
     return null;
 };
-
+const AuthRoute = ({children}) =>{
+    const {user} = useAuth();
+    const navigate = useNavigate();
+    useEffect(() => {
+        if(!user){
+            navigate('/',{replace: true});
+        }
+    }, [user,navigate]);
+    return children;
+}
 function App() {
   return (
       <>

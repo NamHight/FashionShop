@@ -1,14 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
-using System;
-using Microsoft.AspNetCore.Identity;
 
 namespace FashionShop_API.Models;
 
 [Table("customers")]
 [Index("Email", Name = "email", IsUnique = true)]
-public partial class Customer : IdentityUser
+public partial class Customer
 {
     [Key]
     [Column("customer_id")]
@@ -42,8 +42,28 @@ public partial class Customer : IdentityUser
     [Column("address", TypeName = "text")]
     public string? Address { get; set; }
 
+    [Column("confirm_email")]
+    public bool ConfirmEmail { get; set; }
+
     [Column("status", TypeName = "enum('active','warnning','banned')")]
     public string? Status { get; set; }
+
+    [Column("twoFactorEnabled")]
+    public bool? TwoFactorEnabled { get; set; }
+
+    [Column("lockoutEnd", TypeName = "datetime")]
+    public DateTime? LockoutEnd { get; set; }
+
+    [Column("lockoutEnabled")]
+    public bool? LockoutEnabled { get; set; }
+
+    public int? AccessFailedCount { get; set; }
+
+    [Column("refresh_token", TypeName = "text")]
+    public string? RefreshToken { get; set; }
+
+    [Column("refresh_token_expirytime", TypeName = "datetime")]
+    public DateTime? RefreshTokenExpirytime { get; set; }
 
     [Column("created_at", TypeName = "timestamp")]
     public DateTime? CreatedAt { get; set; }

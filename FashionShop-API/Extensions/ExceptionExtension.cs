@@ -23,6 +23,9 @@ public static class ExceptionExtension
                     {
                         NotFoundException => StatusCodes.Status404NotFound,
                         ExistedException => StatusCodes.Status409Conflict,
+                        UnauthorizedException => StatusCodes.Status401Unauthorized,
+                        BadRequestException => StatusCodes.Status400BadRequest,
+                        ManyRequestException => StatusCodes.Status429TooManyRequests,
                         _ => StatusCodes.Status500InternalServerError
                     };
                     logger.LogError($"Something went wrong: {contextFeature.Error}");

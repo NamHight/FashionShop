@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using Microsoft.Extensions.Caching.Distributed;
+using StackExchange.Redis;
 
 
 namespace FashionShop_API.Services.Caching;
@@ -7,12 +8,23 @@ namespace FashionShop_API.Services.Caching;
 public class ServiceCacheRedis : IServiceCacheRedis
 {
     private readonly IDistributedCache? _cache;
-
-    public ServiceCacheRedis(IDistributedCache? cache)
+    private readonly IConnectionMultiplexer _connectionMultiplexer;
+    public ServiceCacheRedis(IDistributedCache? cache, IConnectionMultiplexer connectionMultiplexer)
     {
         _cache = cache;
+        _connectionMultiplexer = connectionMultiplexer;
     }
-    
+    public bool CheckConnection()
+    {
+        try
+        {
+            return _connectionMultiplexer.IsConnected;
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
+    }
 
     public async Task<T?> GetData<T>(string? key)
     {

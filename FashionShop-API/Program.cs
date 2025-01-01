@@ -1,28 +1,58 @@
 using FashionShop_API.Extensions;
 using FashionShop_API.Mappers;
+using FashionShop_API.Options;
 using FashionShop_API.Services.ServiceLogger;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddAutoMapper(typeof(MapperProfile));
 builder.Services.ConfigureGetConnection(builder.Configuration);
-builder.Services.ConfigureReponseCaching();
+builder.Services.ConfigureResponseCaching();
 builder.Services.ConfigureCors();
-builder.Services.AddAuthentication();
+builder.Services.ConfigureAuthentication(builder.Configuration);
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureLoggerManager();
 builder.Services.ConfigureServiceCaching();
+builder.Services.ConfigureRedisConnection(builder.Configuration);
 builder.Services.ConfigureFilter();
+builder.Services.ConfigureSendEmail();
+builder.Services.Configure<GmailOption>(builder.Configuration.GetSection(GmailOption.GmailOptionKey));
 builder.Services.AddControllers(
     options =>
     {
         
     }).AddNewtonsoftJson();
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.AddSecurityDefinition("Bearer",new OpenApiSecurityScheme
+    {
+        In = ParameterLocation.Header,
+        Description = "Please enter a valid token",
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        BearerFormat = "JWT",
+        Scheme = "Bearer"
+    });
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement()
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+              Reference  = new OpenApiReference
+              {
+                  Type = ReferenceType.SecurityScheme,
+                  Id = "Bearer"
+              },
+              Name = "Bearer",
+            },
+            new List<string>()
+        }
+    });
+});
 builder.Services.AddSwaggerGen();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.ConfigureSession();

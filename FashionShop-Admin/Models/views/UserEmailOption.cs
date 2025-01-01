@@ -1,6 +1,6 @@
 namespace FashionShop.Models.views;
 
-public class UserEmailOption
+public class  UserEmailOption
 {
     public List<string> ToEmails { get; set; }
     public string Subject { get; set; }

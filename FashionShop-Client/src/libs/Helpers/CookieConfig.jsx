@@ -1,10 +1,9 @@
 import Cookies from 'js-cookie';
-const expired = new Date(Date.now() + 1000 * 60 * 60 * 24 * 7);
-export function setCookieHandler({access_token, refresh_token}) {
-    Cookies.set('access_token',access_token,{expired: expired});
-    Cookies.set('refresh_token',refresh_token, {expired: expired});
+import {accessToken} from "../Config/TokenConfig";
+
+export function setCookieHandler({access_token}) {
+    Cookies.set('access_token',access_token,accessToken);
 }
 export function removeCookieHandler(){
     Cookies.remove('access_token');
-    Cookies.remove('refresh_token');
 }
