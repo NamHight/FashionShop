@@ -1,102 +1,115 @@
-import {useState} from 'react';
-import {Button, Checkbox, Dialog, IconButton, Input, Tabs, Typography} from "@material-tailwind/react";
+import {useRef, useState} from 'react';
+import {Button, Checkbox, Dialog, IconButton, Spinner, Tabs, Typography} from "@material-tailwind/react";
 import {RxAvatar} from "react-icons/rx";
 import {IoClose, IoLogoGoogle} from "react-icons/io5";
 import {Link, useNavigate} from "react-router";
-import {login, register} from "../../services/api/AuthServices";
+import {login, signup} from "../../services/api/AuthServices";
 import {useAuth} from "../../context/AuthContext";
 import {TbArrowWaveLeftDown, TbArrowWaveRightDown} from "react-icons/tb";
+import {useForm} from "react-hook-form";
+import {zodResolver} from "@hookform/resolvers/zod";
+import {LoginValidate, RegisterValidate} from "../../libs/validates/FormValidate";
+import TextFormField from "../Input/TextFormField";
+import {MdOutlineDriveFileRenameOutline, MdOutlineEmail, MdOutlineLock, MdPhone} from "react-icons/md";
+import {useMutation} from "@tanstack/react-query"; // thêm
 
 const ModalLoginRegister = () => {
-    const [handleErrorLogin, setHandleErrorLogin] = useState({Email: [], Password: []});
-    const [handleErrorRegister, setHandleErrorRegister] = useState({Email: [], Password: [], RePassword: [], Fullname: [], Phone: []});
     const [isOpen, setIsOpen] = useState(null);
     const {setIsAuthenticated} = useAuth();
     const navigate = useNavigate();
-    async function formActionLogin(e) {
-        e.preventDefault();
-        const formValues = Object.fromEntries(new FormData(e.target));
-        if (!formValues.email || !formValues.password) {
-            setHandleErrorLogin({
-                Email: !formValues.email ? ["Email is required"] : [],
-                Password: !formValues.password ? ["Password is required"] : [],
-            });
+    const dismissDialog = useRef(null);
+    const mutationRegister = useMutation({
+        mutationKey: ["signup"],
+        mutationFn: async (data) => {
+            return await signup(data);
+        }, onSuccess: data => {
+            if (data?.StatusCode === 409) {
+                setRegisterError("email", {type: "custom", message: "Email already exists"});
+            } else {
+                handleClose();
+                navigate("/verify-password");
+                resetRegister();
+            }
+        },onError: error => {
+            console.log(error);
+        },
+    });
+    const mutationLogin = useMutation({
+        mutationKey: ["login"],
+        mutationFn: async (data, remember) => {
+            // xử lý dduoc nhiều
+            return await login(data, remember);
+        },
+        onSuccess: data => {
+            if (data?.StatusCode === 404) {
+                setLoginError("email", {type: "custom", message: "Email does not exist"});
+            } else if (data?.StatusCode === 401) {
+                setLoginError("email", {type: "custom", message: "Email or password is incorrect"});
+            } else if (data?.StatusCode === 429) {
+                setLoginError("email", {type: "custom", message: data?.Message});
+            } else {
+                localStorage.setItem("token", data?.token);
+                setIsAuthenticated(true);
+                handleClose();
+                resetLogin();
+            }
+        },
+        onError: error => {
+            console.log(error);
+        }
+    });
+    const {
+        register: registerRegister,
+        setError: setRegisterError,
+        handleSubmit: handleRegister,
+        reset: resetRegister,
+        formState: {errors: registerErrors}
+    } = useForm({
+        resolver: zodResolver(RegisterValidate),
+        defaultValues: {
+            email: "",
+            password: "",
+            confirmPassword: "",
+            customerName: "",
+            phone: "",
+            gender: null,
+        }
+    });
+    const {
+        register: loginRegister,
+        handleSubmit: handleLogin,
+        setError: setLoginError,
+        reset: resetLogin,
+        formState: {errors: loginErrors}
+    } = useForm({
+        defaultValues: {
+            email: "",
+            password: "",
+            remember: false
+        },
+        resolver: zodResolver(LoginValidate)
+    });
+
+    async function formActionLogin(data) {
+        const parseData = await LoginValidate.safeParseAsync(data);
+        if (parseData.error) {
             return;
         }
-        const data = {
-            email: formValues.email,
-            password: formValues.password
+        await mutationLogin.mutateAsync(parseData.data, parseData.data?.remember); // void
+    }
+    async function formActionRegister(data) {
+        const parseData = await RegisterValidate.safeParseAsync(data);
+        if (parseData.error) {
+            return;
         }
-        const result = await login(data, formValues.remember === "on");
-        console.log(result);
-        if (result?.StatusCode === 404) {
-            setHandleErrorLogin(pre => ({...pre, Email: ["Email does not exist"], Password: []}));
-        } else if (result?.StatusCode === 401) {
-            setHandleErrorLogin(pre => ({...pre, Email: ["Email or password is incorrect"], Password: []}));
-        } else if (result?.StatusCode === 429) {
-            setHandleErrorLogin(pre => ({...pre, Email: [result?.Message], Password: []}));
-        } else {
-            localStorage.setItem("token", result?.token);
-            setIsAuthenticated(true);
-            handleClose();
-            setHandleErrorLogin({Email: [], Password: []});
-        }
+        await mutationRegister.mutateAsync(parseData.data);
     }
 
-    async function formActionRegister(e) {
-        e.preventDefault();
-        const formValues = Object.fromEntries(new FormData(e.target));
-        if (!formValues.emailRegister || !formValues.passwordRegister || !formValues.repassword || !formValues.fullname || !formValues.phone ) {
-            setHandleErrorRegister({
-                Email: !formValues.emailRegister ? ["Email is required"] : [],
-                Password: !formValues.passwordRegister ? ["Password is required"] : [],
-                RePassword: !formValues.repassword ? ["RePassword is required"] : [],
-                Fullname: !formValues.fullname ? ["Fullname is required"] : [],
-                Phone: !formValues.phone ? ["Phone is required"] : [],
-            });
-            return;
-        }
-        const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)/;
-        if (!passwordRegex.test(formValues.passwordRegister)) {
-            setHandleErrorRegister({ Password: ["Password must contain at least one letter and one number"] });
-            return;
-        }
-        if (formValues.passwordRegister !== formValues.repassword) {
-            setHandleErrorRegister({ Password: [], RePassword: ["Password and RePassword do not match"]});
-            return;
-        }
-        if(formValues.fullname.length <5 || formValues.fullname.length > 250){
-            setHandleErrorRegister({Fullname: ["Fullname must be between 5 and 250"]});
-        }
-        if(formValues.phone.length < 10 || formValues.phone.length > 15){
-            setHandleErrorRegister({Phone: ["Phone number must be between 10 and 15"]});
-            return;
-        }
-        const phoneRegex = /^09\d{8,13}$/;
-        if (!phoneRegex.test(formValues.phone)) {
-            setHandleErrorRegister({ Phone: ["Phone number must start with '09' and contain only digits"] });
-            return;
-        }
-        const data = {
-            email: formValues.emailRegister,
-            password: formValues.passwordRegister,
-            confirmPassword: formValues.repassword,
-            customerName: formValues.fullname,
-            phone: formValues.phone
-        }
-        const result = await register(data);
-        console.log(result);
-        if(result?.StatusCode === 409){
-            setHandleErrorRegister({ Email: ["Email already exists"]});
-        }else{
-            navigate("/verify-password");
-        }
-    }
     const handleClose = () => {
-        setIsOpen(false);
+        dismissDialog.current.click();
     }
     return (
-        <Dialog size="sm" open={isOpen}>
+        <Dialog size="sm">
             <Dialog.Trigger as={Button}
                             className={'text-white rounded-md px-1 py-2 w-20 border-none bg-emerald-400 hover:bg-emerald-400 hover:text-red-500'}>
                 <RxAvatar className={'mr-1 size-6'}/>
@@ -105,6 +118,7 @@ const ModalLoginRegister = () => {
             <Dialog.Overlay>
                 <Dialog.Content>
                     <Dialog.DismissTrigger
+                        ref={dismissDialog}
                         as={IconButton}
                         id={'triggerClose'}
                         size="sm"
@@ -140,54 +154,24 @@ const ModalLoginRegister = () => {
                                 className="rounded-none border-b-2 border-primary bg-transparent shadow-none"/>
                         </Tabs.List>
                         <Tabs.Panel value="login">
-                            <form onSubmit={formActionLogin} className="mt-4">
+                            <form onSubmit={handleLogin(formActionLogin)} className="mt-4">
                                 <div className="mb-4 mt-2 space-y-1.5">
-                                    <Typography
-                                        as="label"
-                                        htmlFor="email"
-                                        type="small"
-                                        color="default"
-                                        className="font-semibold tracking-wider text-emerald-400"
-                                        tabIndex={0}
-                                    >
-                                        Email
-                                    </Typography>
-                                    <Input
-                                        id="email"
-                                        name={'email'}
-                                        type="email"
-                                        placeholder="someone@example.com"
-                                    />
-                                    {
-                                        handleErrorLogin.Email?.length > 0 && handleErrorLogin.Email.map((item, index) => (
-                                            <Typography key={index} className={'text-red-500 text-sm'}>{item}</Typography>
-                                        ))
-                                    }
+                                    <TextFormField icon={<MdOutlineEmail className={'w-full h-full'}/>} label={"Email"}
+                                                   error={loginErrors.email?.message} {...loginRegister("email")}
+                                                   placeholder={"user@gmail.com"}/>
                                 </div>
                                 <div className="mb-4 space-y-1.5">
-                                    <Typography
-                                        as="label"
-                                        htmlFor="password"
-                                        type="small"
-                                        color="default"
-                                        className="font-semibold tracking-wider text-emerald-400"
-                                        tabIndex={1}
-                                    >
-                                        Password
-                                    </Typography>
-                                    <Input id="password" name={"password"} type="password" placeholder="************"/>
-                                    {
-                                        handleErrorLogin.Password?.length > 0 && handleErrorLogin.Password.map((item, index) => (
-                                            <Typography key={index} className={'text-red-500 text-sm'}>{item}</Typography>
-                                        ))
-                                    }
+                                    <TextFormField icon={<MdOutlineLock className={'h-full w-full'}/>} type={"password"}
+                                                   label={"Password"}
+                                                   error={loginErrors.password?.message} {...loginRegister("password")}
+                                                   placeholder={"**********"}/>
                                 </div>
                                 <div className="mb-4 flex justify-between items-center gap-2">
                                     <div className={'flex items-center gap-2'}>
                                         <Checkbox id="remember"
                                                   name={"remember"}
                                                   className="appearance-none text-white bg-emerald-500  checked:bg-emerald-500">
-                                            <Checkbox.Indicator/>
+                                            <Checkbox.Indicator  {...loginRegister("remember")}/>
                                         </Checkbox>
                                         <Typography
                                             as="label"
@@ -202,126 +186,55 @@ const ModalLoginRegister = () => {
                                             password</Link>
                                     </div>
                                 </div>
-                                <Button isFullWidth
-                                        className={'bg-emerald-400 outline-none border-none text-lg font-bold tracking-wider'}>Sign
-                                    In</Button>
+                                <Button isFullWidth disabled={mutationLogin.isPending && true} className={'bg-emerald-400 outline-none border-none text-lg font-bold tracking-wider'}>
+                                    {
+                                        mutationLogin.isPending ? <Spinner className={"mr-2"}/> : null
+                                    }
+                                    Sign In
+                                </Button>
                             </form>
                         </Tabs.Panel>
                         <Tabs.Panel value="register">
-                            <form onSubmit={formActionRegister} className="mt-4">
+                            <form onSubmit={handleRegister(formActionRegister)} className="mt-4">
                                 <div className="mb-4 mt-2 space-y-1.5">
-                                    <Typography
-                                        as="label"
-                                        htmlFor="emailRegister"
-                                        type="small"
-                                        color="default"
-                                        className="font-semibold tracking-wider text-emerald-400"
-                                        tabIndex={0}
-                                    >
-                                        Email
-                                    </Typography>
-                                    <Input
-                                        id="emailRegister"
-                                        name={'emailRegister'}
-                                        type="email"
-                                        placeholder="someone@example.com"
-                                    />
-                                    {
-                                        handleErrorRegister.Email?.length > 0 && handleErrorRegister.Email.map((item, index) => (
-                                            <Typography key={index} className={'text-red-500 text-sm'}>{item}</Typography>
-                                        ))
-                                    }
+                                    <TextFormField {...registerRegister("email")} label={'Email'}
+                                                   error={registerErrors.email?.message}
+                                                   icon={<MdOutlineEmail className={'w-full h-full'}/>}
+                                                   placeholder={"user@gmail.com"}/>
                                 </div>
                                 <div className="mb-4 space-y-1.5">
-                                    <Typography
-                                        as="label"
-                                        htmlFor="passwordRegister"
-                                        type="small"
-                                        color="default"
-                                        className="font-semibold tracking-wider text-emerald-400"
-                                        tabIndex={1}
-                                    >
-                                        Password
-                                    </Typography>
-                                    <Input id="passwordRegister" name={"passwordRegister"} type="password" placeholder="************"/>
-                                    {
-                                        handleErrorRegister.Password?.length > 0 && handleErrorRegister.Password?.map((item, index) => (
-                                            <Typography key={index} className={'text-red-500 text-sm'}>{item}</Typography>
-                                        ))
-                                    }
+                                    <TextFormField {...registerRegister("password")} label={"Password"}
+                                                   error={registerErrors.password?.message}
+                                                   type={"password"}
+                                                   icon={<MdOutlineLock className={'h-full w-full'}/>}
+                                                   placeholder={"**********"}/>
                                 </div>
                                 <div className="mb-4 space-y-1.5">
-                                    <Typography
-                                        as="label"
-                                        htmlFor="repassword"
-                                        type="small"
-                                        color="default"
-                                        className="font-semibold tracking-wider text-emerald-400"
-                                        tabIndex={1}
-                                    >
-                                        Re-Password
-                                    </Typography>
-                                    <Input id="repassword" name={"repassword"} type="password" placeholder="************"/>
-                                    {
-                                        handleErrorRegister.RePassword?.length > 0 && handleErrorRegister.RePassword?.map((item, index) => (
-                                            <Typography key={index} className={'text-red-500 text-sm'}>{item}</Typography>
-                                        ))
-                                    }
+                                    <TextFormField {...registerRegister("confirmPassword")} label={"Confirm Password"}
+                                                   error={registerErrors.confirmPassword?.message}
+                                                   type={"password"}
+                                                   icon={<MdOutlineLock className={'h-full w-full'}/>}
+                                                   placeholder={"**********"}/>
                                 </div>
                                 <div className="mb-4 space-y-1.5">
-                                    <Typography
-                                        as="label"
-                                        htmlFor="fullname"
-                                        type="small"
-                                        color="default"
-                                        className="font-semibold tracking-wider text-emerald-400"
-                                        tabIndex={1}
-                                    >
-                                        Full Name
-                                    </Typography>
-                                    <Input id="fullname" name={"fullname"} type="text" placeholder="full name"/>
-                                    {
-                                        handleErrorRegister.Fullname?.length > 0 && handleErrorRegister.Fullname?.map((item, index) => (
-                                            <Typography key={index} className={'text-red-500 text-sm'}>{item}</Typography>
-                                        ))
-                                    }
+                                    <TextFormField {...registerRegister("customerName")} label={"Full Name"}
+                                                   icon={<MdOutlineDriveFileRenameOutline className={'w-full h-full'}/>}
+                                                   error={registerErrors.customerName?.message}
+                                                   placeholder={"John Doe"}/>
                                 </div>
                                 <div className="mb-4 space-y-1.5">
-                                    <Typography
-                                        as="label"
-                                        htmlFor="phone"
-                                        type="small"
-                                        color="default"
-                                        className="font-semibold tracking-wider text-emerald-400"
-                                        tabIndex={1}
-                                    >
-                                        Phone
-                                    </Typography>
-                                    <Input id="phone" name={"phone"} type="number" placeholder="098*******"/>
+                                    <TextFormField {...registerRegister("phone")} label={"Phone"}
+                                                   icon={<MdPhone className={'w-full h-full'}/>}
+                                                   error={registerErrors.phone?.message}
+                                                   placeholder={"012345678"}/>
+                                </div>
+                                <Button isFullWidth disabled={mutationRegister.isPending && true}
+                                        className={'bg-emerald-400 outline-none border-none mt-5 text-lg font-bold tracking-wider'}>
                                     {
-                                        handleErrorRegister.Phone?.length > 0 && handleErrorRegister.Phone?.map((item, index) => (
-                                            <Typography key={index} className={'text-red-500 text-sm'}>{item}</Typography>
-                                        ))
+                                        mutationRegister.isPending ? <Spinner className={"mr-2"}/> : null
                                     }
-                                </div>
-                                <div className="mb-4 flex justify-between items-center gap-2">
-                                    <div className={'flex items-center gap-2'}>
-                                        <Checkbox id="remember"
-                                                  name={"remember"}
-                                                  className="appearance-none text-white bg-emerald-500  checked:bg-emerald-500">
-                                            <Checkbox.Indicator/>
-                                        </Checkbox>
-                                        <Typography
-                                            as="label"
-                                            htmlFor="remember"
-                                            className="text-foreground cursor-pointer"
-                                        >
-                                            Remember Me
-                                        </Typography>
-                                    </div>
-                                </div>
-                                <Button isFullWidth
-                                        className={'bg-emerald-400 outline-none border-none text-lg font-bold tracking-wider'}>Sign Up</Button>
+                                    Sign Up
+                                </Button>
                             </form>
                         </Tabs.Panel>
                     </Tabs>
