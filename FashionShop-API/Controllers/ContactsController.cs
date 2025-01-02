@@ -1,6 +1,7 @@
 ﻿using FashionShop_API.Dto.RequestDto;
 using FashionShop_API.Filters;
 using FashionShop_API.Services.Contacts;
+using FashionShop_API.Services.ServiceManager;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -12,12 +13,12 @@ namespace FashionShop_API.Controllers
     public class ContactsController : ControllerBase
     {
         private readonly ILogger<ContactsController> _logger;
-        private readonly IServiceContact _serviceContact;
+        private readonly IServiceManager _serviceManager;
 
-        public ContactsController(ILogger<ContactsController> logger, IServiceContact serviceContact)
+        public ContactsController(ILogger<ContactsController> logger, IServiceManager serviceManager)
         {
             _logger = logger;
-            _serviceContact = serviceContact;
+            _serviceManager = serviceManager;
         }
 
         [HttpPost]
@@ -29,7 +30,7 @@ namespace FashionShop_API.Controllers
             }
             try
             {
-                var contact = await _serviceContact.CreateAsync(requestContactDto);
+                var contact = await _serviceManager.Contact.CreateAsync(requestContactDto);
                 return Ok("Create Contact susscess.");
             }
             catch (Exception ex)
