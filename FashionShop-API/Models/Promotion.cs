@@ -20,6 +20,8 @@ public partial class Promotion
 
     [Column("slug")]
     public string? Slug { get; set; }
+    [Column("image")]
+    public string? Image { get; set; }
 
     [Column("description", TypeName = "text")]
     public string? Description { get; set; }

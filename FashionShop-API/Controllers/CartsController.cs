@@ -19,9 +19,9 @@ namespace FashionShop_API.Controllers
             _serviceCacheRedis = serviceCacheRedis;
         }
 
-        public Task<IActionResult> getAllCartAsync() {
+        //public Task<IActionResult> getAllCartAsync() {
 
-            return Ok();
-        }
+        //    return Ok();
+        //}
     }
 }

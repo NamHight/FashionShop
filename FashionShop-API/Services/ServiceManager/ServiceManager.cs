@@ -4,6 +4,7 @@ using FashionShop_API.Services.Authenticates;
 using FashionShop_API.Services.Categories;
 using FashionShop_API.Services.Contacts;
 using FashionShop_API.Services.Customers;
+using FashionShop_API.Services.Promotions;
 using FashionShop_API.Services.ServiceLogger;
 
 namespace FashionShop_API.Services.ServiceManager;
@@ -15,6 +16,7 @@ public class ServiceManager : IServiceManager
     private readonly Lazy<IServiceAuthenticate> _authenticate;
     private readonly Lazy<IServiceCustomer> _customer;
     private readonly Lazy<IServiceContact> _contact;
+    private readonly Lazy<IServicePromotion> _promotion;
     public ServiceManager(IRepositoryManager repositoryManager,IMapper mapper,ILoggerManager logger,IConfiguration configuration)
     {
         _repositoryManager = repositoryManager;
@@ -22,9 +24,11 @@ public class ServiceManager : IServiceManager
         _authenticate = new Lazy<IServiceAuthenticate>(() => new ServiceAuthenticate(repositoryManager,mapper,logger,configuration));
         _customer = new Lazy<IServiceCustomer>(() => new ServiceCustomer(mapper,repositoryManager));
         _contact = new Lazy<IServiceContact>(() => new ServiceContact(repositoryManager, logger, mapper));
+        _promotion = new Lazy<IServicePromotion>(() => new ServicePromotion(repositoryManager, mapper));
     }
     public IServiceCategory Category => _category.Value;
     public IServiceAuthenticate Authenticate => _authenticate.Value;
     public IServiceCustomer Customer => _customer.Value;
     public IServiceContact Contact => _contact.Value;
+    public IServicePromotion Promotion => _promotion.Value;
 }
