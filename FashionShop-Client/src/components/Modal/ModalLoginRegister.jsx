@@ -48,6 +48,7 @@ const ModalLoginRegister = () => {
             } else if (data?.StatusCode === 429) {
                 setLoginError("email", {type: "custom", message: data?.Message});
             } else {
+            
                 localStorage.setItem("token", data?.token);
                 setIsAuthenticated(true);
                 handleClose();
@@ -155,6 +156,7 @@ const ModalLoginRegister = () => {
                         </Tabs.List>
                         <Tabs.Panel value="login">
                             <form onSubmit={handleLogin(formActionLogin)} className="mt-4">
+                            
                                 <div className="mb-4 mt-2 space-y-1.5">
                                     <TextFormField icon={<MdOutlineEmail className={'w-full h-full'}/>} label={"Email"}
                                                    error={loginErrors.email?.message} {...loginRegister("email")}

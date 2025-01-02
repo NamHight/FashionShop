@@ -1,11 +1,9 @@
 import { Radio, Typography } from "@material-tailwind/react";
 import { IoMale, IoFemale, IoMaleFemale  } from "react-icons/io5";
 import { useState } from "react";
-import { getCustomerById } from './../../../../services/api/CustomerService';
-function FormProfile() {
+function FormProfile({user}) {
   const [update, setUpdate] = useState(false);
-  var test = getCustomerById(43)
-  console.log(test);
+  console.log("adads", user);
   
   return (
     <div className="mx-28">
@@ -22,9 +20,9 @@ function FormProfile() {
               type="text"
               name="Name"
               id="Name"
-              placeholder="Tuấn..."
               className="block w-full rounded-md bg-white p-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
               disabled={!update}
+              placeholder={user.customerName}
             />
           </div>
         </div>

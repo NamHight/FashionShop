@@ -4,7 +4,7 @@ import {setCookieHandler} from "../Helpers/CookieConfig";
 import {refreshToken, tokenProtection} from "../../services/api/TokenService";
 
 
-export const BASE_URL = "https://localhost:44350/api/";
+export const BASE_URL = "https://localhost:7068/api/";
 
 
 export const authAxios = axios.create({
