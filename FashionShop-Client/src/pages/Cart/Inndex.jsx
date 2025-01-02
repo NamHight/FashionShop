@@ -136,9 +136,6 @@ function Cart() {
                     Thanh Toan
                 </Button>
         </div>
-        <div>
-           {/* <Pagination/> */}
-        </div>
     </div>
   )
 }
