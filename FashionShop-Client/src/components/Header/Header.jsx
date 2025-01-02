@@ -7,6 +7,7 @@ import PopoverCart from "../Popover/PopoverCart";
 import {IoSearch} from "react-icons/io5";
 import {useAuth} from "../../context/AuthContext";
 import PopoverUserInfo from "../Popover/PopoverUserInfo";
+import Categories from "./Categories";
 
 const Links = [
     {name: "BLOG", path: "/blog"},
@@ -56,9 +57,7 @@ const Header = () => {
                                 </List.Item>
                             </Tooltip.Trigger>
                             <Tooltip.Content className="z-[100000] grid max-w-screen-xl rounded-lg border border-surface bg-background p-2 shadow-xl shadow-surface/10 dark:border-surface dark:bg-background">
-                                <ul className="grid grid-cols-3 gap-y-2 text-black w-36">
-                                    {"Tuấn"}
-                                </ul>
+                                    <Categories />
                                 <Tooltip.Arrow />
                             </Tooltip.Content>
                         </Tooltip>
@@ -74,7 +73,7 @@ const Header = () => {
                     </div>
                 </div>
                 <div className={"flex justify-center items-center gap-1 ml-3"}>
-                    <PopoverCart/>
+                    <Link to="/cart"> <PopoverCart/> </Link>
                     {userInfo}
                 </div>
             </div>
