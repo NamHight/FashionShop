@@ -10,7 +10,7 @@ function ImageProfile() {
         />
       </div>
       <input type="file" name="image" id="image" hidden />
-      <button className="border-2 text-lg px-5 py-3 rounded-full">Upload File</button>
+      <button  className="border-2 text-lg px-5 py-3 rounded-full">Upload File</button>
     </div>
   );
 }
