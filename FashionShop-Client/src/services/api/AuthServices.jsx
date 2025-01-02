@@ -20,7 +20,7 @@ export const logout = async (id) =>{
     }
 }
 
-export const register = async (data) => {
+export const signup = async (data) => {
     try {
         const {data:response} = await publicAxios.post(BASE_AUTHENTICATE_URL+`Register`,data);
         return await response;
