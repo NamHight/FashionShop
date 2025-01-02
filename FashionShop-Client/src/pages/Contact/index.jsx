@@ -1,11 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
+import {postAddContact} from "../../services/api/ContactService";
+
 
 const Contact = () => {
+  const [message, setMessage] = useState(null);
+  const addContact = async (event) =>{
+    event.preventDefault();
+    const fullname = event.target[0].value;
+    const email = event.target[1].value;
+    const phone = event.target[2].value;
+    const description = event.target[3].value;
+    console.log(fullname,email,phone);
+    try {
+      const result = await postAddContact({
+        Fullname : fullname,
+        Email : email,
+        Phone : phone,
+        Description : description
+      });
+      setMessage({
+        type : "success",
+        data : result.data,
+      });
+    } catch (error) {
+      setMessage({
+        type : "error",
+        data : "Thêm không thành công!",
+      });
+    }
+    setTimeout(() => {
+      setMessage(null)
+    },5000);
+    event.target[0].value = "";
+    event.target[1].value = "";
+    event.target[2].value = null;
+    event.target[3].value = "";
+  }
   return (
     <div className="container mx-auto">
       <div className="grid grid-col-2 grid-flow-col gap-4">
         <div className="col-span-6">
-          <form>
+          {
+            message && (
+              <div  style={{color : message.type === "success" ? "green" : "red"}}>
+                {message.data}
+              </div>
+            )
+          }
+          <form method="post" onSubmit={addContact}>
             <div className="border-b border-gray-900/10 pb-12">
               <h2 className="text-base/7 font-semibold text-gray-900">
                 Liên hệ
