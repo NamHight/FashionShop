@@ -53,6 +53,11 @@ builder.Services.AddSwaggerGen(options =>
         }
     });
 });
+builder.Services.AddSwaggerGen();
+builder.Services.AddDistributedMemoryCache();
+builder.Services.ConfigureSession();
+
+
 var app = builder.Build();
 var logger = app.Services.GetRequiredService<ILoggerManager>();
 // Configure the HTTP request pipeline.

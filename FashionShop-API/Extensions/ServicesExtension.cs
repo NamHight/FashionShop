@@ -75,6 +75,7 @@ public static class ServicesExtension
     {
         services.AddResponseCaching();
     }
+
     public static void ConfigureCors(this IServiceCollection services)
         => services.AddCors(options =>
         {
@@ -104,6 +105,15 @@ public static class ServicesExtension
         service.AddScoped<ValidationFilter>();
     }
 
+    public static void ConfigureSession(this IServiceCollection services)
+    {
+        services.AddSession(options =>
+        {
+            options.IdleTimeout = TimeSpan.FromMinutes(60);
+            options.Cookie.HttpOnly = true;
+            options.Cookie.IsEssential = true;
+        });
+    }
     public static void ConfigureSendEmail(this IServiceCollection services) =>
         services.AddScoped<IServiceEmail, ServiceEmail>();
 }
