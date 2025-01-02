@@ -76,7 +76,6 @@ const Header = () => {
                 <div className={"flex justify-center items-center gap-1 ml-3"}>
                     <Link to="/cart"> <PopoverCart/> </Link>
                     {userInfo}
-                    <ModalLogin/>
                 </div>
             </div>
     );

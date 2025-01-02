@@ -1,38 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Button, Card, Typography } from "@material-tailwind/react";
 import { Link } from 'react-router';
+import {Pagination } from '../../components/Pagination/Pagination.jsx';
+import { useCartConText } from '../../context/CartContext.jsx';
 
 function Cart() {
+    const {cart, decreaseQuantity, increaseQuantity, totalMoney, removeCart, removeAllCart} = useCartConText();
     const TABLE_HEAD = ["Product", "Name", "Price", "Quantity", "Amount", "Handle"];
-    const TABLE_ROWS = [
-        {ProductId: 1, Banner: "test-01.jpg", ProductName: "May giat", Price: 33, Quantity: 3, Amount: 99 }, 
-        {ProductId: 2, Banner: "test-01.jpg", ProductName: "Dieu hoa", Price: 25, Quantity: 2, Amount: 50 },
-        {ProductId: 3, Banner: "test-01.jpg", ProductName: "May anh", Price: 88, Quantity: 1, Amount: 88 },
-    ];
-    const [data, setData] = useState(TABLE_ROWS);
-    const [total, setTotal] = useState(0)
-    const [isDelete, setIsDelete] = useState(false);
-    const [isChangeQuantity, setIsChangeQuantity] = useState(false);
-
-    const increaseQuantity = (id) => {
-        console.log(id)
-        data.map(item => item.ProductId ==id ? {...item, Quantity: item.Quantity+1} : item)
-        setIsChangeQuantity(!isChangeQuantity);
-    };
+    const TABLE_ROWS = cart;
+ 
     
-      // Hàm giảm giá trị
-    const decreaseQuantity = (id) => {
-        console.log(id)
-        data.map(item => item.ProductId ==id ? {...item, Quantity: (item.Quantity > 1 ? item.Quantity-1 : 0)} : item)
-        setIsChangeQuantity(!isChangeQuantity);
-    };
-
-    useEffect(()=>{
-        setTotal(()=>{
-           return  data.reduce((sum, {Amount})=> sum + Number(Amount), 0)
-        })
-    }, [isDelete, isChangeQuantity]);
-   
+  
   return (
     <div class="mt-20 mx-72">
         <div className="flex justify-center w-full align-center">
@@ -66,15 +44,15 @@ function Cart() {
           </tr>
         </thead>
         <tbody>
-          {data.map(({ ProductId, Banner, ProductName,Price, Quantity, Amount}, index) => {
+          {TABLE_ROWS.map((item, index) => {
             const isLast = index === TABLE_ROWS.length - 1;
             const classes = isLast ? "p-4" : "p-4 border-b border-blue-gray-50";
             return (
-              <tr key={index}>
+              <tr key={index} className="relative">
                 <td className="max-w-[8rem] p-3">
                     <img
                         className="max-w-64 rounded-xl object-cover object-center"
-                        src={`assets/${Banner}`}
+                        src={`assets/${item.Banner}`}
                         alt="product image"
                     />
                 </td>
@@ -84,7 +62,7 @@ function Cart() {
                     color="blue-gray"
                     className="font-normal"
                   >
-                    {ProductName}
+                    {item.ProductName} {item.ProductId}
                   </Typography>
                 </td>
                 <td className={classes}>
@@ -93,26 +71,27 @@ function Cart() {
                     color="blue-gray"
                     className="font-normal"
                   >
-                    {Price}
+                    {item.Price}
                   </Typography>
                 </td>
-                <td className="max-w-[8rem] p-3">
-                    <button className="bg-gray-200 px-4 py-2 rounded-md"
-                        onClick={() => decreaseQuantity(ProductId)}
+                <td className="max-w-[8rem] p-3 flex justify-between items-center align-middle h-full absolute">
+                    <div className="me-2">
+                      <Typography
+                        variant="small"
+                        color="blue-gray"
+                        className="font-normal"
+                      >
+                        {item.Quantity}
+                      </Typography>
+                    </div>
+                    <button className="bg-gray-200 px-4 py-2 rounded-md me-2"
+                        onClick={() => decreaseQuantity(item.ProductId)}
                     >
                         -
                     </button>
-                    <input
-                        type="number"
-                        inputMode="numeric"
-                        className="bg-transparent text-center text-slate-700 text-sm border border-slate-200 rounded-md py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
-                        maxLength="5"
-                        value={Quantity}
-                        id="zipInput"
-                    />
                     <button
                         className="bg-gray-200 px-4 py-2 rounded-md"
-                        onClick={() => increaseQuantity(ProductId)}
+                        onClick={() => increaseQuantity(item.ProductId)}
                     >
                         +
                     </button>
@@ -123,7 +102,7 @@ function Cart() {
                     color="blue-gray"
                     className="font-normal"
                   >
-                    {Amount}
+                    {item.Amount}
                   </Typography>
                 </td>
                 <td className={classes}>
@@ -134,7 +113,7 @@ function Cart() {
                     color="blue-gray"
                     className="font-medium"
                   >
-                    Delete
+                    <button onClick={() => removeCart(item.ProductId)}>Delete</button>
                   </Typography>
                 </td>
               </tr>
@@ -143,12 +122,22 @@ function Cart() {
         </tbody>
       </table>
         </Card>
-
         <div className="flex my-20 justify-around">
-                <div>Tong Tien Thanh Toan: {total}$</div>
+                <div> 
+                    <Typography
+                      variant="small"
+                      color="blue-gray"
+                      className="font-bold"
+                    >
+                      Tong Tien Thanh Toan: {totalMoney()}$
+                    </Typography>
+                </div>
                 <Button class="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2" type="button">
                     Thanh Toan
                 </Button>
+        </div>
+        <div>
+           {/* <Pagination/> */}
         </div>
     </div>
   )
