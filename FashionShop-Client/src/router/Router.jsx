@@ -8,12 +8,14 @@ import Orders from "../pages/Account/Orders";
 import Profile from "../pages/Account/Profile";
 import ListFavorites from './../pages/Account/ListFavorites/index';
 import Cart from "../pages/Cart/Inndex";
+import Blog from "../pages/Blog/index";
 
 
 export const Router = [
     {path: "/", name: "Home",element: <Home/>},
     {path: "/about", name: "About", element: <About/>},
     {path: "/contact", name: "Contact", element: <Contact />},
+    {path: "/blog", name: "Blog", element : <Blog />},
     {path: "/verify-password", name: "VerifyPassword", element: <VerifyPassword/>},
     {path: "email-confirmation", name: "EmailConfirm", element: <EmailConfirm/>},
     {path: "email-confirmation-error", name: "EmailConfirmError", element: <EmailConfirmError/>},
