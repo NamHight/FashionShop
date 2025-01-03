@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FashionShop_API.Dto.QueryParam;
+using FashionShop_API.Exceptions;
+using FashionShop_API.Models;
+using FashionShop_API.Services.ServiceManager;
+using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -8,13 +12,27 @@ namespace FashionShop_API.Controllers
     [ApiController]
     public class PromotionsController : ControllerBase
     {
-        // GET: api/<PromotionsController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly IServiceManager _servicesManager;
+        private readonly ILogger<PromotionsController> _logger;
+
+        public PromotionsController(IServiceManager servicesManager, ILogger<PromotionsController> logger)
         {
-            return new string[] { "value1", "value2" };
+            _servicesManager = servicesManager;
+            _logger = logger;
         }
 
+        // GET: api/<PromotionsController>
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Promotion>>> GetPromotionAsync([FromQuery]ParamPromotionDto paramPromotionDto)
+        {
+            if(paramPromotionDto.Page < 1)
+            {
+                throw new PageNotFoundException(paramPromotionDto.Page.ToString());
+            }
+            var promotions = await _servicesManager.Promotion.GetAllPaginateAsync(paramPromotionDto.Page, paramPromotionDto.Limit);
+            return Ok(promotions);
+        }
+        
         // GET api/<PromotionsController>/5
         [HttpGet("{id}")]
         public string Get(int id)
@@ -22,22 +40,6 @@ namespace FashionShop_API.Controllers
             return "value";
         }
 
-        // POST api/<PromotionsController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<PromotionsController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<PromotionsController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        
     }
 }
