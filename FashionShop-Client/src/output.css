@@ -544,3 +544,29 @@ video {
 [hidden]:where(:not([hidden="until-found"])) {
   display: none;
 }
+
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.marquee::after {
+  content: "";
+  display: inline-block;
+  width: 100%;
+}
+
+.marquee {
+  animation: marquee 10s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+      transform: translateX(100%);
+  }
+  100% {
+      transform: translateX(-100%);
+  }
+}

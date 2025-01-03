@@ -24,7 +24,8 @@ export const CartContextProvider = ({ children }) => {
 
     const increaseQuantity = (id) =>{
         console.log("ID la", id);
-        var currentCart = cart.find(item=> item.Quantity == id);
+        var currentCart = cart.find(item=> item.ProductId == id);
+        console.log("Phan tu muon tang so luong", currentCart);
         if(currentCart){
             var newCart = [...cart].map(item => {
                 if(item.ProductId==id){
@@ -34,6 +35,8 @@ export const CartContextProvider = ({ children }) => {
             })
             console.log(newCart);
             setCart(newCart);
+        }else{
+            console.log("tang so luong that bai");
         }
     }
 

@@ -20,7 +20,9 @@ function Cart() {
             </Button>
            </div>
             <div className=" flex justify-start w-full">
-                <h2 className="text-center text-blue-900 ">Trang Gio Hang</h2>
+              <h2 className="marquee font-bold">
+                  My Shopping Cart
+              </h2>
             </div>
         </div>
         <Card className="h-full w-full overflow-scroll mt-10">
@@ -122,7 +124,7 @@ function Cart() {
         </tbody>
       </table>
         </Card>
-        <div className="flex my-20 justify-around">
+        <div className="flex my-20 justify-around bg-orange-100	p-5 rounded-md">
                 <div> 
                     <Typography
                       variant="small"
@@ -132,8 +134,16 @@ function Cart() {
                       Tong Tien Thanh Toan: {totalMoney()}$
                     </Typography>
                 </div>
-                <Button class="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2" type="button">
-                    Thanh Toan
+                <Button className="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2" type="button">
+                  Thanh Toan
+                </Button>
+                <Button className="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2" type="button"
+                >
+                  Luu Gio Hang
+                </Button>
+                <Button className="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2" type="button"
+                onClick={removeAllCart}>
+                  Xoa Toan Bo Gio Hang
                 </Button>
         </div>
     </div>
