@@ -3,7 +3,8 @@ import FormProfile from "./FormProfile";
 import ImageProfile from "./ImageProfile";
 
 function Profile() {
-  const {user,isLoading,error} = useAuth(); 
+  const {user,isLoading,error} = useAuth();
+  
   return (
     <>
       <div className="border-b p-3 bg-slate-100 rounded">

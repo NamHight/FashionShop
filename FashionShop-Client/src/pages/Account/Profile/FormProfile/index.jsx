@@ -3,7 +3,6 @@ import { IoMale, IoFemale, IoMaleFemale } from "react-icons/io5";
 import { useState } from "react";
 function FormProfile({ user }) {
   const [update, setUpdate] = useState(false);
-  console.log("adads", user);
   const handleDate = (birth) => {
     if (!update) {
       return <p>{birth}</p>;
