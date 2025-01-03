@@ -1,4 +1,5 @@
 ﻿using FashionShop_API.Dto.QueryParam;
+using FashionShop_API.Dto.ResponseDto;
 using FashionShop_API.Exceptions;
 using FashionShop_API.Models;
 using FashionShop_API.Services.ServiceManager;
@@ -23,7 +24,7 @@ namespace FashionShop_API.Controllers
 
         // GET: api/<PromotionsController>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Promotion>>> GetPromotionAsync([FromQuery]ParamPromotionDto paramPromotionDto)
+        public async Task<ActionResult<IEnumerable<ResponsePromotionDto>>> GetPromotionAsync([FromQuery]ParamPromotionDto paramPromotionDto)
         {
             if(paramPromotionDto.Page < 1)
             {
@@ -35,9 +36,23 @@ namespace FashionShop_API.Controllers
         
         // GET api/<PromotionsController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<ActionResult<ResponsePromotionDto>> GetByIdAsync(int id)
         {
-            return "value";
+            if(id < 1)
+            {
+                return BadRequest();
+            }
+            try
+            {
+                var promotion = await _servicesManager.Promotion.GetByIdPromotionAsync(id, trackChanges: false);
+                return Ok(promotion);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw new PromotionNotFoundException(id);
+            }
+            
         }
 
         

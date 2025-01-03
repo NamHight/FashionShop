@@ -14,6 +14,11 @@ namespace FashionShop_API.Repositories.Promotions
             return await FindAll(trackChanges).ToListAsync();
         }
 
+        public async Task<Promotion> GetByIdAsync(long id, bool trackChanges)
+        {
+            return await FindByCondition(item => item.PromotionId == id, trackChanges).FirstAsync();
+        }
+
         public async Task<PagedListAsync<Promotion>> GetPaginateAsync(int page, int limit)
         {
             return await PagedListAsync<Promotion>.ToPagedListAsync(_context.Promotions.AsQueryable(), page, limit);

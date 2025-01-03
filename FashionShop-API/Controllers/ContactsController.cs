@@ -2,6 +2,7 @@
 using FashionShop_API.Filters;
 using FashionShop_API.Services.Contacts;
 using FashionShop_API.Services.ServiceManager;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -10,6 +11,7 @@ namespace FashionShop_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ContactsController : ControllerBase
     {
         private readonly ILogger<ContactsController> _logger;

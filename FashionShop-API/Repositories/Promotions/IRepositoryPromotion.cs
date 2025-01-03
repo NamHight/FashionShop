@@ -7,5 +7,6 @@ namespace FashionShop_API.Repositories.Promotions
     {
         Task<IEnumerable<Promotion>> GetAllPromotionAsync(bool trackChanges);
         Task<PagedListAsync<Promotion>> GetPaginateAsync(int page, int limit);
+        Task<Promotion> GetByIdAsync(long id, bool trackChanges);
     }
 }
