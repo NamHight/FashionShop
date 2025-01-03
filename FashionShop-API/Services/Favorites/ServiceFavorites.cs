@@ -38,7 +38,8 @@ namespace FashionShop_API.Services.Favorites
                         ProductName = item.Product.ProductName,
                         Banner = item.Product.Banner,
                         Price = item.Product.Price,
-                        CategoryName = item.Product.Category.CategoryName
+                        CategoryName = item.Product.Category.CategoryName,
+                        AddressStore = item.Product.Store.Address
                     };
                     listFavoritesDto.Add(favoritesDto);
                 }

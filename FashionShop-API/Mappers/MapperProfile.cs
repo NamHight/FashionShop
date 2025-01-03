@@ -18,7 +18,7 @@ public class MapperProfile : Profile
             .ReverseMap();
         CreateMap<Customer, ResponseCustomerDto>()
             .ReverseMap();
-        CreateMap<Favorite, ResponseFavoritesDto>()
+        CreateMap<Contact, RequestContactDto>()
             .ReverseMap();
     }
 }
