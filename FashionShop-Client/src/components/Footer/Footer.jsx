@@ -33,6 +33,49 @@ const List = [
         icon: <MdAlternateEmail className={'size-5'}/>,
     }
 ];
+const ListMenu = [
+    {
+        name: "Home",
+        path: "/",
+        classname: "text-sm",
+    },
+    {
+        name: "Men",
+        path: "/men",
+        classname: "text-sm",
+    },
+    {
+        name: "Female",
+        path: "/female",
+        classname: "text-sm",
+    },
+    {
+        name: "Kids",
+        path: "/kids",
+        classname: "text-sm",
+    },
+    {
+        name: "Accessories",
+        path: "/accessories",
+        classname: "text-sm",
+    },
+    {
+        name: "About us",
+        path: "/about",
+        classname: "text-sm",
+    },
+    {
+        name: "Blog",
+        path: "/blog",
+        classname: "text-sm",
+    },
+    {
+        name: "Contact",
+        path: "/contact",
+        classname: "text-sm",
+    }
+
+];
 const Footer = () => {
     return (
         <footer className="w-full mt-3 bg-emerald-400 text-white max-w-full">
@@ -61,18 +104,23 @@ const Footer = () => {
                     </ul>
                     <ul>
                         <Typography className="relative mb-2 font-bold text-white text-xl">
-                            {"Support"}
+                            Menu
                             <span className="absolute left-0 bottom-0 w-1/3 border-b-2 border-white"></span>
                         </Typography>
-                        <li>
-                            <Link to={"/"} className="py-1 hover:text-primary">
-                                Contact
-                            </Link>
-                        </li>
+                        {
+                            ListMenu.map((item,index) => (
+                                <li key={index}>
+                                    <Link  to={item.path} className="py-1 hover:text-red-500">
+                                        {item.name}
+                                    </Link>
+                                </li>
+                            ))
+                        }
+
                     </ul>
                     <div>
                         <Typography className={'relative text-xl font-bold mb-2'}>
-                            Sign up for newsletter
+                        Sign up for newsletter
                             <span className="absolute left-0 bottom-0 w-1/3 border-b-2 border-white"></span>
                         </Typography>
                         <form

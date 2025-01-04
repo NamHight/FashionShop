@@ -104,15 +104,6 @@ public static class ServicesExtension
     {
         services.AddResponseCaching();
     }
-    public static void ConfigureRedisCache(this IServiceCollection services, string redisConfiguration)
-    {
-        // Thêm Redis cache mà không sử dụng cho session
-        services.AddStackExchangeRedisCache(options =>
-        {
-            options.Configuration = redisConfiguration;
-            options.InstanceName = "RedisCacheInstance";
-        });
-    }
     public static void ConfigureCors(this IServiceCollection services)
         => services.AddCors(options =>
         {

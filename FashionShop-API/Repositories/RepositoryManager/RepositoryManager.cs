@@ -1,4 +1,5 @@
-﻿using FashionShop_API.Context;
+﻿using AutoMapper;
+using FashionShop_API.Context;
 using FashionShop_API.Repositories.Categories;
 using FashionShop_API.Repositories.Products;
 using FashionShop_API.Repositories.Contacts;
@@ -15,13 +16,12 @@ public class RepositoryManager : IRepositoryManager
     private Lazy<IRepositoryProduct> _product;
     private Lazy<IRepositoryContact> _contact;
     private Lazy<IRepositoryFavorites> _favorite;
-    public RepositoryManager (MyDbContext context)
+    public RepositoryManager (MyDbContext context,IMapper _mapper)
     {
         _context = context;
         _customer = new Lazy<IRepositoryCustomer>(() => new RepositoryCustomer(context));
-        _category = new Lazy<IRepositoryCategory>( () => new RepositoryCategory(context));
+        _category = new Lazy<IRepositoryCategory>( () => new RepositoryCategory(context,_mapper));
         _contact = new Lazy<IRepositoryContact>(() => new RepositoryContact(context));
-        _category = new Lazy<IRepositoryCategory>( () => new RepositoryCategory(context) );
         _product = new Lazy<IRepositoryProduct>(() => new RepositoryProduct(context));
         _favorite = new Lazy<IRepositoryFavorites>( () => new RepositoryFavorites(context) );
     }

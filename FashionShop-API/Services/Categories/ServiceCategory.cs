@@ -22,13 +22,13 @@ public class ServiceCategory  : IServiceCategory
         this._logger = logger;
         this._mapper = mapper;
     }
-    public async Task<IEnumerable<ResponseCategoryDto>> GetAllCategoryAsync(bool trackChanges)
+    public async Task<IEnumerable<ResponseCategoryChildrenDto>> GetAllCategoryAsync(bool trackChanges)
     {
         try
         {
             var categories = await _repositoryManager.Category.GetAllCategoriesAsync(trackChanges);
-            var categoriesDto = _mapper.Map<IEnumerable<ResponseCategoryDto>>(categories);
-            return categoriesDto;
+            if(categories is null) throw new CategoryListNotFoundException("Categories not found");
+            return categories;
         }
         catch (Exception e)
         {

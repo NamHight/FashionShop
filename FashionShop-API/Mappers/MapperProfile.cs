@@ -12,8 +12,6 @@ public class MapperProfile : Profile
     {
         CreateMap<Category, ResponseCategoryDto>()
             .ReverseMap();
-        CreateMap<Category, RequestCategoryDto>()
-            .ReverseMap();
         CreateMap<Customer, RequestAuthenticateRegisterDto>()
             .ReverseMap();
         CreateMap<Customer, ResponseCustomerDto>()
