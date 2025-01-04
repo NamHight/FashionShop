@@ -3,7 +3,7 @@ using FashionShop_API.Dto;
 using FashionShop_API.Dto.ResponseDto;
 using FashionShop_API.Exceptions;
 using FashionShop_API.Models;
-using FashionShop_API.Repositories.RepositoryManager;
+using FashionShop_API.Repositories;
 using FashionShop_API.Services;
 using FashionShop_API.Services.Favorites;
 
