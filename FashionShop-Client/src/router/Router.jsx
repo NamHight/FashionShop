@@ -1,5 +1,4 @@
 import Home from "../pages/Home/Index";
-import About from "../pages/About/Index";
 import VerifyPassword from "../pages/VerifyPassword";
 import EmailConfirm from "../pages/VerifyPassword/EmailConfirm";
 import EmailConfirmError from "../pages/VerifyPassword/EmailConfirmError";
@@ -8,6 +7,7 @@ import Orders from "../pages/Account/Orders";
 import Profile from "../pages/Account/Profile";
 import ListFavorites from './../pages/Account/ListFavorites/index';
 import Cart from "../pages/Cart/Inndex";
+import About from './../pages/About/Index';
 
 
 export const Router = [

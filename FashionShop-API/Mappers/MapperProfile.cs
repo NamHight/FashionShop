@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FashionShop_API.Dto;
 using FashionShop_API.Dto.RequestDto;
+using FashionShop_API.Dto.ResponseDto;
 using FashionShop_API.Models;
 
 namespace FashionShop_API.Mappers;

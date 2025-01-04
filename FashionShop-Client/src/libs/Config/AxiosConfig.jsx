@@ -4,7 +4,7 @@ import {setCookieHandler} from "../Helpers/CookieConfig";
 import {refreshToken, tokenProtection} from "../../services/api/TokenService";
 
 
-export const BASE_URL = "https://localhost:7068/api/";
+export const BASE_URL = "http://localhost:7068/api/";
 
 
 export const authAxios = axios.create({
@@ -14,6 +14,7 @@ export const authAxios = axios.create({
     },
     withCredentials: true,
 });
+
 authAxios.interceptors.request.use(
     async (config) => {
     const result = localStorage.getItem("token");

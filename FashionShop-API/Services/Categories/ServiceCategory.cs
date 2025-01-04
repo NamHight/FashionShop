@@ -5,7 +5,7 @@ using FashionShop_API.Dto.QueryParam;
 using FashionShop_API.Dto.RequestDto;
 using FashionShop_API.Exceptions;
 using FashionShop_API.Models;
-using FashionShop_API.Repositories.RepositoryManager;
+using FashionShop_API.Repositories;
 using FashionShop_API.Repositories.Shared;
 using FashionShop_API.Services.ServiceLogger;
 

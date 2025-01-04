@@ -3,6 +3,7 @@ using System.Text;
 using FashionShop_API.Context;
 using FashionShop_API.Filters;
 using FashionShop_API.Models;
+using FashionShop_API.Repositories;
 using FashionShop_API.Repositories.RepositoryManager;
 using FashionShop_API.Services.Caching;
 using FashionShop_API.Services.Emails;
@@ -11,6 +12,7 @@ using FashionShop_API.Services.ServiceManager;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using StackExchange.Redis;
 
@@ -23,11 +25,7 @@ public static class ServicesExtension
         services.AddDbContext<MyDbContext>(options =>
             options.UseMySql(configuration.GetConnectionString("DefaultConnection"),
                 ServerVersion.AutoDetect(configuration.GetConnectionString("DefaultConnection"))));
-        services.AddStackExchangeRedisCache(options =>
-        {
-            options.Configuration = configuration.GetConnectionString("Redis");
-            options.InstanceName = "CacheRedis_";
-        });
+       
     }
     public static void ConfigureAuthentication(this IServiceCollection services,IConfiguration configuration)
     {
@@ -64,18 +62,48 @@ public static class ServicesExtension
             });
         services.AddAuthorization();
     }
-
-    public static void ConfigureRedisConnection(this IServiceCollection services, IConfiguration configuration)
-    => services.AddSingleton<IConnectionMultiplexer>(_ =>
+    public static void ConfigureRedisConnection(this IServiceCollection services,IConfiguration configuration)
+    {
+        bool isRedisConnected = false;
+        var redisConntionString = configuration.GetConnectionString("Redis");
+        if (string.IsNullOrEmpty(redisConntionString))
+        {
+            services.AddDistributedMemoryCache();
+        }
+        try
+        {
+            services.AddSingleton<IConnectionMultiplexer>(_ =>
             {
-                var settingConnection = ConfigurationOptions.Parse(configuration.GetConnectionString("Redis")!, true);
-                return ConnectionMultiplexer.Connect(settingConnection);
+                var settingConnection =
+                    ConfigurationOptions.Parse(redisConntionString!, true);
+                var connection = ConnectionMultiplexer.Connect(settingConnection);
+                isRedisConnected = connection.IsConnected;
+                return connection;
             });
+        }
+        catch
+        {
+            isRedisConnected = false;
+        }
+
+        if (isRedisConnected)
+        {
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = configuration.GetConnectionString("Redis");
+                options.InstanceName = "CacheRedis_";
+            });
+        }
+        else
+        {
+            Console.WriteLine("Redis not available, using In-Memory cache");
+            services.AddDistributedMemoryCache();
+        }
+    }
     public static void ConfigureResponseCaching(this IServiceCollection services)
     {
         services.AddResponseCaching();
     }
-
     public static void ConfigureCors(this IServiceCollection services)
         => services.AddCors(options =>
         {
@@ -87,24 +115,20 @@ public static class ServicesExtension
                 .WithOrigins("https://localhost:3000","http://localhost:3000")
                 .WithExposedHeaders("X-Pagination"));
         });
-
     public static void ConfigureRepositoryManager(this IServiceCollection service)
         => service.AddScoped<IRepositoryManager, RepositoryManager>();
-
     public static void ConfigureServiceCaching(this IServiceCollection service)
     {
         service.AddScoped<IServiceCacheRedis, ServiceCacheRedis>();
     }
     public static void ConfigureServiceManager(this IServiceCollection service)
         => service.AddScoped<IServiceManager, ServiceManager>();
-
     public static void ConfigureLoggerManager(this IServiceCollection service)
         => service.AddSingleton<ILoggerManager, LoggerManager>();
     public static void ConfigureFilter(this IServiceCollection service)
     {
         service.AddScoped<ValidationFilter>();
     }
-
     public static void ConfigureSession(this IServiceCollection services)
     {
         services.AddSession(options =>

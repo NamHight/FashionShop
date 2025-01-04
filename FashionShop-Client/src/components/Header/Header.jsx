@@ -28,7 +28,8 @@ function NavLinks(){
     );
 }
 const Header = () => {
-    const {user,isLoading,error} = useAuth();
+    const {user,isLoading,error} = useAuth(); 
+    console.log(user);
     const userInfo = isLoading ? <Spinner /> : user != null ? (
         <PopoverUserInfo name={user?.customerName} avatar={user?.avatar} id={user?.customerId}/>
     ) : (

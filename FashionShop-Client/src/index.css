@@ -97,6 +97,7 @@
     animation-delay: calc(var(--uib-speed) * -0.125);
 }
 
+
 @keyframes pulse0112 {
     0%,
     100% {
