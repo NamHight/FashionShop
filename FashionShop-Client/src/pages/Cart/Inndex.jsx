@@ -3,9 +3,11 @@ import { Button, Card, Typography } from "@material-tailwind/react";
 import { Link } from 'react-router';
 import {Pagination } from '../../components/Pagination/Pagination.jsx';
 import { useCartConText } from '../../context/CartContext.jsx';
+import {useAuth} from '../../context/AuthContext.jsx';
 
 function Cart() {
     const {cart, decreaseQuantity, increaseQuantity, totalMoney, removeCart, removeAllCart, addCart} = useCartConText();
+    const {user} = useAuth();
     const TABLE_HEAD = ["Product", "Name", "Price", "Quantity", "Amount", "Handle"];
     const TABLE_ROWS = cart;
  

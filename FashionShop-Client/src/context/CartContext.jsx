@@ -6,18 +6,20 @@ import { useQuery } from '@tanstack/react-query';
 
 export const CartContext = createContext(null);
 
+
 export const CartContextProvider = ({ children }) => {
 
-    const { data: cartQuery, error, isLoading } = useQuery({
+    const { data: cartQuery, refetch, error, isLoading } = useQuery({
         queryKey:['cart'], 
-        queryFn:async()=>
-        {
-           const allCarts = await getAllCartsService();
-           console.log("du lieu cart sau khi get api",allCarts );
-           return allCarts;
+        queryFn: async () => { 
+            const allCarts = await getAllCartsService();
+            console.log("Dữ liệu cart sau khi get API", allCarts);
+            return allCarts;
         },
+        refetchOnWindowFocus: false, // Không fetch lại khi focus tab
         staleTime: 1000 * 60 * 5, // Dữ liệu sẽ không bị xem là "cũ" trong 5 phút
         cacheTime: 1000 * 60 * 10, // Dữ liệu sẽ được giữ trong cache trong 10 phút
+        // enabled: false // Không fetch tự động
     });
 
     const data = [
