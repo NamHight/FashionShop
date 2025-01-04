@@ -7,12 +7,12 @@ import PopoverCart from "../Popover/PopoverCart";
 import {IoSearch} from "react-icons/io5";
 import {useAuth} from "../../context/AuthContext";
 import PopoverUserInfo from "../Popover/PopoverUserInfo";
-import Categories from "./Categories";
 
 const Links = [
+    {name: "ACCESSORIES", path: "/accessories"},
     {name: "BLOG", path: "/blog"},
     {name: "ABOUT", path: "/about"},
-    {name: "CONTACT", path: "/contact"},
+    {name: "CONTACT", path: "/contact"}
 ];
 function NavLinks(){
     return (
@@ -27,7 +27,6 @@ function NavLinks(){
       </>
     );
 }
-
 const Header = () => {
     const {user,isLoading,error} = useAuth();
     const userInfo = isLoading ? <Spinner /> : user != null ? (
@@ -43,24 +42,62 @@ const Header = () => {
                     </Link>
                 </div>
                 <div className={'w-full flex justify-between items-center'}>
-                    <List className={'flex flex-row justify-center items-center gap-4 text-white text-lg font-bold'}>
+                    <List className={'flex flex-row justify-center items-center gap-1 text-white text-[0.8rem] font-bold'}>
                         <List.Item className={'hover:bg-emerald-400 '}>
                             <Link to={'/'} className={'text-white hover:text-red-500'}>HOME</Link>
                         </List.Item>
-                        <Tooltip placement="bottom" interactive>
+
+                        <Tooltip placement="bottom" interactive className={'flex justify-center items-center'}>
                             <Tooltip.Trigger className={'flex justify-center items-center'}>
-                                <List.Item className={'hover:bg-emerald-400 group '}>
-                                    <Link to={'/about'} className={'group-hover:text-red-500'}>PRODUCTS</Link>
+                                <List.Item className={'flex justify-center items-center hover:bg-emerald-400 group text-white'}>
+                                    <Link to={"/male"} className={'group-hover:text-red-500'}>MEN</Link>
                                     <List.ItemEnd className="ps-1">
-                                        <IoIosArrowDown className={'text-[17px] mt-0.5 group-data-[open=true]:rotate-180 group-hover:text-red-500'}/>
+                                        <IoIosArrowDown
+                                            className={'text-[17px] mt-0.5 group-data-[open=true]:rotate-180 group-hover:text-red-500'}/>
                                     </List.ItemEnd>
                                 </List.Item>
                             </Tooltip.Trigger>
-                            <Tooltip.Content className="z-[100000] grid max-w-screen-xl rounded-lg border border-surface bg-background p-2 shadow-xl shadow-surface/10 dark:border-surface dark:bg-background">
-                                    <Categories />
-                                <Tooltip.Arrow />
+                            <Tooltip.Content
+                                className="mt-3 text-black h-72 w-full z-[100000] grid max-w-[1975px] rounded-lg border border-surface bg-background p-0 shadow-xl shadow-surface/10 dark:border-surface dark:bg-background">
+                                <div className={'mx-72'}>
+                                    <p>test</p>
+                                </div>
+                                <Tooltip.Arrow/>
                             </Tooltip.Content>
                         </Tooltip>
+                        <Tooltip placement="bottom" interactive className={'flex justify-center items-center'}>
+                            <Tooltip.Trigger className={'flex justify-center items-center'}>
+                                <List.Item className={'flex justify-center items-center hover:bg-emerald-400 group text-white'}>
+                                    <Link to={"/male"} className={'group-hover:text-red-500'}>WOMEN</Link>
+                                    <List.ItemEnd className="ps-1">
+                                        <IoIosArrowDown
+                                            className={'text-[17px] mt-0.5 group-data-[open=true]:rotate-180 group-hover:text-red-500'}/>
+                                    </List.ItemEnd>
+                                </List.Item>
+                            </Tooltip.Trigger>
+                            <Tooltip.Content className="mt-3 text-black h-72 w-full z-[100000] grid max-w-[1975px] rounded-lg border border-surface bg-background p-0 shadow-xl shadow-surface/10 dark:border-surface dark:bg-background">
+                                <div className={'mx-72'}>
+                                    <p>test</p>
+                                </div>
+                                <Tooltip.Arrow/>
+                            </Tooltip.Content>
+                        </Tooltip>
+                        <Tooltip placement="bottom" interactive className={'flex justify-center items-center'}>
+                            <Tooltip.Trigger className={'flex justify-center items-center'}>
+                                <List.Item className={'flex justify-center items-center hover:bg-emerald-400 group text-white'}>
+                                    <Link to={"/male"} className={'group-hover:text-red-500'}>KIDS</Link>
+                                    <List.ItemEnd className="ps-1">
+                                        <IoIosArrowDown
+                                            className={'text-[17px] mt-0.5 group-data-[open=true]:rotate-180 group-hover:text-red-500'}/>
+                                    </List.ItemEnd>
+                                </List.Item>
+                            </Tooltip.Trigger>
+                            <Tooltip.Content
+                                className="mt-3 text-black h-72 w-full z-[100000] grid max-w-[1975px] rounded-lg border border-surface bg-background p-0 shadow-xl shadow-surface/10 dark:border-surface dark:bg-background">
+                                <Tooltip.Arrow/>
+                            </Tooltip.Content>
+                        </Tooltip>
+
                         <NavLinks/>
                     </List>
                     <div className={'group'}>

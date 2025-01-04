@@ -1,6 +1,5 @@
 ﻿using FashionShop_API.Services.Caching;
 using FashionShop_API.Services.ServiceManager;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FashionShop_API.Controllers
@@ -18,8 +17,8 @@ namespace FashionShop_API.Controllers
             _serviceManager = serviceManager;
             _serviceCacheRedis = serviceCacheRedis;
         }
-
-        public Task<IActionResult> getAllCartAsync() {
+        [HttpGet]
+        public async Task<IActionResult> getAllCartAsync() {
 
             return Ok();
         }

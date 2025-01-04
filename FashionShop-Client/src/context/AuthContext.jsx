@@ -1,4 +1,4 @@
-import {createContext, useContext, useState} from "react";
+import {createContext, useContext, useEffect, useState} from "react";
 import { getCustomerById } from "../services/api/CustomerService";
 import { jwtDecode } from "jwt-decode";
 import { tokenProtection } from "../services/api/TokenService";
@@ -8,7 +8,7 @@ export const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const { data: user, error, isLoading } = useQuery({
+    const { data:user, error, isLoading,status } = useQuery({
         queryKey:['user'], // Query key
         queryFn:async()=>
     {
@@ -29,10 +29,7 @@ export const AuthProvider = ({ children }) => {
     },
         staleTime: 1000 * 60 * 5,
         refetchOnWindowFocus: false,
-        enabled:isAuthenticated
 });
-
-
     const value = {
         user,
         isLoading,

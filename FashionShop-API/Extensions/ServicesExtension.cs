@@ -65,12 +65,12 @@ public static class ServicesExtension
         services.AddAuthorization();
     }
 
-    public static void ConfigureRedisConnection(this IServiceCollection services,IConfiguration configuration)
-        => services.AddSingleton<IConnectionMultiplexer>(_ =>
-        {
-            var settingConnection = ConfigurationOptions.Parse(configuration.GetConnectionString("Redis")!,true);
-            return ConnectionMultiplexer.Connect(settingConnection);
-        });
+    public static void ConfigureRedisConnection(this IServiceCollection services, IConfiguration configuration)
+    => services.AddSingleton<IConnectionMultiplexer>(_ =>
+            {
+                var settingConnection = ConfigurationOptions.Parse(configuration.GetConnectionString("Redis")!, true);
+                return ConnectionMultiplexer.Connect(settingConnection);
+            });
     public static void ConfigureResponseCaching(this IServiceCollection services)
     {
         services.AddResponseCaching();

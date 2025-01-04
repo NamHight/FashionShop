@@ -25,7 +25,7 @@ const PopoverUserInfo = ({name,avatar,id}) => {
             <Tooltip.Trigger as={Button} className={'bg-emerald-400 outline-none border-none hover:bg-emerald-400 py-2 w-20 item-center flex gap-2'}>
                 <Avatar src={avatar ? avatar : "https://dub.sh/TdSBP0D"} alt="profile-picture" />
             </Tooltip.Trigger>
-            <Tooltip.Content className="flex flex-col w-52 border border-surface bg-background px-0 py-2.5 text-foreground">
+            <Tooltip.Content className="z-[100000] flex flex-col w-52 border border-surface bg-background px-0 py-2.5 text-foreground">
                 <div className={'border-b-2 gap-2 flex flex-col py-3'}>
                     <Typography className={'text-[1.2rem] px-2 font-serif font-semibold cursor-default'}>{name}</Typography>
                 </div>

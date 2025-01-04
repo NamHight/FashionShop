@@ -15,6 +15,7 @@ export const CartContextProvider = ({ children }) => {
            const allCarts = await getAllCarts();
            return allCarts;
         },
+        refetchIntervalInBackground:false
     });
 
     const [cart, setCart] = useState([

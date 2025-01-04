@@ -1,4 +1,4 @@
-import {useRef, useState} from 'react';
+import {useRef} from 'react';
 import {Button, Checkbox, Dialog, IconButton, Spinner, Tabs, Typography} from "@material-tailwind/react";
 import {RxAvatar} from "react-icons/rx";
 import {IoClose, IoLogoGoogle} from "react-icons/io5";
@@ -11,33 +11,39 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {LoginValidate, RegisterValidate} from "../../libs/validates/FormValidate";
 import TextFormField from "../Input/TextFormField";
 import {MdOutlineDriveFileRenameOutline, MdOutlineEmail, MdOutlineLock, MdPhone} from "react-icons/md";
-import {useMutation} from "@tanstack/react-query"; // thêm
+import {useMutation, useQueryClient} from "@tanstack/react-query"; // thêm
 
 const ModalLoginRegister = () => {
-    const [isOpen, setIsOpen] = useState(null);
+    const queryClient = useQueryClient();
     const {setIsAuthenticated} = useAuth();
     const navigate = useNavigate();
     const dismissDialog = useRef(null);
     const mutationRegister = useMutation({
         mutationKey: ["signup"],
         mutationFn: async (data) => {
+            console.log(data);
             return await signup(data);
         }, onSuccess: data => {
+            console.log(data);
             if (data?.StatusCode === 409) {
                 setRegisterError("email", {type: "custom", message: "Email already exists"});
-            } else {
+            } else if (data?.status === 400) {
+                setRegisterError("error", {type: "custom", message: "Something went wrong"});
+            } else if (data?.status === 500) {
+                setRegisterError("error", {type: "custom", message: "Something went wrong"});
+            }else {
                 handleClose();
                 navigate("/verify-password");
                 resetRegister();
             }
         },onError: error => {
-            console.log(error);
+            console.log(error)
+            setRegisterError("error", {type: "custom", message: "Something went wrong"});
         },
     });
     const mutationLogin = useMutation({
         mutationKey: ["login"],
         mutationFn: async (data, remember) => {
-            // xử lý dduoc nhiều
             return await login(data, remember);
         },
         onSuccess: data => {
@@ -47,7 +53,11 @@ const ModalLoginRegister = () => {
                 setLoginError("email", {type: "custom", message: "Email or password is incorrect"});
             } else if (data?.StatusCode === 429) {
                 setLoginError("email", {type: "custom", message: data?.Message});
-            } else {
+            } else if(data.status === 500) {
+                setLoginError("error", {type: "custom", message: "Something went wrong"});
+            } else if(data.status === 400) {
+                setLoginError("error", {type: "custom", message: "Something went wrong"});
+            }else {
                 localStorage.setItem("token", data?.token);
                 setIsAuthenticated(true);
                 handleClose();
@@ -55,7 +65,10 @@ const ModalLoginRegister = () => {
             }
         },
         onError: error => {
-            console.log(error);
+            setLoginError("error", {type: "custom", message: "Something went wrong"});
+        },
+        onSettled: async () =>{
+           await queryClient.invalidateQueries(['user']);
         }
     });
     const {
@@ -155,6 +168,7 @@ const ModalLoginRegister = () => {
                         </Tabs.List>
                         <Tabs.Panel value="login">
                             <form onSubmit={handleLogin(formActionLogin)} className="mt-4">
+
                                 <div className="mb-4 mt-2 space-y-1.5">
                                     <TextFormField icon={<MdOutlineEmail className={'w-full h-full'}/>} label={"Email"}
                                                    error={loginErrors.email?.message} {...loginRegister("email")}
@@ -166,6 +180,11 @@ const ModalLoginRegister = () => {
                                                    error={loginErrors.password?.message} {...loginRegister("password")}
                                                    placeholder={"**********"}/>
                                 </div>
+                                {
+                                    loginErrors.error?.message && (
+                                        <Typography type={"small"} className={'text-red-500'}>{registerErrors.error?.message}</Typography>
+                                    )
+                                }
                                 <div className="mb-4 flex justify-between items-center gap-2">
                                     <div className={'flex items-center gap-2'}>
                                         <Checkbox id="remember"
@@ -186,6 +205,7 @@ const ModalLoginRegister = () => {
                                             password</Link>
                                     </div>
                                 </div>
+
                                 <Button isFullWidth disabled={mutationLogin.isPending && true} className={'bg-emerald-400 outline-none border-none text-lg font-bold tracking-wider'}>
                                     {
                                         mutationLogin.isPending ? <Spinner className={"mr-2"}/> : null
@@ -196,6 +216,7 @@ const ModalLoginRegister = () => {
                         </Tabs.Panel>
                         <Tabs.Panel value="register">
                             <form onSubmit={handleRegister(formActionRegister)} className="mt-4">
+
                                 <div className="mb-4 mt-2 space-y-1.5">
                                     <TextFormField {...registerRegister("email")} label={'Email'}
                                                    error={registerErrors.email?.message}
@@ -228,6 +249,11 @@ const ModalLoginRegister = () => {
                                                    error={registerErrors.phone?.message}
                                                    placeholder={"012345678"}/>
                                 </div>
+                                {
+                                    registerErrors.error?.message && (
+                                        <Typography type={"small"} className={'text-red-500'}>{registerErrors.error?.message}</Typography>
+                                    )
+                                }
                                 <Button isFullWidth disabled={mutationRegister.isPending && true}
                                         className={'bg-emerald-400 outline-none border-none mt-5 text-lg font-bold tracking-wider'}>
                                     {
