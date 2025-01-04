@@ -1,10 +1,11 @@
 import { Route, Routes, useLocation, useNavigate} from "react-router";
 import Layout from "./pages/Layout";
 import { Router, routerAccount } from "./router/Router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "./context/AuthContext";
 import VerifyPassword from "./pages/VerifyPassword";
 import Account from "./pages/Account";
+import Loading from './components/Loading';
 
 const TitleUpdater = () => {
   const location = useLocation();
@@ -25,12 +26,19 @@ const TitleUpdater = () => {
 };
 const AuthRoute = ({ children }) => {
   const { user } = useAuth();
+  const [isLoading, setisLoading] = useState(true);
   const navigate = useNavigate();
   useEffect(() => {
+    console.log(user);
     if (!user) {
       navigate("/", { replace: true });
+    }else{
+      setisLoading(false)
     }
   }, [user, navigate]);
+  if(isLoading){
+    return  <Loading/>
+  }
   return children;
 };
 function App() {
@@ -48,7 +56,7 @@ function App() {
               />
             );
           })}
-          <Route path="account" element={<Account />}>
+          <Route path="account" element={ <AuthRoute> <Account /></AuthRoute>}>
             {routerAccount.map((route) => {
               return (
                 <Route

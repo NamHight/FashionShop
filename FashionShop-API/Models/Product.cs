@@ -36,6 +36,9 @@ public partial class Product
     [Column("category_id")]
     public long? CategoryId { get; set; }
 
+    [Column("store_id")]
+    public long? StoreId { get; set; }
+
     [Column("created_at", TypeName = "timestamp")]
     public DateTime? CreatedAt { get; set; }
 
@@ -48,6 +51,10 @@ public partial class Product
     [ForeignKey("CategoryId")]
     [InverseProperty("Products")]
     public virtual Category? Category { get; set; }
+
+    [ForeignKey("StoreId")]
+    [InverseProperty("Products")]
+    public virtual Store? Store { get; set; }
 
     [InverseProperty("Product")]
     public virtual ICollection<Favorite> Favorites { get; set; } = new List<Favorite>();
