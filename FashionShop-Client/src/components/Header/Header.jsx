@@ -7,9 +7,12 @@ import PopoverCart from "../Popover/PopoverCart";
 import {IoSearch} from "react-icons/io5";
 import {useAuth} from "../../context/AuthContext";
 import PopoverUserInfo from "../Popover/PopoverUserInfo";
+import {useQuery} from "@tanstack/react-query";
+import {getCategories} from "../../services/api/CategoryService";
+import NotFound from "../NotFound/NotFound";
+import {MdOutlineError} from "react-icons/md";
 
 const Links = [
-    {name: "ACCESSORIES", path: "/accessories"},
     {name: "BLOG", path: "/blog"},
     {name: "ABOUT", path: "/about"},
     {name: "CONTACT", path: "/contact"}
@@ -29,12 +32,49 @@ function NavLinks(){
 }
 const Header = () => {
     const {user,isLoading,error} = useAuth(); 
-    console.log(user);
+    const {data: categories , isLoading: isCategoryLoading, isPending, isError,} = useQuery({
+       queryKey: ['category'],
+       queryFn: async () => await getCategories(),
+        refetchIntervalInBackground:false,
+        refetchOnWindowFocus: false,
+    });
     const userInfo = isLoading ? <Spinner /> : user != null ? (
         <PopoverUserInfo name={user?.customerName} avatar={user?.avatar} id={user?.customerId}/>
     ) : (
         <ModalLoginRegister/>
     )
+    const categoriesList = isError ?
+        <NotFound text={"Error get categories"} icon={<MdOutlineError size={20} />} />
+        : isLoading ? <Spinner className={'size-28'}/>
+        : categories?.length > 0 && categories?.map((parent) => (
+            <div key={parent.name}>
+                {
+                    <Tooltip placement="bottom" interactive className={'flex justify-center items-center'}>
+                        <Tooltip.Trigger className={'flex justify-center items-center'}>
+                            <List.Item className={'flex justify-center items-center hover:bg-emerald-400 group text-white'}>
+                                <Link to={"/male"} className={'group-hover:text-red-500'}>{parent.name}</Link>
+                                <List.ItemEnd className="ps-1">
+                                    <IoIosArrowDown
+                                        className={'text-[17px] mt-0.5 group-data-[open=true]:rotate-180 group-hover:text-red-500'}/>
+                                </List.ItemEnd>
+                            </List.Item>
+                        </Tooltip.Trigger>
+                        <Tooltip.Content className="text-black z-[100000] grid  rounded-lg border border-surface bg-background p-3 shadow-xl shadow-surface/10 dark:border-surface dark:bg-background">
+                            <div className={'flex flex-col text-[1.1rem] font-bold gap-3 justify-start px-2'}>
+                                    {
+                                        parent.categories?.length > 0 && parent.categories?.map((child,index) => (
+                                            <List.Item key={index} className={'flex justify-start items-center '}>
+                                                <Link to={child?.categoryName.toLowerCase()} className={"hover:text-red-500 hover:font-bold w-full "}>{child?.categoryName}</Link>
+                                            </List.Item>
+                                        ))
+                                    }
+                            </div>
+                            <Tooltip.Arrow/>
+                        </Tooltip.Content>
+                    </Tooltip>
+                }
+            </div>
+        ))  ;
     return (
             <div className={'flex justify-between items-center mx-72 h-full'}>
                 <div className={'flex justify-center items-center mx-12'}>
@@ -47,58 +87,7 @@ const Header = () => {
                         <List.Item className={'hover:bg-emerald-400 '}>
                             <Link to={'/'} className={'text-white hover:text-red-500'}>HOME</Link>
                         </List.Item>
-
-                        <Tooltip placement="bottom" interactive className={'flex justify-center items-center'}>
-                            <Tooltip.Trigger className={'flex justify-center items-center'}>
-                                <List.Item className={'flex justify-center items-center hover:bg-emerald-400 group text-white'}>
-                                    <Link to={"/male"} className={'group-hover:text-red-500'}>MEN</Link>
-                                    <List.ItemEnd className="ps-1">
-                                        <IoIosArrowDown
-                                            className={'text-[17px] mt-0.5 group-data-[open=true]:rotate-180 group-hover:text-red-500'}/>
-                                    </List.ItemEnd>
-                                </List.Item>
-                            </Tooltip.Trigger>
-                            <Tooltip.Content
-                                className="mt-3 text-black h-72 w-full z-[100000] grid max-w-[1975px] rounded-lg border border-surface bg-background p-0 shadow-xl shadow-surface/10 dark:border-surface dark:bg-background">
-                                <div className={'mx-72'}>
-                                    <p>test</p>
-                                </div>
-                                <Tooltip.Arrow/>
-                            </Tooltip.Content>
-                        </Tooltip>
-                        <Tooltip placement="bottom" interactive className={'flex justify-center items-center'}>
-                            <Tooltip.Trigger className={'flex justify-center items-center'}>
-                                <List.Item className={'flex justify-center items-center hover:bg-emerald-400 group text-white'}>
-                                    <Link to={"/male"} className={'group-hover:text-red-500'}>WOMEN</Link>
-                                    <List.ItemEnd className="ps-1">
-                                        <IoIosArrowDown
-                                            className={'text-[17px] mt-0.5 group-data-[open=true]:rotate-180 group-hover:text-red-500'}/>
-                                    </List.ItemEnd>
-                                </List.Item>
-                            </Tooltip.Trigger>
-                            <Tooltip.Content className="mt-3 text-black h-72 w-full z-[100000] grid max-w-[1975px] rounded-lg border border-surface bg-background p-0 shadow-xl shadow-surface/10 dark:border-surface dark:bg-background">
-                                <div className={'mx-72'}>
-                                    <p>test</p>
-                                </div>
-                                <Tooltip.Arrow/>
-                            </Tooltip.Content>
-                        </Tooltip>
-                        <Tooltip placement="bottom" interactive className={'flex justify-center items-center'}>
-                            <Tooltip.Trigger className={'flex justify-center items-center'}>
-                                <List.Item className={'flex justify-center items-center hover:bg-emerald-400 group text-white'}>
-                                    <Link to={"/male"} className={'group-hover:text-red-500'}>KIDS</Link>
-                                    <List.ItemEnd className="ps-1">
-                                        <IoIosArrowDown
-                                            className={'text-[17px] mt-0.5 group-data-[open=true]:rotate-180 group-hover:text-red-500'}/>
-                                    </List.ItemEnd>
-                                </List.Item>
-                            </Tooltip.Trigger>
-                            <Tooltip.Content
-                                className="mt-3 text-black h-72 w-full z-[100000] grid max-w-[1975px] rounded-lg border border-surface bg-background p-0 shadow-xl shadow-surface/10 dark:border-surface dark:bg-background">
-                                <Tooltip.Arrow/>
-                            </Tooltip.Content>
-                        </Tooltip>
-
+                        {categoriesList}
                         <NavLinks/>
                     </List>
                     <div className={'group'}>

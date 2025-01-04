@@ -15,9 +15,8 @@ public class RepositoryManager : IRepositoryManager
     private Lazy<IRepositoryCustomer> _customer;
     private Lazy<IRepositoryProduct> _product;
     private Lazy<IRepositoryContact> _contact;
-    public RepositoryManager (MyDbContext context,IMapper _mapper)
     private Lazy<IRepositoryFavorites> _favorite;
-    public RepositoryManager (MyDbContext context)
+    public RepositoryManager (MyDbContext context,IMapper _mapper)
     {
         _context = context;
         _customer = new Lazy<IRepositoryCustomer>(() => new RepositoryCustomer(context));

@@ -27,6 +27,7 @@ public class ServiceCategory  : IServiceCategory
         try
         {
             var categories = await _repositoryManager.Category.GetAllCategoriesAsync(trackChanges);
+            if(categories is null) throw new CategoryListNotFoundException("Categories not found");
             return categories;
         }
         catch (Exception e)
