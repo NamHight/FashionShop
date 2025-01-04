@@ -36,4 +36,5 @@ public class ServiceManager : IServiceManager
     public IServiceProduct Product => _product.Value;
     public IServiceFavorites Favorite => _favorite.Value;
     public IServiceContact Contact => _contact.Value;
+
 }
