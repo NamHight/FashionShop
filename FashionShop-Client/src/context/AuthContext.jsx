@@ -11,22 +11,22 @@ export const AuthProvider = ({ children }) => {
     const { data: user, error, isLoading } = useQuery({
         queryKey:['user'], // Query key
         queryFn:async()=>
-    {
-        const result = await tokenProtection();
-        console.log(result);
-        if (result?.token) {
-            const customer = jwtDecode(result.token);
-            if (customer) {
-                const data = await getCustomerById(customer.sub);
-                console.log(data);
-                if (data.status === 401) {
-                    throw new Error("Unauthorized");
+        {
+            const result = await tokenProtection();
+            console.log(result);
+            if (result?.token) {
+                const customer = jwtDecode(result.token);
+                if (customer) {
+                    const data = await getCustomerById(customer.sub);
+                    console.log(data);
+                    if (data.status === 401) {
+                        throw new Error("Unauthorized");
+                    }
+                    return data;
                 }
-                return data;
             }
-        }
-        return null; // Return null if no token
-    },
+            return null; // Return null if no token
+        },
         staleTime: 1000 * 60 * 5,
         refetchOnWindowFocus: false,
         enabled:isAuthenticated

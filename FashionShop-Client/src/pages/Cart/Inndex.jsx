@@ -5,14 +5,14 @@ import {Pagination } from '../../components/Pagination/Pagination.jsx';
 import { useCartConText } from '../../context/CartContext.jsx';
 
 function Cart() {
-    const {cart, decreaseQuantity, increaseQuantity, totalMoney, removeCart, removeAllCart} = useCartConText();
+    const {cart, decreaseQuantity, increaseQuantity, totalMoney, removeCart, removeAllCart, addCart} = useCartConText();
     const TABLE_HEAD = ["Product", "Name", "Price", "Quantity", "Amount", "Handle"];
     const TABLE_ROWS = cart;
  
     
   
   return (
-    <div class="mt-20 mx-72">
+    <div className="mt-20 mx-72">
         <div className="flex justify-center w-full align-center">
            <div className=" flex justify-start w-full">
             <Button  variant="gradient">
@@ -54,7 +54,7 @@ function Cart() {
                 <td className="max-w-[8rem] p-3">
                     <img
                         className="max-w-64 rounded-xl object-cover object-center"
-                        src={`assets/${item.Banner}`}
+                        src={`assets/${item.banner}`}
                         alt="product image"
                     />
                 </td>
@@ -64,7 +64,7 @@ function Cart() {
                     color="blue-gray"
                     className="font-normal"
                   >
-                    {item.ProductName} {item.ProductId}
+                    {item.productName} {item.productId}
                   </Typography>
                 </td>
                 <td className={classes}>
@@ -73,7 +73,7 @@ function Cart() {
                     color="blue-gray"
                     className="font-normal"
                   >
-                    {item.Price}
+                    {item.price}
                   </Typography>
                 </td>
                 <td className="max-w-[8rem] p-3 flex justify-between items-center align-middle h-full absolute">
@@ -83,17 +83,17 @@ function Cart() {
                         color="blue-gray"
                         className="font-normal"
                       >
-                        {item.Quantity}
+                        {item.quantity}
                       </Typography>
                     </div>
                     <button className="bg-gray-200 px-4 py-2 rounded-md me-2"
-                        onClick={() => decreaseQuantity(item.ProductId)}
+                        onClick={() => decreaseQuantity(item.productId)}
                     >
                         -
                     </button>
                     <button
                         className="bg-gray-200 px-4 py-2 rounded-md"
-                        onClick={() => increaseQuantity(item.ProductId)}
+                        onClick={() => increaseQuantity(item.productId)}
                     >
                         +
                     </button>
@@ -104,7 +104,7 @@ function Cart() {
                     color="blue-gray"
                     className="font-normal"
                   >
-                    {item.Amount}
+                    {item.amount}
                   </Typography>
                 </td>
                 <td className={classes}>
@@ -115,7 +115,7 @@ function Cart() {
                     color="blue-gray"
                     className="font-medium"
                   >
-                    <button onClick={() => removeCart(item.ProductId)}>Delete</button>
+                    <button onClick={() => removeCart(item.productId)}>Delete</button>
                   </Typography>
                 </td>
               </tr>
@@ -138,8 +138,8 @@ function Cart() {
                   Thanh Toan
                 </Button>
                 <Button className="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2" type="button"
-                >
-                  Luu Gio Hang
+                onClick={()=>addCart(1, "maychieu.png", "may chieu", 45, 2)}>
+                  addCart
                 </Button>
                 <Button className="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2" type="button"
                 onClick={removeAllCart}>
