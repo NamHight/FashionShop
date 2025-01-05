@@ -3,6 +3,7 @@ using FashionShop_API.Repositories.Categories;
 using FashionShop_API.Repositories.Contacts;
 using FashionShop_API.Repositories.Customers;
 using FashionShop_API.Repositories.Favorites;
+using FashionShop_API.Repositories.Reviews;
 using FashionShop_API.Repositories.WebsiteInfos;
 
 
@@ -15,6 +16,7 @@ public interface IRepositoryManager
     IRepositoryContact Contact { get; }
     IRepositoryFavorites Favorite { get; }
     IRepositoryProduct Product { get; }
+	IRepositoryReviews Review { get; }
     IRepositoryWebsiteInfo WebsiteInfo { get; }
     Task SaveChanges();
 }
