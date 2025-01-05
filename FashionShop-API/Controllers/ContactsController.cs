@@ -11,7 +11,6 @@ namespace FashionShop_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class ContactsController : ControllerBase
     {
         private readonly ILogger<ContactsController> _logger;
