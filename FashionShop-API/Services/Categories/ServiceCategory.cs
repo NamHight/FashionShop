@@ -65,7 +65,7 @@ public class ServiceCategory  : IServiceCategory
     public async Task<RequestCategoryDto> CreateAsync(RequestCategoryDto categoryDto)
     {
         var category = _mapper.Map<Category>(categoryDto);
-        category.CreatedAt = DateTime.Now;
+        category.CreatedAt = DateTime.UtcNow;
         if (await CheckCategorySlugExistsAsync(category.Slug))
         {
             throw new SlugExistedException(category.Slug);

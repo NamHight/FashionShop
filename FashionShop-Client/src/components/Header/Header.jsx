@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {Link} from "react-router";
-import {List,Input, Tooltip,Spinner} from "@material-tailwind/react";
+import {List, Input, Tooltip, Spinner, IconButton, Typography} from "@material-tailwind/react";
 import { IoIosArrowDown } from "react-icons/io";
 import ModalLoginRegister from "../Modal/ModalLoginRegister";
 import PopoverCart from "../Popover/PopoverCart";
@@ -11,6 +11,7 @@ import {useQuery} from "@tanstack/react-query";
 import {getCategories} from "../../services/api/CategoryService";
 import NotFound from "../NotFound/NotFound";
 import {MdOutlineError} from "react-icons/md";
+import {InformationCircleIcon} from "@heroicons/react/16/solid";
 
 const Links = [
     {name: "BLOG", path: "/blog"},
@@ -43,8 +44,19 @@ const Header = () => {
     ) : (
         <ModalLoginRegister/>
     )
+
     const categoriesList = isError ?
-        <NotFound text={"Error get categories"} icon={<MdOutlineError size={20} />} />
+        <Tooltip>
+            <Tooltip.Trigger as={IconButton} variant="ghost">
+                <InformationCircleIcon className="h-5 w-5 text-white" />
+            </Tooltip.Trigger>
+            <Tooltip.Content className="w-80 px-2.5 py-1.5 text-black bg-white">
+                <Typography type="small" className="opacity-90">
+                    Error fetching categories
+                </Typography>
+                <Tooltip.Arrow />
+            </Tooltip.Content>
+        </Tooltip>
         : isLoading ? <Spinner className={'size-28'}/>
         : categories?.length > 0 && categories?.map((parent) => (
             <div key={parent.name}>

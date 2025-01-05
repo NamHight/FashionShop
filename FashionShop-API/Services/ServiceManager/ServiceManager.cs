@@ -8,6 +8,7 @@ using FashionShop_API.Services.Customers;
 using FashionShop_API.Services.Products;
 using FashionShop_API.Services.ServiceLogger;
 using FashionShop_API.Services.Favorites;
+using FashionShop_API.Services.WebsiteInfos;
 
 namespace FashionShop_API.Services.ServiceManager;
 
@@ -20,6 +21,7 @@ public class ServiceManager : IServiceManager
     private readonly Lazy<IServiceProduct> _product;
     private readonly Lazy<IServiceFavorites> _favorite;
     private readonly Lazy<IServiceContact> _contact;
+    private readonly Lazy<IServiceWebsiteInfo> _webisteInfo;
     public ServiceManager(IRepositoryManager repositoryManager,IMapper mapper,ILoggerManager logger,IConfiguration configuration)
     {
         _repositoryManager = repositoryManager;
@@ -29,6 +31,7 @@ public class ServiceManager : IServiceManager
         _product = new Lazy<IServiceProduct>(() => new ServiceProduct(repositoryManager, mapper));
         _favorite = new Lazy<IServiceFavorites>(() => new ServiceFavorites(mapper,repositoryManager));
         _contact = new Lazy<IServiceContact>(() => new ServiceContact(repositoryManager, logger, mapper));
+        _webisteInfo = new Lazy<IServiceWebsiteInfo>(() => new ServiceWebsiteInfo(repositoryManager, logger, mapper));
     }
     public IServiceCategory Category => _category.Value;
     public IServiceAuthenticate Authenticate => _authenticate.Value;
@@ -36,5 +39,5 @@ public class ServiceManager : IServiceManager
     public IServiceProduct Product => _product.Value;
     public IServiceFavorites Favorite => _favorite.Value;
     public IServiceContact Contact => _contact.Value;
-
+    public IServiceWebsiteInfo WebsiteInfo => _webisteInfo.Value;
 }

@@ -5,6 +5,7 @@ using FashionShop_API.Repositories.Products;
 using FashionShop_API.Repositories.Contacts;
 using FashionShop_API.Repositories.Customers;
 using FashionShop_API.Repositories.Favorites;
+using FashionShop_API.Repositories.WebsiteInfos;
 
 namespace FashionShop_API.Repositories.RepositoryManager;
 
@@ -16,6 +17,7 @@ public class RepositoryManager : IRepositoryManager
     private Lazy<IRepositoryProduct> _product;
     private Lazy<IRepositoryContact> _contact;
     private Lazy<IRepositoryFavorites> _favorite;
+    private Lazy<IRepositoryWebsiteInfo> _websiteInfo;
     public RepositoryManager (MyDbContext context,IMapper _mapper)
     {
         _context = context;
@@ -24,14 +26,15 @@ public class RepositoryManager : IRepositoryManager
         _contact = new Lazy<IRepositoryContact>(() => new RepositoryContact(context));
         _product = new Lazy<IRepositoryProduct>(() => new RepositoryProduct(context));
         _favorite = new Lazy<IRepositoryFavorites>( () => new RepositoryFavorites(context) );
+        _websiteInfo = new Lazy<IRepositoryWebsiteInfo>(() => new RepositoryWebsiteInfo(context));
     }
 
     public IRepositoryCategory Category => _category.Value;
     public IRepositoryCustomer Customer => _customer.Value;
     public IRepositoryContact Contact => _contact.Value;
     public IRepositoryFavorites Favorite => _favorite.Value;
-
     public IRepositoryProduct Product => _product.Value;
+    public IRepositoryWebsiteInfo WebsiteInfo => _websiteInfo.Value;
 
     public async Task SaveChanges() => await _context.SaveChangesAsync();
 }

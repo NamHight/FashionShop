@@ -42,8 +42,28 @@ public partial class Customer
     [Column("address", TypeName = "text")]
     public string? Address { get; set; }
 
+    [Column("confirm_email")]
+    public bool ConfirmEmail { get; set; }
+
     [Column("status", TypeName = "enum('active','warnning','banned')")]
     public string? Status { get; set; }
+
+    [Column("twoFactorEnabled")]
+    public bool? TwoFactorEnabled { get; set; }
+
+    [Column("lockoutEnd", TypeName = "datetime")]
+    public DateTime? LockoutEnd { get; set; }
+
+    [Column("lockoutEnabled")]
+    public bool? LockoutEnabled { get; set; }
+
+    public int? AccessFailedCount { get; set; }
+
+    [Column("refresh_token", TypeName = "text")]
+    public string? RefreshToken { get; set; }
+
+    [Column("refresh_token_expirytime", TypeName = "datetime")]
+    public DateTime? RefreshTokenExpirytime { get; set; }
 
     [Column("created_at", TypeName = "timestamp")]
     public DateTime? CreatedAt { get; set; }
