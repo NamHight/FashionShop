@@ -51,11 +51,11 @@ public partial class Store
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
 
     [InverseProperty("Store")]
+    public virtual ICollection<Product> Products { get; set; } = new List<Product>();
+
+    [InverseProperty("Store")]
     public virtual ICollection<Purchaseorder> Purchaseorders { get; set; } = new List<Purchaseorder>();
 
     [InverseProperty("Store")]
     public virtual ICollection<View> Views { get; set; } = new List<View>();
-
-    [InverseProperty("Store")]
-    public virtual ICollection<Product> Products { get; set; } = new List<Product>();
 }

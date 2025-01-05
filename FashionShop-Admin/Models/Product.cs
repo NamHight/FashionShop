@@ -8,6 +8,7 @@ namespace FashionShop.Models;
 
 [Table("products")]
 [Index("CategoryId", Name = "fk_products_category")]
+[Index("StoreId", Name = "fk_products_stores_idx")]
 [Index("ProductName", Name = "product_name", IsUnique = true)]
 [Index("Slug", Name = "slug", IsUnique = true)]
 public partial class Product
@@ -35,6 +36,9 @@ public partial class Product
 
     [Column("category_id")]
     public long? CategoryId { get; set; }
+
+    [Column("store_id")]
+    public long? StoreId { get; set; }
 
     [Column("created_at", TypeName = "timestamp")]
     public DateTime? CreatedAt { get; set; }
@@ -66,6 +70,10 @@ public partial class Product
 
     [InverseProperty("Product")]
     public virtual ICollection<Stock> Stocks { get; set; } = new List<Stock>();
+
+    [ForeignKey("StoreId")]
+    [InverseProperty("Products")]
+    public virtual Store? Store { get; set; }
 
     [InverseProperty("Product")]
     public virtual ICollection<View> Views { get; set; } = new List<View>();

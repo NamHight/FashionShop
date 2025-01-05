@@ -217,6 +217,8 @@ public partial class MyDbContext : DbContext
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
             entity.HasOne(d => d.Category).WithMany(p => p.Products).HasConstraintName("fk_products_category");
+
+            entity.HasOne(d => d.Store).WithMany(p => p.Products).HasConstraintName("fk_products_stores");
         });
 
         modelBuilder.Entity<Promotion>(entity =>
@@ -334,11 +336,10 @@ public partial class MyDbContext : DbContext
         {
             entity.HasKey(e => e.WebsiteId).HasName("PRIMARY");
 
-            entity.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
-            entity.Property(e => e.Status).HasDefaultValueSql("'inactive'");
-            entity.Property(e => e.UpdateAt)
+            entity.Property(e => e.CreatedAt)
                 .ValueGeneratedOnAddOrUpdate()
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
+            entity.Property(e => e.UpdatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
         });
 
         OnModelCreatingPartial(modelBuilder);

@@ -89,6 +89,10 @@ public partial class MyDbContext : DbContext
             entity.Property(e => e.UpdatedAt)
                 .ValueGeneratedOnAddOrUpdate()
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+            entity.HasOne(d => d.Parent).WithMany(p => p.InverseParent)
+                .OnDelete(DeleteBehavior.SetNull)
+                .HasConstraintName("fk_category_id");
         });
 
         modelBuilder.Entity<Confirmation>(entity =>
@@ -113,10 +117,14 @@ public partial class MyDbContext : DbContext
         {
             entity.HasKey(e => e.CustomerId).HasName("PRIMARY");
 
+            entity.Property(e => e.AccessFailedCount).HasDefaultValueSql("'0'");
             entity.Property(e => e.Birth).HasDefaultValueSql("'2000-01-01'");
             entity.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
             entity.Property(e => e.Email).HasDefaultValueSql("_utf8mb4\\'abc@gmail.com\\'");
+            entity.Property(e => e.LockoutEnabled).HasDefaultValueSql("'0'");
+            entity.Property(e => e.RefreshTokenExpirytime).HasDefaultValueSql("CURRENT_TIMESTAMP");
             entity.Property(e => e.Status).HasDefaultValueSql("'active'");
+            entity.Property(e => e.TwoFactorEnabled).HasDefaultValueSql("'0'");
             entity.Property(e => e.UpdatedAt)
                 .ValueGeneratedOnAddOrUpdate()
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
@@ -209,6 +217,8 @@ public partial class MyDbContext : DbContext
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
             entity.HasOne(d => d.Category).WithMany(p => p.Products).HasConstraintName("fk_products_category");
+
+            entity.HasOne(d => d.Store).WithMany(p => p.Products).HasConstraintName("fk_products_stores");
         });
 
         modelBuilder.Entity<Promotion>(entity =>
@@ -326,11 +336,10 @@ public partial class MyDbContext : DbContext
         {
             entity.HasKey(e => e.WebsiteId).HasName("PRIMARY");
 
-            entity.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
-            entity.Property(e => e.Status).HasDefaultValueSql("'inactive'");
-            entity.Property(e => e.UpdateAt)
+            entity.Property(e => e.CreatedAt)
                 .ValueGeneratedOnAddOrUpdate()
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
+            entity.Property(e => e.UpdatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
         });
 
         OnModelCreatingPartial(modelBuilder);

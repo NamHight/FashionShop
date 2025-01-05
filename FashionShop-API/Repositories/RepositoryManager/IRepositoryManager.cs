@@ -4,6 +4,7 @@ using FashionShop_API.Repositories.Contacts;
 using FashionShop_API.Repositories.Customers;
 using FashionShop_API.Repositories.Favorites;
 using FashionShop_API.Repositories.Reviews;
+using FashionShop_API.Repositories.WebsiteInfos;
 
 
 namespace FashionShop_API.Repositories;
@@ -16,6 +17,6 @@ public interface IRepositoryManager
     IRepositoryFavorites Favorite { get; }
     IRepositoryProduct Product { get; }
 	IRepositoryReviews Review { get; }
-
-	Task SaveChanges();
+    IRepositoryWebsiteInfo WebsiteInfo { get; }
+    Task SaveChanges();
 }

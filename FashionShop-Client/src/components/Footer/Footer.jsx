@@ -5,6 +5,8 @@ import {FiFacebook, FiGithub, FiInstagram} from "react-icons/fi";
 import { MdOutlineLocationOn } from "react-icons/md";
 import { MdLocalPhone } from "react-icons/md";
 import { MdAlternateEmail } from "react-icons/md";
+import {useQuery} from "@tanstack/react-query";
+import {getWebsiteInfo} from "../../services/api/WebsiteInfoService";
 const YEAR = new Date().getFullYear();
 const List = [
     {
@@ -77,30 +79,48 @@ const ListMenu = [
 
 ];
 const Footer = () => {
+    const {data: response, isLoading, isError, isPending} = useQuery({
+        queryKey: ['websiteInfo'],
+        queryFn: async () => await getWebsiteInfo(),
+    });
     return (
         <footer className="w-full mt-3 bg-emerald-400 text-white max-w-full">
             <div className="mx-72 pt-6">
                 <div className="grid grid-cols-4 justify-between gap-x-6 gap-y-4">
                     <div className={"flex justify-center items-center"}>
                         <Link to={'/'} className="">
-                            <img src="/assets/Logo.png" alt="logo" className={'size-32'}/>
+                            <img src={response?.logo} alt="logo" className={'size-32'}/>
                         </Link>
                     </div>
                     <ul>
                         <Typography className="relative mb-2 font-bold text-white text-xl">
-                            {"Fashion Shop"}
+                            {response?.name}
                             <span className="absolute left-0 bottom-0 w-1/3 border-b-2 border-white"></span>
                         </Typography>
-                        {
-                            List.map((item) => (
-                                <li key={item.title} className={'flex justify-start items-center mb-2'}>
-                                    {item.icon && item.icon}
-                                    <Typography className={item.classname}>
-                                        {item.description}
-                                    </Typography>
-                                </li>
-                            ))
-                        }
+                        <li className={'flex justify-start items-center mb-2'}>
+
+                            <Typography className={""}>
+                                {response?.description}
+                            </Typography>
+                        </li>
+                        <li className={'flex justify-start items-center mb-2'}>
+                            <MdLocalPhone className={'size-5'}/>
+                            <Typography className={"ml-2"}>
+                                {response?.phone}
+                            </Typography>
+                        </li>
+                        <li className={'flex justify-start items-center mb-2'}>
+                            <MdOutlineLocationOn className={'size-5'}/>
+                            <Typography className={"ml-2"}>
+                                {response?.address}
+                            </Typography>
+                        </li>
+                        <li className={'flex justify-start items-center mb-2'}>
+                            <MdAlternateEmail className={'size-5'}/>
+                            <Typography className={"ml-2"}>
+                                {response?.email}
+                            </Typography>
+                        </li>
                     </ul>
                     <ul>
                         <Typography className="relative mb-2 font-bold text-white text-xl">
@@ -110,7 +130,7 @@ const Footer = () => {
                         {
                             ListMenu.map((item,index) => (
                                 <li key={index}>
-                                    <Link  to={item.path} className="py-1 hover:text-red-500">
+                                    <Link  to={item.path} className="py-2 mb-1 hover:text-red-500">
                                         {item.name}
                                     </Link>
                                 </li>
