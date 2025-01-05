@@ -13,10 +13,10 @@ export const RegisterValidate = z.object({
     password: z.string()
         .nonempty({message: "Password is required"})
         .regex(/^(?=.*[a-zA-Z])(?=.*\d).+$/,{message: "Password must contain at least one letter and one number"})
-        .min(6, "Password must be at least 8 characters"),
+        .min(6, "Password must be at least 6 characters"),
     confirmPassword: z.string()
         .nonempty({message: "RePassword is required"})
-        .min(6, "Password must be at least 8 characters"),
+        .min(6, "Password must be at least 6 characters"),
     customerName: z.string()
         .nonempty({message: "Fullname is required"})
         .min(5, "Fullname must be at least 5 characters")

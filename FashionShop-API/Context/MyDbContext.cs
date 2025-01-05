@@ -89,6 +89,10 @@ public partial class MyDbContext : DbContext
             entity.Property(e => e.UpdatedAt)
                 .ValueGeneratedOnAddOrUpdate()
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+            entity.HasOne(d => d.Parent).WithMany(p => p.InverseParent)
+                .OnDelete(DeleteBehavior.SetNull)
+                .HasConstraintName("fk_category_id");
         });
 
         modelBuilder.Entity<Confirmation>(entity =>
