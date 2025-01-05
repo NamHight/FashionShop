@@ -15,7 +15,6 @@ namespace FashionShop_API.Controllers
     
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class CategoriesController : ControllerBase
     {
         private readonly ILogger<CategoriesController> _logger;
@@ -28,6 +27,24 @@ namespace FashionShop_API.Controllers
             _serviceCacheRedis = serviceCacheRedis;
         }
         private bool CheckRedisConnection() => _serviceCacheRedis.CheckConnection();
+        
+        [HttpGet("All")]
+        public async Task<IActionResult> GetALlCategories()
+        {
+            var key = "Categories";
+            if (CheckRedisConnection())
+            {
+                var categoriesCache = await _serviceCacheRedis.GetData<IEnumerable<ResponseCategoryChildrenDto>>("Categories");
+                return Ok(categoriesCache);
+            }
+            var categories = await _serviceManager.Category.GetAllCategoryAsync(false);
+            _logger.Log(LogLevel.Information,"Controller Category: " + nameof(GetALlCategories) + " Success");
+            if (CheckRedisConnection())
+            {
+               await _serviceCacheRedis.SetData(key, categories);
+            }
+            return Ok(categories);
+        }
         [HttpGet]
         public async Task<IActionResult> GetAllAsync([FromQuery]ParamCategoryDto paramCategoryDto)
         {

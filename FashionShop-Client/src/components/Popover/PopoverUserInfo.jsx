@@ -25,15 +25,15 @@ const PopoverUserInfo = ({name,avatar,id}) => {
             <Tooltip.Trigger as={Button} className={'bg-emerald-400 outline-none border-none hover:bg-emerald-400 py-2 w-20 item-center flex gap-2'}>
                 <Avatar src={avatar ? avatar : "https://dub.sh/TdSBP0D"} alt="profile-picture" />
             </Tooltip.Trigger>
-            <Tooltip.Content className="flex flex-col w-52 border border-surface bg-background px-0 py-2.5 text-foreground">
+            <Tooltip.Content className="z-[100000] flex flex-col w-52 border border-surface bg-background px-0 py-2.5 text-foreground">
                 <div className={'border-b-2 gap-2 flex flex-col py-3'}>
                     <Typography className={'text-[1.2rem] px-2 font-serif font-semibold cursor-default'}>{name}</Typography>
                 </div>
                 <div className={'flex-1 flex flex-col gap-2 my-3 justify-start font-bold text-lg'}>
-                    <Link to={'/'} className={'group flex items-center px-2 py-2 hover:text-red-500 hover:font-bold hover:opacity-80 hover:bg-gray-400 hover:bg-opacity-30 hover:outline-0'}>
+                    <Link to={'/account'} className={'group flex items-center px-2 py-2 hover:text-red-500 hover:font-bold hover:opacity-80 hover:bg-gray-400 hover:bg-opacity-30 hover:outline-0'}>
                         <TbArrowBigRightLines className={'group-hover:inline-block hidden mr-1'} />My Profile
                     </Link>
-                    <Link to={'/'} className={'group flex items-center px-2 py-2 hover:text-red-500 hover:font-bold hover:opacity-80 hover:bg-gray-400 hover:bg-opacity-30'}>
+                    <Link to={'/account/orders'} className={'group flex items-center px-2 py-2 hover:text-red-500 hover:font-bold hover:opacity-80 hover:bg-gray-400 hover:bg-opacity-30'}>
                         <TbArrowBigRightLines className={'group-hover:inline-block hidden mr-1'} />
                         Orders
                     </Link>

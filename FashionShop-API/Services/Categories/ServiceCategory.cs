@@ -5,7 +5,7 @@ using FashionShop_API.Dto.QueryParam;
 using FashionShop_API.Dto.RequestDto;
 using FashionShop_API.Exceptions;
 using FashionShop_API.Models;
-using FashionShop_API.Repositories.RepositoryManager;
+using FashionShop_API.Repositories;
 using FashionShop_API.Repositories.Shared;
 using FashionShop_API.Services.ServiceLogger;
 
@@ -22,13 +22,13 @@ public class ServiceCategory  : IServiceCategory
         this._logger = logger;
         this._mapper = mapper;
     }
-    public async Task<IEnumerable<ResponseCategoryDto>> GetAllCategoryAsync(bool trackChanges)
+    public async Task<IEnumerable<ResponseCategoryChildrenDto>> GetAllCategoryAsync(bool trackChanges)
     {
         try
         {
             var categories = await _repositoryManager.Category.GetAllCategoriesAsync(trackChanges);
-            var categoriesDto = _mapper.Map<IEnumerable<ResponseCategoryDto>>(categories);
-            return categoriesDto;
+            if(categories is null) throw new CategoryListNotFoundException("Categories not found");
+            return categories;
         }
         catch (Exception e)
         {

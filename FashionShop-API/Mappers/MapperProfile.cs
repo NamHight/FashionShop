@@ -12,14 +12,17 @@ public class MapperProfile : Profile
     {
         CreateMap<Category, ResponseCategoryDto>()
             .ReverseMap();
-        CreateMap<Category, RequestCategoryDto>()
-            .ReverseMap();
         CreateMap<Customer, RequestAuthenticateRegisterDto>()
             .ReverseMap();
         CreateMap<Customer, ResponseCustomerDto>()
             .ReverseMap();
         CreateMap<Contact, RequestContactDto>()
             .ReverseMap();
+		CreateMap<Review, RequestReviewDto>()
+			.ReverseMap();
+		CreateMap<Review, ResponseReviewDto>()
+			.ReverseMap();
+	}
         CreateMap<Promotion, ResponsePromotionDto>()
             .ReverseMap();
     }

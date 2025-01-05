@@ -1,7 +1,10 @@
+import { useAuth } from "../../../context/AuthContext";
 import FormProfile from "./FormProfile";
 import ImageProfile from "./ImageProfile";
 
 function Profile() {
+  const {user,isLoading,error} = useAuth();
+  
   return (
     <>
       <div className="border-b p-3 bg-slate-100 rounded">
@@ -9,7 +12,7 @@ function Profile() {
       </div>
       <div className="grid grid-cols-5 py-10 bg-slate-100 mt-2 rounded">
         <div className="col-span-3">
-          <FormProfile />
+          <FormProfile user={user}/>
         </div>
         <div className="col-span-2 ">
           <ImageProfile />
