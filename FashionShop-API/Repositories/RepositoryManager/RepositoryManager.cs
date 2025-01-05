@@ -4,6 +4,7 @@ using FashionShop_API.Repositories.Products;
 using FashionShop_API.Repositories.Contacts;
 using FashionShop_API.Repositories.Customers;
 using FashionShop_API.Repositories.Favorites;
+using FashionShop_API.Repositories.Reviews;
 
 namespace FashionShop_API.Repositories.RepositoryManager;
 
@@ -15,7 +16,9 @@ public class RepositoryManager : IRepositoryManager
     private Lazy<IRepositoryProduct> _product;
     private Lazy<IRepositoryContact> _contact;
     private Lazy<IRepositoryFavorites> _favorite;
-    public RepositoryManager (MyDbContext context)
+	private Lazy<IRepositoryReviews> _review;
+
+	public RepositoryManager (MyDbContext context)
     {
         _context = context;
         _customer = new Lazy<IRepositoryCustomer>(() => new RepositoryCustomer(context));
@@ -24,7 +27,8 @@ public class RepositoryManager : IRepositoryManager
         _category = new Lazy<IRepositoryCategory>( () => new RepositoryCategory(context) );
         _product = new Lazy<IRepositoryProduct>(() => new RepositoryProduct(context));
         _favorite = new Lazy<IRepositoryFavorites>( () => new RepositoryFavorites(context) );
-    }
+		_review = new Lazy<IRepositoryReviews>(() => new RepositoryReviews(context));
+	}
 
     public IRepositoryCategory Category => _category.Value;
     public IRepositoryCustomer Customer => _customer.Value;
@@ -32,6 +36,7 @@ public class RepositoryManager : IRepositoryManager
     public IRepositoryFavorites Favorite => _favorite.Value;
 
     public IRepositoryProduct Product => _product.Value;
+	public IRepositoryReviews Review => _review.Value;
 
-    public async Task SaveChanges() => await _context.SaveChangesAsync();
+	public async Task SaveChanges() => await _context.SaveChangesAsync();
 }
