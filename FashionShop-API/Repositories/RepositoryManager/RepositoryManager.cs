@@ -19,7 +19,6 @@ public class RepositoryManager : IRepositoryManager
     private Lazy<IRepositoryFavorites> _favorite;
 	private Lazy<IRepositoryReviews> _review;
 
-	public RepositoryManager (MyDbContext context)
     public RepositoryManager (MyDbContext context,IMapper _mapper)
     {
         _context = context;
