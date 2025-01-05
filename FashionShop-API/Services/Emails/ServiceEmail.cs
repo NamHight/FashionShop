@@ -52,7 +52,7 @@ public class ServiceEmail : IServiceEmail
         {
             return null;
         }
-        var token = _generateToken(customer.CustomerId,DateTime.Now.AddMinutes(5));
+        var token = _generateToken(customer.CustomerId,DateTime.UtcNow.AddMinutes(5));
         var result = new RequestCustomerToken(customer, token);
         return result;
     }

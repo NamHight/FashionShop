@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FashionShop_API.Dto.ResponseDto
 {
-    public record ResponseFavoritesDto
+    public class ResponseFavoritesDto
     {
         public long FavoriteId { get; set; }
         public string? ProductName { get; set; }

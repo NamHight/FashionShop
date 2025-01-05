@@ -53,8 +53,8 @@ const ModalLoginRegister = () => {
                 setLoginError("email", {type: "custom", message: "Email or password is incorrect"});
             } else if (data?.StatusCode === 429) {
                 setLoginError("email", {type: "custom", message: data?.Message});
-            }  else if (data?.StatusCode === 403){
-                setRegisterError("error", {type: "custom", message: data?.Message})
+            }  else if (data?.status === 403){
+                setRegisterError("error", {type: "custom", message: "Something went wrong"})
             }else if(data.status === 500) {
                 setLoginError("error", {type: "custom", message: "Something went wrong"});
             } else if(data.status === 400) {

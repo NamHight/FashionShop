@@ -58,6 +58,7 @@ public partial class MyDbContext : DbContext
     public virtual DbSet<View> Views { get; set; }
 
     public virtual DbSet<WebsiteInfo> WebsiteInfos { get; set; }
+    public virtual DbSet<Article> Articles { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
@@ -217,6 +218,8 @@ public partial class MyDbContext : DbContext
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
             entity.HasOne(d => d.Category).WithMany(p => p.Products).HasConstraintName("fk_products_category");
+
+            entity.HasOne(d => d.Store).WithMany(p => p.Products).HasConstraintName("fk_products_stores");
         });
 
         modelBuilder.Entity<Promotion>(entity =>
@@ -334,11 +337,17 @@ public partial class MyDbContext : DbContext
         {
             entity.HasKey(e => e.WebsiteId).HasName("PRIMARY");
 
-            entity.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
-            entity.Property(e => e.Status).HasDefaultValueSql("'inactive'");
-            entity.Property(e => e.UpdateAt)
+            entity.Property(e => e.CreatedAt)
                 .ValueGeneratedOnAddOrUpdate()
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
+            entity.Property(e => e.UpdatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
+        });
+
+        modelBuilder.Entity<Article>(entity =>
+        {
+            entity.HasKey(e => e.ArticleId).HasName("PRIMARY");
+            entity.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
+            entity.HasOne(a => a.Category).WithMany(a => a.Articles).HasConstraintName("fk_acticles_category");
         });
 
         OnModelCreatingPartial(modelBuilder);
