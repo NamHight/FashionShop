@@ -17,8 +17,6 @@ public interface IRepositoryManager
     IRepositoryFavorites Favorite { get; }
     IRepositoryProduct Product { get; }
 	IRepositoryReviews Review { get; }
-
 	Task SaveChanges();
     IRepositoryPromotion Promotion { get; }
-    Task SaveChanges();
 }

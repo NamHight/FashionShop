@@ -23,10 +23,6 @@ public partial class Promotion
     [Column("image")]
     public string? Image { get; set; }
 
-    [Column("image")]
-    [StringLength(255)]
-    public string? Image { get; set; }
-
     [Column("description", TypeName = "text")]
     public string? Description { get; set; }
 

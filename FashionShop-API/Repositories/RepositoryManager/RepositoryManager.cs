@@ -19,10 +19,8 @@ public class RepositoryManager : IRepositoryManager
     private Lazy<IRepositoryContact> _contact;
     private Lazy<IRepositoryFavorites> _favorite;
 	private Lazy<IRepositoryReviews> _review;
-
-    public RepositoryManager (MyDbContext context,IMapper _mapper)
     private Lazy<IRepositoryPromotion> _promotion;
-    public RepositoryManager (MyDbContext context)
+    public RepositoryManager (MyDbContext context, IMapper _mapper)
     {
         _context = context;
         _customer = new Lazy<IRepositoryCustomer>(() => new RepositoryCustomer(context));
@@ -31,7 +29,6 @@ public class RepositoryManager : IRepositoryManager
         _product = new Lazy<IRepositoryProduct>(() => new RepositoryProduct(context));
         _favorite = new Lazy<IRepositoryFavorites>( () => new RepositoryFavorites(context) );
 		_review = new Lazy<IRepositoryReviews>(() => new RepositoryReviews(context));
-	}
         _promotion = new Lazy<IRepositoryPromotion>(() => new RepositoryPromotion(context));
     }
 
@@ -42,8 +39,6 @@ public class RepositoryManager : IRepositoryManager
 
     public IRepositoryProduct Product => _product.Value;
 	public IRepositoryReviews Review => _review.Value;
-
-	public async Task SaveChanges() => await _context.SaveChangesAsync();
     public IRepositoryPromotion Promotion => _promotion.Value;
     public async Task SaveChanges() => await _context.SaveChangesAsync();
 }

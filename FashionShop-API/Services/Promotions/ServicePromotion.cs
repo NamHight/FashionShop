@@ -2,6 +2,7 @@
 using FashionShop_API.Dto;
 using FashionShop_API.Dto.ResponseDto;
 using FashionShop_API.Exceptions;
+using FashionShop_API.Repositories;
 using FashionShop_API.Repositories.RepositoryManager;
 
 namespace FashionShop_API.Services.Promotions

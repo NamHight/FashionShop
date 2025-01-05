@@ -23,7 +23,6 @@ public class ServiceManager : IServiceManager
     private readonly Lazy<IServiceFavorites> _favorite;
     private readonly Lazy<IServiceContact> _contact;
 	private readonly Lazy<IServiceReviews> _review;
-	public ServiceManager(IRepositoryManager repositoryManager,IMapper mapper,ILoggerManager logger,IConfiguration configuration)
     private readonly Lazy<IServicePromotion> _promotion;
     public ServiceManager(IRepositoryManager repositoryManager,IMapper mapper,ILoggerManager logger,IConfiguration configuration)
     {
@@ -35,7 +34,6 @@ public class ServiceManager : IServiceManager
         _favorite = new Lazy<IServiceFavorites>(() => new ServiceFavorites(mapper,repositoryManager));
         _contact = new Lazy<IServiceContact>(() => new ServiceContact(repositoryManager, logger, mapper));
         _review = new Lazy<IServiceReviews>(() => new ServiceReviews(repositoryManager, mapper));
-	}
         _promotion = new Lazy<IServicePromotion>(() => new ServicePromotion(repositoryManager, mapper));
     }
     public IServiceCategory Category => _category.Value;
