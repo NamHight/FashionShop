@@ -7,6 +7,7 @@ import { useQuery } from '@tanstack/react-query';
 export const CartContext = createContext(null);
 
 
+
 export const CartContextProvider = ({ children }) => {
 
     const { data: cartQuery, refetch, error, isLoading } = useQuery({
@@ -19,21 +20,27 @@ export const CartContextProvider = ({ children }) => {
         refetchOnWindowFocus: false, // Không fetch lại khi focus tab
         staleTime: 1000 * 60 * 5, // Dữ liệu sẽ không bị xem là "cũ" trong 5 phút
         cacheTime: 1000 * 60 * 10, // Dữ liệu sẽ được giữ trong cache trong 10 phút
-        // enabled: false // Không fetch tự động
+        enabled: true // Không fetch tự động
     });
-
+    
     const data = [
     {productId: 1, banner: "test-01.jpg", productName: "May giat", price: 33, quantity: 3, amount: 99 }, 
     {productId: 2, banner: "test-01.jpg", productName: "Dieu hoa", price: 25, quantity: 2, amount: 50 },
     {productId: 3, banner: "test-01.jpg", productName: "May anh", price: 88, quantity: 1, amount: 88 }]
 
-    const [cart, setCart] = useState(() => cartQuery? cartQuery : data);
+    const [cart, setCart] = useState(cartQuery||data);
+
+    // useEffect(() => {
+    //     console.log("da vao useEffect");
+    //     refetch() // mỗi lần cart thay đổi thì gọi api getAllCart để cập nhật giá trị mới nhất
+    //   }, [cart, cartQuery]); // Chạy mỗi khi cartQuery thay đổi
 
     useEffect(() => {
         if (cartQuery) {
-          setCart(cartQuery); // Cập nhật cart khi cartQuery có dữ liệu
+            // Khi cartQuery có dữ liệu, cập nhật lại state cart
+            setCart(cartQuery);
         }
-      }, [cartQuery]); // Chạy mỗi khi cartQuery thay đổi
+    }, [cartQuery]);  // Chạy mỗi khi cartQuery thay đổi
 
     const increaseQuantity = (id) =>{
         console.log("ID la", id, "danh sach cart ",cart);
@@ -71,25 +78,27 @@ export const CartContextProvider = ({ children }) => {
         }
     }
 
-    const addCart = (productId, banner, productName, price, quantity) =>{
-        var product = cart.find(item => item.productId === productId);
+    const addCart = (data) =>{ // {productId, productName, banner, price, quantity}
+        var product = cart.find(item => item.productId === data.productId);
         if(product){ // đã tồn tại trong giỏ hàng
             var cartNew = [...cart].map(item =>{
-                if(item.productId === productId) return {...item, quantity: item.quantity + quantity, amount: item.amount + item.price*quantity};
+                if(item.productId === data.productId) return {...item, quantity: item.quantity + data.quantity, amount: item.amount + item.price*data.quantity};
                 return item;
             })
-            addCartService(productId, quantity);
+            addCartService(data.productId, data.quantity);
             setCart(cartNew);
         }else{ // chưa tồn tại trong giỏ hàng
-            var cartNew = [...cart, {productId: productId, banner: banner, productName: productName, price: price, quantity: quantity, amount: Number(price)*Number(quantity)}]
-            addCartService(productId, quantity);
+            var cartNew = [...cart, {productId: data.productId, banner: data.banner, productName: data.productName, price: data.price, quantity: data.quantity, amount: Number(data.price)*Number(data.quantity)}]
+            addCartService(data.productId, data.quantity);
             setCart(cartNew);
         }
+
     }
 
-    const removeCart = (id) =>{
+    const removeCart = (id , quantity) =>{
         var newCart = cart.filter(item => item.productId !=id)
         console.log("danh sach sau khi xoa: ", newCart);
+        removeCartsService(id, quantity);
         setCart(newCart);
     }
 

@@ -117,7 +117,7 @@ function Cart() {
                     color="blue-gray"
                     className="font-medium"
                   >
-                    <button onClick={() => removeCart(item.productId)}>Delete</button>
+                    <button onClick={() => removeCart(item.productId, item.quantity)}>Delete</button>
                   </Typography>
                 </td>
               </tr>
@@ -140,7 +140,8 @@ function Cart() {
                   Thanh Toan
                 </Button>
                 <Button className="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2" type="button"
-                onClick={()=>addCart(1, "maychieu.png", "may chieu", 45, 2)}>
+                onClick={()=>addCart( {productId: 155 , productName: "Product 4", banner: "banner4.jpg", price: 180.25, quantity:2})}> 
+                {/* {productId, productName, banner, price, quantity} */}
                   addCart
                 </Button>
                 <Button className="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2" type="button"
