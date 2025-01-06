@@ -6,7 +6,7 @@ import { useCartConText } from '../../context/CartContext.jsx';
 import {useAuth} from '../../context/AuthContext.jsx';
 
 function Cart() {
-    const {cart, decreaseQuantity, increaseQuantity, totalMoney, removeCart, removeAllCart, addCart} = useCartConText();
+    const {cart, decreaseQuantity, increaseQuantity, totalMoney, removeCart, removeAllCart, addCart, saveCart} = useCartConText();
     const {user} = useAuth();
     const TABLE_HEAD = ["Product", "Name", "Price", "Quantity", "Amount", "Handle"];
     const TABLE_ROWS = cart;
@@ -17,8 +17,11 @@ function Cart() {
     <div className="mt-20 mx-72">
         <div className="flex justify-center w-full align-center">
            <div className=" flex justify-start w-full">
-            <Button  variant="gradient">
+            <Button  variant="gradient" className="me-3">
                     <Link to="/">Home</Link>
+            </Button>
+            <Button  variant="gradient" onClick={saveCart}>
+                Lưu Giỏ Hàng
             </Button>
            </div>
             <div className=" flex justify-start w-full">

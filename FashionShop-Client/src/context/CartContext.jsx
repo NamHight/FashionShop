@@ -1,5 +1,5 @@
 import {createContext, useContext, useEffect, useState} from "react";
-import { getAllCartsService, addCartService, removeCartsService, removeAllCartsService, updateCartsService } from "../services/api/CartService";
+import { getAllCartsService, addCartService, removeCartsService, saveCartsService } from "../services/api/CartService";
 import { jwtDecode } from "jwt-decode";
 import { tokenProtection } from "../services/api/TokenService";
 import { useQuery } from '@tanstack/react-query';
@@ -30,10 +30,6 @@ export const CartContextProvider = ({ children }) => {
 
     const [cart, setCart] = useState(cartQuery||data);
 
-    // useEffect(() => {
-    //     console.log("da vao useEffect");
-    //     refetch() // mỗi lần cart thay đổi thì gọi api getAllCart để cập nhật giá trị mới nhất
-    //   }, [cart, cartQuery]); // Chạy mỗi khi cartQuery thay đổi
 
     useEffect(() => {
         if (cartQuery) {
@@ -41,6 +37,10 @@ export const CartContextProvider = ({ children }) => {
             setCart(cartQuery);
         }
     }, [cartQuery]);  // Chạy mỗi khi cartQuery thay đổi
+
+    useEffect(()=>{
+        localStorage.setItem("cart", JSON.stringify(cart))
+    }, [cart])
 
     const increaseQuantity = (id) =>{
         console.log("ID la", id, "danh sach cart ",cart);
@@ -92,13 +92,12 @@ export const CartContextProvider = ({ children }) => {
             addCartService(data.productId, data.quantity);
             setCart(cartNew);
         }
-
     }
 
-    const removeCart = (id , quantity) =>{
+    const removeCart = (id) =>{
         var newCart = cart.filter(item => item.productId !=id)
         console.log("danh sach sau khi xoa: ", newCart);
-        removeCartsService(id, quantity);
+        removeCartsService(id);
         setCart(newCart);
     }
 
@@ -111,9 +110,9 @@ export const CartContextProvider = ({ children }) => {
         return total;
     }
 
-    // const  saveCart = () =>{
-    //     setCart([]);
-    // }
+    const  saveCart = () =>{
+        saveCartsService(cart)
+    }
 
     const value = {
         cart: cart,
@@ -124,7 +123,8 @@ export const CartContextProvider = ({ children }) => {
         addCart: addCart,
         removeCart: removeCart,
         removeAllCart: removeAllCart,
-        totalMoney: totalMoney
+        totalMoney: totalMoney,
+        saveCart: saveCart
     }
 
     return (

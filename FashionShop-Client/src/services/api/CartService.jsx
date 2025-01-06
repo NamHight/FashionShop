@@ -22,9 +22,9 @@ export const addCartService = async (id, quantity) =>{
     }
 }
 
-export const removeCartsService = async (id, quantity) =>{
+export const removeCartsService = async (id) =>{
     try {
-        const response= await authAxios.delete(BASE_CART_URL + 'removeCarts', JSON.stringify({ProductId:id, Quantity:quantity}));
+        const response= await authAxios.delete(BASE_CART_URL + 'removeCarts/'+`${id}`);
         return await response.data;
     }catch (e){
         return await e.response;
@@ -42,7 +42,7 @@ export const removeAllCartsService = async () =>{
 
 export const saveCartsService = async (data) =>{
     try {
-        const response= await authAxios.post(BASE_CART_URL + 'saveCarts', data);
+        const response= await authAxios.post(BASE_CART_URL + 'updateCart', data);
         return await response.data;
     }catch (e){
         return await e.response;
