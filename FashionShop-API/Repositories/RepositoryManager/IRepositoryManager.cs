@@ -19,4 +19,5 @@ public interface IRepositoryManager
 	IRepositoryReviews Review { get; }
     IRepositoryWebsiteInfo WebsiteInfo { get; }
     Task SaveChanges();
+    Task<bool> SaveChangesAsync();
 }

@@ -1,3 +1,4 @@
+using FashionShop_API.Dto.ResponseDto;
 using FashionShop_API.Extensions;
 using FashionShop_API.Mappers;
 using FashionShop_API.Options;
@@ -21,6 +22,7 @@ builder.Services.ConfigureServiceCaching();
 builder.Services.ConfigureFilter();
 builder.Services.ConfigureSendEmail();
 builder.Services.Configure<GmailOption>(builder.Configuration.GetSection(GmailOption.GmailOptionKey));
+builder.Services.Configure<GoogleOption>(builder.Configuration.GetSection("Google"));
 builder.Services.AddControllers(
     options =>
     {

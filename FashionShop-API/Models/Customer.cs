@@ -24,7 +24,7 @@ public partial class Customer
 
     [Column("password")]
     [StringLength(255)]
-    public string Password { get; set; } = null!;
+    public string? Password { get; set; }
 
     [Column("email")]
     public string? Email { get; set; }
@@ -64,6 +64,13 @@ public partial class Customer
 
     [Column("refresh_token_expirytime", TypeName = "datetime")]
     public DateTime? RefreshTokenExpirytime { get; set; }
+
+    [Column("google_id")]
+    [StringLength(255)]
+    public string? GoogleId { get; set; }
+
+    [Column("login_provider", TypeName = "enum('GOOGLE','FACEBOOK')")]
+    public string? LoginProvider { get; set; }
 
     [Column("created_at", TypeName = "timestamp")]
     public DateTime? CreatedAt { get; set; }

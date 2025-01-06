@@ -42,4 +42,5 @@ public class RepositoryManager : IRepositoryManager
 	public IRepositoryReviews Review => _review.Value;
 
 	public async Task SaveChanges() => await _context.SaveChangesAsync();
+	public async Task<bool> SaveChangesAsync() => await _context.SaveChangesAsync() > 0;
 }

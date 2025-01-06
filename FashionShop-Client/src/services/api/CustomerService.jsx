@@ -9,3 +9,12 @@ export const getCustomerById = async (id) =>{
         return await e.response;
     }
 }
+
+export const getCustomerByEmail = async (email) => {
+    try {
+        const  response = await authAxios.get(URL_CUSTOMER+`?email=${email}`);
+        return await response;
+    }catch (e) {
+        return await e.response;
+    }
+}

@@ -4,6 +4,7 @@ using FashionShop_API.Services.Contacts;
 using FashionShop_API.Services.Customers;
 using FashionShop_API.Services.Products;
 using FashionShop_API.Services.Favorites;
+using FashionShop_API.Services.Googles;
 using FashionShop_API.Services.WebsiteInfos;
 using FashionShop_API.Services.Reviews;
 
@@ -19,4 +20,5 @@ public interface IServiceManager
      IServiceContact Contact { get; }
 	 IServiceReviews Review { get; }
      IServiceWebsiteInfo WebsiteInfo { get; }
+     IServiceGoogle Google { get; }
 }

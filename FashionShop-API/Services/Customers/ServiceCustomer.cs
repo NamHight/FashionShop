@@ -26,4 +26,15 @@ public class ServiceCustomer : IServiceCustomer
         var customerDto = _mapper.Map<ResponseCustomerDto>(customer);
         return customerDto;
     }
+
+    public async Task<ResponseCustomerDto?> GetCustomerByEmailAsync(string email, bool trackChanges)
+    {
+        var customer = await _repositoryManager.Customer.GetCustomerByEmailAsync(email, trackChanges);
+        if (customer is null)
+        {
+            throw new CustomerNotFoundException(email);
+        }
+        var customerDto = _mapper.Map<ResponseCustomerDto>(customer);
+        return customerDto;
+    }
 }
