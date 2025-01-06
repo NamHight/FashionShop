@@ -9,4 +9,5 @@ public interface IRepositoryCustomer
     Task<Customer?> GetCustomerByEmailAsync(string email, bool trackChanges);
     Task<Customer?> GetCustomerByIdAsync(long id, bool trackChanges);
     void UpdateCustomer(Customer customer);
+    Task<Customer?> GetCustomerByGoogleIdAsync(string id, bool trackChanges);
 }

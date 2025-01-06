@@ -82,6 +82,8 @@ const Footer = () => {
     const {data: response, isLoading, isError, isPending} = useQuery({
         queryKey: ['websiteInfo'],
         queryFn: async () => await getWebsiteInfo(),
+        refetchOnWindowFocus: false,
+        refetchIntervalInBackground: false
     });
     return (
         <footer className="w-full mt-3 bg-emerald-400 text-white max-w-full">

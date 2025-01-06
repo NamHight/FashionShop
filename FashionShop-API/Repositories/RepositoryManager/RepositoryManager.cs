@@ -45,7 +45,8 @@ public class RepositoryManager : IRepositoryManager
     public IRepositoryProduct Product => _product.Value;
     public IRepositoryWebsiteInfo WebsiteInfo => _websiteInfo.Value;
 	public IRepositoryReviews Review => _review.Value;
-    public IRepositoryPromotion Promotion => _promotion.Value;
-    public IRepositoryArticle Article => _article.Value;
-    public async Task SaveChanges() => await _context.SaveChangesAsync();
+	public IRepositoryPromotion Promotion => _promotion.Value;
+	public IRepositoryArticle Article => _article.Value;
+	public async Task SaveChanges() => await _context.SaveChangesAsync();
+	public async Task<bool> SaveChangesAsync() => await _context.SaveChangesAsync() > 0;
 }
