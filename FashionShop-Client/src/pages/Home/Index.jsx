@@ -1,19 +1,13 @@
 import React from 'react';
-import {motion } from "motion/react";
-import {Button} from "@material-tailwind/react";
-import {Helmet} from "react-helmet-async";
 import ProductList from "../../components/Product/ProductList";
-const routeVariants = {
-    initial: { opacity: 0, y: 50 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -50 },
-};
+import AutoBanner from '../../components/AutoBanner/AutoBanner';
+
 const Home = () => {
     return (
-        <div>
-      <ProductList />
-    </div>
+    <body>  
+    <AutoBanner />
+    <ProductList />
+    </body>
     );
 };
-
 export default Home;

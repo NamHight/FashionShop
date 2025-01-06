@@ -6,7 +6,12 @@ module.exports = {
         "./node_modules/@material-tailwind/react/**/*.{js,ts,jsx,tsx}"
     ],
     theme: {
-        extend: {},
+        extend: {
+            color: {
+                primary: '#16C47F', // Định nghĩa màu primary
+                red: "#E82561"
+            },
+        },
 
     },
     plugins: [mtConfig],
