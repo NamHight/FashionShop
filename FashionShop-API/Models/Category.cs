@@ -46,6 +46,6 @@ public partial class Category
 
     [InverseProperty("Category")]
     public virtual ICollection<Product> Products { get; set; } = new List<Product>();
-    [InverseProperty("Category")]
+    //[InverseProperty("Category")]
     public virtual ICollection<Article> Articles { get; set; } = new List<Article>();
 }

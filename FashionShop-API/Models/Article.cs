@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace FashionShop_API.Models
 {
@@ -24,7 +25,6 @@ namespace FashionShop_API.Models
         [Column("status")]
         public int Status { get; set; } = 1;
         [ForeignKey("Category_Id")]
-        [InverseProperty("articles")]
         public Category? Category { get; set; }
     }
 }

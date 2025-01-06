@@ -7,6 +7,7 @@ using FashionShop_API.Services.Favorites;
 using FashionShop_API.Services.WebsiteInfos;
 using FashionShop_API.Services.Reviews;
 using FashionShop_API.Services.Promotions;
+using FashionShop_API.Services.Articles;
 
 namespace FashionShop_API.Services.ServiceManager;
 
@@ -21,4 +22,5 @@ public interface IServiceManager
 	 IServiceReviews Review { get; }
      IServiceWebsiteInfo WebsiteInfo { get; }
      IServicePromotion Promotion { get; }
+     IServiceArticle Article { get; }
 }
