@@ -12,4 +12,5 @@ public interface IServiceAuthenticate
     Task<ResponseTokenDto> RefreshToken(RequestTokenDto requestTokenDto);
     void SetTokenCookie(ResponseTokenDto tokenDto, HttpContext httpContext,bool remember);
     Task RemoveTokenCookie(long id, HttpContext httpContext, bool trackChanges);
+    Task<ResponseTokenDto> CreateRefreshTokenAsync(ResponseCustomerDto customer,string accessToken, bool populateExp, bool trackChanges);
 }

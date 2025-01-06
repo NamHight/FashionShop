@@ -31,7 +31,7 @@ authAxios.interceptors.response.use(
     (response) => response,
     async (error) => {
         console.log(error.response);
-        if(error.response && error.response.status === 401){
+        if(error.response && error.response?.status === 401){
             try {
                 const refresh = await refreshToken();
                 if(!refresh.token){
@@ -58,7 +58,6 @@ export const publicAxios = axios.create({
 publicAxios.interceptors.response.use(
     (response) => response,
      (error) => {
-        if(axios.isAxiosError(error)){
-            return Promise.reject(error);
-        }
+        console.error(error.message);
+        return Promise.reject(error);
     });

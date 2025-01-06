@@ -12,4 +12,5 @@ public class ResponseCustomerDto
     public string? Address { get; set; }
     public bool ConfirmEmail { get; set; }
     public string? Status { get; set; }
+    public string? LoginProvider { get; set; }
 }

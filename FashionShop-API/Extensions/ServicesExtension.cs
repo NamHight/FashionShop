@@ -32,13 +32,34 @@ public static class ServicesExtension
         JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
         JwtSecurityTokenHandler.DefaultOutboundClaimTypeMap.Clear();
         var jwtSetting = configuration.GetSection("Jwt");
+        var googleSetting = configuration.GetSection("Google");
         services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme; 
-
             })
-            .AddJwtBearer(options =>
+            .AddJwtBearer("Google",options =>
+            {
+                options.Authority = "https://accounts.google.com";
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidIssuer = "https://accounts.google.com",
+                    ValidateAudience = true,
+                    ValidAudience = googleSetting["ClientId"],
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true
+                };
+                options.Events = new JwtBearerEvents
+                {
+                    OnMessageReceived = context =>
+                    {
+                        context.Request.Cookies.TryGetValue("access_token", out var accessToken);
+                        if (!string.IsNullOrEmpty(accessToken)) context.Token = accessToken;
+                        return Task.CompletedTask;
+                    } 
+                };
+            }).AddJwtBearer("CustomJWT",options =>
             {
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
@@ -60,7 +81,14 @@ public static class ServicesExtension
                     } 
                 };
             });
-        services.AddAuthorization();
+        services.AddAuthorization(options =>
+        {
+            options.AddPolicy("MultiAuth", policy =>
+            {
+                policy.AddAuthenticationSchemes("CustomJWT", "Google");
+                policy.RequireAuthenticatedUser();
+            });
+        });
     }
     public static void ConfigureRedisConnection(this IServiceCollection services,IConfiguration configuration)
     {
@@ -127,7 +155,7 @@ public static class ServicesExtension
         => service.AddSingleton<ILoggerManager, LoggerManager>();
     public static void ConfigureFilter(this IServiceCollection service)
     {
-        service.AddScoped<ValidationFilter>();
+        service.AddScoped<ValidationFilter>();  
     }
     public static void ConfigureSession(this IServiceCollection services)
     {
