@@ -58,6 +58,7 @@ public partial class MyDbContext : DbContext
     public virtual DbSet<View> Views { get; set; }
 
     public virtual DbSet<WebsiteInfo> WebsiteInfos { get; set; }
+    public virtual DbSet<Article> Articles { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
@@ -340,6 +341,13 @@ public partial class MyDbContext : DbContext
                 .ValueGeneratedOnAddOrUpdate()
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
             entity.Property(e => e.UpdatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
+        });
+
+        modelBuilder.Entity<Article>(entity =>
+        {
+            entity.HasKey(e => e.ArticleId).HasName("PRIMARY");
+            entity.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
+            entity.HasOne(a => a.Category).WithMany(a => a.Articles).HasConstraintName("fk_acticles_category");
         });
 
         OnModelCreatingPartial(modelBuilder);
