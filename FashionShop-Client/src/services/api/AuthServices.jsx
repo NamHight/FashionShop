@@ -7,7 +7,7 @@ export const login = async (data,remember = false) =>{
         const {data:response} = await publicAxios.post(BASE_AUTHENTICATE_URL+`login?remember=${remember}`,data);
         return await response;
     }catch (e){
-        return await e.response?.data;
+        return await e.response;
     }
 }
 
@@ -28,3 +28,12 @@ export const signup = async (data) => {
         return await e.response?.data;
     }
 }
+
+export const loginGoogle = async (data) =>{
+  try {
+      const response = await publicAxios.post(BASE_AUTHENTICATE_URL+`LoginGoogle`,data);
+      return response;
+  }  catch (e) {
+      return await e.response;
+  }
+};

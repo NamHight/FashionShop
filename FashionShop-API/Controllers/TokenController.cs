@@ -3,11 +3,13 @@ using FashionShop_API.Filters;
 using FashionShop_API.Services.Caching;
 using FashionShop_API.Services.ServiceLogger;
 using FashionShop_API.Services.ServiceManager;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FashionShop_API.Controllers
 {
+    [Authorize(Policy ="MultiAuth")]
     [Route("api/[controller]")]
     [ApiController]
     public class TokenController : ControllerBase

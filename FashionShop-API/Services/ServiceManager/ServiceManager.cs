@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using FashionShop_API.Dto.ResponseDto;
 using FashionShop.Services.Products;
 using FashionShop_API.Repositories;
 using FashionShop_API.Services.Authenticates;
@@ -9,8 +10,10 @@ using FashionShop_API.Services.Products;
 using FashionShop_API.Services.Promotions;
 using FashionShop_API.Services.ServiceLogger;
 using FashionShop_API.Services.Favorites;
+using FashionShop_API.Services.Googles;
 using FashionShop_API.Services.WebsiteInfos;
 using FashionShop_API.Services.Reviews;
+using Microsoft.Extensions.Options;
 using FashionShop_API.Services.Articles;
 
 namespace FashionShop_API.Services.ServiceManager;
@@ -26,9 +29,10 @@ public class ServiceManager : IServiceManager
     private readonly Lazy<IServiceContact> _contact;
     private readonly Lazy<IServiceWebsiteInfo> _webisteInfo;
 	private readonly Lazy<IServiceReviews> _review;
+	private readonly Lazy<IServiceGoogle> _google;
     private readonly Lazy<IServicePromotion> _promotion;
     private readonly Lazy<IServiceArticle> _article;
-    public ServiceManager(IRepositoryManager repositoryManager,IMapper mapper,ILoggerManager logger,IConfiguration configuration)
+    public ServiceManager(IRepositoryManager repositoryManager,IMapper mapper,ILoggerManager logger,IConfiguration configuration,IOptions<GoogleOption> googleOption)
     {
         _repositoryManager = repositoryManager;
         _category = new Lazy<IServiceCategory>(() => new ServiceCategory(repositoryManager,mapper,logger));
@@ -39,6 +43,7 @@ public class ServiceManager : IServiceManager
         _contact = new Lazy<IServiceContact>(() => new ServiceContact(repositoryManager, logger, mapper));
         _webisteInfo = new Lazy<IServiceWebsiteInfo>(() => new ServiceWebsiteInfo(repositoryManager, logger, mapper));
         _review = new Lazy<IServiceReviews>(() => new ServiceReviews(repositoryManager, mapper));
+        _google = new Lazy<IServiceGoogle>(() => new ServiceGoogle(repositoryManager,googleOption,logger,mapper));
         _promotion = new Lazy<IServicePromotion>(() => new ServicePromotion(repositoryManager, mapper));
         _article = new Lazy<IServiceArticle>(() => new ServiceArticle(repositoryManager, mapper));
     }
@@ -49,8 +54,8 @@ public class ServiceManager : IServiceManager
     public IServiceFavorites Favorite => _favorite.Value;
     public IServiceContact Contact => _contact.Value;
     public IServiceWebsiteInfo WebsiteInfo => _webisteInfo.Value;
-	public IServiceReviews Review => _review.Value;
-
+    public IServiceGoogle Google => _google.Value;
+    public IServiceReviews Review => _review.Value;
     public IServicePromotion Promotion => _promotion.Value;
     public IServiceArticle Article => _article.Value;
 }

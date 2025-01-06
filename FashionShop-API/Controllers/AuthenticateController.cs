@@ -1,5 +1,6 @@
 using FashionShop_API.Dto;
 using FashionShop_API.Dto.RequestDto;
+using FashionShop_API.Dto.ResponseDto;
 using FashionShop_API.Filters;
 using FashionShop_API.Services.Caching;
 using FashionShop_API.Services.Emails;
@@ -25,7 +26,6 @@ namespace FashionShop_API.Controllers
             _serviceEmail = serviceEmail;
             _cacheRedis = cacheRedis;
         }
-
         private bool IsCheckConnectionRedis() => _cacheRedis.CheckConnection();
         [HttpPost("Register")]
         [ServiceFilter(typeof(ValidationFilter))]
@@ -71,14 +71,15 @@ namespace FashionShop_API.Controllers
             _serviceManager.Authenticate.SetTokenCookie(tokenDto,HttpContext,remember);
             return Ok(tokenDto);
         }
+        [Authorize( Policy = "MultiAuth")]
         [HttpPost("Logout")]
-        [Authorize]
         public async Task<IActionResult> Logout(long id)
         {
             await _serviceManager.Authenticate.RemoveTokenCookie(id,HttpContext,false);
             _logger.Log(LogLevel.Information,"Controller Authenticate: " + nameof(Logout) + " Success");
             return Ok("Logout success");
         }
+        [Authorize(AuthenticationSchemes = "CustomJWT")]
         [HttpGet("ConfirmEmail")]
         public async Task<IActionResult> ConfirmEmail(string token)
         {
@@ -87,6 +88,19 @@ namespace FashionShop_API.Controllers
                 return Redirect("http://localhost:3000/email-confirmation-error");
             }   
             return Redirect("http://localhost:3000/email-confirmation");
+        }
+        [HttpPost("LoginGoogle")]
+        [ServiceFilter(typeof(ValidationFilter))]
+        public async Task<IActionResult> LoginGoogleAsync([FromBody] GoogleSignVM googleSignVM)
+        {
+            var result = await _serviceManager.Google.GoogleSignIn(googleSignVM);
+            if (result is null)
+            {
+                return BadRequest(new { message = "Registration failed. Please try again later." });
+            }
+            var token = await _serviceManager.Authenticate.CreateRefreshTokenAsync(result,googleSignVM.Token,true,false);
+            _serviceManager.Authenticate.SetTokenCookie(token, HttpContext, false);
+            return Ok(token);
         }
     }
 }
