@@ -9,6 +9,7 @@ import ListFavorites from './../pages/Account/ListFavorites/index';
 import Cart from "../pages/Cart/Inndex";
 import About from './../pages/About/Index';
 import Blog from "../pages/Blog/index";
+import BlogArticle from "../pages/Blog/Article/index";
 
 
 export const Router = [
@@ -16,6 +17,7 @@ export const Router = [
     {path: "/about", name: "About", element: <About/>},
     {path: "/contact", name: "Contact", element: <Contact />},
     {path: "/blog", name: "Blog", element : <Blog />},
+    {path: "/blog/article", name: "BlogArticle",element: <BlogArticle />},
     {path: "/verify-password", name: "VerifyPassword", element: <VerifyPassword/>},
     {path: "email-confirmation", name: "EmailConfirm", element: <EmailConfirm/>},
     {path: "email-confirmation-error", name: "EmailConfirmError", element: <EmailConfirmError/>},

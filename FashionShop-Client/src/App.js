@@ -15,6 +15,7 @@ const TitleUpdater = () => {
       "/": "Fashion - Home",
       "/about": "Fashion - About",
       "/blog": "Fashion - Blog",
+      "/blog/article": "Fashion - BlogArticle",
       "/verify-password": "Fashion - Verify Password",
       "/account": "Fashion - My Profile",
       "/account/orders": "Fashion - Orders",

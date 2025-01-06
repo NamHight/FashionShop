@@ -1,43 +1,50 @@
 import React, { useEffect, useState } from "react";
 import { getAllPromotion } from "../../services/api/PromotionService";
-import { keyframes } from "motion";
+import { NavLinkBlog } from "./NavLinks/index";
+import { Spinner } from "@material-tailwind/react";
+import { useQuery } from "@tanstack/react-query";
 
 const Blog = () => {
-  const [promotions, setPromotions] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPage, setTotalPage] = useState(1);
-  const pageNumber = 1;
-  const getPromotions = async (page) => {
-    const result = await getAllPromotion({
-      params: {
-        page: page,
-        limit: 9,
-      },
-    });
-    console.log(result.data.item1);
-    setPromotions(result.data.item1);
-    setCurrentPage(result.data.item2.currentPage);
-    setTotalPage(result.data.item2.totalPages);
-
-    console.log("promotion ", promotions); // Kiểm tra khi promotions thay đổi
-  };
-  useEffect(() => {
-    getPromotions(currentPage);
-  }, [currentPage]);
+  const {
+    data: BlogPromotionQuery,
+    refetch,
+    error,
+    isLoading,
+  } = useQuery({
+    queryKey: ["blogPromotion"],
+    queryFn: async () => {
+      const result = await getAllPromotion();
+      console.log("Dữ liệu get article api :", result);
+      return result.data;
+    },
+  });
 
   return (
     <div className="container mx-auto">
+      <div className="flex flex-1 items-center justify-between">
+        <NavLinkBlog />
+      </div>
+      <h4>Danh sách khuyến mãi</h4>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {promotions && promotions.length > 0 ? (
-          promotions.map((item, key) => {
+        {!isLoading ? (
+          BlogPromotionQuery.item1.map((item, key) => {
             return (
-              <div className="col-span-1" key={key}>
-                {item.promotionName}
+              <div
+                className="col-span-1 bg-white border rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-4"
+                key={item.promotionId}
+              >
+                <img
+                  src={`/assets/images/promotions/${item.image}`}
+                  alt={item.image}
+                  className="w-full h-48 object-cover rounded-t-lg mb-4"
+                />
+                <h3 className="text-lg font-semibold">{item.promotionName}</h3>
+                <p className="text-sm text-gray-500 mb-2">{item.description}</p>
               </div>
             );
           })
         ) : (
-          <p className="col-span-1">Dữ liệu đang xử lý</p>
+          <Spinner />
         )}
       </div>
       <div className="flex items-center justify-end">
