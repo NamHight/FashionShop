@@ -7,6 +7,8 @@ using FashionShop_API.Repositories.Customers;
 using FashionShop_API.Repositories.Favorites;
 using FashionShop_API.Repositories.WebsiteInfos;
 using FashionShop_API.Repositories.Reviews;
+using FashionShop_API.Repositories.Promotions;
+using FashionShop_API.Repositories.Articles;
 
 namespace FashionShop_API.Repositories.RepositoryManager;
 
@@ -20,8 +22,9 @@ public class RepositoryManager : IRepositoryManager
     private Lazy<IRepositoryFavorites> _favorite;
     private Lazy<IRepositoryWebsiteInfo> _websiteInfo;
 	private Lazy<IRepositoryReviews> _review;
-
-    public RepositoryManager (MyDbContext context,IMapper _mapper)
+    private Lazy<IRepositoryPromotion> _promotion;
+    private Lazy<IRepositoryArticle> _article;
+    public RepositoryManager (MyDbContext context, IMapper _mapper)
     {
         _context = context;
         _customer = new Lazy<IRepositoryCustomer>(() => new RepositoryCustomer(context));
@@ -31,7 +34,9 @@ public class RepositoryManager : IRepositoryManager
         _favorite = new Lazy<IRepositoryFavorites>( () => new RepositoryFavorites(context) );
         _websiteInfo = new Lazy<IRepositoryWebsiteInfo>(() => new RepositoryWebsiteInfo(context));
 		_review = new Lazy<IRepositoryReviews>(() => new RepositoryReviews(context));
-	}
+        _promotion = new Lazy<IRepositoryPromotion>(() => new RepositoryPromotion(context));
+        _article = new Lazy<IRepositoryArticle> (() => new RepositoryArticle(context));
+    }
 
     public IRepositoryCategory Category => _category.Value;
     public IRepositoryCustomer Customer => _customer.Value;
@@ -40,7 +45,8 @@ public class RepositoryManager : IRepositoryManager
     public IRepositoryProduct Product => _product.Value;
     public IRepositoryWebsiteInfo WebsiteInfo => _websiteInfo.Value;
 	public IRepositoryReviews Review => _review.Value;
-
+	public IRepositoryPromotion Promotion => _promotion.Value;
+	public IRepositoryArticle Article => _article.Value;
 	public async Task SaveChanges() => await _context.SaveChangesAsync();
 	public async Task<bool> SaveChangesAsync() => await _context.SaveChangesAsync() > 0;
 }

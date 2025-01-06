@@ -7,12 +7,14 @@ using FashionShop_API.Services.Categories;
 using FashionShop_API.Services.Contacts;
 using FashionShop_API.Services.Customers;
 using FashionShop_API.Services.Products;
+using FashionShop_API.Services.Promotions;
 using FashionShop_API.Services.ServiceLogger;
 using FashionShop_API.Services.Favorites;
 using FashionShop_API.Services.Googles;
 using FashionShop_API.Services.WebsiteInfos;
 using FashionShop_API.Services.Reviews;
 using Microsoft.Extensions.Options;
+using FashionShop_API.Services.Articles;
 
 namespace FashionShop_API.Services.ServiceManager;
 
@@ -28,7 +30,9 @@ public class ServiceManager : IServiceManager
     private readonly Lazy<IServiceWebsiteInfo> _webisteInfo;
 	private readonly Lazy<IServiceReviews> _review;
 	private readonly Lazy<IServiceGoogle> _google;
-	public ServiceManager(IRepositoryManager repositoryManager,IMapper mapper,ILoggerManager logger,IConfiguration configuration,IOptions<GoogleOption> googleOption)
+    private readonly Lazy<IServicePromotion> _promotion;
+    private readonly Lazy<IServiceArticle> _article;
+    public ServiceManager(IRepositoryManager repositoryManager,IMapper mapper,ILoggerManager logger,IConfiguration configuration,IOptions<GoogleOption> googleOption)
     {
         _repositoryManager = repositoryManager;
         _category = new Lazy<IServiceCategory>(() => new ServiceCategory(repositoryManager,mapper,logger));
@@ -40,6 +44,8 @@ public class ServiceManager : IServiceManager
         _webisteInfo = new Lazy<IServiceWebsiteInfo>(() => new ServiceWebsiteInfo(repositoryManager, logger, mapper));
         _review = new Lazy<IServiceReviews>(() => new ServiceReviews(repositoryManager, mapper));
         _google = new Lazy<IServiceGoogle>(() => new ServiceGoogle(repositoryManager,googleOption,logger,mapper));
+        _promotion = new Lazy<IServicePromotion>(() => new ServicePromotion(repositoryManager, mapper));
+        _article = new Lazy<IServiceArticle>(() => new ServiceArticle(repositoryManager, mapper));
     }
     public IServiceCategory Category => _category.Value;
     public IServiceAuthenticate Authenticate => _authenticate.Value;
@@ -50,5 +56,6 @@ public class ServiceManager : IServiceManager
     public IServiceWebsiteInfo WebsiteInfo => _webisteInfo.Value;
     public IServiceGoogle Google => _google.Value;
     public IServiceReviews Review => _review.Value;
-
+    public IServicePromotion Promotion => _promotion.Value;
+    public IServiceArticle Article => _article.Value;
 }

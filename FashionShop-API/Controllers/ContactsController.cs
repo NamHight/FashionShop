@@ -2,6 +2,7 @@
 using FashionShop_API.Filters;
 using FashionShop_API.Services.Contacts;
 using FashionShop_API.Services.ServiceManager;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -26,12 +27,12 @@ namespace FashionShop_API.Controllers
         public async Task<IActionResult> CreateContact([FromBody] RequestContactDto requestContactDto)
         {
             if (requestContactDto == null) {
-                return BadRequest(new { message ="Request not null!"});
+                return BadRequest();
             }
             try
             {
                 var contact = await _serviceManager.Contact.CreateAsync(requestContactDto);
-                return Ok("Create Contact susscess.");
+                return Ok("Gửi liên hệ thành công.");
             }
             catch (Exception ex)
             {
