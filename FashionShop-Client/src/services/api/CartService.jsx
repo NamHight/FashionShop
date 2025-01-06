@@ -13,6 +13,15 @@ export const getAllCartsService = async () =>{
     }
 }
 
+export const getPaginationAllCartsService = async (page) =>{
+    try {
+        const response= await authAxios.get(BASE_CART_URL+'getPaginationAllCarts/' + `${page}`);
+        return await response.data;
+    }catch (e){
+        return await e.response;
+    }
+}
+
 export const addCartService = async (id, quantity) =>{
     try {
         const response= await authAxios.post(BASE_CART_URL + 'addCart' + `?id=${id}&quantity=${quantity}`);

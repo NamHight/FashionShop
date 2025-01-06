@@ -1,8 +1,10 @@
-﻿using FashionShop_API.Dto.RequestDto;
+﻿using FashionShop_API.Dto;
+using FashionShop_API.Dto.RequestDto;
 using FashionShop_API.Dto.ResponseDto;
 using FashionShop_API.Extensions;
 using FashionShop_API.Mappers;
 using FashionShop_API.Models;
+using FashionShop_API.Repositories.Shared;
 using FashionShop_API.Services.Caching;
 using FashionShop_API.Services.ServiceManager;
 using Microsoft.AspNetCore.Authorization;
@@ -33,6 +35,18 @@ namespace FashionShop_API.Controllers
             return Ok(Carts);
         }
 
+        [HttpGet("getPaginationAllCarts/{page}")]
+        public IActionResult GetCartPaginationAsync(int page)
+        {
+            var result = new PaginationCart();
+            result.PageSize =  3;
+            result.TotalCount = Carts.Count();
+            result.TotalPages = (result.TotalCount % result.PageSize)>0 ? (result.TotalCount / result.PageSize) +1 : result.TotalCount / result.PageSize;
+            result.CurrentPage = page;
+            List<Cart> carts = Carts.Skip((page - 1) * result.PageSize).Take(result.PageSize).ToList();
+            Console.WriteLine("Lay danh sach cart bang pagination", carts);
+            return Ok(new { data = carts, infoPage = result });
+        }
       
         [HttpPost("addCart")]
         public async Task<IActionResult> AddCart(long id, int quantity)
