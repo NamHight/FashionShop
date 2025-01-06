@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 
 namespace FashionShop_API.Models;
@@ -46,6 +47,6 @@ public partial class Category
 
     [InverseProperty("Category")]
     public virtual ICollection<Product> Products { get; set; } = new List<Product>();
-    //[InverseProperty("Category")]
+    [InverseProperty("Category")]
     public virtual ICollection<Article> Articles { get; set; } = new List<Article>();
 }

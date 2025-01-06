@@ -25,6 +25,6 @@ namespace FashionShop_API.Models
         [Column("status")]
         public int Status { get; set; } = 1;
         [ForeignKey("Category_Id")]
-        public Category? Category { get; set; }
+        public virtual Category? Category { get; set; }
     }
 }
