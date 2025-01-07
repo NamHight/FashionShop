@@ -26,7 +26,7 @@ function ListFavorites() {
         icon={<MdOutlineError size={80} />}
       />
     ) : data.length > 0 ? (
-      <div className="grid grid-cols-3 justify-items-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {data?.map((item) => (
           <Favorite key={item.favoriteId} item={item} />
         ))}
@@ -44,7 +44,7 @@ function ListFavorites() {
         <div className="w-full text-center text-2xl font-bold bg-slate-100 rounded py-2">
           <h1>Favorite</h1>
         </div>
-        <div className="mt-2">
+        <div className="my-2">
           <Input
             placeholder="Search....."
             className={
