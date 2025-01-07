@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FashionShop_API.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
     public class ProductsController : ControllerBase
     {
@@ -19,7 +20,6 @@ namespace FashionShop_API.Controllers
             _logger = logger;
             _serviceManager = serviceManager;
         }
-        [Route("api/[controller]")]
         [HttpGet]
         public async Task<IActionResult> GetAllProductsAsync([FromQuery]bool trackChanges = false)
         {
@@ -41,6 +41,16 @@ namespace FashionShop_API.Controllers
                 _logger.LogError($"Error in {nameof(GetAllProductsAsync)}: {ex.Message}");
                 return StatusCode(500, "Internal server error.");
             }
+        }
+        [HttpGet("/Product/{categoryId}")]
+        public async Task<IActionResult> GetProductsByCategoryId(long categoryId)
+        {
+            var products = await _serviceManager.Product.FindProductsByCategoryIdAsync(categoryId, false);
+            if (products == null || !products.Any())
+            {
+                return NotFound(new { message = "There is no corresponding product!" });
+            }
+            return Ok(products);
         }
 
     }

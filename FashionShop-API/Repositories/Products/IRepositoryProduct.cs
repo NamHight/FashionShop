@@ -5,6 +5,7 @@ namespace FashionShop_API.Repositories.Products
 {
     public interface IRepositoryProduct
     {
+        Task<IEnumerable<Product>?> GetListProductByCategoryId(long categoryId, bool trackChanges);
         Task<List<Product>> GetAllAsync(bool trackChanges);
         Task<Product?> GetByIdAsync(long id, bool trackChanges);
     }

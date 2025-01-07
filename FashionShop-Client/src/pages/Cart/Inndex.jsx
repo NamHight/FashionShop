@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import {Pagination } from '../../components/Pagination/Pagination.jsx';
 import { useCartConText } from '../../context/CartContext.jsx';
 import {useAuth} from '../../context/AuthContext.jsx';
-
+import ButtonAddCart from "../../components/ButtonAddCart/ButtonAddCart.jsx"
 function Cart() {
     const {cart, decreaseQuantity, increaseQuantity, totalMoney, removeCart, removeAllCart, addCart, saveCart, totalPages} = useCartConText();
     const {user} = useAuth();
@@ -14,8 +14,8 @@ function Cart() {
     
   
   return (
-    <div className="mt-20 mx-72">
-        <div className="flex justify-center w-full align-center">
+    <div className="mt-10 mx-72 min-h-[700px]">
+        <div className="">
            <div className=" flex justify-start w-full">
             <Button  variant="gradient" className="me-3">
                     <Link to="/">Home</Link>
@@ -24,13 +24,14 @@ function Cart() {
                 Lưu Giỏ Hàng
             </Button>
            </div>
-            <div className=" flex justify-start w-full">
-              <h2 className="marquee font-bold">
-                  My Shopping Cart
+           <div className="text-center w-full my-5">
+              <h2 className="font-bold text-4xl text-transparent bg-clip-content bg-gradient-to-r from-blue-500 to-orange-500 shadow-lg rounded-md"
+              style={{color: "#fbbf24"}}>
+                My Shopping Cart
               </h2>
-            </div>
+          </div>
         </div>
-        <Card className="h-full w-full overflow-scroll mt-10 mb-3">
+        <Card className="h-full w-full overflow-scroll mt-10 mb-5">
           <table className="w-full min-w-max table-auto text-left">
             <thead>
               <tr >
@@ -141,7 +142,7 @@ function Cart() {
               className="flex items-center justify-center rounded-md bg-blue-600 py-3 px-6 text-white text-lg font-semibold transition hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
               type="button"
             >
-              Thanh Toán
+              <Link to="/payment"> Thanh Toán</Link>
             </Button>
             <Button
               className="flex items-center justify-center rounded-md bg-green-600 py-3 px-6 text-white text-lg font-semibold transition hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
@@ -158,6 +159,14 @@ function Cart() {
             >
               Thêm Vào Giỏ
             </Button>
+
+            <ButtonAddCart css= "flex items-center justify-center rounded-md bg-green-600 py-3 px-6 text-white text-lg font-semibold transition hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+              productId = {155} 
+              productName ={"Product 4"}
+              banner ={"banner4.jpg"}
+              price ={180.25}
+              quantity ={2}/>
+
             <Button
               className="flex items-center justify-center rounded-md bg-red-600 py-3 px-6 text-white text-lg font-semibold transition hover:bg-red-700 focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
               type="button"
