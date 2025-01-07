@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getAllProducts } from "../../services/api/ProductService";
-
+import Loading from "../Loading";
 const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -21,7 +21,7 @@ const ProductList = () => {
     fetchProducts();
   }, []);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Loading/>;
   if (error) return <div>{error}</div>;
 
   return (
@@ -37,7 +37,7 @@ const ProductList = () => {
             <img
                src={`${process.env.PUBLIC_URL}/assets/images/products/${product.banner}`}
               alt={product.productName}
-              className="w-full h-48 object-cover rounded-t-lg mb-4"
+              className="w-full rounded-t-lg mb-4"
             />
             <h3 className="text-lg font-semibold">{product.productName}</h3>
             <p className="text-sm text-gray-500 mb-2">{product.description}</p>

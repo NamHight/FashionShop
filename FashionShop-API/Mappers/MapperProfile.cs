@@ -28,5 +28,7 @@ public class MapperProfile : Profile
             .ReverseMap();
 		CreateMap<Favorite, RequestFarvoriteDto>()
 			.ReverseMap();
+        CreateMap<Product,ResponseProductDto>()
+            .ReverseMap();
 	}
 }
