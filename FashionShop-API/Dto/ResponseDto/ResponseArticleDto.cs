@@ -2,6 +2,15 @@
 
 namespace FashionShop_API.Dto.ResponseDto
 {
-    public record ResponseArticleDto(long ArticleId, string ArticleName, string slug, string Image, string Description, long Category_Id, DateTime CreatedAt);
+    public class ResponseArticleDto
+    {
+        public long ArticleId { get; set; }
+        public string? ArticleName { get; set; }
+        public string? slug { get; set; }
+        public string? Description { get; set; }
+        public long Category_Id { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public ResponseCategoryDto Category { get; set; }
+    }
     
 }

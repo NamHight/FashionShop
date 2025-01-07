@@ -78,7 +78,8 @@ public partial class MyDbContext : DbContext
             entity.Property(e => e.ArticleId).ValueGeneratedNever();
             entity.Property(e => e.CreateAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
 
-            entity.HasOne(d => d.Category).WithMany(p => p.Articles).HasConstraintName("fk_category_articles");
+            entity.HasOne(d => d.Category).WithMany(p => p.Articles)
+            .HasConstraintName("fk_category_articles");
         });
 
         modelBuilder.Entity<Brand>(entity =>

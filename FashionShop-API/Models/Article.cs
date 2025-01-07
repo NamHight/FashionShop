@@ -41,6 +41,5 @@ public partial class Article
     public int? Status { get; set; }
 
     [ForeignKey("CategoryId")]
-    [InverseProperty("Articles")]
     public virtual Category? Category { get; set; }
 }

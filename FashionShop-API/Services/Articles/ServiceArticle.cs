@@ -2,7 +2,9 @@
 using FashionShop_API.Dto;
 using FashionShop_API.Dto.QueryParam;
 using FashionShop_API.Dto.ResponseDto;
+using FashionShop_API.Models;
 using FashionShop_API.Repositories;
+using FashionShop_API.Repositories.Shared;
 
 namespace FashionShop_API.Services.Articles
 {
@@ -21,7 +23,7 @@ namespace FashionShop_API.Services.Articles
         {
             var articles = await _repositoryManager.Article.GetPagingAndSearchAsync(paramArticleDto.Page, paramArticleDto.Limit, paramArticleDto.nameSearch, paramArticleDto.Categoryid, trackChanges: false);
             var articlesDto = _mapper.Map<IEnumerable<ResponseArticleDto>>(articles);
-            return (data : articlesDto, page : articles.PageInfo);
+            return (data: articlesDto, page: articles.PageInfo);
         }
     }
 }
