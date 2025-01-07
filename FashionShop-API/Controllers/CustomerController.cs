@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FashionShop_API.Controllers;
 
-[Authorize]
+[Authorize(Policy  = "MultiAuth")]
 [Route("api/[controller]")]
 [ApiController]
 public class CustomerController : ControllerBase
@@ -18,7 +18,7 @@ public class CustomerController : ControllerBase
         _loggerManager = loggerManager;
     }
 
-    [HttpGet]
+    [HttpGet("{id}")]
     public async Task<IActionResult> GetCustomerByIdAsync(long? id)
     {
         if (id is null)
@@ -28,5 +28,18 @@ public class CustomerController : ControllerBase
         _loggerManager.LogInfo("Controller Customer: " + nameof(GetCustomerByIdAsync) + " Success");
         var result = await _serviceManager.Customer.GetCustomerByIdAsync(id,false);
         return Ok(result);
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetCustomerByEmailAsync([FromQuery]string? email)
+    {
+        if (email is null)
+        {
+            return BadRequest("Email is null");
+        }
+        _loggerManager.LogInfo("Controller Customer: " + nameof(GetCustomerByEmailAsync) + " Success");
+        var result = await _serviceManager.Customer.GetCustomerByEmailAsync(email,false);
+        return Ok(result);
+        
     }
 }

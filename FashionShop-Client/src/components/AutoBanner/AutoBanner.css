@@ -1,5 +1,4 @@
 .banner-container {
-    position: relative;
     width: 100%; /* Chiếm toàn bộ chiều ngang của phần tử cha */
     max-width: 100%; /* Đảm bảo không vượt quá kích thước cha */
     height: auto; /* Tự động điều chỉnh chiều cao theo tỷ lệ */

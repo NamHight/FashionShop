@@ -17,6 +17,8 @@ public partial class MyDbContext : DbContext
     {
     }
 
+    public virtual DbSet<Article> Articles { get; set; }
+
     public virtual DbSet<Brand> Brands { get; set; }
 
     public virtual DbSet<Category> Categories { get; set; }
@@ -68,6 +70,16 @@ public partial class MyDbContext : DbContext
         modelBuilder
             .UseCollation("utf8mb4_0900_ai_ci")
             .HasCharSet("utf8mb4");
+
+        modelBuilder.Entity<Article>(entity =>
+        {
+            entity.HasKey(e => e.ArticleId).HasName("PRIMARY");
+
+            entity.Property(e => e.ArticleId).ValueGeneratedNever();
+            entity.Property(e => e.CreateAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+            entity.HasOne(d => d.Category).WithMany(p => p.Articles).HasConstraintName("fk_category_articles");
+        });
 
         modelBuilder.Entity<Brand>(entity =>
         {

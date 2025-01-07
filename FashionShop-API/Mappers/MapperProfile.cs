@@ -22,5 +22,13 @@ public class MapperProfile : Profile
 			.ReverseMap();
 		CreateMap<Review, ResponseReviewDto>()
 			.ReverseMap();
+        CreateMap<Promotion, ResponsePromotionDto>()
+            .ReverseMap();
+        CreateMap<Article, ResponseArticleDto>()
+            .ReverseMap();
+		CreateMap<Favorite, RequestFarvoriteDto>()
+			.ReverseMap();
+        CreateMap<Product,ResponseProductDto>()
+            .ReverseMap();
 	}
 }

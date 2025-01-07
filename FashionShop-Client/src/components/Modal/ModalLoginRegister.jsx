@@ -1,9 +1,9 @@
-import {useRef} from 'react';
+import {useRef, useState} from 'react';
 import {Button, Checkbox, Dialog, IconButton, Spinner, Tabs, Typography} from "@material-tailwind/react";
 import {RxAvatar} from "react-icons/rx";
-import {IoClose, IoLogoGoogle} from "react-icons/io5";
+import {IoClose} from "react-icons/io5";
 import {Link, useNavigate} from "react-router";
-import {login, signup} from "../../services/api/AuthServices";
+import {login, loginGoogle, signup} from "../../services/api/AuthServices";
 import {useAuth} from "../../context/AuthContext";
 import {TbArrowWaveLeftDown, TbArrowWaveRightDown} from "react-icons/tb";
 import {useForm} from "react-hook-form";
@@ -11,11 +11,14 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {LoginValidate, RegisterValidate} from "../../libs/validates/FormValidate";
 import TextFormField from "../Input/TextFormField";
 import {MdOutlineDriveFileRenameOutline, MdOutlineEmail, MdOutlineLock, MdPhone} from "react-icons/md";
-import {useMutation, useQueryClient} from "@tanstack/react-query"; // thêm
+import {useMutation, useQueryClient} from "@tanstack/react-query";
+import {GoogleLogin, useGoogleLogin,} from "@react-oauth/google";
+import {IoLogoGoogle} from "react-icons/io";
+import axios from "axios";
 
 const ModalLoginRegister = () => {
     const queryClient = useQueryClient();
-    const {setIsAuthenticated} = useAuth();
+    const {user} = useAuth();
     const navigate = useNavigate();
     const dismissDialog = useRef(null);
     const mutationRegister = useMutation({
@@ -61,7 +64,6 @@ const ModalLoginRegister = () => {
                 setLoginError("error", {type: "custom", message: "Something went wrong"});
             }else {
                 localStorage.setItem("token", data?.token);
-                setIsAuthenticated(true);
                 handleClose();
                 resetLogin();
             }
@@ -71,6 +73,23 @@ const ModalLoginRegister = () => {
         },
         onSettled: async () =>{
            await queryClient.invalidateQueries(['user']);
+        }
+    });
+    const mutationLoginGoogle = useMutation({
+        mutationKey: ["loginGoogle"],
+        mutationFn: async (data)=>{
+            console.log(data);
+            const result = await loginGoogle({token: data});
+            console.log(result);
+            if(result?.status === 500){
+                setLoginError("errorGoogleLogin", {type: "custom", message: "Something went wrong"});
+            }else if(result?.status === 400){
+                setLoginError("errorGoogleLogin", {type: "custom", message: result.data?.message});
+            }else{
+                localStorage.setItem("token", result?.token);
+                await queryClient.invalidateQueries(['user']);
+                handleClose();
+            }
         }
     });
     const {
@@ -119,9 +138,10 @@ const ModalLoginRegister = () => {
         }
         await mutationRegister.mutateAsync(parseData.data);
     }
-
     const handleClose = () => {
-        dismissDialog.current.click();
+        if(dismissDialog.current){
+            dismissDialog.current.click();
+        }
     }
     return (
         <Dialog size="sm">
@@ -131,7 +151,7 @@ const ModalLoginRegister = () => {
                 Sign in
             </Dialog.Trigger>
             <Dialog.Overlay>
-                <Dialog.Content>
+                <Dialog.Content className={mutationLoginGoogle.isPending ? "animate-pulse  " : ""}>
                     <Dialog.DismissTrigger
                         ref={dismissDialog}
                         as={IconButton}
@@ -148,9 +168,24 @@ const ModalLoginRegister = () => {
                     <Typography type="h5" className="flex justify-center items-center gap-2 mb-1 text-emerald-500 ">
                         <TbArrowWaveRightDown/> Fashion Shop <TbArrowWaveLeftDown/>
                     </Typography>
-                    <div className={'flex justify-center items-center my-4'}>
-                        <Button isFullWidth className={'gap-3 text-lg'}><IoLogoGoogle className={'text-xl'}/>Continue to
-                            Google</Button>
+                    <div className={`flex justify-center items-center my-3 w-full`}>
+                        <GoogleLogin size={"large"} ux_mode={"popup"}
+                                     type={"standard"}
+                                     width={200000}
+                                     onSuccess={async (response) => {
+                                         await mutationLoginGoogle.mutateAsync(response?.credential);
+                                     }}
+                                     onError={(error) => {
+                                         console.log(error)
+                                         setLoginError("errorGoogleLogin", {type: "custom", message: "Something went wrong"});
+                                     }}/>
+                    </div>
+                    <div className={'flex justify-center w-full max-w-full'}>
+                        {
+                            loginErrors.errorGoogleLogin?.message && <Typography type={"small"} color={"error"}>
+                                {loginErrors.errorGoogleLogin?.message}
+                            </Typography>
+                        }
                     </div>
                     <div className={'relative my-6'}>
                         <div className={'border-b-2 border-black'}></div>
@@ -174,13 +209,13 @@ const ModalLoginRegister = () => {
                                 <div className="mb-4 mt-2 space-y-1.5">
                                     <TextFormField icon={<MdOutlineEmail className={'w-full h-full'}/>} label={"Email"}
                                                    error={loginErrors.email?.message} {...loginRegister("email")}
-                                                   placeholder={"user@gmail.com"}/>
+                                                   placeholder={"user@gmail.com"} disabled={mutationLoginGoogle.isPending}/>
                                 </div>
                                 <div className="mb-4 space-y-1.5">
                                     <TextFormField icon={<MdOutlineLock className={'h-full w-full'}/>} type={"password"}
                                                    label={"Password"}
                                                    error={loginErrors.password?.message} {...loginRegister("password")}
-                                                   placeholder={"**********"}/>
+                                                   placeholder={"**********"} disabled={mutationLoginGoogle.isPending}/>
                                 </div>
                                 {
                                     loginErrors.error?.message && (
@@ -190,8 +225,9 @@ const ModalLoginRegister = () => {
                                 <div className="mb-4 flex justify-between items-center gap-2">
                                     <div className={'flex items-center gap-2'}>
                                         <Checkbox id="remember"
+                                                  disabled={mutationLoginGoogle.isPending}
                                                   name={"remember"}
-                                                  className="appearance-none text-white bg-emerald-500  checked:bg-emerald-500">
+                                                  className={` appearance-none text-white bg-emerald-500  checked:bg-emerald-500`}>
                                             <Checkbox.Indicator  {...loginRegister("remember")}/>
                                         </Checkbox>
                                         <Typography
@@ -203,12 +239,12 @@ const ModalLoginRegister = () => {
                                         </Typography>
                                     </div>
                                     <div>
-                                        <Link to={'/'} className={'text-emerald-400 hover:text-red-500 text-sm'}>Forgot
+                                        <Link to={'/'}   className={`disabled:${mutationLoginGoogle.isPending} text-emerald-400 hover:text-red-500 text-sm`}>Forgot
                                             password</Link>
                                     </div>
                                 </div>
 
-                                <Button isFullWidth disabled={mutationLogin.isPending && true} className={'bg-emerald-400 outline-none border-none text-lg font-bold tracking-wider'}>
+                                <Button isFullWidth disabled={mutationLogin.isPending || mutationLoginGoogle.isPending} className={'bg-emerald-400 outline-none border-none text-lg font-bold tracking-wider'}>
                                     {
                                         mutationLogin.isPending ? <Spinner className={"mr-2"}/> : null
                                     }
@@ -222,6 +258,7 @@ const ModalLoginRegister = () => {
                                 <div className="mb-4 mt-2 space-y-1.5">
                                     <TextFormField {...registerRegister("email")} label={'Email'}
                                                    error={registerErrors.email?.message}
+                                                   disabled={mutationLoginGoogle.isPending}
                                                    icon={<MdOutlineEmail className={'w-full h-full'}/>}
                                                    placeholder={"user@gmail.com"}/>
                                 </div>
@@ -229,6 +266,7 @@ const ModalLoginRegister = () => {
                                     <TextFormField {...registerRegister("password")} label={"Password"}
                                                    error={registerErrors.password?.message}
                                                    type={"password"}
+                                                   disabled={mutationLoginGoogle.isPending}
                                                    icon={<MdOutlineLock className={'h-full w-full'}/>}
                                                    placeholder={"**********"}/>
                                 </div>
@@ -236,6 +274,7 @@ const ModalLoginRegister = () => {
                                     <TextFormField {...registerRegister("confirmPassword")} label={"Confirm Password"}
                                                    error={registerErrors.confirmPassword?.message}
                                                    type={"password"}
+                                                   disabled={mutationLoginGoogle.isPending}
                                                    icon={<MdOutlineLock className={'h-full w-full'}/>}
                                                    placeholder={"**********"}/>
                                 </div>
@@ -243,12 +282,14 @@ const ModalLoginRegister = () => {
                                     <TextFormField {...registerRegister("customerName")} label={"Full Name"}
                                                    icon={<MdOutlineDriveFileRenameOutline className={'w-full h-full'}/>}
                                                    error={registerErrors.customerName?.message}
+                                                   disabled={mutationLoginGoogle.isPending}
                                                    placeholder={"John Doe"}/>
                                 </div>
                                 <div className="mb-4 space-y-1.5">
                                     <TextFormField {...registerRegister("phone")} label={"Phone"}
                                                    icon={<MdPhone className={'w-full h-full'}/>}
                                                    error={registerErrors.phone?.message}
+                                                   disabled={mutationLoginGoogle.isPending}
                                                    placeholder={"012345678"}/>
                                 </div>
                                 {
@@ -256,7 +297,7 @@ const ModalLoginRegister = () => {
                                         <Typography type={"small"} className={'text-red-500'}>{registerErrors.error?.message}</Typography>
                                     )
                                 }
-                                <Button isFullWidth disabled={mutationRegister.isPending && true}
+                                <Button isFullWidth disabled={mutationRegister.isPending  || mutationLoginGoogle.isPending}
                                         className={'bg-emerald-400 outline-none border-none mt-5 text-lg font-bold tracking-wider'}>
                                     {
                                         mutationRegister.isPending ? <Spinner className={"mr-2"}/> : null

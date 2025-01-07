@@ -37,6 +37,9 @@ public partial class Category
     [Column("status", TypeName = "enum('active','inactive')")]
     public string? Status { get; set; }
 
+    [InverseProperty("Category")]
+    public virtual ICollection<Article> Articles { get; set; } = new List<Article>();
+
     [InverseProperty("Parent")]
     public virtual ICollection<Category> InverseParent { get; set; } = new List<Category>();
 
