@@ -42,7 +42,7 @@ export const removeCartsService = async (id) =>{
 
 export const removeAllCartsService = async () =>{
     try {
-        const response= await authAxios.post(BASE_CART_URL + 'removeAllCarts');
+        const response= await authAxios.delete(BASE_CART_URL + 'removeAllCarts');
         return await response.data;
     }catch (e){
         return await e.response;
