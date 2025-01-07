@@ -10,6 +10,7 @@ import Cart from "../pages/Cart/Inndex";
 import About from './../pages/About/Index';
 import Blog from "../pages/Blog/index";
 import BlogArticle from "../pages/Blog/Article/index";
+import DetailProduct from "../pages/Product/detailProduct";
 
 
 export const Router = [
@@ -21,7 +22,8 @@ export const Router = [
     {path: "/verify-password", name: "VerifyPassword", element: <VerifyPassword/>},
     {path: "email-confirmation", name: "EmailConfirm", element: <EmailConfirm/>},
     {path: "email-confirmation-error", name: "EmailConfirmError", element: <EmailConfirmError/>},
-    {path: "/cart", name: "Cart", element: <Cart/>}
+    {path: "/cart", name: "Cart", element: <Cart/>},
+    {path: "/detailProduct", name: "detailProduct", element: <DetailProduct/>}
 ];
 export const routerAccount = [
     {path: "", name: "Profile",element: <Profile/>},

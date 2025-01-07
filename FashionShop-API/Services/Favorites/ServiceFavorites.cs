@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FashionShop_API.Dto;
+using FashionShop_API.Dto.RequestDto;
 using FashionShop_API.Dto.ResponseDto;
 using FashionShop_API.Exceptions;
 using FashionShop_API.Models;
@@ -51,5 +52,20 @@ namespace FashionShop_API.Services.Favorites
                 throw;
             }
         }
-    }
+		public async Task AddFarvoriteAsync(RequestFarvoriteDto farvorite, bool trackChanges)
+		{
+			var farvoriteEntity = new Favorite
+			{
+				ProductId = farvorite.ProductId,
+				CustomerId = farvorite.CustomerId,
+                Status="active"
+				
+			};
+			await _repositoryManager.Favorite.AddAsync(farvoriteEntity, trackChanges);
+		}
+		public async Task DeleteFarvoriteAsync(long id)
+		{
+			await _repositoryManager.Favorite.DeleteAsync(id);
+		}
+	}
 }
