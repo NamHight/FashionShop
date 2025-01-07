@@ -23,25 +23,24 @@ const BlogArticle = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {
             !isLoading ? (
-              BlogArticleQuery ? (BlogArticleQuery.item1.map((item, key) => {
+              BlogArticleQuery ? (BlogArticleQuery.map((item, key) => {
                     return (
                       <div
                         className="col-span-1 bg-white border rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-4"
                         key={item.articleId}
                       >
                         <img
-                          src={`/assets/images/promotions/${item.image}`}
+                          src={`/assets/images/articles/${item.image}`}
                           alt={item.image}
                           className="w-full h-48 object-cover rounded-t-lg mb-4"
                         />
-                        <h3 className="text-lg font-semibold">{item.articleName}</h3>
+                        <h3 className="text-lg font-semibold">{item.articlesName}</h3>
                         <p className="text-sm text-gray-500 mb-2">{item.description}</p>
-                        <p className="text-sm text-gray-500 mb-2">{item.createdAt}</p>
                       </div>
                     );
                   })
                 ):(
-                  <p>Dữ liệu...</p>
+                  <Spinner />
                 )
             ) : (
                 <Spinner />

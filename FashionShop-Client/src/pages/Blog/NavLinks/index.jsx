@@ -5,7 +5,6 @@ export function NavLinkBlog() {
     const Links = [
         { name: "Khuyến mãi", path: "/blog" },
         { name: "Bài viết", path: "/blog/article" },
-        { name: "Thông tin công tin", path: "/blog/company" },
       ];
   return (
     <>
