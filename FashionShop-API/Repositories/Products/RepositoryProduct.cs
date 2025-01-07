@@ -2,6 +2,7 @@
 using FashionShop_API.Context;
 using FashionShop_API.Models;
 using FashionShop_API.Repositories;
+using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -25,5 +26,10 @@ namespace FashionShop_API.Repositories.Products
             return product;
         }
 
+        public async Task<IEnumerable<Product>?> GetListProductByCategoryId(long categoryId, bool trackChanges)
+        {
+            var products = await FindByCondition(e=>e.CategoryId == categoryId,trackChanges).ToListAsync();
+            return products.Any() ? products : Enumerable.Empty<Product>();
+        }
     }
 }

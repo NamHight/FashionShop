@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
+using FashionShop_API.Dto.ResponseDto;
 using FashionShop_API.Models;
 using FashionShop_API.Repositories;
 using FashionShop_API.Services.Products;
 using FashionShop_API.Services.ServiceLogger;
 using FashionShop_API.Services.ServiceManager;
+using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 
 namespace FashionShop.Services.Products
@@ -30,6 +32,25 @@ namespace FashionShop.Services.Products
         {
             var product = await _managerRepository.Product.GetByIdAsync(id, trackChanges);
             return product;
+        }
+
+        public async Task<IEnumerable<ResponseProductDto>> FindProductsByCategoryIdAsync(long categoryId, bool trackChanges)
+        {
+            try
+            {
+                var products = await _managerRepository.Product.GetListProductByCategoryId(categoryId, trackChanges);
+
+                if (products == null || !products.Any())
+                {
+                    return Enumerable.Empty<ResponseProductDto>();
+                }
+                var productDtos = _mapper.Map<IEnumerable<ResponseProductDto>>(products);
+                return productDtos;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("An error occurred while retrieving products.", ex);
+            }
         }
     }
 }
