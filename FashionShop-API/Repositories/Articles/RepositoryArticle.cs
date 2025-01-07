@@ -12,17 +12,17 @@ namespace FashionShop_API.Repositories.Articles
         {
             if(!string.IsNullOrEmpty(searchName) && categoryid != 0)
             {
-                var articles = await FindByCondition(item => item.ArticleName.Contains(searchName) && item.Category_Id == categoryid && item.Status == 1,trackChanges).Include(item => item.Category).ToListAsync();
+                var articles = await FindByCondition(item => item.ArticlesName.Contains(searchName) && item.CategoryId == categoryid && item.Status == 1,trackChanges).Include(item => item.Category).ToListAsync();
                 return await PagedListAsync<Article>.ToPagedListAsync(articles.AsQueryable(), page, limit);
             }
             if (!string.IsNullOrEmpty(searchName))
             {
-                var articles = await FindByCondition(item => item.ArticleName.Contains(searchName) && item.Status == 1, trackChanges).Include(item => item.Category).ToListAsync();
+                var articles = await FindByCondition(item => item.ArticlesName.Contains(searchName) && item.Status == 1, trackChanges).Include(item => item.Category).ToListAsync();
                 return await PagedListAsync<Article>.ToPagedListAsync(articles.AsQueryable(), page, limit);
             }
             if (categoryid != 0)
             {
-                var articles = await FindByCondition(item => item.Category_Id == categoryid && item.Status == 1, trackChanges).Include(item => item.Category).ToListAsync();
+                var articles = await FindByCondition(item => item.CategoryId == categoryid && item.Status == 1, trackChanges).Include(item => item.Category).ToListAsync();
                 return await PagedListAsync<Article>.ToPagedListAsync(articles.AsQueryable(), page, limit);
             }
             return await PagedListAsync<Article>.ToPagedListAsync(_context.Articles.Where(item => item.Status == 1).Include(item => item.Category).AsQueryable(), page, limit);

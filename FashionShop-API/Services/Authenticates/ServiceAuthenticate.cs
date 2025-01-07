@@ -144,6 +144,29 @@ public class ServiceAuthenticate : IServiceAuthenticate
         var accessToken = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
         return new ResponseTokenDto(accessToken,refreshToken);
     }
+
+    public async Task<ResponseTokenDto> CreateRefreshTokenAsync(ResponseCustomerDto customer,string accessToken, bool populateExp, bool trackChanges)
+    {
+        var refreshToken = GenerateRefreshToken();
+        var foundCustomer = await _repositoryManager.Customer.GetCustomerByEmailAsync(customer.Email, trackChanges);
+        if (foundCustomer is null)
+        {
+            throw new CustomerNotFoundException("Customer not exists");
+        }
+        foundCustomer.UpdatedAt = DateTime.UtcNow;
+        foundCustomer.RefreshToken = refreshToken;
+        if (populateExp)
+        {
+            foundCustomer.RefreshTokenExpirytime = DateTime.UtcNow.AddDays(7);
+        }
+        _repositoryManager.Customer.UpdateCustomer(foundCustomer);
+        var check = await _repositoryManager.SaveChangesAsync();
+        if (!check)
+        {
+            throw new Exception("Failed to update refresh token");
+        }
+        return new ResponseTokenDto(accessToken, refreshToken);
+    }
     public async Task<RequestAuthenticateRegisterDto?> RegisterAsync(RequestAuthenticateRegisterDto registerDto)
     {
         var foundCustomer = await _repositoryManager.Customer.GetCustomerByEmailAsync(registerDto.Email, true);
@@ -277,7 +300,6 @@ public class ServiceAuthenticate : IServiceAuthenticate
     private JwtSecurityToken GenerateTokenOptions(SigningCredentials credentials,List<Claim> claims)
     {
         var jwtSettings = _configuration.GetSection("Jwt");
-        Console.WriteLine(DateTime.UtcNow.AddMinutes(Convert.ToDouble(jwtSettings["expires"])));
         var tokenOptions = new JwtSecurityToken(
             claims:claims,
             issuer:jwtSettings["Issuer"],
