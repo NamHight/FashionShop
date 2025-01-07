@@ -16,7 +16,7 @@ public partial class Article
     public ulong ArticleId { get; set; }
 
     [Column("articles_name")]
-    [StringLength(255)]
+    [StringLength(255)] 
     public string ArticlesName { get; set; } = null!;
 
     [Column("slug")]

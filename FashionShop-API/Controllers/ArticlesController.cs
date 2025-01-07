@@ -2,6 +2,7 @@
 using FashionShop_API.Services.Articles;
 using FashionShop_API.Services.ServiceManager;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -23,7 +24,8 @@ namespace FashionShop_API.Controllers
         public async Task<ActionResult> GetPagingAndSearchAsync([FromQuery] ParamArticleDto paramArticleDto)
         {
             var result = await _serviceManager.Article.GetPagingAndSearchAsync(paramArticleDto);
-            return Ok(result);
+            Response.Headers.Append("X-Pagination", JsonSerializer.Serialize(result.page));
+            return Ok(result.data);
         }
 
         
