@@ -7,6 +7,7 @@ import Orders from "../pages/Account/Orders";
 import Profile from "../pages/Account/Profile";
 import ListFavorites from './../pages/Account/ListFavorites/index';
 import Cart from "../pages/Cart/Inndex";
+import Payment from "./../pages/Payment/Index";
 import About from './../pages/About/Index';
 
 
@@ -17,7 +18,8 @@ export const Router = [
     {path: "/verify-password", name: "VerifyPassword", element: <VerifyPassword/>},
     {path: "email-confirmation", name: "EmailConfirm", element: <EmailConfirm/>},
     {path: "email-confirmation-error", name: "EmailConfirmError", element: <EmailConfirmError/>},
-    {path: "/cart", name: "Cart", element: <Cart/>}
+    {path: "/cart", name: "Cart", element: <Cart/>},
+    {path: "/payment", name: "Payment", element: <Payment/>}
 ];
 export const routerAccount = [
     {path: "", name: "Profile",element: <Profile/>},
