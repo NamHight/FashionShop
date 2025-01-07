@@ -99,18 +99,25 @@ export const CartContextProvider = ({ children }) => {
     }
 
     const addCart = (data) =>{ // {productId, productName, banner, price, quantity}
-        var product = carts.find(item => item.productId === data.productId);
-        if(product){ // đã tồn tại trong giỏ hàng
-            var cartNew = [...carts].map(item =>{
-                if(item.productId === data.productId) return {...item, quantity: item.quantity + data.quantity, amount: item.amount + item.price*data.quantity};
-                return item;
-            })
+        if(carts === null){ // nếu giỏ hàng trống thì thêm phần từ vào cuối mảng = đầu mảng
+            carts.push({productId: data.productId, banner: data.banner, productName: data.productName, price: data.price, quantity: data.quantity, amount: Number(data.price)*Number(data.quantity)});
+            var cartNew = [...carts];
             addCartService(data.productId, data.quantity);
             setCarts(cartNew);
-        }else{ // chưa tồn tại trong giỏ hàng
-            var cartNew = [...carts, {productId: data.productId, banner: data.banner, productName: data.productName, price: data.price, quantity: data.quantity, amount: Number(data.price)*Number(data.quantity)}]
-            addCartService(data.productId, data.quantity);
-            setCarts(cartNew);
+        }else{ // nếu giỏ hàng không trống
+            var product = carts.find(item => item.productId === data.productId);
+            if(product){ // phần tử đã thêm đã tồn tại trong giỏ hàng
+                var cartNew = [...carts].map(item =>{
+                    if(item.productId === data.productId) return {...item, quantity: item.quantity + data.quantity, amount: item.amount + item.price*data.quantity};
+                    return item;
+                })
+                addCartService(data.productId, data.quantity);
+                setCarts(cartNew);
+            }else{ // phần tử đã thêm chưa tồn tại trong giỏ hàng
+                var cartNew = [...carts, {productId: data.productId, banner: data.banner, productName: data.productName, price: data.price, quantity: data.quantity, amount: Number(data.price)*Number(data.quantity)}]
+                addCartService(data.productId, data.quantity);
+                setCarts(cartNew);
+            }
         }
     }
 

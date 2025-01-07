@@ -1,7 +1,8 @@
-import {React, Link} from 'react';
+import {React} from 'react';
 import {Button, Tooltip, Typography} from "@material-tailwind/react";
 import {MdShoppingCart} from "react-icons/md";
 import CardCart from "../Card/CardCart";
+import {Link} from "react-router"
 import { useCartConText } from '../../context/CartContext';
 
 const PopoverCart = () => {
@@ -42,12 +43,13 @@ const PopoverCart = () => {
                 </div>
                 <div className={'my-2 flex justify-center items-center w-full'}>
                     <Button className={'w-full mx-2 bg-emerald-400 border-none font-bold'}>
-                        {/* <Link to="/payment">Check Out</Link>     */}
+                        <Link to="/payment">Check Out</Link>    
                     </Button>
+
                 </div>
                 <div className={'my-2 flex justify-center items-center w-full'}>
                     <Button className={'w-full mx-2 bg-emerald-400 border-none font-bold' }>
-                       {/* <Link to="/cart">Cart Detail</Link>  */}
+                       <Link to="/cart">Cart Detail</Link> 
                     </Button>
                 </div>
                 <Tooltip.Arrow className={'border-white'}/>

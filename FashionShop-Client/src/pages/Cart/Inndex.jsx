@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import {Pagination } from '../../components/Pagination/Pagination.jsx';
 import { useCartConText } from '../../context/CartContext.jsx';
 import {useAuth} from '../../context/AuthContext.jsx';
-
+import ButtonAddCart from "../../components/ButtonAddCart/ButtonAddCart.jsx"
 function Cart() {
     const {cart, decreaseQuantity, increaseQuantity, totalMoney, removeCart, removeAllCart, addCart, saveCart, totalPages} = useCartConText();
     const {user} = useAuth();
@@ -159,6 +159,14 @@ function Cart() {
             >
               Thêm Vào Giỏ
             </Button>
+
+            <ButtonAddCart css= "flex items-center justify-center rounded-md bg-green-600 py-3 px-6 text-white text-lg font-semibold transition hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+              productId = {155} 
+              productName ={"Product 4"}
+              banner ={"banner4.jpg"}
+              price ={180.25}
+              quantity ={2}/>
+
             <Button
               className="flex items-center justify-center rounded-md bg-red-600 py-3 px-6 text-white text-lg font-semibold transition hover:bg-red-700 focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
               type="button"
