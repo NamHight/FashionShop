@@ -98,7 +98,7 @@ namespace FashionShop_API.Controllers
             {
                 return BadRequest(new { message = "Registration failed. Please try again later." });
             }
-            var token = await _serviceManager.Authenticate.CreateRefreshTokenAsync(result,googleSignVM.Token,true,false);
+            var token = await _serviceManager.Authenticate.CreateRefreshTokenAsync(result,googleSignVM.Token,true,true);
             _serviceManager.Authenticate.SetTokenCookie(token, HttpContext, false);
             return Ok(token);
         }

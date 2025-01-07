@@ -88,14 +88,14 @@ const Header = () => {
             </div>
         ))  ;
     return (
-            <div className={'flex justify-between items-center mx-72 h-full'}>
+            <div className={'xl:flex md:flex-row xl:flex-row justify-between items-center xl:mx-72 lg:mx-64 h-full z-100'}>
                 <div className={'flex justify-center items-center mx-12'}>
                     <Link to="/">
-                        <img src={`/assets/Logo.png`} alt={'logo'} className={"size-28"}/>
+                        <img src={`/assets/Logo.png`} alt={'logo'} className={"w-auto h-auto"}/>
                     </Link>
                 </div>
                 <div className={'w-full flex justify-between items-center'}>
-                    <List className={'flex flex-row justify-center items-center gap-1 text-white text-[0.8rem] font-bold'}>
+                    <List className={'flex flex-row justify-center items-center gap-1 text-white xl:text-[0.8rem] lg:text-[0.6rem] md:text-[0.6rem] font-bold'}>
                         <List.Item className={'hover:bg-emerald-400 '}>
                             <Link to={'/'} className={'text-white hover:text-red-500'}>HOME</Link>
                         </List.Item>
