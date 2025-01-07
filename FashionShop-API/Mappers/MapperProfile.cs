@@ -20,5 +20,16 @@ public class MapperProfile : Profile
             .ReverseMap();
         CreateMap<Contact, RequestContactDto>()
             .ReverseMap();
+        CreateMap<Favorite, ResponseFavoritesDto>()
+            .IncludeMembers(item => item.Product)
+           .ForMember(item => item.CategoryName, opt => opt.MapFrom(src => src.Product.Category.CategoryName))
+            .ForMember(item => item.AddressStore, opt => opt.MapFrom(src => src.Product.Store.Address))
+           .ReverseMap();
+        CreateMap<Product, ResponseFavoritesDto>()
+           .ReverseMap();
+        CreateMap<Category, ResponseFavoritesDto>()
+           .ReverseMap();
+        CreateMap<Store, ResponseFavoritesDto>()
+           .ReverseMap();
     }
 }
