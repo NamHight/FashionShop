@@ -4,11 +4,11 @@ import AutoBanner from '../../components/AutoBanner/AutoBanner';
 import CardCategory from '../../components/Card/CardCategory';
 const Home = () => {
     return (
-    <body> 
+    <div>
     <AutoBanner />
     <CardCategory/>
     <ProductList />
-    </body>
+    </div>
     );
 };
 export default Home;

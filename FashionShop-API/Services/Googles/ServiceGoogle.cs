@@ -46,7 +46,6 @@ public class ServiceGoogle : IServiceGoogle
                 var customerDto = _mapper.Map<ResponseCustomerDto>(customer);
                 return customerDto;
             }
-
             var customerCreate = new Customer
             {
                 Email = payload.Email,

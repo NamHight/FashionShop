@@ -19,7 +19,7 @@ const AutoBanner = () => {
   }, [images.length]);
 
   return (
-    <div className="banner-container">
+    <div className="banner-container mt-2">
       <img
         src={images[currentIndex]}
         alt={`Advertisement ${currentIndex + 1}`}
