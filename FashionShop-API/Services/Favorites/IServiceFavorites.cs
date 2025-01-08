@@ -1,5 +1,6 @@
 ﻿using FashionShop_API.Dto.ResponseDto;
 using FashionShop_API.Models;
+using NuGet.Protocol.Core.Types;
 
 namespace FashionShop_API.Services.Favorites
 {

@@ -20,14 +20,10 @@ public class MapperProfile : Profile
             .ReverseMap();
         CreateMap<Favorite, ResponseFavoritesDto>()
             .IncludeMembers(item => item.Product)
-           .ForMember(item => item.CategoryName, opt => opt.MapFrom(src => src.Product.Category.CategoryName))
-            .ForMember(item => item.AddressStore, opt => opt.MapFrom(src => src.Product.Store.Address))
            .ReverseMap();
         CreateMap<Product, ResponseFavoritesDto>()
-           .ReverseMap();
+            .IncludeMembers(item => item.Category).ReverseMap();
         CreateMap<Category, ResponseFavoritesDto>()
-           .ReverseMap();
-        CreateMap<Store, ResponseFavoritesDto>()
            .ReverseMap();
 		CreateMap<Review, RequestReviewDto>()
 			.ReverseMap();
@@ -37,5 +33,16 @@ public class MapperProfile : Profile
             .ReverseMap();
         CreateMap<Article, ResponseArticleDto>()
             .ReverseMap();
+
+        CreateMap<Order, ResponseOrdersDto>()
+            .IncludeMembers(item => item.Customer)
+            .ReverseMap();
+        CreateMap<Ordersdetail, ResponseOrderDetailsDto>()
+            .ReverseMap();
+        CreateMap<Product, ResponseOrdersDto>()
+            .IncludeMembers(item => item.Category).ReverseMap();
+        CreateMap<Customer, ResponseOrdersDto>()
+            .ReverseMap();
+        CreateMap<Category, ResponseOrdersDto>().ReverseMap();
     }
 }
