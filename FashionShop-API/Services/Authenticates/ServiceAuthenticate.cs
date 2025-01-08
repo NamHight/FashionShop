@@ -144,7 +144,6 @@ public class ServiceAuthenticate : IServiceAuthenticate
         var accessToken = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
         return new ResponseTokenDto(accessToken,refreshToken);
     }
-
     public async Task<ResponseTokenDto> CreateRefreshTokenAsync(ResponseCustomerDto customer,string accessToken, bool populateExp, bool trackChanges)
     {
         var refreshToken = GenerateRefreshToken();
@@ -159,7 +158,6 @@ public class ServiceAuthenticate : IServiceAuthenticate
         {
             foundCustomer.RefreshTokenExpirytime = DateTime.UtcNow.AddDays(7);
         }
-        _repositoryManager.Customer.UpdateCustomer(foundCustomer);
         var check = await _repositoryManager.SaveChangesAsync();
         if (!check)
         {

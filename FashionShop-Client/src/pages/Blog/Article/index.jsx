@@ -23,7 +23,7 @@ const BlogArticle = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {
             !isLoading ? (
-                BlogArticleQuery.item1.map((item, key) => {
+                BlogArticleQuery.item1?.map((item, key) => {
                     return (
                       <div
                         className="col-span-1 bg-white border rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-4"

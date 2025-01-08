@@ -45,4 +45,9 @@ public class MapperProfile : Profile
             .ReverseMap();
         CreateMap<Category, ResponseOrdersDto>().ReverseMap();
     }
+		CreateMap<Favorite, RequestFarvoriteDto>()
+			.ReverseMap();
+        CreateMap<Product,ResponseProductDto>()
+            .ReverseMap();
+	}
 }

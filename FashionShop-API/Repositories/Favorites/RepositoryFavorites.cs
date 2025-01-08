@@ -18,7 +18,33 @@ namespace FashionShop_API.Repositories.Favorites
             return ListFavorites;
         }
 
+		public async Task AddAsync(Favorite entity, bool trackChanges)
+		{
+			if (!trackChanges)
+			{
+				// Nếu không cần theo dõi thay đổi, tắt tracking
+				_context.Entry(entity).State = EntityState.Added;
+			}
+			else
+			{
+				// Nếu cần theo dõi thay đổi, mặc định Entity Framework sẽ tự động track
+				await _context.Set<Favorite>().AddAsync(entity);
+			}
 
+			// Lưu thay đổi vào cơ sở dữ liệu
+			await _context.SaveChangesAsync();
+		}
+		public async Task DeleteAsync(long id)
+		{
+			var favorite = await _context.Set<Favorite>().FindAsync(id);
 
-    }
+			if (favorite == null)
+			{
+				throw new KeyNotFoundException("Favorite not found.");
+			}
+
+			_context.Set<Favorite>().Remove(favorite);
+			await _context.SaveChangesAsync(); // Lưu các thay đổi vào DB
+		}
+	}
 }
