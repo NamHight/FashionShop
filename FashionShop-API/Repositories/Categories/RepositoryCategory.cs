@@ -1,24 +1,35 @@
-﻿using FashionShop_API.Context;
+﻿using System.Collections.Immutable;
+using AutoMapper;
+using FashionShop_API.Context;
+using FashionShop_API.Dto;
 using FashionShop_API.Models;
 using FashionShop_API.Repositories.Shared;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace FashionShop_API.Repositories.Categories;
 
 public class RepositoryCategory : RepositoryBase<Category> , IRepositoryCategory
 {
-    public RepositoryCategory(MyDbContext context) : base(context)
+    private readonly IMapper _mapper;
+    public RepositoryCategory(MyDbContext context, IMapper mapper) : base(context)
     {
+        _mapper = mapper;
     }
-
-
-    public async Task<IEnumerable<Category>> GetAllCategoriesAsync(bool trackChanges)
+    public async Task<List<ResponseCategoryChildrenDto>> GetAllCategoriesAsync(bool trackChanges)
     {
-        var categories = await FindAll(trackChanges).ToListAsync();
+        var categories = await FindAll(trackChanges)
+            .Where(c => c.ParentId == null)
+            .GroupJoin(_context.Categories, parent => parent.CategoryId, child => child.ParentId, (parent, children) =>
+                 new ResponseCategoryChildrenDto
+                {
+                    Name = parent.CategoryName,
+                    Categories = _mapper.Map<IEnumerable<ResponseCategoryDto>>(children)
+                }
+            ).ToListAsync();
         return categories;
     }
-
-
+    
     public async Task<Category?> GetCategoryByIdAsync(long id, bool trackChanges)
     {
         var category = await FindByCondition(c => c.CategoryId.Equals(id),trackChanges).FirstOrDefaultAsync();

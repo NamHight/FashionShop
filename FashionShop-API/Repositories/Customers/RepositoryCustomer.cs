@@ -33,4 +33,9 @@ public class RepositoryCustomer : RepositoryBase<Customer>, IRepositoryCustomer
         return customer;
     }
     public void UpdateCustomer(Customer customer) => Update(customer);
+    public async Task<Customer?> GetCustomerByGoogleIdAsync(string id, bool trackChanges)
+    {
+        var customer = await FindByCondition(c => c.GoogleId.Equals(id), trackChanges).FirstOrDefaultAsync();
+        return customer;
+    }
 }

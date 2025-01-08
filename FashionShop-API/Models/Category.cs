@@ -7,8 +7,9 @@ using Microsoft.EntityFrameworkCore;
 namespace FashionShop_API.Models;
 
 [Table("categories")]
-[Index("CategoryName", Name = "category_name", IsUnique = true)]
-[Index("Slug", Name = "slug", IsUnique = true)]
+[Index("CategoryName", Name = "category_name")]
+[Index("ParentId", Name = "fk_category_id")]
+[Index("Slug", Name = "slug")]
 public partial class Category
 {
     [Key]
@@ -21,6 +22,9 @@ public partial class Category
     [Column("slug")]
     public string Slug { get; set; } = null!;
 
+    [Column("parentId")]
+    public long? ParentId { get; set; }
+
     [Column("description", TypeName = "text")]
     public string? Description { get; set; }
 
@@ -32,6 +36,16 @@ public partial class Category
 
     [Column("status", TypeName = "enum('active','inactive')")]
     public string? Status { get; set; }
+
+    [InverseProperty("Category")]
+    public virtual ICollection<Article> Articles { get; set; } = new List<Article>();
+
+    [InverseProperty("Parent")]
+    public virtual ICollection<Category> InverseParent { get; set; } = new List<Category>();
+
+    [ForeignKey("ParentId")]
+    [InverseProperty("InverseParent")]
+    public virtual Category? Parent { get; set; }
 
     [InverseProperty("Category")]
     public virtual ICollection<Product> Products { get; set; } = new List<Product>();

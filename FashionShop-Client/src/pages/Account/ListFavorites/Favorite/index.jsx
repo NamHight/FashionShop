@@ -15,7 +15,7 @@ function Favorite({ item }) {
                   : "/assets/Logo.png"
               }
               alt={item.banner}
-              className="justify-items-center h-52 w-full p-2.5 m-0"
+              className="justify-items-center object-cover h-52 w-full p-2.5 m-0"
             />
             <Card.Body>
               <div className="mb-2 flex items-center justify-between">
@@ -29,9 +29,6 @@ function Favorite({ item }) {
               <div className="flex items-center justify-between">
                 <Typography type="small" className="text-slate-500">
                   Loại: {item.categoryName}
-                </Typography>
-                <Typography type="small" className="flex items-center text-sky-600">
-                  <FaLocationDot /> {item.addressStore}
                 </Typography>
               </div>
             </Card.Footer>

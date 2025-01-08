@@ -1,4 +1,26 @@
+import { useQuery } from '@tanstack/react-query';
+import { useAuth } from './../../../../context/AuthContext';
+import { getOrdersByIdAndStatus } from './../../../../services/api/OrdersService';
+import { Spinner } from '@material-tailwind/react';
+import NotFound from '../../../../components/NotFound/NotFound';
+
 function OrdersPending() {
+  const {user} = useAuth();
+  const {data, isLoanding, isError} = useQuery({
+    queryKey:['orderstatuspending'],
+    queryFn: async () => {
+      var data = await getOrdersByIdAndStatus(user.customerId, 'pending');
+      console.log("data pending", data)
+      return data;
+    }
+  })
+  
+  // const orderPending = () => {
+  //   return(isLoanding? <Spinner/> : isError ? <NotFound/> : data.length > 0 ? <div>
+  //     {data.map(item)}
+  //   </div>);
+  // }
+
   return (
     <>
       <div className="bg-slate-100 rounded">

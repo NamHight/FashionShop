@@ -10,6 +10,11 @@ builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.ConfigureEmailService(builder.Configuration);
 builder.Services.ConfigureManagerRepository();
 builder.Services.ConfigureManagerService();
+builder.Services.AddSession(option =>
+{
+    option.Cookie.HttpOnly = true; 
+    option.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+});
 builder.Services.ConfigureAuthenticate();
 builder.Services.AddAuthorization();
 builder.Logging.ClearProviders();

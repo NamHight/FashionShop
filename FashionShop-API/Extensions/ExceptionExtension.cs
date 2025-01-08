@@ -26,6 +26,7 @@ public static class ExceptionExtension
                         UnauthorizedException => StatusCodes.Status401Unauthorized,
                         BadRequestException => StatusCodes.Status400BadRequest,
                         ManyRequestException => StatusCodes.Status429TooManyRequests,
+                        ForbiddenException => StatusCodes.Status403Forbidden,
                         _ => StatusCodes.Status500InternalServerError
                     };
                     logger.LogError($"Something went wrong: {contextFeature.Error}");

@@ -5,4 +5,6 @@ namespace FashionShop_API.Services.Customers;
 public interface IServiceCustomer
 {
     Task<ResponseCustomerDto> GetCustomerByIdAsync(long? id, bool trackChanges);
+    
+    Task<ResponseCustomerDto?> GetCustomerByEmailAsync(string email, bool trackChanges);
 }

@@ -7,7 +7,7 @@ using System.Text;
 using FashionShop_API.Dto;
 using FashionShop_API.Dto.RequestDto;
 using FashionShop_API.Options;
-using FashionShop_API.Repositories.RepositoryManager;
+using FashionShop_API.Repositories;
 using FashionShop_API.Services.ServiceLogger;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -52,7 +52,7 @@ public class ServiceEmail : IServiceEmail
         {
             return null;
         }
-        var token = _generateToken(customer.CustomerId,DateTime.Now.AddMinutes(5));
+        var token = _generateToken(customer.CustomerId,DateTime.UtcNow.AddMinutes(5));
         var result = new RequestCustomerToken(customer, token);
         return result;
     }

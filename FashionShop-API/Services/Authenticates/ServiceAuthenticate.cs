@@ -7,7 +7,7 @@ using FashionShop_API.Dto;
 using FashionShop_API.Dto.RequestDto;
 using FashionShop_API.Exceptions;
 using FashionShop_API.Models;
-using FashionShop_API.Repositories.RepositoryManager;
+using FashionShop_API.Repositories;
 using FashionShop_API.Services.ServiceLogger;
 using Microsoft.IdentityModel.Tokens;
 
@@ -35,8 +35,22 @@ public class ServiceAuthenticate : IServiceAuthenticate
             _loggerManager.LogInfo("Service Authenticate: " + nameof(LoginAsync) + " Fail");
             throw new CustomerNotFoundException(loginDto.Email);
         }
-
-        if (foundCustomer.LockoutEnabled is true && foundCustomer.LockoutEnd > DateTime.Now)
+        if (foundCustomer.LockoutEnd <= DateTime.UtcNow)
+        {
+            foundCustomer.LockoutEnd = null;
+            foundCustomer.LockoutEnabled = false;
+            foundCustomer.AccessFailedCount = 0;
+            _repositoryManager.Customer.UpdateCustomer(foundCustomer);
+            await _repositoryManager.SaveChanges();
+            var resultAfterLock = _mapper.Map<ResponseCustomerDto>(foundCustomer);
+            return resultAfterLock;
+        }
+        if (foundCustomer.LockoutEnabled is true)
+        {
+            _loggerManager.LogInfo("Service Authenticate: " + nameof(LoginAsync) + " Fail");
+            throw new LoginLockedException("Your account has been locked. Please try again later.");
+        }
+        if ( foundCustomer.LockoutEnd > DateTime.UtcNow)
         {
             _loggerManager.LogInfo("Service Authenticate: " + nameof(LoginAsync) + " Fail");
             throw new LoginManyTimeException("Too many failed login attempts . Please try again later 5 minutes.");
@@ -48,7 +62,7 @@ public class ServiceAuthenticate : IServiceAuthenticate
             if (foundCustomer.AccessFailedCount == 5)
             {
                 foundCustomer.LockoutEnabled = true;
-                foundCustomer.LockoutEnd = DateTime.Now.AddMinutes(5);
+                foundCustomer.LockoutEnd = DateTime.UtcNow.AddMinutes(5);
                 _repositoryManager.Customer.UpdateCustomer(foundCustomer);
                 await _repositoryManager.SaveChanges();
                 throw new LoginManyTimeException("Too many failed login attempts . Please try again later 5 minutes.");
@@ -74,7 +88,6 @@ public class ServiceAuthenticate : IServiceAuthenticate
         var result = _mapper.Map<ResponseCustomerDto>(foundCustomer);
         return result;
     }
-
     public async Task RemoveTokenCookie(long id ,HttpContext httpContext,bool trackChanges)
     {
         httpContext.Response.Cookies.Delete("access_token",new CookieOptions
@@ -120,23 +133,46 @@ public class ServiceAuthenticate : IServiceAuthenticate
         {
             throw new CustomerNotFoundException("Customer not exists");
         }
-        foundCustomer.UpdatedAt = DateTime.Now;
+        foundCustomer.UpdatedAt = DateTime.UtcNow;
         foundCustomer.RefreshToken = refreshToken;
         if (populateExp)
         {
-            foundCustomer.RefreshTokenExpirytime = DateTime.Now.AddDays(remember ? 30 : 7);
+            foundCustomer.RefreshTokenExpirytime = DateTime.UtcNow.AddDays(remember ? 30 : 7);
         }
         _repositoryManager.Customer.UpdateCustomer(foundCustomer);
         await _repositoryManager.SaveChanges();
         var accessToken = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
         return new ResponseTokenDto(accessToken,refreshToken);
     }
+
+    public async Task<ResponseTokenDto> CreateRefreshTokenAsync(ResponseCustomerDto customer,string accessToken, bool populateExp, bool trackChanges)
+    {
+        var refreshToken = GenerateRefreshToken();
+        var foundCustomer = await _repositoryManager.Customer.GetCustomerByEmailAsync(customer.Email, trackChanges);
+        if (foundCustomer is null)
+        {
+            throw new CustomerNotFoundException("Customer not exists");
+        }
+        foundCustomer.UpdatedAt = DateTime.UtcNow;
+        foundCustomer.RefreshToken = refreshToken;
+        if (populateExp)
+        {
+            foundCustomer.RefreshTokenExpirytime = DateTime.UtcNow.AddDays(7);
+        }
+        _repositoryManager.Customer.UpdateCustomer(foundCustomer);
+        var check = await _repositoryManager.SaveChangesAsync();
+        if (!check)
+        {
+            throw new Exception("Failed to update refresh token");
+        }
+        return new ResponseTokenDto(accessToken, refreshToken);
+    }
     public async Task<RequestAuthenticateRegisterDto?> RegisterAsync(RequestAuthenticateRegisterDto registerDto)
     {
         var foundCustomer = await _repositoryManager.Customer.GetCustomerByEmailAsync(registerDto.Email, true);
         if (foundCustomer is not null && !foundCustomer.ConfirmEmail)
         {
-            foundCustomer.UpdatedAt = DateTime.Now;
+            foundCustomer.UpdatedAt = DateTime.UtcNow;
             foundCustomer.Password = HashPassword(registerDto.Password);
             foundCustomer.Phone = registerDto.Phone;
             await _repositoryManager.SaveChanges();
@@ -149,7 +185,7 @@ public class ServiceAuthenticate : IServiceAuthenticate
         }
         var customer = _mapper.Map<Customer>(registerDto);
         customer.Password = HashPassword(registerDto.Password);
-        customer.CreatedAt = DateTime.Now;
+        customer.CreatedAt = DateTime.UtcNow;
         await _repositoryManager.Customer.CreateAsync(customer);
         await _repositoryManager.SaveChanges();
         var customerCreated = _mapper.Map<RequestAuthenticateRegisterDto>(customer);
@@ -184,7 +220,7 @@ public class ServiceAuthenticate : IServiceAuthenticate
                     _loggerManager.LogWarn($"Customer with ID {customerId} not found.");
                     return false;
                 }
-                foundCustomer.UpdatedAt = DateTime.Now;
+                foundCustomer.UpdatedAt = DateTime.UtcNow;
                 foundCustomer.ConfirmEmail = true;
                 _repositoryManager.Customer.UpdateCustomer(foundCustomer);
                 await _repositoryManager.SaveChanges();
@@ -209,7 +245,7 @@ public class ServiceAuthenticate : IServiceAuthenticate
         var customer = await _repositoryManager
             .Customer
             .GetCustomerByEmailAsync(tokenPrincipal.Claims[JwtRegisteredClaimNames.Email].ToString()!, false);
-        if (customer is null || customer.RefreshToken != requestTokenDto.RefreshToken || customer.RefreshTokenExpirytime <= DateTime.Now)
+        if (customer is null || customer.RefreshToken != requestTokenDto.RefreshToken || customer.RefreshTokenExpirytime <= DateTime.UtcNow)
         {
             throw new RefreshTokenException(requestTokenDto.Token);
         }
@@ -264,12 +300,11 @@ public class ServiceAuthenticate : IServiceAuthenticate
     private JwtSecurityToken GenerateTokenOptions(SigningCredentials credentials,List<Claim> claims)
     {
         var jwtSettings = _configuration.GetSection("Jwt");
-        Console.WriteLine(DateTime.Now.AddMinutes(Convert.ToDouble(jwtSettings["expires"])));
         var tokenOptions = new JwtSecurityToken(
             claims:claims,
             issuer:jwtSettings["Issuer"],
             audience:jwtSettings["Audience"],
-            expires:DateTime.Now.AddMinutes(Convert.ToDouble(jwtSettings["expires"])),
+            expires:DateTime.UtcNow.AddMinutes(Convert.ToDouble(jwtSettings["expires"])),
             signingCredentials:credentials);
         return tokenOptions;
     }

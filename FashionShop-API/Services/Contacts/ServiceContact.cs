@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using FashionShop_API.Dto.RequestDto;
 using FashionShop_API.Models;
-using FashionShop_API.Repositories.RepositoryManager;
+using FashionShop_API.Repositories;
 using FashionShop_API.Services.ServiceLogger;
 
 namespace FashionShop_API.Services.Contacts

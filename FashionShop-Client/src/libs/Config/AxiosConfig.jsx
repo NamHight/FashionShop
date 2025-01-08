@@ -4,7 +4,7 @@ import {setCookieHandler} from "../Helpers/CookieConfig";
 import {refreshToken, tokenProtection} from "../../services/api/TokenService";
 
 
-export const BASE_URL = "https://localhost:7068/api/";
+export const BASE_URL = "http://localhost:7068/api/";
 
 
 export const authAxios = axios.create({
@@ -14,6 +14,7 @@ export const authAxios = axios.create({
     },
     withCredentials: true,
 });
+
 authAxios.interceptors.request.use(
     async (config) => {
     const result = localStorage.getItem("token");
@@ -30,7 +31,7 @@ authAxios.interceptors.response.use(
     (response) => response,
     async (error) => {
         console.log(error.response);
-        if(error.response && error.response.status === 401){
+        if(error.response && error.response?.status === 401){
             try {
                 const refresh = await refreshToken();
                 if(!refresh.token){
@@ -57,7 +58,6 @@ export const publicAxios = axios.create({
 publicAxios.interceptors.response.use(
     (response) => response,
      (error) => {
-        if(axios.isAxiosError(error)){
-            return Promise.reject(error);
-        }
+        console.error(error.message);
+        return Promise.reject(error);
     });

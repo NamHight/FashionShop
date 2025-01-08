@@ -3,6 +3,7 @@ using System.Text;
 using FashionShop_API.Context;
 using FashionShop_API.Filters;
 using FashionShop_API.Models;
+using FashionShop_API.Repositories;
 using FashionShop_API.Repositories.RepositoryManager;
 using FashionShop_API.Services.Caching;
 using FashionShop_API.Services.Emails;
@@ -11,6 +12,7 @@ using FashionShop_API.Services.ServiceManager;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using StackExchange.Redis;
 
@@ -23,24 +25,41 @@ public static class ServicesExtension
         services.AddDbContext<MyDbContext>(options =>
             options.UseMySql(configuration.GetConnectionString("DefaultConnection"),
                 ServerVersion.AutoDetect(configuration.GetConnectionString("DefaultConnection"))));
-        services.AddStackExchangeRedisCache(options =>
-        {
-            options.Configuration = configuration.GetConnectionString("Redis");
-            options.InstanceName = "CacheRedis_";
-        });
+       
     }
     public static void ConfigureAuthentication(this IServiceCollection services,IConfiguration configuration)
     {
         JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
         JwtSecurityTokenHandler.DefaultOutboundClaimTypeMap.Clear();
         var jwtSetting = configuration.GetSection("Jwt");
+        var googleSetting = configuration.GetSection("Google");
         services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme; 
-
             })
-            .AddJwtBearer(options =>
+            .AddJwtBearer("Google",options =>
+            {
+                options.Authority = "https://accounts.google.com";
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidIssuer = "https://accounts.google.com",
+                    ValidateAudience = true,
+                    ValidAudience = googleSetting["ClientId"],
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true
+                };
+                options.Events = new JwtBearerEvents
+                {
+                    OnMessageReceived = context =>
+                    {
+                        context.Request.Cookies.TryGetValue("access_token", out var accessToken);
+                        if (!string.IsNullOrEmpty(accessToken)) context.Token = accessToken;
+                        return Task.CompletedTask;
+                    } 
+                };
+            }).AddJwtBearer("CustomJWT",options =>
             {
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
@@ -62,20 +81,57 @@ public static class ServicesExtension
                     } 
                 };
             });
-        services.AddAuthorization();
-    }
-
-    public static void ConfigureRedisConnection(this IServiceCollection services,IConfiguration configuration)
-        => services.AddSingleton<IConnectionMultiplexer>(_ =>
+        services.AddAuthorization(options =>
         {
-            var settingConnection = ConfigurationOptions.Parse(configuration.GetConnectionString("Redis")!,true);
-            return ConnectionMultiplexer.Connect(settingConnection);
+            options.AddPolicy("MultiAuth", policy =>
+            {
+                policy.AddAuthenticationSchemes("CustomJWT", "Google");
+                policy.RequireAuthenticatedUser();
+            });
         });
+    }
+    public static void ConfigureRedisConnection(this IServiceCollection services,IConfiguration configuration)
+    {
+        bool isRedisConnected = false;
+        var redisConntionString = configuration.GetConnectionString("Redis");
+        if (string.IsNullOrEmpty(redisConntionString))
+        {
+            services.AddDistributedMemoryCache();
+        }
+        try
+        {
+            services.AddSingleton<IConnectionMultiplexer>(_ =>
+            {
+                var settingConnection =
+                    ConfigurationOptions.Parse(redisConntionString!, true);
+                var connection = ConnectionMultiplexer.Connect(settingConnection);
+                isRedisConnected = connection.IsConnected;
+                return connection;
+            });
+        }
+        catch
+        {
+            isRedisConnected = false;
+        }
+
+        if (isRedisConnected)
+        {
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = configuration.GetConnectionString("Redis");
+                options.InstanceName = "CacheRedis_";
+            });
+        }
+        else
+        {
+            Console.WriteLine("Redis not available, using In-Memory cache");
+            services.AddDistributedMemoryCache();
+        }
+    }
     public static void ConfigureResponseCaching(this IServiceCollection services)
     {
         services.AddResponseCaching();
     }
-
     public static void ConfigureCors(this IServiceCollection services)
         => services.AddCors(options =>
         {
@@ -87,24 +143,20 @@ public static class ServicesExtension
                 .WithOrigins("https://localhost:3000","http://localhost:3000")
                 .WithExposedHeaders("X-Pagination"));
         });
-
     public static void ConfigureRepositoryManager(this IServiceCollection service)
         => service.AddScoped<IRepositoryManager, RepositoryManager>();
-
     public static void ConfigureServiceCaching(this IServiceCollection service)
     {
         service.AddScoped<IServiceCacheRedis, ServiceCacheRedis>();
     }
     public static void ConfigureServiceManager(this IServiceCollection service)
         => service.AddScoped<IServiceManager, ServiceManager>();
-
     public static void ConfigureLoggerManager(this IServiceCollection service)
         => service.AddSingleton<ILoggerManager, LoggerManager>();
     public static void ConfigureFilter(this IServiceCollection service)
     {
-        service.AddScoped<ValidationFilter>();
+        service.AddScoped<ValidationFilter>();  
     }
-
     public static void ConfigureSession(this IServiceCollection services)
     {
         services.AddSession(options =>
