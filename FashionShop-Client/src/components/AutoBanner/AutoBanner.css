@@ -5,11 +5,10 @@
     aspect-ratio: 3 / 1; /* Tỷ lệ khung hình (3:1 với kích thước 600x200 ban đầu) */
     overflow: hidden;
   }
-  
+
   .banner-image {
     width: 100%; /* Đảm bảo ảnh chiếm toàn bộ chiều ngang */
     height: 100%; /* Đảm bảo ảnh chiếm toàn bộ chiều cao */
     object-fit: cover; /* Cắt ảnh để lấp đầy khung mà không bị méo */
     object-position: center; /* Canh giữa ảnh */
   }
-  

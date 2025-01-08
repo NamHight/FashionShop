@@ -13,7 +13,7 @@ const PopoverCart = () => {
                 <span className={'absolute top-0 right-1 bg-red-800 group-hover:text-red-500 rounded-full h-[13px] p-2 w-[13px] flex justify-center items-center text-[12px] text-white'}>{totalCarts}</span>
                 <MdShoppingCart className="h-6 w-6 text-white group-hover:text-red-500" />
             </Tooltip.Trigger>
-            <Tooltip.Content className={'bg-white w-[28rem] max-w-[28rem] text-black h-[41rem] max-h-[41rem] relative'}>
+            <Tooltip.Content className={'bg-white w-[28rem] max-w-[28rem] text-black h-[41rem] max-h-[41rem] absolute z-50'}>
                 <div className={'flex justify-between items-center p-2 border-b-2'}>
                     <div className={'flex justify-center items-center'}>
                         <MdShoppingCart className={'text-xl mr-1'}/>
