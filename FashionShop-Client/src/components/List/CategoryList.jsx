@@ -35,22 +35,18 @@ function CategoriesList() {
                         key={child.categoryId}
                         className="flex items-center rounded-lg border border-gray-200 bg-white px-4 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
                     >
-                        <svg
-                            className="me-2 h-4 w-4 shrink-0 text-gray-900 dark:text-white"
-                            aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                stroke="currentColor"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M12 15v5m-3 0h6M4 11h16M5 15h14a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1Z"
-                            ></path>
+                        <svg 
+                            xmlns="http://www.w3.org/2000/svg" 
+                            fill="none" 
+                            viewBox="0 0 24 24" 
+                            stroke-width="1.5" 
+                            stroke="#1E90FF" 
+                            class="size-4">
+                            <path 
+                                stroke-linecap="round" 
+                                stroke-linejoin="round" 
+                                d="M5.25 8.25h15m-16.5 7.5h15m-1.8-13.5-3.9 19.5m-2.1-19.5-3.9 19.5" 
+                            />
                         </svg>
                         <span className="text-sm font-medium text-gray-900 dark:text-white">
                             {child.categoryName}
@@ -61,7 +57,7 @@ function CategoriesList() {
             <div className="text-center mt-4">
                 <button
                     onClick={() => setShowAll(!showAll)}
-                    className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 dark:bg-blue-700 dark:hover:bg-blue-800"
+                    className="px-4 py-2 bg-emerald-400 text-white rounded hover:bg-blue-600 dark:bg-blue-700 dark:hover:bg-blue-800"
                 >
                     {showAll ? 'Show Less' : 'Show More'}
                 </button>
