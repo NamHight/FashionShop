@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import Loading from '../Loading';
 import { getCategories } from '../../services/api/CategoryService';
 
@@ -9,20 +10,26 @@ function CategoriesList() {
         queryFn: getCategories,
     });
 
+    const [showAll, setShowAll] = useState(false); // State để kiểm soát việc hiển thị toàn bộ
+
     if (isError) {
         return <p>Error loading categories</p>;
     }
 
     if (isLoading) {
-        return (
-            <Loading />
-        );
+        return <Loading />;
     }
 
+    // Gộp tất cả child categories lại
+    const allChildCategories = categories?.flatMap((parent) => parent.categories) || [];
+
+    // Lọc danh sách theo trạng thái "showAll"
+    const displayedCategories = showAll ? allChildCategories : allChildCategories.slice(0, 12);
+
     return (
-        <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {categories?.map((parent) =>
-                parent.categories?.map((child) => (
+        <div>
+            <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                {displayedCategories.map((child) => (
                     <Link
                         to={`/${child.slug}`}
                         key={child.categoryId}
@@ -49,8 +56,16 @@ function CategoriesList() {
                             {child.categoryName}
                         </span>
                     </Link>
-                ))
-            )}
+                ))}
+            </div>
+            <div className="text-center mt-4">
+                <button
+                    onClick={() => setShowAll(!showAll)}
+                    className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 dark:bg-blue-700 dark:hover:bg-blue-800"
+                >
+                    {showAll ? 'Show Less' : 'Show More'}
+                </button>
+            </div>
         </div>
     );
 }

@@ -13,9 +13,9 @@ const AutoBanner = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000); // Chuyển ảnh sau mỗi 5 giây
+    }, 5000);
 
-    return () => clearInterval(interval); // Dọn dẹp interval khi component bị unmount
+    return () => clearInterval(interval); 
   }, [images.length]);
 
   return (
