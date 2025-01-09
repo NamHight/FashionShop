@@ -25,10 +25,10 @@ public class MapperProfile : Profile
             .IncludeMembers(item => item.Category).ReverseMap();
         CreateMap<Category, ResponseFavoritesDto>()
            .ReverseMap();
-		CreateMap<Review, RequestReviewDto>()
-			.ReverseMap();
-		CreateMap<Review, ResponseReviewDto>()
-			.ReverseMap();
+        CreateMap<Review, RequestReviewDto>()
+            .ReverseMap();
+        CreateMap<Review, ResponseReviewDto>()
+            .ReverseMap();
         CreateMap<Promotion, ResponsePromotionDto>()
             .ReverseMap();
         CreateMap<Article, ResponseArticleDto>()
@@ -38,16 +38,21 @@ public class MapperProfile : Profile
             .IncludeMembers(item => item.Customer)
             .ReverseMap();
         CreateMap<Ordersdetail, ResponseOrderDetailsDto>()
+            .ForMember(item => item.ProductName, ots => ots.MapFrom(item => item.Product.ProductName))
+            .ForMember(item => item.Banner, ots => ots.MapFrom(item => item.Product.Banner))
+            .ForMember(item => item.Price, ots => ots.MapFrom(item => item.Product.Price))
+            .ForMember(item => item.CategoryName, ots => ots.MapFrom(item => item.Product.Category.CategoryName))
             .ReverseMap();
-        CreateMap<Product, ResponseOrdersDto>()
-            .IncludeMembers(item => item.Category).ReverseMap();
         CreateMap<Customer, ResponseOrdersDto>()
             .ReverseMap();
-        CreateMap<Category, ResponseOrdersDto>().ReverseMap();
-    }
-		CreateMap<Favorite, RequestFarvoriteDto>()
-			.ReverseMap();
-        CreateMap<Product,ResponseProductDto>()
+        //CreateMap<Product, ResponseOrderDetailsDto>()
+        //   .IncludeMembers(item => item.Category)
+        //    .ReverseMap();
+        //CreateMap<Category, ResponseOrderDetailsDto>().ReverseMap();
+
+        CreateMap<Favorite, RequestFarvoriteDto>()
             .ReverseMap();
-	}
+        CreateMap<Product, ResponseProductDto>()
+            .ReverseMap();
+    }
 }

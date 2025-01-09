@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace FashionShop_API.Controllers
 {
-    [Authorize(Policy = "MultiAuth")]
+    //[Authorize(Policy = "MultiAuth")]
     [Route("api/[controller]")]
     [ApiController]
     public class OrdersController : ControllerBase
@@ -31,7 +31,7 @@ namespace FashionShop_API.Controllers
             {
                 return BadRequest("Id is null");
             }
-            _loggerManager.LogInfo("Controller Customer: " + nameof(GetListOrdersByIdAndStatus) + " Success");
+            _loggerManager.LogInfo("Controller Orders: " + nameof(GetListOrdersByIdAndStatus) + " Success");
             var result = await _serviceManager.Orders.GetListOrdersByIdAndStatus(id, status, false);
             return Ok(result);
         }
