@@ -200,7 +200,7 @@ const ModalLoginRegister = () => {
                             <Tabs.Trigger className="w-full font-semibold text-emerald-400" value="login">
                                 Login
                             </Tabs.Trigger>
-                            <Tabs.Trigger className={`w-full font-semibold text-emerald-400 disabled:${mutationRegister.isPending}`} value="register" >
+                            <Tabs.Trigger className={`w-full font-semibold text-emerald-400 disabled:${mutationLoginGoogle.isPending || mutationRegister.isPending }`} value="register" disabled={mutationRegister.isPending || mutationLoginGoogle.isPending}>
                                 Register
                             </Tabs.Trigger>
                             <Tabs.TriggerIndicator
@@ -236,7 +236,7 @@ const ModalLoginRegister = () => {
                                         <Typography
                                             as="label"
                                             htmlFor="remember"
-                                            className="text-foreground cursor-pointer"
+                                            className={`text-foreground cursor-pointer ${mutationLoginGoogle.isPending ? 'pointer-events-none' : ''}`}
                                         >
                                             Remember Me
                                         </Typography>
