@@ -1,0 +1,11 @@
+/* Sử dụng aspect-ratio cho hình chữ nhật dọc */
+.aspect-rectangle {
+    aspect-ratio: 3 / 4; /* Hình chữ nhật dọc */
+  }
+  
+  .object-cover {
+    object-fit: cover; /* Đảm bảo ảnh lấp đầy khung hình */
+    width: 100%;
+    height: 100%;
+  }
+  
