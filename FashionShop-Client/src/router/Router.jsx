@@ -25,7 +25,7 @@ export const Router = [
     {path: "email-confirmation-error", name: "EmailConfirmError", element: <EmailConfirmError/>},
     {path: "/cart", name: "Cart", element: <Cart/>},
     {path: "/payment", name: "Payment", element: <Payment/>},
-    {path: "/detailProduct", name: "detailProduct", element: <DetailProduct/>}
+    {path: "/:categorySlug/:productSlug", name: "detailProduct", element: <DetailProduct/>}
 ];
 export const routerAccount = [
     {path: "", name: "Profile",element: <Profile/>},
