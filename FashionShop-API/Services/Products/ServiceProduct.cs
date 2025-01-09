@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using FashionShop_API.Dto.QueryParam;
 using FashionShop_API.Dto.ResponseDto;
 using FashionShop_API.Models;
 using FashionShop_API.Repositories;
@@ -52,5 +53,10 @@ namespace FashionShop.Services.Products
                 throw new Exception("An error occurred while retrieving products.", ex);
             }
         }
-    }
+		public async Task<Product> GetProductDetailsAsync(ParamCategoryProductDto param)
+		{
+			// Gọi repository để lấy thông tin chi tiết sản phẩm
+			return await _managerRepository.Product.GetProductDetailsAsync(param.CategorySlug, param.ProductSlug);
+		}
+	}
 }

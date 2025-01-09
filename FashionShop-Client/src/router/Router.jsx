@@ -36,6 +36,28 @@ export const Router = [
   },
   { path: "/cart", name: "Cart", element: <Cart /> },
   { path: "/payment", name: "Payment", element: <Payment /> },
+  {
+    path: "/:categorySlug/:productSlug",
+    name: "detailProduct",
+    element: <DetailProduct />,
+  },
+  {
+    path: "/verify-password",
+    name: "VerifyPassword",
+    element: <VerifyPassword />,
+  },
+  {
+    path: "email-confirmation",
+    name: "EmailConfirm",
+    element: <EmailConfirm />,
+  },
+  {
+    path: "email-confirmation-error",
+    name: "EmailConfirmError",
+    element: <EmailConfirmError />,
+  },
+  { path: "/cart", name: "Cart", element: <Cart /> },
+  { path: "/payment", name: "Payment", element: <Payment /> },
   { path: "/detailProduct", name: "detailProduct", element: <DetailProduct /> },
 ];
 export const routerAccount = [

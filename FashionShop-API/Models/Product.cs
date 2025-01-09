@@ -34,7 +34,10 @@ public partial class Product
     [Precision(10, 2)]
     public decimal? Price { get; set; }
 
-    [Column("category_id")]
+	[Column("quantity")]
+	public long? Quantity { get; set; }
+
+	[Column("category_id")]
     public long? CategoryId { get; set; }
 
     [Column("store_id")]

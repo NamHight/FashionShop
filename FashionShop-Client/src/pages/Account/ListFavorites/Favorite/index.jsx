@@ -1,5 +1,4 @@
-import { FaLocationDot, TbCategoryPlus } from "react-icons/fa6";
-import { Tooltip, IconButton } from "@material-tailwind/react";
+import { Tooltip } from "@material-tailwind/react";
 import { Card, Typography, Button } from "@material-tailwind/react";
 function Favorite({ item }) {
   return (
@@ -15,7 +14,7 @@ function Favorite({ item }) {
                   : "/assets/Logo.png"
               }
               alt={item.banner}
-              className="justify-items-center object-cover h-52 w-96 p-2.5 m-0"
+              className="justify-items-center object-cover h-80 w-96 p-2.5 m-0"
             />
             <Card.Body>
               <div className="mb-2 flex items-center justify-between">
@@ -35,7 +34,11 @@ function Favorite({ item }) {
           </Card>
         </Tooltip.Trigger>
         <Tooltip.Content className="flex flex-col bg-transparent shadow-none dark:bg-transparent">
-          <Button isFullWidth color="warning" className="hover:text-red-500 w-full">
+          <Button
+            isFullWidth
+            color="warning"
+            className="hover:text-red-500 w-full"
+          >
             Add to Cart
           </Button>
         </Tooltip.Content>

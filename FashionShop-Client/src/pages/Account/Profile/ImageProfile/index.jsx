@@ -6,7 +6,7 @@ function ImageProfile() {
           src="https://th.bing.com/th?id=OIP.4akau9Zyzq-ioaE0S_YVrwHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
           alt="ảnh.jpg"
           width={200}
-          className="rounded-full"
+          className="rounded-full "
         />
       </span>
       <input type="file" name="image" id="image" hidden />

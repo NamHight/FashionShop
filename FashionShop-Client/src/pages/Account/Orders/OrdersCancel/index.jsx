@@ -23,7 +23,11 @@ const ListOrder = ({ value }) => {
                 <div className="w-full md:flex">
                   <div>
                     <img
-                      src="https://th.bing.com/th/id/OIP.Ci-Qe31tIUR4AcmesfCB8AHaHa?w=194&h=194&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                      src={
+                        item.banner
+                          ? "/assets/images/products/" + item.banner
+                          : "/assets/Logo.png"
+                      }
                       alt={item.banner}
                       width={150}
                     />
