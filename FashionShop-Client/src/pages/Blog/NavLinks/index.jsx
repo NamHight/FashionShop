@@ -12,12 +12,12 @@ export function NavLinkBlog() {
         return (
           <List.Item
             key={key}
-            className={"flex flex-1 items-center justify-between"}
+            className={"text-indigo-600 flex items-center pb-2 pr-2 border-b-2 uppercase"}
           >
             <Link
               to={item.path}
               className={
-                "text-white hover:text-red-500 bg-neutral-500 px-8 py-4"
+                "font-semibold inline-block p-3"
               }
             >
               {item.name}

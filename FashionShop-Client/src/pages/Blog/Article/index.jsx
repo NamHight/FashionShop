@@ -3,13 +3,14 @@ import { NavLinkBlog } from "../NavLinks/index";
 import { useQuery } from "@tanstack/react-query";
 import { GetPageAndSearchArticle } from "../../../services/api/ArticleService";
 import { Spinner } from "@material-tailwind/react";
+import PaginationList from "../../../components/Pagination/PaginationList";
 
 const BlogArticle = () => {
-  const PARAMPAGE = { page: 1, limt: 9, nameSearch: null, categoryid: null };
+  const PARAMPAGE = { page: 1, limit: 9, nameSearch: null, categoryid: null };
   const [page, setPage] = useState(null);
   const [paramPage, setparamPage] = useState(PARAMPAGE);
   const { data: BlogArticleQuery, isLoading } = useQuery({
-    queryKey: ["blogArticle", paramPage.page, paramPage.limt],
+    queryKey: ["blogArticle", paramPage.page, paramPage.limit],
     queryFn: async () => {
       const result = await GetPageAndSearchArticle({ params: paramPage });
       const paginationData = JSON.parse(result.headers["x-pagination"]);
@@ -45,65 +46,13 @@ const BlogArticle = () => {
       page: number,
     }));
   };
-  const ListPagination = (TotalPages, CurrentPage) => {
-    const pages = [];
-    for (
-      let i = Math.max(1, CurrentPage - 2);
-      i <= Math.min(TotalPages, CurrentPage + 2);
-      i++
-    ) {
-      pages.push(i);
-    }
-    return (
-      <div className="flex items-center justify-end">
-        <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 px-6">
-          <div className="flex flex-1 items-center justify-between">
-            <button
-              onClick={() => {
-                HanndlePreOrNext(false);
-              }}
-              className="inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
-            >
-              Previous
-            </button>
-            {pages &&
-              pages.map((item) => {
-                return (
-                  <button
-                    className={`${
-                      item === CurrentPage ? "bg-blue-500" : ""
-                    } inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-blue-500 focus:z-20 focus:outline-offset-0`}
-                    onClick={() => {
-                      handlePage(item);
-                    }}
-                    key={item}
-                  >
-                    {item}
-                  </button>
-                );
-              })}
-
-            <button
-              onClick={() => {
-                HanndlePreOrNext(true);
-              }}
-              className="inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
-            >
-              Next
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
   return (
     <div className="container mx-auto">
-      <div className="flex flex-1 items-center justify-between">
+      <div className="border-b mb-5 flex text-sm ">
         <NavLinkBlog />
       </div>
       <h4>Danh sách bài viết</h4>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
         {!isLoading ? (
           BlogArticleQuery ? (
             BlogArticleQuery.map((item, key) => {
@@ -114,6 +63,7 @@ const BlogArticle = () => {
                 >
                   <img
                     src={`/assets/images/articles/${item.image}`}
+                    style={{ padding: '20px', width: '450px', height: '300px' }}
                     alt={item.image}
                     className="w-full h-48 object-cover rounded-t-lg mb-4"
                   />
@@ -132,7 +82,7 @@ const BlogArticle = () => {
           <Spinner />
         )}
       </div>
-      {ListPagination(page?.TotalPages, page?.CurrentPage)}
+      <PaginationList TotalPages={page?.TotalPages} CurrentPage={page?.CurrentPage} HanndlePreOrNext={HanndlePreOrNext} handlePage={handlePage} />
     </div>
   );
 };

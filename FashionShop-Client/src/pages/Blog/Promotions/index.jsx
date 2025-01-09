@@ -1,25 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
 import { getAllPromotion } from "../../../services/api/PromotionService";
 import { NavLinkBlog } from "../NavLinks/index";
 import { Spinner } from "@material-tailwind/react";
 import { useQuery } from "@tanstack/react-query";
+import PaginationList from "../../../components/Pagination/PaginationList";
 
 const Blog = () => {
-  const {
-    data: BlogPromotionQuery,
-    isLoading,
-  } = useQuery({
-    queryKey: ["blogPromotion"],
+  const PARAMPAGE = { page: 1, limit: 9 };
+  const [page, setPage] = useState(null);
+  const [paramPage, setparamPage] = useState(PARAMPAGE);
+  const { data: BlogPromotionQuery, isLoading } = useQuery({
+    queryKey: ["blogPromotion",, paramPage.page, paramPage.limit],
     queryFn: async () => {
-      const result = await getAllPromotion();
-      console.log("Dữ liệu get promotions api :", result);
+      const result = await getAllPromotion({params : paramPage});
+      const paginationData = JSON.parse(result.headers["x-pagination"]);
+      setPage(paginationData);
+      console.log("headers promotions: ", JSON.parse(result.headers["x-pagination"]));
+      console.log("set page: ", page);
       return result.data;
     },
   });
-
+  const HanndlePreOrNext = (check) => {
+    console.log("check : ", check);
+    if (check === true) {
+      if (page.HasNextpage === true) {
+        setparamPage((prevParamPage) => ({
+          ...prevParamPage,
+          page: prevParamPage.page + 1,
+        }));
+      }
+    }
+    if (check === false) {
+      if (page.HasPreviouspage === true) {
+        setparamPage((prevParamPage) => ({
+          ...prevParamPage,
+          page: prevParamPage.page - 1,
+        }));
+      }
+    }
+  };
+  const handlePage = (number) => {
+    console.log("i ", number);
+    setparamPage((prevParamPage) => ({
+      ...prevParamPage,
+      page: number,
+    }));
+  };
   return (
     <div className="container mx-auto">
-      <div className="flex flex-1 items-center justify-between">
+      <div className="border-b mb-5 flex text-sm ">
         <NavLinkBlog />
       </div>
       <h4>Danh sách khuyến mãi</h4>
@@ -34,6 +63,7 @@ const Blog = () => {
                 >
                   <img
                     src={`/assets/images/promotions/${item.image}`}
+                    style={{ padding: "20px", width: "450px", height: "300px" }}
                     alt={item.image}
                     className="w-full h-48 object-cover rounded-t-lg mb-4"
                   />
@@ -53,30 +83,7 @@ const Blog = () => {
           <Spinner />
         )}
       </div>
-      <div className="flex items-center justify-end">
-        <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 px-6">
-          <div className="flex flex-1 items-center justify-between">
-            <div className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
-              Previous
-            </div>
-            {/* { totalPage ? (
-              [...Array(totalPage)].map((_, key) => {
-                const currentNumber = pageNumber++;
-                return (
-                <div key={key} className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">{currentNumber}</div>
-                );
-              })
-            ) : (
-              <div>1</div>
-            )
-            } */}
-
-            <div className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
-              Next
-            </div>
-          </div>
-        </div>
-      </div>
+      <PaginationList TotalPages={page?.TotalPages} CurrentPage={page?.CurrentPage} HanndlePreOrNext={HanndlePreOrNext} handlePage={handlePage} />
     </div>
   );
 };
