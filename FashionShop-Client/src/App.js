@@ -1,11 +1,11 @@
-import { Route, Routes, useLocation, useNavigate} from "react-router";
+import { Route, Routes, useLocation, useNavigate } from "react-router";
 import Layout from "./pages/Layout";
 import { Router, routerAccount } from "./router/Router";
 import { useEffect, useState } from "react";
 import { useAuth } from "./context/AuthContext";
 import VerifyPassword from "./pages/VerifyPassword";
 import Account from "./pages/Account";
-import Loading from './components/Loading';
+import Loading from "./components/Loading";
 
 const TitleUpdater = () => {
   const location = useLocation();
@@ -19,7 +19,7 @@ const TitleUpdater = () => {
       "/verify-password": "Fashion - Verify Password",
       "/account": "Fashion - My Profile",
       "/account/orders": "Fashion - Orders",
-      "/account/listfavorite": "Fashion - List Favorite"
+      "/account/listfavorite": "Fashion - List Favorite",
     };
     document.title = titles[location.pathname] || "Fashion";
   }, [location]);
@@ -33,12 +33,12 @@ const AuthRoute = ({ children }) => {
     console.log(user);
     if (!user) {
       navigate("/", { replace: true });
-    }else{
-      setisLoading(false)
+    } else {
+      setisLoading(false);
     }
   }, [user, navigate]);
-  if(isLoading){
-    return  <Loading/>
+  if (isLoading) {
+    return <Loading />;
   }
   return children;
 };
@@ -57,7 +57,15 @@ function App() {
               />
             );
           })}
-          <Route path="account" element={ <AuthRoute> <Account /></AuthRoute>}>
+          <Route
+            path="account"
+            element={
+              <AuthRoute>
+                {" "}
+                <Account />
+              </AuthRoute>
+            }
+          >
             {routerAccount.map((route) => {
               return (
                 <Route

@@ -15,7 +15,7 @@ function Favorite({ item }) {
                   : "/assets/Logo.png"
               }
               alt={item.banner}
-              className="justify-items-center object-cover h-52 w-full p-2.5 m-0"
+              className="justify-items-center object-cover h-52 w-96 p-2.5 m-0"
             />
             <Card.Body>
               <div className="mb-2 flex items-center justify-between">
