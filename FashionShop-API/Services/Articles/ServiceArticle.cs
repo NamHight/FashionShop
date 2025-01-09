@@ -22,10 +22,10 @@ namespace FashionShop_API.Services.Articles
 
         public async Task<(IEnumerable<ResponseArticleDto> data, PageInfo page)> GetPagingAndSearchAsync(ParamArticleDto paramArticleDto)
         {
-            var articles = await _repositoryManager.Article.GetPagingAndSearchAsync(paramArticleDto.Page, paramArticleDto.Limit, paramArticleDto.nameSearch, paramArticleDto.Categoryid, trackChanges: false);
+            var articles = await _repositoryManager.Article.GetPagingAndSearchAsync(paramArticleDto.Page, paramArticleDto.Limit, paramArticleDto.NameSearch, paramArticleDto.Categoryid, trackChanges: false);
             if(articles.Count == 0)
             {
-                throw new ArticleNotFoundException(paramArticleDto.nameSearch);
+                throw new ArticleNotFoundException(paramArticleDto.NameSearch);
             }
             var articlesDto = _mapper.Map<IEnumerable<ResponseArticleDto>>(articles);
             return (data: articlesDto, page: articles.PageInfo);
