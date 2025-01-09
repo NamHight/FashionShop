@@ -42,7 +42,7 @@ namespace FashionShop_API.Controllers
                 return StatusCode(500, "Internal server error.");
             }
         }
-        [HttpGet("/Product/{categoryId}")]
+        [HttpGet("/Products/{categoryId}")]
         public async Task<IActionResult> GetProductsByCategoryId(long categoryId)
         {
             var products = await _serviceManager.Product.FindProductsByCategoryIdAsync(categoryId, false);
