@@ -5,6 +5,11 @@ import { TbArrowBigRightLines } from "react-icons/tb";
 import {logout} from "../../services/api/AuthServices";
 import {toast} from "react-toastify";
 import {googleLogout} from '@react-oauth/google';
+const userSetting = [
+    {path: "/account", name: "My Profile"},
+    {path: "/account/orders", name: "Orders"},
+    {path: "/account/listfavorite", name: "List Favorite"},
+];
 const PopoverUserInfo = ({name,avatar,id}) => {
     let navigate = useNavigate();
     const handleLogout = async () =>{
@@ -31,13 +36,15 @@ const PopoverUserInfo = ({name,avatar,id}) => {
                     <Typography className={'text-[1.2rem] px-2 font-serif font-semibold cursor-default'}>{name}</Typography>
                 </div>
                 <div className={'flex-1 flex flex-col gap-2 my-3 justify-start font-bold text-lg'}>
-                    <Link to={'/account'} className={'group flex items-center px-2 py-2 hover:text-red-500 hover:font-bold hover:opacity-80 hover:bg-gray-400 hover:bg-opacity-30 hover:outline-0'}>
-                        <TbArrowBigRightLines className={'group-hover:inline-block hidden mr-1'} />My Profile
-                    </Link>
-                    <Link to={'/account/orders'} className={'group flex items-center px-2 py-2 hover:text-red-500 hover:font-bold hover:opacity-80 hover:bg-gray-400 hover:bg-opacity-30'}>
-                        <TbArrowBigRightLines className={'group-hover:inline-block hidden mr-1'} />
-                        Orders
-                    </Link>
+                    {
+                        userSetting.length > 0 && userSetting.map((item,index) => {
+                            return (
+                                <Link key={index} to={item.path} className={'group flex items-center px-2 py-2 hover:text-red-500 hover:font-bold hover:opacity-80 hover:bg-gray-400 hover:bg-opacity-30 hover:outline-0'}>
+                                    <TbArrowBigRightLines className={'group-hover:inline-block hidden mr-1'} />{item.name}
+                                </Link>
+                            )
+                        })
+                    }
                 </div>
                 <Button className={'text-center font-bold text-lg mx-2 bg-emerald-400 border-none'} onClick={handleLogout}>
                     Log out

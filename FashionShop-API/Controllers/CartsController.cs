@@ -92,6 +92,15 @@ namespace FashionShop_API.Controllers
             return Ok();
         }
 
+
+        [HttpDelete("removeAllCarts")]
+        public IActionResult RemoveAllCart()
+        {
+            List<Cart> newCart = new List<Cart>(); 
+            HttpContext.Session.Set(cartKey, newCart); // cài lại cart
+            return Ok(new {message = "Đã xóa thành công"});
+        }
+
         [HttpPost("updateCart")]
         public async Task<IActionResult> UpdateCart([FromBody] List< RequestCartDto> requestCart )
         {

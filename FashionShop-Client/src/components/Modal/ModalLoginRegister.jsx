@@ -169,16 +169,19 @@ const ModalLoginRegister = () => {
                         <TbArrowWaveRightDown/> Fashion Shop <TbArrowWaveLeftDown/>
                     </Typography>
                     <div className={`flex justify-center items-center my-3 w-full`}>
-                        <GoogleLogin size={"large"} ux_mode={"popup"}
-                                     type={"standard"}
-                                     width={200000}
-                                     onSuccess={async (response) => {
-                                         await mutationLoginGoogle.mutateAsync(response?.credential);
-                                     }}
-                                     onError={(error) => {
-                                         console.log(error)
-                                         setLoginError("errorGoogleLogin", {type: "custom", message: "Something went wrong"});
-                                     }}/>
+                        {
+                            mutationLogin.isPending ? <Spinner/> :  <GoogleLogin size={"large"} ux_mode={"popup"}
+                                                                                 type={"standard"}
+                                                                                 width={200000}
+                                                                                 onSuccess={async (response) => {
+                                                                                     await mutationLoginGoogle.mutateAsync(response?.credential);
+                                                                                 }}
+                                                                                 onError={(error) => {
+                                                                                     console.log(error)
+                                                                                     setLoginError("errorGoogleLogin", {type: "custom", message: "Something went wrong"});
+                                                                                 }}/>
+                        }
+
                     </div>
                     <div className={'flex justify-center w-full max-w-full'}>
                         {
@@ -197,7 +200,7 @@ const ModalLoginRegister = () => {
                             <Tabs.Trigger className="w-full font-semibold text-emerald-400" value="login">
                                 Login
                             </Tabs.Trigger>
-                            <Tabs.Trigger className="w-full font-semibold text-emerald-400" value="register">
+                            <Tabs.Trigger className={`w-full font-semibold text-emerald-400 disabled:${mutationRegister.isPending}`} value="register" >
                                 Register
                             </Tabs.Trigger>
                             <Tabs.TriggerIndicator
