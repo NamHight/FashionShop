@@ -45,7 +45,7 @@ const Contact = () => {
     resolver: zodResolver(ContactValidate),
   });
 
-  async function formActionLogin(data) {
+  async function formActionContact(data) {
     const parseData = await ContactValidate.safeParseAsync(data);
     if (parseData.error) {
       console.error("Validation Error: ", parseData.error);
@@ -70,7 +70,7 @@ const Contact = () => {
             </div>
           )}
           <h2 className="text-gray-800 text-3xl font-bold">Liên hệ</h2>
-          <form method="post" onSubmit={handleContact(formActionLogin)}>
+          <form method="post" onSubmit={handleContact(formActionContact)}>
             <div className="space-y-4 mt-8">
               <input
                 type="text"

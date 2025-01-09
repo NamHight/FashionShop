@@ -10,7 +10,7 @@ const Blog = () => {
   const [page, setPage] = useState(null);
   const [paramPage, setparamPage] = useState(PARAMPAGE);
   const { data: BlogPromotionQuery, isLoading } = useQuery({
-    queryKey: ["blogPromotion",, paramPage.page, paramPage.limit],
+    queryKey: ["blogPromotion", paramPage.page, paramPage.limit],
     queryFn: async () => {
       const result = await getAllPromotion({params : paramPage});
       const paginationData = JSON.parse(result.headers["x-pagination"]);
