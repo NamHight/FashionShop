@@ -1,16 +1,14 @@
 .banner-container {
-    position: relative;
     width: 100%; /* Chiếm toàn bộ chiều ngang của phần tử cha */
     max-width: 100%; /* Đảm bảo không vượt quá kích thước cha */
     height: auto; /* Tự động điều chỉnh chiều cao theo tỷ lệ */
     aspect-ratio: 3 / 1; /* Tỷ lệ khung hình (3:1 với kích thước 600x200 ban đầu) */
     overflow: hidden;
   }
-  
+
   .banner-image {
     width: 100%; /* Đảm bảo ảnh chiếm toàn bộ chiều ngang */
     height: 100%; /* Đảm bảo ảnh chiếm toàn bộ chiều cao */
     object-fit: cover; /* Cắt ảnh để lấp đầy khung mà không bị méo */
     object-position: center; /* Canh giữa ảnh */
   }
-  

@@ -34,7 +34,7 @@ const Layout = () => {
         };
     }, []);
     return (
-        <div ref={layoutRef} className={'h-screen w-screen max-w-full max-h-full overflow-y-auto flex flex-col min-h-full'}>
+        <div ref={layoutRef} className={'font-[Poppins] h-full w-screen max-w-full max-h-full flex flex-col overflow-visible'}>
             <ToastContainer position="top-right"
                             autoClose={3000}
                             hideProgressBar={false}
@@ -46,13 +46,13 @@ const Layout = () => {
                             pauseOnHover
                             theme="light"
                             transition={Bounce}/>
-            <div className={'sticky top-0 max-w-full w-screen bg-emerald-400 h-[5.5rem]'}>
+            <div className={'sticky top-0 max-w-full w-screen bg-emerald-400'}>
                 <Header/>
             </div>
-            <div className={'flex-1'}>
+            <div className={'flex-1 container flex justify-center items-center mx-auto'}>
                 <Outlet/>
             </div>
-            <div className={' fixed bottom-0 right-1 grid grid-rows-2 gap-1 justify-end mr-5'}>
+            <div className={'fixed bottom-0 right-1 grid grid-rows-2 gap-1 justify-end mr-5'}>
                 <ModalChat/>
                 {
                     isInVisible && (

@@ -87,7 +87,7 @@ const Footer = () => {
     });
     return (
         <footer className="w-full mt-3 bg-emerald-400 text-white max-w-full">
-            <div className="mx-72 pt-6">
+            <div className="container mx-auto pt-6">
                 <div className="grid grid-cols-4 justify-between gap-x-6 gap-y-4">
                     <div className={"flex justify-center items-center"}>
                         <Link to={'/'} className="">
