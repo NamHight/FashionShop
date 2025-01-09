@@ -35,7 +35,7 @@ public partial class Article
     public string? Description { get; set; }
 
     [Column("create_at", TypeName = "timestamp")]
-    public DateTime? CreateAt { get; set; }
+    public DateTime? CreatedAt { get; set; }
 
     [Column("status")]
     public int? Status { get; set; }
