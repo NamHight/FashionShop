@@ -164,9 +164,7 @@ const Contact = () => {
                   data-original="#000000"
                 />
               </svg>
-              <a href="#"  className="text-sm ml-3">
-                <strong>fashionShop@gmail.com</strong>
-              </a>
+              <strong>fashionShop@gmail.com</strong>
             </li>
             <li className="flex items-center text-blue-600">
               <svg
@@ -181,10 +179,7 @@ const Contact = () => {
                   data-original="#000000"
                 ></path>
               </svg>
-              <a href="#" className="text-sm ml-3">
-                <strong>+158 996 888</strong>
-                {/* 0979456148 */}
-              </a>
+              <strong>0979456148</strong>
             </li>
           </ul>
         </div>

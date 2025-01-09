@@ -8,7 +8,7 @@ import Profile from "../pages/Account/Profile";
 import ListFavorites from './../pages/Account/ListFavorites/index';
 import Cart from "../pages/Cart/Inndex";
 import About from './../pages/About/Index';
-import Blog from "../pages/Blog/index";
+import Blog from "../pages/Blog/Promotions/index";
 import BlogArticle from "../pages/Blog/Article/index";
 import DetailProduct from "../pages/Product/detailProduct";
 
