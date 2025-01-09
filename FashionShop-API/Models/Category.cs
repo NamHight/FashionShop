@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace FashionShop_API.Models;
 
@@ -48,5 +49,6 @@ public partial class Category
     public virtual Category? Parent { get; set; }
 
     [InverseProperty("Category")]
-    public virtual ICollection<Product> Products { get; set; } = new List<Product>();
+	[JsonIgnore]
+	public virtual ICollection<Product> Products { get; set; } = new List<Product>();
 }

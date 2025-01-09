@@ -16,7 +16,9 @@ namespace FashionShop_API.Repositories.Products
 
         public async Task<List<Product>> GetAllAsync(bool trackChanges)
         {
-            var products = await FindAll(trackChanges).OrderByDescending(e => e.ProductId).ToListAsync();
+            var products = await FindAll(trackChanges).OrderByDescending(e => e.ProductId)
+				.Include(p => p.Category)
+				.ToListAsync();
             return products;
         }
 
@@ -32,5 +34,13 @@ namespace FashionShop_API.Repositories.Products
 				.ToListAsync();
             return products.Any() ? products : Enumerable.Empty<Product>();
         }
-    }
+
+		public async Task<Product> GetProductDetailsAsync(string categorySlug, string productSlug)
+		{
+			return await _context.Products
+				.Include(p => p.Category)
+				.Where(p => p.Category.Slug == categorySlug && p.Slug == productSlug)
+				.FirstOrDefaultAsync();
+		}
+	}
 }
