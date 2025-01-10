@@ -50,7 +50,6 @@ const ProductList = () => {
               className="bg-white border rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-4"
             >
               <div className="aspect-w-1 aspect-h-1 aspect-rectangle">
-
                 <img
                   src={`${process.env.PUBLIC_URL}/assets/images/products/${product.banner}`}
                   alt={product.productName}
