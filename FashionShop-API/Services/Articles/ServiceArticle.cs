@@ -2,7 +2,10 @@
 using FashionShop_API.Dto;
 using FashionShop_API.Dto.QueryParam;
 using FashionShop_API.Dto.ResponseDto;
+using FashionShop_API.Exceptions;
+using FashionShop_API.Models;
 using FashionShop_API.Repositories;
+using FashionShop_API.Repositories.Shared;
 
 namespace FashionShop_API.Services.Articles
 {
@@ -19,9 +22,13 @@ namespace FashionShop_API.Services.Articles
 
         public async Task<(IEnumerable<ResponseArticleDto> data, PageInfo page)> GetPagingAndSearchAsync(ParamArticleDto paramArticleDto)
         {
-            var articles = await _repositoryManager.Article.GetPagingAndSearchAsync(paramArticleDto.Page, paramArticleDto.Limit, paramArticleDto.nameSearch, paramArticleDto.Categoryid, trackChanges: false);
+            var articles = await _repositoryManager.Article.GetPagingAndSearchAsync(paramArticleDto.Page, paramArticleDto.Limit, paramArticleDto.NameSearch, paramArticleDto.Categoryid, trackChanges: false);
+            if(articles.Count == 0)
+            {
+                throw new ArticleNotFoundException(paramArticleDto.NameSearch);
+            }
             var articlesDto = _mapper.Map<IEnumerable<ResponseArticleDto>>(articles);
-            return (data : articlesDto, page : articles.PageInfo);
+            return (data: articlesDto, page: articles.PageInfo);
         }
     }
 }

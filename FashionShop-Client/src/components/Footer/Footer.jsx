@@ -1,5 +1,5 @@
-import React from 'react';
-import {Button, IconButton, Input, Typography} from "@material-tailwind/react";
+import React, {useEffect, useState} from 'react';
+import {Button, IconButton, Input, Spinner, Typography} from "@material-tailwind/react";
 import {Link} from "react-router";
 import {FiFacebook, FiGithub, FiInstagram} from "react-icons/fi";
 import { MdOutlineLocationOn } from "react-icons/md";
@@ -7,34 +7,9 @@ import { MdLocalPhone } from "react-icons/md";
 import { MdAlternateEmail } from "react-icons/md";
 import {useQuery} from "@tanstack/react-query";
 import {getWebsiteInfo} from "../../services/api/WebsiteInfoService";
+import Loading from "../Loading";
+import {getLocalStorage, setLocalStorage} from "../../libs/Helpers/LocalStorageConfig";
 const YEAR = new Date().getFullYear();
-const List = [
-    {
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab doloremque, " +
-            "earum enim libero necessitatibus nobis non quasi quibusd am quidem recusandae repellat, voluptas voluptate? " +
-            "Culpa distinctio dolorum impedit iure quidem sapiente?",
-        classname: "text-sm",
-        title: "description",
-    },
-    {
-        description: "+0123 456 789",
-        classname: "ml-2",
-        title: "phone",
-        icon: <MdLocalPhone className={'size-5'}/>,
-    },
-    {
-        description: "123 Street, New York, USA",
-        classname: "ml-2",
-        title: "address",
-        icon: <MdOutlineLocationOn className={'size-5'}/>,
-    },
-    {
-        description: " WQ6pN@example.com",
-        classname: "ml-2",
-        title: "email",
-        icon: <MdAlternateEmail className={'size-5'}/>,
-    }
-];
 const ListMenu = [
     {
         name: "Home",
@@ -76,53 +51,126 @@ const ListMenu = [
         path: "/contact",
         classname: "text-sm",
     }
-
 ];
+const keyLocalStorage = "websiteInfo";
 const Footer = () => {
-    const {data: response, isLoading, isError, isPending} = useQuery({
+    const [enableWebsiteInfo, setEnableWebsiteInfo] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [websiteInfo, setWebsiteInfo] = useState({});
+    const {data: responseData, isLoading, isError, isPending} = useQuery({
         queryKey: ['websiteInfo'],
-        queryFn: async () => await getWebsiteInfo(),
+        queryFn: async () =>{
+            let result =  await getWebsiteInfo();
+            if(result.status === 401) return null;
+            if(result.status === 500) return null;
+            if(result.status === 400) return null;
+            const calexpiry = 3* 24 * 60;
+            setLocalStorage(keyLocalStorage,result?.data,calexpiry);
+            setLoading(false);
+            console.log(result);
+            return result?.data;
+        },
+        refetchIntervalInBackground: false,
         refetchOnWindowFocus: false,
-        refetchIntervalInBackground: false
+        enabled:enableWebsiteInfo
     });
+    useEffect(() => {
+        let getWebsiteInfo = getLocalStorage(keyLocalStorage);
+
+        if(getWebsiteInfo){
+            setWebsiteInfo(getWebsiteInfo);
+            setLoading(false);
+        }else{
+            setEnableWebsiteInfo(true);
+        }
+    }, []);
+    if (isError) {
+        return <p>Error loading categories</p>;
+    }
     return (
         <footer className="w-full mt-3 bg-emerald-400 text-white max-w-full">
             <div className="container mx-auto pt-6">
+
                 <div className="grid grid-cols-4 justify-between gap-x-6 gap-y-4">
                     <div className={"flex justify-center items-center"}>
-                        <Link to={'/'} className="">
-                            <img src={response?.logo} alt="logo" className={'size-32'}/>
-                        </Link>
+                        {
+                            isLoading || isLoading || loading ?  <Spinner /> : Object.keys(websiteInfo).length !== 0 ? <>
+                                <Link to={'/'} className="">
+                                    <img src={websiteInfo?.logo} alt="logo" className={'size-32'}/>
+                                </Link>
+                            </> : <>
+
+                                <Link to={'/'} className="">
+                                    <img src={responseData?.logo} alt="logo" className={'size-32'}/>
+                                </Link>
+                            </>
+                        }
+
                     </div>
                     <ul>
-                        <Typography className="relative mb-2 font-bold text-white text-xl">
-                            {response?.name}
-                            <span className="absolute left-0 bottom-0 w-1/3 border-b-2 border-white"></span>
-                        </Typography>
-                        <li className={'flex justify-start items-center mb-2'}>
+                        {
+                            isLoading || isLoading || loading ? <div className={'flex justify-center items-center h-full'}>
+                                <Spinner />
+                            </div> : Object.keys(websiteInfo).length !== 0 ? <>
+                                <Typography className="relative mb-2 font-bold text-white text-xl">
+                                    {websiteInfo?.name}
+                                    <span className="absolute left-0 bottom-0 w-1/3 border-b-2 border-white"></span>
+                                </Typography>
+                                <li className={'flex justify-start items-center mb-2'}>
 
-                            <Typography className={""}>
-                                {response?.description}
-                            </Typography>
-                        </li>
-                        <li className={'flex justify-start items-center mb-2'}>
-                            <MdLocalPhone className={'size-5'}/>
-                            <Typography className={"ml-2"}>
-                                {response?.phone}
-                            </Typography>
-                        </li>
-                        <li className={'flex justify-start items-center mb-2'}>
-                            <MdOutlineLocationOn className={'size-5'}/>
-                            <Typography className={"ml-2"}>
-                                {response?.address}
-                            </Typography>
-                        </li>
-                        <li className={'flex justify-start items-center mb-2'}>
-                            <MdAlternateEmail className={'size-5'}/>
-                            <Typography className={"ml-2"}>
-                                {response?.email}
-                            </Typography>
-                        </li>
+                                    <Typography className={""}>
+                                        {websiteInfo?.description}
+                                    </Typography>
+                                </li>
+                                <li className={'flex justify-start items-center mb-2'}>
+                                    <MdLocalPhone className={'size-5'}/>
+                                    <Typography className={"ml-2"}>
+                                        {websiteInfo?.phone}
+                                    </Typography>
+                                </li>
+                                <li className={'flex justify-start items-center mb-2'}>
+                                    <MdOutlineLocationOn className={'size-5'}/>
+                                    <Typography className={"ml-2"}>
+                                        {websiteInfo?.address}
+                                    </Typography>
+                                </li>
+                                <li className={'flex justify-start items-center mb-2'}>
+                                    <MdAlternateEmail className={'size-5'}/>
+                                    <Typography className={"ml-2"}>
+                                        {websiteInfo?.email}
+                                    </Typography>
+                                </li>
+                            </> : <>
+                                <Typography className="relative mb-2 font-bold text-white text-xl">
+                                    {responseData?.name}
+                                    <span className="absolute left-0 bottom-0 w-1/3 border-b-2 border-white"></span>
+                                </Typography>
+                                <li className={'flex justify-start items-center mb-2'}>
+                                    <Typography className={""}>
+                                        {responseData?.description}
+                                    </Typography>
+                                </li>
+                                <li className={'flex justify-start items-center mb-2'}>
+                                    <MdLocalPhone className={'size-5'}/>
+                                    <Typography className={"ml-2"}>
+                                        {responseData?.phone}
+                                    </Typography>
+                                </li>
+                                <li className={'flex justify-start items-center mb-2'}>
+                                    <MdOutlineLocationOn className={'size-5'}/>
+                                    <Typography className={"ml-2"}>
+                                        {responseData?.address}
+                                    </Typography>
+                                </li>
+                                <li className={'flex justify-start items-center mb-2'}>
+                                    <MdAlternateEmail className={'size-5'}/>
+                                    <Typography className={"ml-2"}>
+                                        {responseData?.email}
+                                    </Typography>
+                                </li>
+                            </>
+                        }
+
                     </ul>
                     <ul>
                         <Typography className="relative mb-2 font-bold text-white text-xl">

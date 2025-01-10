@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
@@ -49,6 +50,6 @@ public partial class Category
     public virtual Category? Parent { get; set; }
 
     [InverseProperty("Category")]
-	[JsonIgnore]
+	[Newtonsoft.Json.JsonIgnore]
 	public virtual ICollection<Product> Products { get; set; } = new List<Product>();
 }
