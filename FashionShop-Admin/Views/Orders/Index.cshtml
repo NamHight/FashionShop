@@ -20,29 +20,6 @@
 		]
 		});
 	</script>
-	@* <script> *@
-	@* 	$(document).on('click','button', function (event) { *@
-	@* 		event.preventDefault(); *@
-	@* 		console.log("đã xoá") *@
-	@* 		var id = event.target.id; *@
-	@* 		console.log('tepm1 ' + id) *@
-	@* 		var url = "@Url.Action("RemoveById", "Orders")"; *@
-	@* 		console.log(url) *@
-	@* 		$.ajax({ *@
-	@* 			method: "delete", *@
-	@* 			url: url, *@
-	@* 			data: { *@
-	@* 				id: id *@
-	@* 			}, *@
-	@* 			success:function (response){ *@
-	@* 				console.log("Successfully") *@
-	@* 			}, *@
-	@* 			error: function(error){ *@
-	@* 				console.log("Error: " + error) *@
-	@* 			} *@
-	@* 		}) *@
-	@* 	}); *@
-	@* </script> *@
 }
 <!-- Body: Body -->
 
@@ -57,7 +34,6 @@
 							<thead>
 								<tr>
 									<th>Order Id</th>
-									<th>Store</th>
 									<th>Customer</th>
 									<th>Employee</th>
 									<th>Order Date</th>
@@ -70,9 +46,8 @@
 							<tbody class="tbody-order">
 								@foreach (var order in Model)
 								{
-									<tr class="hover" id="tr_@order.OrderId">
+									<tr id="tr_@order.OrderId">
 										<td><strong>#@order.OrderId</strong></td>
-										<td>@order.Store.StoreName</td>
 										<td>@order.Customer.CustomerName</td>
 										<td>@order.Employee.EmployeeName</td>
 										<td>@order.OrderDate</td>

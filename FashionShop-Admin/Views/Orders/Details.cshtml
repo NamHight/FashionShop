@@ -171,29 +171,6 @@
 		</div> <!-- Row end  -->
 		<div class="row g-3 mb-3 row-cols-1 row-cols-md-1 row-cols-lg-3 row-cols-xl-3 row-cols-xxl-3 row-deck">
 			<div class="col">
-				<div class="card auth-detailblock">
-					<div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
-						<h6 class="mb-0 fw-bold ">Store Address</h6>
-					</div>
-					<div class="card-body">
-						<div class="row g-3">
-							<div class="col-12">
-								<label class="form-label col-6 col-sm-5">Store Name:</label>
-								<span><strong>@Model.StoreName</strong></span>
-							</div>
-							<div class="col-12">
-								<label class="form-label col-6 col-sm-5">Address:</label>
-								<span><strong>@Model.AddressStore</strong></span>
-							</div>
-							<div class="col-12">
-								<label class="form-label col-6 col-sm-5">Phone Number:</label>
-								<span><strong>@Model.PhoneStore</strong></span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col">
 				<div class="card">
 					<div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
 						<h6 class="mb-0 fw-bold ">Customer Address</h6>
@@ -202,15 +179,15 @@
 						<div class="row g-3">
 							<div class="col-12">
 								<label class="form-label col-6 col-sm-5">Customer Name:</label>
-								<span><strong>@Model.CustomerName</strong></span>
+								<span><strong>@Model.Reciver</strong></span>
 							</div>
 							<div class="col-12">
 								<label class="form-label col-6 col-sm-5">Address:</label>
-								<span><strong>@Model.CustomerAddress</strong></span>
+								<span><strong>@Model.AddressCustomer</strong></span>
 							</div>
 							<div class="col-12">
 								<label class="form-label col-6 col-sm-5">Phone Number:</label>
-								<span><strong>@Model.PhoneCustomer</strong></span>
+								<span><strong>@Model.Phone</strong></span>
 							</div>
 						</div>
 					</div>
@@ -240,6 +217,7 @@
 								<select name="Status" class="text-center form-select" id="@Model.OrderId" onchange="return handleChangeStatus(event)">
 									<option value="pending" selected="@(Model.OrdersStatus == "pending" ? true:false)">pending</option>
 									<option value="completed" selected="@(Model.OrdersStatus == "completed" ? true:false)">completed</option>
+									<option value="canceled" selected="@(Model.OrdersStatus == "canceled" ? true:false)">canceled</option>
 								</select>
 							</div>
 						</div>
@@ -259,8 +237,9 @@
 								<table id="myCartTable" class="table display dataTable table-hover align-middle text-center" style="width:100%">
 									<thead>
 										<tr class="fw-bold">
-											<td class="product">Product Image</td>
-											<td>Product Name</td>
+											<td class="product">Image</td>
+											<td>Product</td>
+											<td>Category</td>
 											<td>Quantity</td>
 											<td>Price</td>
 											<td>Total Price</td>
@@ -274,7 +253,7 @@
 											<tr>
 												<td>
 													@{
-														string banner = string.IsNullOrEmpty(item.Product?.Banner) ? Url.Content("~/uploaded/FashionShop.jpg") : Url.Content("~/uploaded/") + item.Product.Banner;
+														string banner = string.IsNullOrEmpty(item.Product?.Banner) ? Url.Content("~/uploaded/FashionShop.jpg") : Url.Content("~/images/product/" + item.Product.Banner);
 													}
 													<img src="@banner" class="avatar rounded xxl" alt="@item.Product.ProductName">
 												</td>
@@ -282,13 +261,16 @@
 													<h6 class="title">@item.Product.ProductName</h6>
 												</td>
 												<td>
-													@item.Quantity
+													<h6 class="title">@item.Product.Category.CategoryName</h6>
+												</td>
+												<td>
+													<p class="price">@item.Quantity</p>
 												</td>
 												<td>
 													<p class="price">$@item.Product.Price</p>
 												</td>
 												<td>
-													<p class="price">$@item.TotalPrice</p>
+													<p class="price text-danger">$@item.TotalPrice</p>
 												</td>
 											</tr>
 										}
@@ -297,9 +279,9 @@
 							</div>
 							<div class="checkout-coupon-total checkout-coupon-total-2 d-flex flex-wrap justify-content-end m-4">
 								<div class="checkout-total border rounded">
-									<div class="single-total p-3 fw-bold">
-										<p class="m-0">Total Amount:</p>
-										<p class="m-0 text-danger">$@Model.TotalAmount</p>
+									<div class="d-flex align-items-center p-3 fw-bold">
+										<p class="m-0 w-100">Total Amount:</p>
+										<p class="m-0 w-100 text-danger text-center fs-3">$@Model.TotalAmount</p>
 									</div>
 								</div>
 							</div>

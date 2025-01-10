@@ -48,9 +48,6 @@ public partial class Store
     public virtual ICollection<Employee> Employees { get; set; } = new List<Employee>();
 
     [InverseProperty("Store")]
-    public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
-
-    [InverseProperty("Store")]
     public virtual ICollection<Product> Products { get; set; } = new List<Product>();
 
     [InverseProperty("Store")]

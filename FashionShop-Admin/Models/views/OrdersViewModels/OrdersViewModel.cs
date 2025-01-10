@@ -10,14 +10,13 @@ namespace FashionShop.Models.views.OrderDetails
         public decimal? TotalAmount { get; set; }
         public DateTime? OrderDate { get; set; }
         public string? PaymentMethod { get; set; }
-        public string? StoreName { get; set; }
+        public string? Reciver { get; set; }
+        public string? AddressCustomer { get; set; }
         public string? CustomerName { get; set; }
         public string? EmployeeName { get; set; }
         public string? OrdersStatus { get; set; }
-        public string? AddressStore { get; set; }
-        public string? PhoneStore { get; set; }
-        public string? CustomerAddress { get; set; }
         public string? PhoneCustomer { get; set; }
+        public string? Phone { get; set; }
         public List<Ordersdetail>? Details { get; set; }
     }
 }
