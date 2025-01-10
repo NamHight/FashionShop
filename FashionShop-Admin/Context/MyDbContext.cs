@@ -191,8 +191,6 @@ public partial class MyDbContext : DbContext
                 .HasConstraintName("fk_orders_customer");
 
             entity.HasOne(d => d.Employee).WithMany(p => p.Orders).HasConstraintName("fk_orders_employee");
-
-            entity.HasOne(d => d.Store).WithMany(p => p.Orders).HasConstraintName("fk_orders_store");
         });
 
         modelBuilder.Entity<Ordersdetail>(entity =>
