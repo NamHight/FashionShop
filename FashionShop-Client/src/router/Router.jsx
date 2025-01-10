@@ -9,7 +9,7 @@ import ListFavorites from './../pages/Account/ListFavorites/index';
 import Cart from "../pages/Cart/Inndex";
 import Payment from "./../pages/Payment/Index";
 import About from './../pages/About/Index';
-import Blog from "../pages/Blog/index";
+import Blog from "../pages/Blog/Promotions/index";
 import BlogArticle from "../pages/Blog/Article/index";
 import DetailProduct from "../pages/Product/detailProduct";
 import ForgotPassword from "../pages/VerifyPassword/ForgotPassword";
@@ -29,7 +29,7 @@ export const Router = [
     {path: "/reset-password",name: "ResetPassword", element: <ResetPassword/>},
     {path: "/cart", name: "Cart", element: <Cart/>},
     {path: "/payment", name: "Payment", element: <Payment/>},
-    {path: "/detailProduct", name: "detailProduct", element: <DetailProduct/>}
+    {path: "/:categorySlug/:productSlug", name: "detailProduct", element: <DetailProduct/>}
 ];
 export const routerAccount = [
     {path: "", name: "Profile",element: <Profile/>},

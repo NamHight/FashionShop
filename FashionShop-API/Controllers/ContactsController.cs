@@ -32,7 +32,7 @@ namespace FashionShop_API.Controllers
             try
             {
                 var contact = await _serviceManager.Contact.CreateAsync(requestContactDto);
-                return Ok("Gửi liên hệ thành công.");
+                return Ok("Send contact success.");
             }
             catch (Exception ex)
             {

@@ -4,6 +4,7 @@ using FashionShop_API.Exceptions;
 using FashionShop_API.Models;
 using FashionShop_API.Services.ServiceManager;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -31,7 +32,8 @@ namespace FashionShop_API.Controllers
                 throw new PageNotFoundException(paramPromotionDto.Page.ToString());
             }
             var promotions = await _servicesManager.Promotion.GetAllPaginateAsync(paramPromotionDto.Page, paramPromotionDto.Limit);
-            return Ok(promotions);
+            Response.Headers.Append("X-Pagination", JsonSerializer.Serialize(promotions.page));
+            return Ok(promotions.data);
         }
         
         // GET api/<PromotionsController>/5
