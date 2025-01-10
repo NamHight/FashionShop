@@ -1,43 +1,38 @@
 import React from "react";
 import { Tabs } from "@material-tailwind/react";
-import OrdersAll from "./All/index";
 import OrdersCancel from "./OrdersCancel/index";
 import OrdersCompleted from "./OrdersCompleted/index";
 import OrdersPending from "./OrdersPending/index";
+import { useAuth } from "../../../context/AuthContext";
 
 const Orders = () => {
+  const { user } = useAuth();
   return (
-    <>
-      <Tabs defaultValue="All">
+    <div>
+      <Tabs defaultValue="Pending">
         <Tabs.List className="w-full">
-          <Tabs.Trigger className="w-full font-bold text-lg" value="All">
-            All
-          </Tabs.Trigger>
           <Tabs.Trigger className="w-full font-bold text-lg" value="Pending">
             Pending
           </Tabs.Trigger>
           <Tabs.Trigger className="w-full font-bold text-lg" value="Completed">
             Completed
           </Tabs.Trigger>
-          <Tabs.Trigger className="w-full font-bold text-lg" value="Cancel">
-            Cancel
+          <Tabs.Trigger className="w-full font-bold text-lg" value="Canceled">
+            Canceled
           </Tabs.Trigger>
           <Tabs.TriggerIndicator />
         </Tabs.List>
-        <Tabs.Panel value="All">
-          <OrdersAll />
-        </Tabs.Panel>
         <Tabs.Panel value="Pending">
-          <OrdersPending />
+          <OrdersPending userId={user.customerId} />
         </Tabs.Panel>
         <Tabs.Panel value="Completed">
-          <OrdersCompleted />
+          <OrdersCompleted userId={user.customerId} />
         </Tabs.Panel>
-        <Tabs.Panel value="Cancel">
-          <OrdersCancel />
+        <Tabs.Panel value="Canceled">
+          <OrdersCancel userId={user.customerId} />
         </Tabs.Panel>
       </Tabs>
-    </>
+    </div>
   );
 };
 

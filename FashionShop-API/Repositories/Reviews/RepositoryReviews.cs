@@ -18,7 +18,6 @@ namespace FashionShop_API.Repositories.Reviews
 			var reviews = await FindByCondition(r => r.ProductId == productId, trackChanges)
 				.Include(r => r.Product) // Bao gồm thông tin sản phẩm
 				.Include(r => r.Product.Category) // Bao gồm thông tin danh mục của sản phẩm
-				.Include(r => r.Product.Store) // Bao gồm thông tin cửa hàng bán sản phẩm
 				.ToListAsync();
 
 			// Trả về danh sách các review hoặc danh sách rỗng nếu không có đánh giá nào

@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import Loading from '../Loading';
 import { getCategories } from '../../services/api/CategoryService';
+import { Link } from 'react-router';
 
 function CategoriesList() {
     const { data: categories, isLoading, isError } = useQuery({

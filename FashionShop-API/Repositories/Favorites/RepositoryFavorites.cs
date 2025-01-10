@@ -14,8 +14,7 @@ namespace FashionShop_API.Repositories.Favorites
         public async Task<IEnumerable<Favorite>?> GetListFavoritesById(long id, bool trackChanges)
         {
             var ListFavorites = await FindByCondition(item => item.CustomerId.Equals(id), trackChanges)
-                .Include(item => item.Product).Include(item => item.Product.Category)
-                .Include(item => item.Product.Store).ToListAsync();
+                .Include(item => item.Product).Include(item => item.Product.Category).ToListAsync();
             return ListFavorites;
         }
 
