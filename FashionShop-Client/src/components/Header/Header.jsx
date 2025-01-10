@@ -44,8 +44,9 @@ const Header = () => {
            let result = await getCategories();
            if(result.status === 401) return null;
            if(result.status === 500) return null;
+           const calexpiry = 7* 24 * 60;
            setLoading(false);
-           setLocalStorage("categories",result.data,30);
+           setLocalStorage("categories",result.data,calexpiry);
            return result?.data;
         },
         refetchIntervalInBackground: false,
