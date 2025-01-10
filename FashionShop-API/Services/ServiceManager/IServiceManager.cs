@@ -9,6 +9,7 @@ using FashionShop_API.Services.WebsiteInfos;
 using FashionShop_API.Services.Reviews;
 using FashionShop_API.Services.Promotions;
 using FashionShop_API.Services.Articles;
+using FashionShop_API.Services.Orders;
 
 namespace FashionShop_API.Services.ServiceManager;
 
@@ -25,4 +26,6 @@ public interface IServiceManager
      IServiceGoogle Google { get; }
      IServicePromotion Promotion { get; }
      IServiceArticle Article { get; }
+     IServiceOrders Orders{ get; }
+
 }
