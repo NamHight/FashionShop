@@ -51,7 +51,7 @@ const Blog = () => {
       <div className="border-b mb-5 flex text-sm ">
         <NavLinkBlog />
       </div>
-      <h4>Danh sách khuyến mãi</h4>
+      <h4>Promotions List</h4>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {!isLoading ? (
           BlogPromotionQuery ? (
@@ -72,6 +72,12 @@ const Blog = () => {
                   </h3>
                   <p className="text-sm text-gray-500 mb-2">
                     {item.description}
+                  </p>
+                  <p className="text-sm text-gray-500 mb-2">
+                   discount : {item.discountRate}%     
+                  </p>
+                  <p className="text-sm text-gray-500 mb-2">
+                   StartDate : {item.startDate} - EndDate : {item.endDate}    
                   </p>
                 </div>
               );
