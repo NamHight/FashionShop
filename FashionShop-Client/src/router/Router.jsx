@@ -9,9 +9,11 @@ import ListFavorites from './../pages/Account/ListFavorites/index';
 import Cart from "../pages/Cart/Inndex";
 import Payment from "./../pages/Payment/Index";
 import About from './../pages/About/Index';
-import Blog from "../pages/Blog/index";
+import Blog from "../pages/Blog/Promotions/index";
 import BlogArticle from "../pages/Blog/Article/index";
 import DetailProduct from "../pages/Product/detailProduct";
+import ForgotPassword from "../pages/VerifyPassword/ForgotPassword";
+import ResetPassword from "../pages/VerifyPassword/ResetPassword";
 
 
 export const Router = [
@@ -21,8 +23,10 @@ export const Router = [
     {path: "/blog", name: "Blog", element : <Blog />},
     {path: "/blog/article", name: "BlogArticle",element: <BlogArticle />},
     {path: "/verify-password", name: "VerifyPassword", element: <VerifyPassword/>},
-    {path: "email-confirmation", name: "EmailConfirm", element: <EmailConfirm/>},
-    {path: "email-confirmation-error", name: "EmailConfirmError", element: <EmailConfirmError/>},
+    {path: "/email-confirmation", name: "EmailConfirm", element: <EmailConfirm/>},
+    {path: "/forgot-password", name: "ForgotPassword", element: <ForgotPassword/>},
+    {path: "/email-confirmation-error", name: "EmailConfirmError", element: <EmailConfirmError/>},
+    {path: "/reset-password",name: "ResetPassword", element: <ResetPassword/>},
     {path: "/cart", name: "Cart", element: <Cart/>},
     {path: "/payment", name: "Payment", element: <Payment/>},
     {path: "/:categorySlug/:productSlug", name: "detailProduct", element: <DetailProduct/>}

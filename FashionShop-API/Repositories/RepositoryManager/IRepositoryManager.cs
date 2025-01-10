@@ -7,6 +7,7 @@ using FashionShop_API.Repositories.Reviews;
 using FashionShop_API.Repositories.WebsiteInfos;
 using FashionShop_API.Repositories.Promotions;
 using FashionShop_API.Repositories.Articles;
+using FashionShop_API.Repositories.Orders;
 
 
 namespace FashionShop_API.Repositories;
@@ -22,6 +23,7 @@ public interface IRepositoryManager
     IRepositoryPromotion Promotion { get; }
     IRepositoryWebsiteInfo WebsiteInfo { get; }
     IRepositoryArticle Article { get; }
+    IRepositoryOrders Orders { get; }
     Task SaveChanges();
     Task<bool> SaveChangesAsync();
 }

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FashionShop_API.Controllers
 {
-    [Authorize]
+    [Authorize(Policy = "MultiAuth")]
     [Route("api/[controller]")]
     [ApiController]
     public class FavoriteController : ControllerBase
@@ -27,7 +27,7 @@ namespace FashionShop_API.Controllers
             {
                 return BadRequest("Id is null");
             }
-            _loggerManager.LogInfo("Controller Customer: " + nameof(GetListFavoriteByIdAsync) + " Success");
+            _loggerManager.LogInfo("Controller Favorite: " + nameof(GetListFavoriteByIdAsync) + " Success");
             var result = await _serviceManager.Favorite.GetListFavoritesByIdAsync(id, false);
             return Ok(result);
         }

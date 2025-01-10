@@ -1,6 +1,8 @@
 import { Radio, Typography } from "@material-tailwind/react";
 import { IoMale, IoFemale, IoMaleFemale } from "react-icons/io5";
 import { useState } from "react";
+import { FormUpdate } from "./FormUpdate";
+
 function FormProfile({ user }) {
   const [update, setUpdate] = useState(false);
   const handleDate = (birth) => {
@@ -20,7 +22,7 @@ function FormProfile({ user }) {
   };
   return (
     <div className="mx-28">
-      <form action="/account" method="post" className="text-lg text-slate-700">
+      <div className="text-lg text-slate-700">
         <div className="my-5">
           <label
             htmlFor="Name"
@@ -168,33 +170,9 @@ function FormProfile({ user }) {
           {handleDate(user.birth)}
         </div>
         <div className="text-center flex">
-          {!update ? (
-            <button
-              type="button"
-              className="border-2 px-5 py-3 bg-yellow-400 w-full rounded-full"
-              onClick={() => setUpdate(!update)}
-            >
-              Update
-            </button>
-          ) : (
-            <button
-              type="button"
-              className="border-2 w-full px-5 py-3 rounded-full bg-green-500 text-white"
-            >
-              Lưu
-            </button>
-          )}
-          {update && (
-            <button
-              type="button"
-              className="border-2 w-full px-5 bg-red-500 text-white py-3 rounded-full"
-              onClick={() => setUpdate(!update)}
-            >
-              Huỷ
-            </button>
-          )}
+          <FormUpdate />
         </div>
-      </form>
+      </div>
     </div>
   );
 }

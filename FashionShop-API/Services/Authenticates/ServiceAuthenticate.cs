@@ -27,6 +27,42 @@ public class ServiceAuthenticate : IServiceAuthenticate
         _loggerManager = loggerManager;
         _configuration = configuration;
     }
+    public async Task<bool> ForgotPasswordAsync(RequestResetPasswordDto requestResetPasswordDto)
+    {
+        var tokenHandler = new JwtSecurityTokenHandler();
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetSection("Jwt:SecretKey").Value!));
+        var tokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = key,
+            ValidateIssuer = false,
+            ValidateAudience = false,
+            ClockSkew = TimeSpan.Zero,
+            ValidateLifetime = true
+        };
+        var claims = await tokenHandler.ValidateTokenAsync(requestResetPasswordDto.token,tokenValidationParameters);
+        if (claims.IsValid is false)
+        {
+            throw new CustomerNotFoundException("And token does not contain a valid customer ID.");
+        }
+        var customerEmailClaim = claims.
+            Claims[JwtRegisteredClaimNames.Sub].ToString();
+        if (!string.IsNullOrWhiteSpace(customerEmailClaim))
+        {
+            var foundCustomer = await _repositoryManager.Customer.GetCustomerByIdAsync(long.Parse(customerEmailClaim), false);
+            if (foundCustomer is null)
+            {
+                _loggerManager.LogInfo("Service Authenticate: " + nameof(ForgotPasswordAsync) + " Fail");
+                throw new CustomerNotFoundException(customerEmailClaim);
+            }
+            foundCustomer.UpdatedAt = DateTime.UtcNow;
+            foundCustomer.Password = HashPassword(requestResetPasswordDto.password);
+            _repositoryManager.Customer.UpdateCustomer(foundCustomer);
+            await _repositoryManager.SaveChanges();
+            return true;
+        }
+        return false;
+    }
     public async Task<ResponseCustomerDto> LoginAsync(RequestAuthenticateLoginDto loginDto,bool trackChanges)
     {
         var foundCustomer = await _repositoryManager.Customer.GetCustomerByEmailAsync(loginDto.Email, trackChanges);
@@ -206,6 +242,10 @@ public class ServiceAuthenticate : IServiceAuthenticate
                 ValidateLifetime = true
             };
             var claims = await tokenHandler.ValidateTokenAsync(token,tokenValidationParameters);
+            if (claims.Claims is null)
+            {
+                throw new CustomerNotFoundException("And token does not contain a valid customer ID.");
+            }
             var customerIdClaim = claims
                 .Claims[JwtRegisteredClaimNames.Sub].ToString();
             _loggerManager.LogWarn("Token does not contain a valid customer ID." + customerIdClaim);
@@ -234,8 +274,50 @@ public class ServiceAuthenticate : IServiceAuthenticate
         catch (Exception ex)
         {
             _loggerManager.LogError($"Token validation failed: {ex.Message}");
+            return false;
         }
         return false;
+    }
+    public async Task<bool> ValidateTokenPasswordAsync(string token)
+    {
+        var tokenHandler = new JwtSecurityTokenHandler();
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetSection("Jwt:SecretKey").Value!));
+        try
+        {
+            var tokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = key,
+                ValidateIssuer = false,
+                ValidateAudience = false,
+                ClockSkew = TimeSpan.Zero,
+                ValidateLifetime = true
+            };
+            var claims = await tokenHandler.ValidateTokenAsync(token,tokenValidationParameters);
+           
+            var customerIdClaim = claims
+                .Claims[JwtRegisteredClaimNames.Sub].ToString();
+            _loggerManager.LogWarn("Token does not contain a valid customer ID." + customerIdClaim);
+            if (!string.IsNullOrWhiteSpace(customerIdClaim))
+            {
+                var customerId = long.Parse(customerIdClaim);
+                var foundCustomer = await _repositoryManager.Customer.GetCustomerByIdAsync(customerId, false);
+                if (foundCustomer is null)
+                {
+                    _loggerManager.LogWarn($"Customer with ID {customerId} not found.");
+                    return false;
+                }
+                _loggerManager.LogInfo($"Customer with ID {customerId} successfully validated and updated.");
+                return true;
+            }
+
+            return false;
+        }
+        catch (Exception ex)
+        {
+            _loggerManager.LogError($"Token validation failed: {ex.Message}");
+            return false;
+        }
     }
     public async Task<ResponseTokenDto> RefreshToken(RequestTokenDto requestTokenDto)
     {
@@ -328,6 +410,5 @@ public class ServiceAuthenticate : IServiceAuthenticate
         _loggerManager.LogInfo("Service Authenticate: " + nameof(CheckEmailExists) + " Success");
         return await _repositoryManager.Customer.CheckEmailExistsAsync(email, false);
     }
-    
     
 }

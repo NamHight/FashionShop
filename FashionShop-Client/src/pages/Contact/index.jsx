@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import {postAddContact} from "../../services/api/ContactService";
 import { useMutation } from "@tanstack/react-query";
 import { data } from "react-router";
-
-
 const Contact = () => {
   const [message, setMessage] = useState(null);
   const mutationContact = useMutation({

@@ -1,13 +1,19 @@
 import { useQuery } from '@tanstack/react-query';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { useState } from 'react';
 import Loading from '../Loading';
 import { getCategories } from '../../services/api/CategoryService';
 
+
 function CategoriesList() {
     const { data: categories, isLoading, isError } = useQuery({
         queryKey: ['categories'],
-        queryFn: getCategories,
+        queryFn: async () => {
+            var result = await getCategories();
+            return result;
+        },
+        refetchIntervalInBackground: false,
+        refetchOnWindowFocus: false
     });
 
     const [showAll, setShowAll] = useState(false); // State để kiểm soát việc hiển thị toàn bộ
@@ -19,10 +25,8 @@ function CategoriesList() {
     if (isLoading) {
         return <Loading />;
     }
-
     // Gộp tất cả child categories lại
-    const allChildCategories = categories?.flatMap((parent) => parent.categories) || [];
-
+    const allChildCategories = categories.data?.map(parent => parent.categories).flat() || [];
     // Lọc danh sách theo trạng thái "showAll"
     const displayedCategories = showAll ? allChildCategories : allChildCategories.slice(0, 12);
 
@@ -38,13 +42,13 @@ function CategoriesList() {
                         <svg 
                             xmlns="http://www.w3.org/2000/svg" 
                             fill="none" 
-                            viewBox="0 0 24 24" 
-                            stroke-width="1.5" 
+                            viewBox="0 0 24 24"
+                            strokeWidth="1.5"
                             stroke="#1E90FF" 
-                            class="size-4">
+                            className="size-4">
                             <path 
-                                stroke-linecap="round" 
-                                stroke-linejoin="round" 
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
                                 d="M5.25 8.25h15m-16.5 7.5h15m-1.8-13.5-3.9 19.5m-2.1-19.5-3.9 19.5" 
                             />
                         </svg>

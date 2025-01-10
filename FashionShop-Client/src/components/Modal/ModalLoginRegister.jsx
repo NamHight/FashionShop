@@ -50,14 +50,15 @@ const ModalLoginRegister = () => {
             return await login(data, remember);
         },
         onSuccess: data => {
-            if (data?.StatusCode === 404) {
+            console.log(data);
+            if (data?.status === 404) {
                 setLoginError("email", {type: "custom", message: "Email does not exist"});
-            } else if (data?.StatusCode === 401) {
+            } else if (data?.status === 401) {
                 setLoginError("email", {type: "custom", message: "Email or password is incorrect"});
-            } else if (data?.StatusCode === 429) {
-                setLoginError("email", {type: "custom", message: data?.Message});
-            }  else if (data?.StatusCode === 403){
-                setRegisterError("error", {type: "custom", message: data?.Message})
+            } else if (data?.status === 429) {
+                setLoginError("email", {type: "custom", message: data.data?.Message});
+            }  else if (data?.status === 403){
+                setRegisterError("error", {type: "custom", message: data.data?.Message})
             }else if(data.status === 500) {
                 setLoginError("error", {type: "custom", message: "Something went wrong"});
             } else if(data.status === 400) {
@@ -200,7 +201,7 @@ const ModalLoginRegister = () => {
                             <Tabs.Trigger className="w-full font-semibold text-emerald-400" value="login">
                                 Login
                             </Tabs.Trigger>
-                            <Tabs.Trigger className={`w-full font-semibold text-emerald-400 disabled:${mutationRegister.isPending}`} value="register" >
+                            <Tabs.Trigger className={`w-full font-semibold text-emerald-400 disabled:${mutationLoginGoogle.isPending || mutationRegister.isPending }`} value="register" disabled={mutationRegister.isPending || mutationLoginGoogle.isPending}>
                                 Register
                             </Tabs.Trigger>
                             <Tabs.TriggerIndicator
@@ -208,17 +209,18 @@ const ModalLoginRegister = () => {
                         </Tabs.List>
                         <Tabs.Panel value="login">
                             <form onSubmit={handleLogin(formActionLogin)} className="mt-4">
-
                                 <div className="mb-4 mt-2 space-y-1.5">
                                     <TextFormField icon={<MdOutlineEmail className={'w-full h-full'}/>} label={"Email"}
                                                    error={loginErrors.email?.message} {...loginRegister("email")}
-                                                   placeholder={"user@gmail.com"} disabled={mutationLoginGoogle.isPending}/>
+                                                   className={`${mutationLogin.isPending && "animate-pulse cursor-not-allowed"}`}
+                                                   placeholder={"user@gmail.com"} disabled={mutationLogin.isPending && true}/>
                                 </div>
                                 <div className="mb-4 space-y-1.5">
                                     <TextFormField icon={<MdOutlineLock className={'h-full w-full'}/>} type={"password"}
                                                    label={"Password"}
                                                    error={loginErrors.password?.message} {...loginRegister("password")}
-                                                   placeholder={"**********"} disabled={mutationLoginGoogle.isPending}/>
+                                                   className={`${mutationLogin.isPending && "animate-pulse cursor-not-allowed"}`}
+                                                   placeholder={"**********"} disabled={mutationLogin.isPending}/>
                                 </div>
                                 {
                                     loginErrors.error?.message && (
@@ -236,13 +238,13 @@ const ModalLoginRegister = () => {
                                         <Typography
                                             as="label"
                                             htmlFor="remember"
-                                            className="text-foreground cursor-pointer"
+                                            className={`text-foreground cursor-pointer ${mutationLoginGoogle.isPending ? 'pointer-events-none' : ''}`}
                                         >
                                             Remember Me
                                         </Typography>
                                     </div>
                                     <div>
-                                        <Link to={'/'}   className={`disabled:${mutationLoginGoogle.isPending} text-emerald-400 hover:text-red-500 text-sm`}>Forgot
+                                        <Link to={'/forgot-password'} onClick={() => handleClose()}   className={`disabled:${mutationLoginGoogle.isPending} text-emerald-400 hover:text-red-500 text-sm`}>Forgot
                                             password</Link>
                                     </div>
                                 </div>
@@ -257,42 +259,45 @@ const ModalLoginRegister = () => {
                         </Tabs.Panel>
                         <Tabs.Panel value="register">
                             <form onSubmit={handleRegister(formActionRegister)} className="mt-4">
-
                                 <div className="mb-4 mt-2 space-y-1.5">
                                     <TextFormField {...registerRegister("email")} label={'Email'}
                                                    error={registerErrors.email?.message}
-                                                   disabled={mutationLoginGoogle.isPending}
+                                                   className={`${mutationRegister.isPending && "animate-pulse cursor-not-allowed"}`}
+                                                   disabled={mutationRegister.isPending && true}
                                                    icon={<MdOutlineEmail className={'w-full h-full'}/>}
                                                    placeholder={"user@gmail.com"}/>
                                 </div>
                                 <div className="mb-4 space-y-1.5">
                                     <TextFormField {...registerRegister("password")} label={"Password"}
                                                    error={registerErrors.password?.message}
+                                                   className={`${mutationRegister.isPending && "animate-pulse cursor-not-allowed"}`}
                                                    type={"password"}
-                                                   disabled={mutationLoginGoogle.isPending}
+                                                   disabled={mutationRegister.isPending && true}
                                                    icon={<MdOutlineLock className={'h-full w-full'}/>}
                                                    placeholder={"**********"}/>
                                 </div>
                                 <div className="mb-4 space-y-1.5">
                                     <TextFormField {...registerRegister("confirmPassword")} label={"Confirm Password"}
                                                    error={registerErrors.confirmPassword?.message}
+                                                   className={`${mutationRegister.isPending && "animate-pulse cursor-not-allowed"}`}
                                                    type={"password"}
-                                                   disabled={mutationLoginGoogle.isPending}
+                                                   disabled={mutationRegister.isPending && true}
                                                    icon={<MdOutlineLock className={'h-full w-full'}/>}
                                                    placeholder={"**********"}/>
                                 </div>
                                 <div className="mb-4 space-y-1.5">
                                     <TextFormField {...registerRegister("customerName")} label={"Full Name"}
                                                    icon={<MdOutlineDriveFileRenameOutline className={'w-full h-full'}/>}
+                                                   className={`${mutationRegister.isPending && "animate-pulse cursor-not-allowed"}`}
                                                    error={registerErrors.customerName?.message}
-                                                   disabled={mutationLoginGoogle.isPending}
+                                                   disabled={mutationRegister.isPending && true}
                                                    placeholder={"John Doe"}/>
                                 </div>
                                 <div className="mb-4 space-y-1.5">
                                     <TextFormField {...registerRegister("phone")} label={"Phone"}
                                                    icon={<MdPhone className={'w-full h-full'}/>}
                                                    error={registerErrors.phone?.message}
-                                                   disabled={mutationLoginGoogle.isPending}
+                                                   disabled={mutationRegister.isPending && true}
                                                    placeholder={"012345678"}/>
                                 </div>
                                 {

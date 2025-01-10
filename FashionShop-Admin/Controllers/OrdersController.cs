@@ -2,11 +2,13 @@
 
 using FashionShop.Models.views.OrderDetails;
 using FashionShop.Services.ManagerService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.DotNet.Scaffolding.Shared.Messaging;
 
 namespace FashionShop.Controllers
 {
+    [Authorize]
     public class OrdersController : Controller
     {
         private readonly IManagerService _managerService;
