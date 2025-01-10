@@ -1,6 +1,8 @@
 ﻿using FashionShop.Context;
 using FashionShop.Models;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using System.Drawing.Printing;
 
 namespace FashionShop.Repositories.Categories;
 
@@ -71,7 +73,7 @@ public class CategoryRepository : GenericRepo<Category>,ICategoryRepository
     {
         if (!string.IsNullOrEmpty(nameSearch))
         {
-            return await PageLinkAsync(page, pageSize, trackChanges).Where(item => item.CategoryName.Contains(nameSearch)).ToListAsync();
+            return await PageLinkAsync(page, pageSize, trackChanges).Where(item => item.CategoryName.Contains(nameSearch) && item.ParentId == null).ToListAsync();
         }
         return await PageLinkAsync(page, pageSize, trackChanges).ToListAsync();
     }
@@ -80,7 +82,7 @@ public class CategoryRepository : GenericRepo<Category>,ICategoryRepository
     {
         if (!string.IsNullOrEmpty(nameSearch))
         {
-            return await FindById(item => item.CategoryName.Contains(nameSearch),trackChanges).CountAsync();
+            return await FindById(item => item.CategoryName.Contains(nameSearch) && item.ParentId == null, trackChanges).CountAsync();
         }
         return await FindAll(trackChanges).CountAsync();
     }
