@@ -10,7 +10,7 @@ module.exports = {
             color: {
                 primary: '#16C47F', // Định nghĩa màu primary
                 red: "#E82561"
-            },
+            }
         },
 
     },
