@@ -35,11 +35,11 @@ namespace FashionShop.Services.Products
             return product;
         }
 
-        public async Task<IEnumerable<ResponseProductDto>> FindProductsByCategoryIdAsync(long categoryId, bool trackChanges)
+        public async Task<IEnumerable<ResponseProductDto>> FindProductsByCategoryIdAsync(string slug, bool trackChanges)
         {
             try
             {
-                var products = await _managerRepository.Product.GetListProductByCategoryId(categoryId, trackChanges);
+                var products = await _managerRepository.Product.GetListProductByCategoryId(slug, trackChanges);
 
                 if (products == null || !products.Any())
                 {
