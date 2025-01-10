@@ -69,6 +69,7 @@ function App() {
             })}
           </Route>
         </Route>
+        <Route path="/categories/:categorySlug" element={<ProductListByCategory />} />
       </Routes>
     </>
   );
