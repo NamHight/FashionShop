@@ -25,7 +25,7 @@ const Contact = () => {
       console.log(error);
       setMessage({
         type: "error",
-        data: "Gửi liên hệ không thành công!",
+        data: "Send contact error!",
       });
     },
   });
@@ -69,7 +69,7 @@ const Contact = () => {
               {message.data}
             </div>
           )}
-          <h2 className="text-gray-800 text-3xl font-bold">Liên hệ</h2>
+          <h2 className="text-gray-800 text-3xl font-bold">Contact</h2>
           <form method="post" onSubmit={handleContact(formActionContact)}>
             <div className="space-y-4 mt-8">
               <input
@@ -147,7 +147,7 @@ const Contact = () => {
                   data-original="#000000"
                 />
               </svg>
-              Gửi
+              Send
             </button>
           </form>
           <ul className="mt-4 flex flex-wrap justify-center gap-6">
