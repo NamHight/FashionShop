@@ -37,3 +37,20 @@ export const loginGoogle = async (data) =>{
       return await e.response;
   }
 };
+
+export const forgotPassword = async (data) => {
+    try {
+        const response = await publicAxios.post(BASE_AUTHENTICATE_URL+`ForgotPassword`,data);
+        return await response;
+    }catch (e) {
+        return await e.response;
+    }
+}
+export const resetPassword = async (data) => {
+    try {
+        const response = await publicAxios.post(BASE_AUTHENTICATE_URL+`ResetPassword`,data);
+        return await response;
+    }catch (e) {
+        return await e.response;
+    }
+}

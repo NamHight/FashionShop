@@ -32,6 +32,22 @@ export const RegisterValidate = z.object({
     path: ["confirmPassword"], // Gán lỗi vào confirmPassword
 });
 
+export const ForgotPasswordValidate = z.object({
+    email: z.string({required_error: "Email is required"}).nonempty({message: "Email is required"}).email("Invalid email")
+})
+
+export const ResetPasswordValidate = z.object({
+    password: z.string({required_error: "Password is required"}).nonempty({message: "Password is required"})
+        .regex(/^(?=.*[a-zA-Z])(?=.*\d).+$/,{message: "Password must contain at least one letter and one number"})
+        .min(6, "Password must be at least 6 characters"),
+    confirmPassword: z.string({required_error: "RePassword is required"}).nonempty({message: "RePassword is required"})
+        .min(6, "Password must be at least 6 characters"),
+}).refine((data) => data.password === data.confirmPassword, {
+    message: "Password and RePassword do not match",
+    path: ["confirmPassword"], // Gán lỗi vào confirmPassword
+})
+
+
 export const ContactValidate = z.object({
     fullname: z.string()
         .nonempty({message: "fullName is required"}),
