@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useLayoutEffect, useState} from 'react';
 import {Link} from "react-router";
 import {IconButton, Input, List, Spinner, Tooltip, Typography} from "@material-tailwind/react";
 import {IoIosArrowDown} from "react-icons/io";
@@ -10,6 +10,8 @@ import PopoverUserInfo from "../Popover/PopoverUserInfo";
 import {useQuery} from "@tanstack/react-query";
 import {getCategories} from "../../services/api/CategoryService";
 import {InformationCircleIcon} from "@heroicons/react/16/solid";
+import Cookies from "js-cookie";
+import {getLocalStorage, setLocalStorage} from "../../libs/Helpers/LocalStorageConfig";
 
 const Links = [
     {name: "BLOG", path: "/blog"},
@@ -33,12 +35,34 @@ function NavLinks() {
 
 const Header = () => {
     const {user, isLoading, error} = useAuth();
+    const [categoriesLocalStorage, setCategoriesLocalStorage] = useState([]);
+    const [activeCategories, setActiveCategories] = useState(false);
+    const [loading, setLoading] = useState(true);
     const {data: categories, isLoading: isCategoryLoading, isPending, isError,} = useQuery({
         queryKey: ['category'],
-        queryFn: async () => await getCategories(),
+        queryFn: async () => {
+           let result = await getCategories();
+           if(result.status === 401) return null;
+           if(result.status === 500) return null;
+           const calexpiry = 7* 24 * 60;
+           setLoading(false);
+           setLocalStorage("categories",result.data,calexpiry);
+           return result?.data;
+        },
         refetchIntervalInBackground: false,
         refetchOnWindowFocus: false,
+        enabled: activeCategories
     });
+    useEffect(() => {
+        let getCategoriesCookie = getLocalStorage("categories");
+        if (getCategoriesCookie) {
+            setLoading(false);
+            setCategoriesLocalStorage(getCategoriesCookie);
+        }else{
+            setActiveCategories(true);
+        }
+    }, []);
+
     const userInfo = isLoading ? <Spinner/> : user != null ? (
         <PopoverUserInfo name={user?.customerName} avatar={user?.avatar} id={user?.customerId}/>
     ) : (
@@ -57,8 +81,8 @@ const Header = () => {
                 <Tooltip.Arrow/>
             </Tooltip.Content>
         </Tooltip>
-        : isLoading || isPending ? <Spinner className={'size-28'}/>
-            : categories?.length > 0 && categories?.map((parent) => (
+        :  loading ? <Spinner className={'size-28'}/>
+            :  categoriesLocalStorage?.length > 0 ? categoriesLocalStorage?.map((parent) => (
             <div key={parent.name}>
                 {
                     <Tooltip placement="bottom" interactive className={'flex justify-center items-center w-auto'}>
@@ -89,7 +113,38 @@ const Header = () => {
                     </Tooltip>
                 }
             </div>
-        ));
+        )) : categories?.map((parent) => (
+                <div key={parent.name}>
+                    {
+                        <Tooltip placement="bottom" interactive className={'flex justify-center items-center w-auto'}>
+                            <Tooltip.Trigger className={'flex justify-center items-center'}>
+                                <List.Item
+                                    className={'flex justify-center items-center hover:bg-emerald-400 group text-white'}>
+                                    <Link to={"/male"} className={'group-hover:text-red-500'}>{parent.name}</Link>
+                                    <List.ItemEnd className="ps-1">
+                                        <IoIosArrowDown
+                                            className={'text-[17px] mt-0.5 group-data-[open=true]:rotate-180 group-hover:text-red-500'}/>
+                                    </List.ItemEnd>
+                                </List.Item>
+                            </Tooltip.Trigger>
+                            <Tooltip.Content
+                                className="text-black z-[100000] grid  rounded-lg border border-surface bg-background p-3 shadow-xl shadow-surface/10 dark:border-surface dark:bg-background">
+                                <div className={'flex flex-col text-[1.1rem] font-bold gap-3 justify-start px-2'}>
+                                    {
+                                        parent.categories?.length > 0 && parent.categories?.map((child, index) => (
+                                            <List.Item key={index} className={'flex justify-start items-center '}>
+                                                <Link to={child?.categoryName.toLowerCase()}
+                                                      className={"hover:text-red-500 hover:font-bold w-full "}>{child?.categoryName}</Link>
+                                            </List.Item>
+                                        ))
+                                    }
+                                </div>
+                                <Tooltip.Arrow/>
+                            </Tooltip.Content>
+                        </Tooltip>
+                    }
+                </div>
+            ));
     return (
         <div className={'container flex justify-center items-center mx-auto z-100 xl:h-[5rem] lg:h-[4.5rem] md:h-[4rem] h-[3.5rem] '}>
             <div className={'flex justify-center items-center'}>

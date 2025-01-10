@@ -12,7 +12,7 @@ public class RequestAuthenticateRegisterDto
         [Required(ErrorMessage = "Password is required")]
         [DataType(DataType.Password, ErrorMessage = "Invalid password")]
         [RegularExpression(@"^(?=.*[a-zA-Z])(?=.*\d).+$", ErrorMessage = "Password must contain at least one letter and one number.")]
-        [MinLength(6, ErrorMessage = "Password must be at least 8 characters long")]
+        [MinLength(6, ErrorMessage = "Password must be at least 6 characters long")]
         public string Password { get; set; }
 
         [Required(ErrorMessage = "Confirm password is required")]

@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React from 'react';
 import {Outlet} from "react-router";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
@@ -6,35 +6,9 @@ import {Button} from "@material-tailwind/react";
 import {BiSolidArrowToTop} from "react-icons/bi";
 import ModalChat from "../components/Modal/ModalChat";
 import {ToastContainer, Bounce} from 'react-toastify';
-const Layout = () => {
-    const [isInVisible, setIsInVisible] = useState(false);
-    const layoutRef = useRef(null);
-    const handleScrollTop = () => {
-        if (layoutRef.current) {
-            layoutRef.current.scrollTo({top: 0, behavior: "smooth"});
-        }
-
-    }
-    const handleScroll = () => {
-        if (layoutRef.current) {
-            const positionScroll = layoutRef.current.scrollTop;
-            setIsInVisible(positionScroll > 300 );
-        }
-    }
-    useEffect(() => {
-        const layoutCurrent = layoutRef.current;
-
-        if (layoutCurrent) {
-            layoutCurrent.addEventListener("scroll", handleScroll);
-        }
-        return () => {
-            if (layoutCurrent) {
-                layoutCurrent.removeEventListener("scroll", handleScroll);
-            }
-        };
-    }, []);
+const Layout = ({isInVisible,handleScrollTop}) => {
     return (
-        <div ref={layoutRef} className={'font-[Poppins] h-full w-screen max-w-full max-h-full flex flex-col overflow-visible'}>
+        <div className={'flex flex-col min-h-screen relative'}>
             <ToastContainer position="top-right"
                             autoClose={3000}
                             hideProgressBar={false}
