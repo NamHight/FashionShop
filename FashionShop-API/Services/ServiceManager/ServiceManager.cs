@@ -15,6 +15,7 @@ using FashionShop_API.Services.WebsiteInfos;
 using FashionShop_API.Services.Reviews;
 using Microsoft.Extensions.Options;
 using FashionShop_API.Services.Articles;
+using FashionShop_API.Services.Orders;
 
 namespace FashionShop_API.Services.ServiceManager;
 
@@ -32,6 +33,7 @@ public class ServiceManager : IServiceManager
 	private readonly Lazy<IServiceGoogle> _google;
     private readonly Lazy<IServicePromotion> _promotion;
     private readonly Lazy<IServiceArticle> _article;
+    private readonly Lazy<IServiceOrders> _order;
     public ServiceManager(IRepositoryManager repositoryManager,IMapper mapper,ILoggerManager logger,IConfiguration configuration,IOptions<GoogleOption> googleOption)
     {
         _repositoryManager = repositoryManager;
@@ -46,6 +48,7 @@ public class ServiceManager : IServiceManager
         _google = new Lazy<IServiceGoogle>(() => new ServiceGoogle(repositoryManager,googleOption,logger,mapper));
         _promotion = new Lazy<IServicePromotion>(() => new ServicePromotion(repositoryManager, mapper));
         _article = new Lazy<IServiceArticle>(() => new ServiceArticle(repositoryManager, mapper));
+        _order = new Lazy<IServiceOrders>(() => new ServiceOrders(repositoryManager, mapper));
     }
     public IServiceCategory Category => _category.Value;
     public IServiceAuthenticate Authenticate => _authenticate.Value;
@@ -58,4 +61,5 @@ public class ServiceManager : IServiceManager
     public IServiceReviews Review => _review.Value;
     public IServicePromotion Promotion => _promotion.Value;
     public IServiceArticle Article => _article.Value;
+    public IServiceOrders Orders => _order.Value;
 }
