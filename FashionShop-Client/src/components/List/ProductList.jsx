@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getAllProducts } from "../../services/api/ProductService";
+import ButtonAddCart from "../ButtonAddCart/ButtonAddCart";
 import Loading from "../Loading";
 import  "../List/ProductList.css";
 const ProductList = () => {
@@ -67,9 +68,14 @@ const ProductList = () => {
                 Price: ${product.price}
               </p>
               <div className="flex justify-between">
-                <button className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors">
-                  Add to Cart
-                </button>
+                <ButtonAddCart
+                  css="bg-emerald-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors"
+                  productId={product.productId}
+                  productName={product.productName}
+                  banner={product.banner}
+                  price={product.price}
+                  quantity={1}
+                />
                 <button className="bg-gray-200 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-300 transition-colors">
                   ♥ Favorite
                 </button>
