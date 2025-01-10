@@ -3,8 +3,8 @@ import { List } from "@material-tailwind/react";
 
 export function NavLinkBlog() {
   const Links = [
-    { name: "Khuyến mãi", path: "/blog" },
-    { name: "Bài viết", path: "/blog/article" },
+    { name: "Promotions", path: "/blog" },
+    { name: "Articles", path: "/blog/article" },
   ];
   return (
     <>
