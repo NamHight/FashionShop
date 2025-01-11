@@ -40,7 +40,7 @@ public class ServiceManager : IServiceManager
         _category = new Lazy<IServiceCategory>(() => new ServiceCategory(repositoryManager,mapper,logger));
         _authenticate = new Lazy<IServiceAuthenticate>(() => new ServiceAuthenticate(repositoryManager,mapper,logger,configuration));
         _customer = new Lazy<IServiceCustomer>(() => new ServiceCustomer(mapper,repositoryManager));
-        _product = new Lazy<IServiceProduct>(() => new ServiceProduct(repositoryManager, mapper));
+        _product = new Lazy<IServiceProduct>(() => new ServiceProduct(repositoryManager, mapper,logger));
         _favorite = new Lazy<IServiceFavorites>(() => new ServiceFavorites(mapper,repositoryManager));
         _contact = new Lazy<IServiceContact>(() => new ServiceContact(repositoryManager, logger, mapper));
         _webisteInfo = new Lazy<IServiceWebsiteInfo>(() => new ServiceWebsiteInfo(repositoryManager, logger, mapper));

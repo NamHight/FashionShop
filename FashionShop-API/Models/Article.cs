@@ -16,7 +16,7 @@ public partial class Article
     public ulong ArticleId { get; set; }
 
     [Column("articles_name")]
-    [StringLength(255)] 
+    [StringLength(255)]
     public string ArticlesName { get; set; } = null!;
 
     [Column("slug")]
@@ -35,11 +35,12 @@ public partial class Article
     public string? Description { get; set; }
 
     [Column("create_at", TypeName = "timestamp")]
-    public DateTime? CreatedAt { get; set; }
+    public DateTime? CreateAt { get; set; }
 
     [Column("status")]
     public int? Status { get; set; }
 
     [ForeignKey("CategoryId")]
+    [InverseProperty("Articles")]
     public virtual Category? Category { get; set; }
 }
