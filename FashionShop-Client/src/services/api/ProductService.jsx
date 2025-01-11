@@ -1,11 +1,9 @@
-//import {authAxios} from "../../libs/Config/AxiosConfig";
-import axios from "axios";
-const API_URL = "http://localhost:7068/api/Products"; // Đổi URL nếu backend chạy trên cổng khác
-
+import {authAxios} from "../../libs/Config/AxiosConfig";
+const BASE_Products_URL = "Products";
 
 export const getAllProducts = async () => {
   try {
-    const response = await axios.get(API_URL);
+    const response = await authAxios.get(BASE_Products_URL);
     return response.data;
   } catch (error) {
     console.error("Error fetching products:", error);
@@ -13,6 +11,6 @@ export const getAllProducts = async () => {
   }
 };
 export const getProductDetails = async (categorySlug, productSlug) => {
-  const response = await axios.get(`${API_URL}/${categorySlug}/${productSlug}`);  // Include API_URL here
+  const response = await authAxios.get(`${BASE_Products_URL}/${categorySlug}/${productSlug}`);  // Include API_URL here
   return response.data;
 };
