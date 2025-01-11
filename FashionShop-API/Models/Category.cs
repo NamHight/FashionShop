@@ -48,5 +48,6 @@ public partial class Category
     public virtual Category? Parent { get; set; }
 
     [InverseProperty("Category")]
+    [Newtonsoft.Json.JsonIgnore]
     public virtual ICollection<Product> Products { get; set; } = new List<Product>();
 }
