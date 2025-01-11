@@ -29,20 +29,20 @@ public class ServiceEmail : IServiceEmail
         _configuration = configuration;
         _gmailOption = gmailOption.Value;
     }
-    public async Task SendEmailConfirmAsync(RequestCustomerToken requestCustomerToken)
+    public async Task SendEmailConfirmAsync(RequestCustomerToken requestCustomerToken,string tempUrl,string template)
     {
         string? domain = _configuration.GetSection("Application:Domain").Value;
-        string? url = @"api/Authenticate/ConfirmEmail?token={0}";
+        string? url = @"api/Authenticate/{1}?token={0}";
         var responseEmail = new ResponseGmailDto
         {
             Recipient = requestCustomerToken.Customer.Email,
             Attachments = new List<KeyValuePair<string, string>>
             {
-                new KeyValuePair<string, string>("{{Link}}",string.Format(domain+url,requestCustomerToken.Token)),
+                new KeyValuePair<string, string>("{{Link}}",string.Format(domain+url,requestCustomerToken.Token,tempUrl)),
                 new KeyValuePair<string, string>("{{Name}}",requestCustomerToken.Customer.CustomerName)
             }
         };
-        await SendEmailAsyncWithTemplate("Confirm Email", responseEmail);
+        await SendEmailAsyncWithTemplate("Confirm Email", responseEmail,template);
     }
 
     public async Task<RequestCustomerToken?> HandleSendEmail(string email, bool trackChanges)
@@ -76,10 +76,10 @@ public class ServiceEmail : IServiceEmail
             );
         return new JwtSecurityTokenHandler().WriteToken(token);
     }
-    private async Task SendEmailAsyncWithTemplate(string title,ResponseGmailDto model)
+    private async Task SendEmailAsyncWithTemplate(string title,ResponseGmailDto model,string template)
     {
         model.Subject = title;
-        model.Body = UpdatePlaceHolder(GetEmailTemplate("ConfirmTemplate"), model.Attachments);
+        model.Body = UpdatePlaceHolder(GetEmailTemplate(template), model.Attachments);
         await SendMailAsync(model);
     }
     private string UpdatePlaceHolder(string text, List<KeyValuePair<string, string>>? placeHolder)

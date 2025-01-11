@@ -12,18 +12,20 @@ public class OrdersRepository : GenericRepo<Order>,IOrdersRepository
     }
     public async Task<Order?> GetByIdOrdersViewModel(long id, bool trackChanges)
     {
-        var order = await FindById(item => item.OrderId == id, trackChanges).Include(item => item.Customer).Include(item => item.Store).Include(item => item.Employee).Include(item => item.Ordersdetails).ThenInclude(item => item.Product).FirstOrDefaultAsync();
+        var order = await FindById(item => item.OrderId == id, trackChanges)
+            .Include(item => item.Customer).Include(item => item.Employee)
+            .Include(item => item.Ordersdetails).ThenInclude(item => item.Product).ThenInclude(item => item.Category).FirstOrDefaultAsync();
         return order;
     }
     public async Task<List<Order>> GetAllAsync(bool trackChanges)
     {
-        var orders = await FindAll(trackChanges).Include(p => p.Store).Include(p=> p.Employee).
+        var orders = await FindAll(trackChanges).Include(p=> p.Employee).
         Include(p=>p.Customer).ToListAsync();
         return orders;
     }
     public async Task<Order?> GetByIdOrders(long id, bool trackChanges)
     {
-        var orders = await FindById(item => item.OrderId == id, trackChanges).Include(p => p.Store).Include(p => p.Employee).
+        var orders = await FindById(item => item.OrderId == id, trackChanges).Include(p => p.Employee).
         Include(p => p.Customer).FirstOrDefaultAsync();
 
         return orders;

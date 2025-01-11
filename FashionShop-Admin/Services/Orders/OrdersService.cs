@@ -28,14 +28,13 @@ public class OrdersService : IOrdersService
                 TotalAmount = order.TotalAmount,
                 OrderDate = order.OrderDate,
                 PaymentMethod = order.PaymentMethod,
-                StoreName = order.Store.StoreName,
                 CustomerName = order.Customer.CustomerName,
                 EmployeeName = order.Employee.EmployeeName,
                 OrdersStatus = order.Status,
-                AddressStore = order.Store.Address,
-                PhoneStore = order.Store.Phone,
-                CustomerAddress = order.Customer.Address,
                 PhoneCustomer = order.Customer.Phone,
+                Phone = order.Phone,
+                AddressCustomer = order.Address,
+                Reciver = order.Reciver,
                 Details = order.Ordersdetails.ToList()
             };
             return ordersViewModel;

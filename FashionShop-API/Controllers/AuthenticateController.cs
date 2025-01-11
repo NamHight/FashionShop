@@ -41,7 +41,7 @@ namespace FashionShop_API.Controllers
             {
                 return BadRequest(new {message = "Registration failed. Please try again later."});
             }
-            await _serviceEmail.SendEmailConfirmAsync(customerToken);
+            await _serviceEmail.SendEmailConfirmAsync(customerToken,"ConfirmEmail","ConfirmTemplate");
             _logger.Log(LogLevel.Information,"Controller Authenticate: " + nameof(RegisterAsync) + " Success");
             return StatusCode(201);
         }
@@ -79,7 +79,6 @@ namespace FashionShop_API.Controllers
             _logger.Log(LogLevel.Information,"Controller Authenticate: " + nameof(Logout) + " Success");
             return Ok("Logout success");
         }
-        [Authorize(AuthenticationSchemes = "CustomJWT")]
         [HttpGet("ConfirmEmail")]
         public async Task<IActionResult> ConfirmEmail(string token)
         {
@@ -102,5 +101,52 @@ namespace FashionShop_API.Controllers
             _serviceManager.Authenticate.SetTokenCookie(token, HttpContext, false);
             return Ok(token);
         }
+
+        [HttpPost("ForgotPassword")]
+        public async Task<IActionResult> ForgotPassword([FromBody]string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                BadRequest("Email is null");
+            }
+            var token = await _serviceEmail.HandleSendEmail(email, false);
+            if (token is null)
+            {
+                BadRequest("Token is null");
+            }
+            else
+            {
+                await _serviceEmail.SendEmailConfirmAsync(token, "ForgotPasswordConfirm","ResetTemplate");
+            }
+            _logger.Log(LogLevel.Information, "Controller Authenticate: " + nameof(ForgotPassword) + " Success");
+            return Ok("Send email success");
+        }
+        [HttpGet("ForgotPasswordConfirm")]
+        public async Task<IActionResult> ForgotPasswordConfirm([FromQuery]string token)
+        {
+            var result = await _serviceManager.Authenticate.ValidateTokenPasswordAsync(token);
+            if (result)
+            {
+                return Redirect($"http://localhost:3000/reset-password?token={token}");
+            }
+            return Redirect("http://localhost:3000/error-404");
+        }
+        [HttpPost("ResetPassword")]
+        [ServiceFilter(typeof(ValidationFilter))]
+        public async Task<IActionResult> ResetPassword([FromBody] RequestResetPasswordDto? requestResetPasswordDto)
+        {
+            if (requestResetPasswordDto is null || string.IsNullOrWhiteSpace(requestResetPasswordDto.token))
+            {
+                BadRequest("Invalid Request");
+            }
+            var result = await _serviceManager.Authenticate.ForgotPasswordAsync(requestResetPasswordDto);
+            if (!result)
+            {
+                return BadRequest("Invalid or expired token");
+            }
+            _logger.Log(LogLevel.Information, "Controller Authenticate: " + nameof(ResetPassword) + " Success");
+            return Ok("Reset password success");
+        }
+        
     }
 }

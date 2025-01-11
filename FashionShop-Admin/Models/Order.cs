@@ -9,7 +9,6 @@ namespace FashionShop.Models;
 [Table("orders")]
 [Index("CustomerId", Name = "fk_orders_customer")]
 [Index("EmployeeId", Name = "fk_orders_employee")]
-[Index("StoreId", Name = "fk_orders_store")]
 public partial class Order
 {
     [Key]
@@ -26,14 +25,26 @@ public partial class Order
     [Column("payment_method", TypeName = "enum('cash','credit_card','debit_card','online')")]
     public string? PaymentMethod { get; set; }
 
-    [Column("store_id")]
-    public long? StoreId { get; set; }
-
     [Column("employee_id")]
     public long? EmployeeId { get; set; }
 
     [Column("customer_id")]
     public long CustomerId { get; set; }
+
+    [Column("reciver")]
+    [StringLength(200)]
+
+    public string? Reciver { get; set; }
+
+    [Column("address")]
+    [StringLength(200)]
+
+    public string? Address { get; set; }
+
+    [Column("phone")]
+    [StringLength(15)]
+    public string? Phone { get; set; }
+
 
     [Column("created_at", TypeName = "timestamp")]
     public DateTime? CreatedAt { get; set; }
@@ -54,8 +65,4 @@ public partial class Order
 
     [InverseProperty("Order")]
     public virtual ICollection<Ordersdetail> Ordersdetails { get; set; } = new List<Ordersdetail>();
-
-    [ForeignKey("StoreId")]
-    [InverseProperty("Orders")]
-    public virtual Store? Store { get; set; }
 }
