@@ -17,7 +17,7 @@ const ModalChat = () => {
 <span
     className="relative flex shrink-0 overflow-hidden rounded-full w-8 h-8">
                           <div className="rounded-full bg-gray-100 border p-1"><svg stroke="none" fill="black"
-                                                                                    stroke-width="0"
+                                                                                    strokeWidth="0"
                                                                                     viewBox="0 0 16 16" height="20"
                                                                                     width="20"
                                                                                     xmlns="http://www.w3.org/2000/svg">

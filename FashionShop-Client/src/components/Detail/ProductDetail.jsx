@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
 import { useQuery } from '@tanstack/react-query';
 import { getProductDetails } from '../../services/api/ProductService'; // Assuming you have this service for API call
 import { useState } from 'react';
