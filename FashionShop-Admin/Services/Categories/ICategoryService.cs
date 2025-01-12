@@ -7,7 +7,7 @@ public interface ICategoryService
 {
 
     Task<List<Category>> GetAllAsync(bool trackChanges);
-    Task<CategoryViewModel> GetPageLinkAsync(int page, int pageSize, string nameSearch, bool trackChanges);
+    Task<CategoryViewModel> GetPageLinkAsync(int page, int pageSize, string nameSearch, string typeCategory, bool trackChanges);
     Task AddNewCategory(Category category);
     Task<bool> CheckSlug(string slug);
     Task CreateCategoryAsync(Category category);

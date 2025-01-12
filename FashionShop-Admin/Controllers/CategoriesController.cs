@@ -23,9 +23,9 @@ public class CategoriesController : Controller
         _managerService = managerService;
         _logger = logger;
     }
-    public async Task<IActionResult> Index(string nameSearch, int page = 1, int pageSize = 10)
+    public async Task<IActionResult> Index(string nameSearch, string typeCategory, int page = 1, int pageSize = 10)
     {
-        var result = await _managerService.Category.GetPageLinkAsync(page, pageSize, nameSearch, trackChanges: false);
+        var result = await _managerService.Category.GetPageLinkAsync(page, pageSize, nameSearch, typeCategory, trackChanges: false);
         return View(result);
     }
     public async Task<IActionResult> Create()
