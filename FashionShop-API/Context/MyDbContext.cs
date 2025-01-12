@@ -76,10 +76,9 @@ public partial class MyDbContext : DbContext
             entity.HasKey(e => e.ArticleId).HasName("PRIMARY");
 
             entity.Property(e => e.ArticleId).ValueGeneratedNever();
-            entity.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
+            entity.Property(e => e.CreateAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
 
-            entity.HasOne(d => d.Category).WithMany(p => p.Articles)
-            .HasConstraintName("fk_category_articles");
+            entity.HasOne(d => d.Category).WithMany(p => p.Articles).HasConstraintName("fk_category_articles");
         });
 
         modelBuilder.Entity<Brand>(entity =>
@@ -194,7 +193,8 @@ public partial class MyDbContext : DbContext
             entity.HasKey(e => e.OrderId).HasName("PRIMARY");
 
             entity.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
-            entity.Property(e => e.Status).HasDefaultValueSql("'pending'");
+            entity.Property(e => e.PaymentMethod).HasDefaultValueSql("'cash'");
+            entity.Property(e => e.Status).HasDefaultValueSql("'processing'");
             entity.Property(e => e.UpdatedAt)
                 .ValueGeneratedOnAddOrUpdate()
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
@@ -204,8 +204,6 @@ public partial class MyDbContext : DbContext
                 .HasConstraintName("fk_orders_customer");
 
             entity.HasOne(d => d.Employee).WithMany(p => p.Orders).HasConstraintName("fk_orders_employee");
-
-            entity.HasOne(d => d.Store).WithMany(p => p.Orders).HasConstraintName("fk_orders_store");
         });
 
         modelBuilder.Entity<Ordersdetail>(entity =>
@@ -223,15 +221,18 @@ public partial class MyDbContext : DbContext
         {
             entity.HasKey(e => e.ProductId).HasName("PRIMARY");
 
+            entity.HasIndex(e => e.ProductName, "product_name")
+                .IsUnique()
+                .HasAnnotation("MySql:FullTextIndex", true);
+
             entity.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
+            entity.Property(e => e.Quantity).HasDefaultValueSql("'1'");
             entity.Property(e => e.Status).HasDefaultValueSql("'watting'");
             entity.Property(e => e.UpdatedAt)
                 .ValueGeneratedOnAddOrUpdate()
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
             entity.HasOne(d => d.Category).WithMany(p => p.Products).HasConstraintName("fk_products_category");
-
-            entity.HasOne(d => d.Store).WithMany(p => p.Products).HasConstraintName("fk_products_stores");
         });
 
         modelBuilder.Entity<Promotion>(entity =>
