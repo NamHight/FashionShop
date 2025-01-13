@@ -1,12 +1,22 @@
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import { getWebsiteInfo } from "../../services/api/WebsiteInfoService";
 
 const About = () => {
+  const {data : AboutQuery} = useQuery({
+    queryKey: ["AboutQuery"],
+    queryFn: async () => {
+      const result = await getWebsiteInfo();
+      if(result?.status === 404) return null;
+      return result.data;
+    }
+  })
   return (
     <div>
       <section className="sm:flex items-center max-w-screen-xl">
         <div className="sm:w-1/2 p-10">
           <div className="image object-center text-center">
-            <img src="/assets/Logo.png" alt="Logo của Fashion Shop" />
+            <img src={`/assets/${AboutQuery?.image || "logo.png"}`} alt={AboutQuery?.image} />
           </div>
         </div>
         <div className="sm:w-1/2 p-5">
@@ -15,7 +25,7 @@ const About = () => {
               Introduction about the company
             </span>
             <h2 className="my-4 font-bold text-3xl  sm:text-4xl ">
-              Company <span className="text-indigo-600">Fashion Shop</span>
+              Company <span className="text-indigo-600">{AboutQuery?.name}</span>
             </h2>
             <h3 className="text-gray-500 font-bold text-xl">
               Where high fashion meets elegance.
@@ -29,11 +39,11 @@ const About = () => {
               Bringing confidence and a unique style to every customer.
             </p>
             <p className="text-gray-500 text-xl">
-              Email : fashionShop@gmail.com
+              Email : {AboutQuery?.email}
             </p>
-            <p className="text-gray-500 text-xl">Phone : 0979456148</p>
+            <p className="text-gray-500 text-xl">Phone : {AboutQuery?.phone}</p>
             <p className="text-gray-500 text-xl">
-              Address : 123 Street, New York, VietNam
+              Address : {AboutQuery?.address}
             </p>
           </div>
         </div>
