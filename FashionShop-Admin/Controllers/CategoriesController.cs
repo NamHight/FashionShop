@@ -65,7 +65,7 @@ public class CategoriesController : Controller
                         Console.WriteLine($"Key: {key}, Error: {error.ErrorMessage}");
                     }
                 }
-                return View();
+                return View("Create");
             }
         }
         catch (Exception ex)
