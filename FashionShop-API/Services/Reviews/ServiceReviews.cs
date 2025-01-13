@@ -2,7 +2,10 @@
 using FashionShop_API.Models;
 using FashionShop_API.Repositories;
 using FashionShop_API.Dto.ResponseDto;
-using FashionShop_API.Dto.RequestDto; // Giả sử bạn có ReviewResponseDto
+using FashionShop_API.Dto.RequestDto;
+using FashionShop_API.Exceptions.Base;
+using FashionShop_API.Exceptions;
+using FashionShop_API.Dto; // Giả sử bạn có ReviewResponseDto
 
 namespace FashionShop_API.Services.Reviews
 {
@@ -16,32 +19,17 @@ namespace FashionShop_API.Services.Reviews
 			_managerRepository = managerRepository;
 			_mapper = mapper;
 		}
-
-		// Phương thức để lấy tất cả các đánh giá cho một sản phẩm
-		public async Task<IEnumerable<ResponseReviewDto>> FindReviewsByProductIdAsync(long productId, bool trackChanges)
+		public async Task<(IEnumerable<ResponseReviewDto> data, PageInfo page)> FindReviewsByProductIdAsync(int page, int limit, long productId, string typeOrderBy)
 		{
-			try
+
+			var reviews = await _managerRepository.Review.GetListReviewByProductId(page, limit, productId, typeOrderBy);
+			if (reviews.Count == 0)
 			{
-				// Lấy các đánh giá từ repository
-				var reviews = await _managerRepository.Review.GetListReviewByProductId(productId, trackChanges);
-
-				if (reviews == null || !reviews.Any())
-				{
-					// Nếu không có đánh giá nào, trả về danh sách rỗng
-					return Enumerable.Empty<ResponseReviewDto>();
-				}
-
-				// Sử dụng AutoMapper để chuyển đổi từ entity Review sang ReviewResponseDto
-				var reviewDtos = _mapper.Map<IEnumerable<ResponseReviewDto>>(reviews);
-
-				return reviewDtos;
+				throw new ReviewNotFoundException("Product has no reviews yet");
 			}
-			catch (Exception ex)
-			{
-				// Ghi log và throw exception nếu có lỗi xảy ra
-				// _logger.LogError(ex, "Error retrieving reviews.");
-				throw new Exception("An error occurred while retrieving reviews.", ex);
-			}
+			var reviewDtos = _mapper.Map<IEnumerable<ResponseReviewDto>>(reviews);
+
+			return (data: reviewDtos, page: reviews.PageInfo);
 		}
 
 		public async Task AddReviewAsync(RequestReviewDto review, bool trackChanges)
@@ -81,5 +69,27 @@ namespace FashionShop_API.Services.Reviews
 			// Gọi phương thức DeleteAsync trong repository để thực hiện xóa review
 			await _managerRepository.Review.DeleteAsync(id);
 		}
-	}
+
+        public async Task<double?> TotalReviewRatingAsync(long productId)
+        {
+            if(productId <= 0)
+			{
+				throw new TotalReviewBadRequestException(productId);
+			}
+			try
+			{
+               var totalReviewRating =  await _managerRepository.Review.TotalReviewRatingAsync(productId);
+				if(totalReviewRating == null)
+				{
+                    throw new PageNotFoundException("Rating");
+                }
+				return totalReviewRating;
+            }
+			catch (Exception ex)
+			{
+                Console.WriteLine(ex.Message);
+				throw new PageNotFoundException("Rating");
+			}
+        }
+    }
 }
