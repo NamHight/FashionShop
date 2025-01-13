@@ -24,6 +24,14 @@ const ProductListByCategory = () => {
     };
 
     fetchProducts();
+     // Thiết lập interval để lấy dữ liệu mỗi 10 giây
+     const intervalId = setInterval(() => {
+      console.log("Fetching products...");
+      fetchProducts();
+    }, 10000); // 10 giây
+
+    // Dọn dẹp interval khi component bị unmount
+    return () => clearInterval(intervalId);
   }, [categorySlug]);
 
   if (loading) return <Loading />;
@@ -71,6 +79,9 @@ const ProductListByCategory = () => {
                 )}
                 </h3>
               <p className="text-sm text-gray-500 mb-2">{product.description}</p>
+              <p className="text-md text-gray-600 mb-4">
+                Quantity: {product.quantity}
+              </p>
               <p className="text-lg font-bold text-red-500 mb-4">
                 Price: ${product.price}
               </p>

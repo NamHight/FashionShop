@@ -27,6 +27,14 @@ const LatestProductList = () => {
     };
 
     fetchProducts();
+     // Thiết lập interval để lấy dữ liệu mỗi 10 giây
+     const intervalId = setInterval(() => {
+      console.log("Fetching products...");
+      fetchProducts();
+    }, 10000); // 10 giây
+
+    // Dọn dẹp interval khi component bị unmount
+    return () => clearInterval(intervalId);
   }, []);
 //Fomart lai ngay thang
   const formatDate = (dateString) => {

@@ -21,6 +21,14 @@ const ProductList = () => {
     };
 
     fetchProducts();
+     // Thiết lập interval để lấy dữ liệu mỗi 10 giây
+     const intervalId = setInterval(() => {
+      console.log("Fetching products...");
+      fetchProducts();
+    }, 10000); // 10 giây
+
+    // Dọn dẹp interval khi component bị unmount
+    return () => clearInterval(intervalId);
   }, []);
 
   if (loading) return <Loading />;
