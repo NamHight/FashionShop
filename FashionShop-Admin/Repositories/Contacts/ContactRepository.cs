@@ -13,9 +13,25 @@ namespace FashionShop.Repositories.Contacts
 
         public async Task<List<Contact>> GetAllAsync(bool trackChanges)
         {
-            var contacts = await FindAll(trackChanges).ToListAsync();
-            
+            var contacts = await FindAll(trackChanges)
+                .ToListAsync(); // Lấy dữ liệu từ cơ sở dữ liệu trước
+
+            // Sắp xếp danh sách theo thứ tự quan trọng
+            contacts = contacts
+                .OrderBy(c => GetStatusPriority(c.Status)) // Gọi hàm để lấy độ ưu tiên
+                .ToList();
+
             return contacts;
+        }
+        private int GetStatusPriority(string status)
+        {
+            return status switch
+            {
+                "importain" => 1,
+                "pending" => 2,
+                "resovle" => 3,
+                _ => 4 // Trạng thái không xác định
+            };
         }
 
         public async Task<Contact?> GetByIdAsync(long id, bool trackChanges)
