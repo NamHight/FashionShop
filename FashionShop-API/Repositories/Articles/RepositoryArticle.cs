@@ -12,20 +12,20 @@ namespace FashionShop_API.Repositories.Articles
         {
             if(!string.IsNullOrEmpty(searchName) && categoryid != 0)
             {
-                var articles = FindByCondition(item => item.ArticlesName.Contains(searchName) && item.CategoryId == categoryid && item.Status == 1, trackChanges).Include(item => item.Category);
+                var articles = FindByCondition(item => item.ArticlesName.Contains(searchName) && item.CategoryId == categoryid && item.Status == 1, trackChanges).Include(item => item.Category).OrderByDescending(item => item.CreateAt);
                 return await PagedListAsync<Article>.ToPagedListAsync(articles, page, limit);
             }
             if (!string.IsNullOrEmpty(searchName))
             {
-                var articles = FindByCondition(item => item.ArticlesName.Contains(searchName) && item.Status == 1, trackChanges).Include(item => item.Category);
+                var articles = FindByCondition(item => item.ArticlesName.Contains(searchName) && item.Status == 1, trackChanges).Include(item => item.Category).OrderByDescending(item => item.CreateAt);
                 return await PagedListAsync<Article>.ToPagedListAsync(articles, page, limit);
             }
             if (categoryid != 0)
             {
-                var articles = FindByCondition(item => item.CategoryId == categoryid && item.Status == 1, trackChanges).Include(item => item.Category);
+                var articles = FindByCondition(item => item.CategoryId == categoryid && item.Status == 1, trackChanges).Include(item => item.Category).OrderByDescending(item => item.CreateAt);
                 return await PagedListAsync<Article>.ToPagedListAsync(articles, page, limit);
             }
-            return await PagedListAsync<Article>.ToPagedListAsync(_context.Articles.Where(item => item.Status == 1).Include(item => item.Category).AsQueryable(), page, limit);
+            return await PagedListAsync<Article>.ToPagedListAsync(_context.Articles.Where(item => item.Status == 1).OrderByDescending(item => item.CreateAt).Include(item => item.Category).AsQueryable(), page, limit);
         }
     }
 }
