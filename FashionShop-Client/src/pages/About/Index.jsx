@@ -1,8 +1,9 @@
 import React from "react";
-
+import SupplierList from "../../components/List/SuppilerList";
 const About = () => {
   return (
     <div>
+
       <section className="sm:flex items-center max-w-screen-xl">
         <div className="sm:w-1/2 p-10">
           <div className="image object-center text-center">
@@ -117,6 +118,7 @@ const About = () => {
           </div>
         </div>
       </section>
+      <SupplierList />
     </div>
   );
 };

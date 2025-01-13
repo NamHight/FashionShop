@@ -9,7 +9,6 @@ namespace FashionShop_API.Models;
 [Table("orders")]
 [Index("CustomerId", Name = "fk_orders_customer")]
 [Index("EmployeeId", Name = "fk_orders_employee")]
-[Index("StoreId", Name = "fk_orders_store")]
 public partial class Order
 {
     [Key]
@@ -23,11 +22,8 @@ public partial class Order
     [Column("order_date", TypeName = "datetime")]
     public DateTime? OrderDate { get; set; }
 
-    [Column("payment_method", TypeName = "enum('cash','credit_card','debit_card','online')")]
+    [Column("payment_method", TypeName = "enum('cash','credit_card','debit_card','paypal')")]
     public string? PaymentMethod { get; set; }
-
-    [Column("store_id")]
-    public long? StoreId { get; set; }
 
     [Column("employee_id")]
     public long? EmployeeId { get; set; }
@@ -35,13 +31,25 @@ public partial class Order
     [Column("customer_id")]
     public long CustomerId { get; set; }
 
+    [Column("reciver")]
+    [StringLength(200)]
+    public string? Reciver { get; set; }
+
+    [Column("address")]
+    [StringLength(200)]
+    public string? Address { get; set; }
+
+    [Column("phone")]
+    [StringLength(15)]
+    public string? Phone { get; set; }
+
     [Column("created_at", TypeName = "timestamp")]
     public DateTime? CreatedAt { get; set; }
 
     [Column("updated_at", TypeName = "timestamp")]
     public DateTime? UpdatedAt { get; set; }
 
-    [Column("status", TypeName = "enum('pending','completed','canceled')")]
+    [Column("status", TypeName = "enum('processing','delivering','completed','canceled')")]
     public string? Status { get; set; }
 
     [ForeignKey("CustomerId")]
@@ -53,9 +61,8 @@ public partial class Order
     public virtual Employee? Employee { get; set; }
 
     [InverseProperty("Order")]
-    public virtual ICollection<Ordersdetail> Ordersdetails { get; set; } = new List<Ordersdetail>();
+    public virtual ICollection<Ordercancelreason> Ordercancelreasons { get; set; } = new List<Ordercancelreason>();
 
-    [ForeignKey("StoreId")]
-    [InverseProperty("Orders")]
-    public virtual Store? Store { get; set; }
+    [InverseProperty("Order")]
+    public virtual ICollection<Ordersdetail> Ordersdetails { get; set; } = new List<Ordersdetail>();
 }

@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using FashionShop.Services.Products;
 using FashionShop_API.Dto.QueryParam;
+using FashionShop_API.Dto.RequestDto;
 using FashionShop_API.Dto.ResponseDto;
+using FashionShop_API.Filters;
 using FashionShop_API.Models;
 using FashionShop_API.Services.Caching;
 using FashionShop_API.Services.Products;
@@ -43,10 +45,10 @@ namespace FashionShop_API.Controllers
                 return StatusCode(500, "Internal server error.");
             }
         }
-        [HttpGet("/Products/{categoryId}")]
-        public async Task<IActionResult> GetProductsByCategoryId(long categoryId)
+        [HttpGet("/Products/{slug}")]
+        public async Task<IActionResult> GetProductsByCategoryId(string slug)
         {
-            var products = await _serviceManager.Product.FindProductsByCategoryIdAsync(categoryId, false);
+            var products = await _serviceManager.Product.FindProductsByCategoryIdAsync(slug, false);
             if (products == null || !products.Any())
             {
                 return NotFound(new { message = "There is no corresponding product!" });
@@ -74,6 +76,15 @@ namespace FashionShop_API.Controllers
 
 			return Ok(product);
 		}
+
+		[HttpGet("SearchProductName")]
+		[ServiceFilter(typeof(ValidationFilter))]
+		public async Task<IActionResult> SearchProductName([FromQuery] RequestSearchProductDto requestSearchProductDto)
+		{
+			var result = await _serviceManager.Product.SearchProductsByNameAsync(requestSearchProductDto);
+			return Ok(result);
+		}
+		
 
 	}
 }

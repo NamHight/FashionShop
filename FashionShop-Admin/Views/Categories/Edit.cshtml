@@ -15,7 +15,7 @@
     <div class="container-xxl">
         <div class="row g-3 mb-3 d-flex justify-content-between">
             <h3 class="fw-bold mb-0" style="width: fit-content;">Category Update</h3>
-            <a asp-action="Index" class="btn btn-success" style="width: fit-content;">Về Trang Chủ</a>
+            <a asp-action="Index" class="btn btn-success" style="width: fit-content;">Back to home</a>
         </div>
         <div class="row g-3 mb-3">
             <form asp-action="Edit" asp-route-id="@Model.CategoryId" method="post" enctype="multipart/form-data">
@@ -42,7 +42,7 @@
                         
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary" id="submit_add">Cập Nhật Danh Mục</button>
+                <button type="submit" class="btn btn-primary" id="submit_add">Update</button>
             </form>
         </div>
     </div>
