@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router";
 import "../AutoBanner/AutoBanner.css";
 const AutoBanner = () => {
   const images = [
@@ -20,11 +21,13 @@ const AutoBanner = () => {
 
   return (
     <div className="banner-container mt-2">
+      <Link to="/blog" className="banner-link">
       <img
         src={images[currentIndex]}
         alt={`Advertisement ${currentIndex + 1}`}
         className="banner-image"
       />
+      </Link>
     </div>
   );
 };

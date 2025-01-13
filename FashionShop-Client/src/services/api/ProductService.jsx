@@ -18,7 +18,10 @@ export const getProductDetails = async (categorySlug, productSlug) => {
   const response = await axios.get(`${API_URL}/${categorySlug}/${productSlug}`);  // Include API_URL here
   return response.data;
 };
-
+export const getProductsBySlug = async (categorySlug) => {
+  const response = await axios.get(`http://localhost:7068/Products/${categorySlug}`);
+  return response.data;
+};
 export const searchProductByName = async (name,sortOrder = "desc") => {
   try {
     const response = await publicAxios.get(`${API_URL}/SearchProductName?searchTerm=${name}&sortOrder=${sortOrder}`);
