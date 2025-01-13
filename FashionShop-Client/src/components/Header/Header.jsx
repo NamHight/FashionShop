@@ -136,7 +136,7 @@ const Header = () => {
                                 {
                                     parent.categories?.length > 0 && parent.categories?.map((child, index) => (
                                         <List.Item key={index} className={'flex justify-start items-center '}>
-                                            <Link to={child?.categoryName.toLowerCase()}
+                                            <Link to={`/categories/${child?.slug.toLowerCase()}`}
                                                   className={"hover:text-red-500 hover:font-bold w-full "}>{child?.categoryName}</Link>
                                         </List.Item>
                                     ))

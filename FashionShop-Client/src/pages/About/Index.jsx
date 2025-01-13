@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { getWebsiteInfo } from "../../services/api/WebsiteInfoService";
 
+import SupplierList from "../../components/List/SuppilerList";
 const About = () => {
   const {data : AboutQuery} = useQuery({
     queryKey: ["AboutQuery"],
@@ -13,6 +14,7 @@ const About = () => {
   })
   return (
     <div>
+
       <section className="sm:flex items-center max-w-screen-xl">
         <div className="sm:w-1/2 p-10">
           <div className="image object-center text-center">
@@ -127,6 +129,7 @@ const About = () => {
           </div>
         </div>
       </section>
+      <SupplierList />
     </div>
   );
 };
