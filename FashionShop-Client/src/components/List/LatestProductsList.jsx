@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { getAllProducts } from "../../services/api/ProductService";
 import ButtonAddCart from "../ButtonAddCart/ButtonAddCart";
 import Loading from "../Loading";
-import  "../List/ProductList.css";
-const ProductList = () => {
+import "../List/ProductList.css";
+
+const LatestProductList = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -12,7 +13,12 @@ const ProductList = () => {
     const fetchProducts = async () => {
       try {
         const data = await getAllProducts();
-        setProducts(data);
+        // Sắp xếp sản phẩm theo ngày tạo mới nhất
+        const sortedProducts = data.sort(
+          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+        );
+        // Lấy 4 sản phẩm đầu tiên
+        setProducts(sortedProducts.slice(0, 4));
       } catch (err) {
         setError("Unable to fetch products.");
       } finally {
@@ -30,6 +36,11 @@ const ProductList = () => {
     // Dọn dẹp interval khi component bị unmount
     return () => clearInterval(intervalId);
   }, []);
+//Fomart lai ngay thang
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
 
   if (loading) return <Loading />;
   if (error)
@@ -49,7 +60,7 @@ const ProductList = () => {
 
   return (
     <div className="max-w-screen-xl mx-auto py-8">
-      <h1 className="text-3xl font-bold mb-6">Product List</h1>
+      <h1 className="text-3xl font-bold mb-6">Latest Products</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {products.length > 0 ? (
           products.map((product) => (
@@ -65,18 +76,19 @@ const ProductList = () => {
                 />
               </div>
               <h3 className="text-lg font-semibold mt-4">
-                <a href={`/${product.category.slug}/${product.slug}`}>
-                {product.productName}
+                <a href={`/${product.category?.slug || ""}/${product.slug || ""}`}>
+                  {product.productName}
                 </a>
               </h3>
-              <p className="text-sm text-gray-500 mb-2">
-                {product.description}
-              </p>
-              <p className="text-lg font-bold text-red-500 mb-4">
+              <p className="text-sm text-gray-500 mb-2">{product.description}</p>
+              <p className="text-lg font-bold text-red-500 mb-2">
                 Price: ${product.price}
               </p>
               <p className="text-md text-gray-600 mb-4">
                 Quantity: {product.quantity}
+              </p>
+              <p className="text-md text-gray-700 mb-2">
+                Created on: {formatDate(product.createdAt)}
               </p>
               <div className="flex justify-between">
                 <ButtonAddCart
@@ -103,4 +115,4 @@ const ProductList = () => {
   );
 };
 
-export default ProductList;
+export default LatestProductList;

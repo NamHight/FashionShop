@@ -8,12 +8,15 @@ using FashionShop_API.Repositories.WebsiteInfos;
 using FashionShop_API.Repositories.Promotions;
 using FashionShop_API.Repositories.Articles;
 using FashionShop_API.Repositories.Orders;
+using FashionShop_API.Repositories.Suppilers;
+
 using FashionShop_API.Repositories.Views;
 
 namespace FashionShop_API.Repositories;
 
 public interface IRepositoryManager
 {
+    IRepositorySuppiler Suppiler { get; }
     IRepositoryCategory Category { get; }
     IRepositoryCustomer Customer { get; }
     IRepositoryContact Contact { get; }

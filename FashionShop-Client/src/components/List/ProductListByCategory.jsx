@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { getAllProducts } from "../../services/api/ProductService";
+import { useParams,Link } from "react-router-dom";
+import { getProductsBySlug } from "../../services/api/ProductService";
 import ButtonAddCart from "../ButtonAddCart/ButtonAddCart";
 import Loading from "../Loading";
-import  "../List/ProductList.css";
-const ProductList = () => {
+import "../List/ProductList.css";
+
+const ProductListByCategory = () => {
+  const { categorySlug } = useParams();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -11,7 +14,7 @@ const ProductList = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const data = await getAllProducts();
+        const data = await getProductsBySlug(categorySlug);
         setProducts(data);
       } catch (err) {
         setError("Unable to fetch products.");
@@ -29,27 +32,29 @@ const ProductList = () => {
 
     // Dọn dẹp interval khi component bị unmount
     return () => clearInterval(intervalId);
-  }, []);
+  }, [categorySlug]);
 
   if (loading) return <Loading />;
   if (error)
     return (
-      <div className="bg-gray-100 px-2 text-center">
+      <div className=" px-2 text-center">
         <div className="h-screen flex flex-col justify-center items-center">
-          <h1 className="text-8xl font-extrabold text-red-500">500</h1>
-          <p className="text-4xl font-medium text-gray-800">
-            Internal Server Error
+          <h1 className="text-6xl font-extrabold text-gray-500">Don't have any product!</h1>
+          <p className="text-4xl my-8 font-medium text-gray-800">
+          We apologize for the inconvenience.
           </p>
-          <p className="text-xl text-gray-800 mt-4">
-            We apologize for the inconvenience. Please try again later.
-          </p>
+          <p>
+          <Link to={'/'} className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-full transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg">
+            Back to Home
+            </Link>
+            </p>
         </div>
       </div>
     );
 
   return (
-    <div className="max-w-screen-xl mx-auto py-8">
-      <h1 className="text-3xl font-bold mb-6">Product List</h1>
+    <div className="max-w-screen-xl mx-auto p-4">
+      <h1 className="text-3xl font-bold mb-6">{categorySlug}</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {products.length > 0 ? (
           products.map((product) => (
@@ -65,18 +70,20 @@ const ProductList = () => {
                 />
               </div>
               <h3 className="text-lg font-semibold mt-4">
-                <a href={`/${product.category.slug}/${product.slug}`}>
-                {product.productName}
-                </a>
-              </h3>
-              <p className="text-sm text-gray-500 mb-2">
-                {product.description}
+                {product.category && product.category.slug && product.slug ? (
+                    <a href={`/${product.category.slug}/${product.slug}`}>
+                    {product.productName}
+                    </a>
+                ) : (
+                    <span>{product.productName}</span> // Hiển thị tên sản phẩm nếu không có category hoặc slug
+                )}
+                </h3>
+              <p className="text-sm text-gray-500 mb-2">{product.description}</p>
+              <p className="text-md text-gray-600 mb-4">
+                Quantity: {product.quantity}
               </p>
               <p className="text-lg font-bold text-red-500 mb-4">
                 Price: ${product.price}
-              </p>
-              <p className="text-md text-gray-600 mb-4">
-                Quantity: {product.quantity}
               </p>
               <div className="flex justify-between">
                 <ButtonAddCart
@@ -95,7 +102,7 @@ const ProductList = () => {
           ))
         ) : (
           <p className="col-span-full text-center text-lg text-gray-600">
-            No products found.
+            No products found in this category.
           </p>
         )}
       </div>
@@ -103,4 +110,4 @@ const ProductList = () => {
   );
 };
 
-export default ProductList;
+export default ProductListByCategory;
