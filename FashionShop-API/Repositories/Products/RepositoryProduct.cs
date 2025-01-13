@@ -58,5 +58,9 @@ namespace FashionShop_API.Repositories.Products
 				.ToListAsync();
 			return searchResult.AsEnumerable();
 		}
+        public async Task<IEnumerable<View>> GetViewsByProductIdAsync(long productId)
+		{
+			return await _context.Views.Where(v=>v.ProductId == productId).ToListAsync();
+		}
     }
 }

@@ -8,7 +8,7 @@ using FashionShop_API.Repositories.WebsiteInfos;
 using FashionShop_API.Repositories.Promotions;
 using FashionShop_API.Repositories.Articles;
 using FashionShop_API.Repositories.Orders;
-
+using FashionShop_API.Repositories.Views;
 
 namespace FashionShop_API.Repositories;
 
@@ -24,6 +24,7 @@ public interface IRepositoryManager
     IRepositoryWebsiteInfo WebsiteInfo { get; }
     IRepositoryArticle Article { get; }
     IRepositoryOrders Orders { get; }
+    IRepositoryViews Views { get; }
     Task SaveChanges();
     Task<bool> SaveChangesAsync();
 }
