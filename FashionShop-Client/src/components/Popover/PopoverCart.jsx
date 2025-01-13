@@ -9,9 +9,9 @@ const PopoverCart = () => {
     const {carts, totalCarts, totalMoney } = useCartConText();
     return (
         <Tooltip placement="bottom-end" interactive>
-            <Tooltip.Trigger as={Button} variant="ghost" className={'relative px-2.5 group'}>
-                <span className={'absolute top-0 right-1 bg-red-800 group-hover:text-red-500 rounded-full h-[13px] p-2 w-[13px] flex justify-center items-center text-[12px] text-white'}>{totalCarts}</span>
-                <MdShoppingCart className="h-6 w-6 text-white group-hover:text-red-500" />
+            <Tooltip.Trigger as={Button} variant="ghost" className={'relative px-2.5 group hover:border-0  hover:bg-emerald-400 hover:shadow-none'}>
+                <span className={'absolute top-0 right-1 bg-red-800 group-hover:text-red-500 group-hover:border-0  rounded-full h-[13px] p-2 w-[13px] flex justify-center items-center text-[12px] text-white'}>{totalCarts}</span>
+                <MdShoppingCart className="h-6 w-6 text-white group-hover:text-red-500 group-hover:border-blue-600 group-hover:right-4 group-hover:ring-blue-400" />
             </Tooltip.Trigger>
             <Tooltip.Content className={'bg-white w-[28rem] max-w-[28rem] text-black h-[41rem] max-h-[41rem] absolute z-50'}>
                 <div className={'flex justify-between items-center p-2 border-b-2'}>

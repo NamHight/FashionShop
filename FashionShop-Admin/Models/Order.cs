@@ -22,7 +22,7 @@ public partial class Order
     [Column("order_date", TypeName = "datetime")]
     public DateTime? OrderDate { get; set; }
 
-    [Column("payment_method", TypeName = "enum('cash','credit_card','debit_card','online')")]
+    [Column("payment_method", TypeName = "enum('cash','credit_card','debit_card','paypal')")]
     public string? PaymentMethod { get; set; }
 
     [Column("employee_id")]
@@ -33,18 +33,15 @@ public partial class Order
 
     [Column("reciver")]
     [StringLength(200)]
-
     public string? Reciver { get; set; }
 
     [Column("address")]
     [StringLength(200)]
-
     public string? Address { get; set; }
 
     [Column("phone")]
     [StringLength(15)]
     public string? Phone { get; set; }
-
 
     [Column("created_at", TypeName = "timestamp")]
     public DateTime? CreatedAt { get; set; }
@@ -52,7 +49,7 @@ public partial class Order
     [Column("updated_at", TypeName = "timestamp")]
     public DateTime? UpdatedAt { get; set; }
 
-    [Column("status", TypeName = "enum('pending','completed','canceled')")]
+    [Column("status", TypeName = "enum('processing','delivering','completed','canceled')")]
     public string? Status { get; set; }
 
     [ForeignKey("CustomerId")]
