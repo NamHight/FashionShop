@@ -69,20 +69,32 @@ public class CategoryRepository : GenericRepo<Category>,ICategoryRepository
     {
         Update(category);
     }
-    public async Task<List<Category>> GetPageLinkAsync(int page, int pageSize, string nameSearch, bool trackChanges)
+    public async Task<List<Category>> GetPageLinkAsync(int page, int pageSize, string nameSearch, string typeCategory, bool trackChanges)
     {
         if (!string.IsNullOrEmpty(nameSearch))
         {
-            return await PageLinkAsync(page, pageSize, trackChanges).Where(item => item.CategoryName.Contains(nameSearch) && item.ParentId == null).ToListAsync();
+            nameSearch = nameSearch.ToLower().Trim();
+           
+            if (typeCategory == "children")
+            {
+                return await _context.Categories.Where(item => item.CategoryName.ToLower().Contains(nameSearch) && item.ParentId != null).Skip((page - 1) * pageSize).Take(pageSize).OrderByDescending(item => item.CreatedAt).ToListAsync();
+            }
+            return await _context.Categories.Where(item => item.CategoryName.ToLower().Contains(nameSearch) && item.ParentId == null).Skip((page - 1) * pageSize).Take(pageSize).OrderByDescending(item => item.CreatedAt).ToListAsync();
         }
-        return await PageLinkAsync(page, pageSize, trackChanges).ToListAsync();
+        return await PageLinkAsync(page, pageSize, trackChanges).OrderByDescending(item => item.CreatedAt).ToListAsync();
     }
 
-    public async Task<int> GetCountAsync(string nameSearch, bool trackChanges)
+    public async Task<int> GetCountAsync(string nameSearch, string typeCategory, bool trackChanges)
     {
         if (!string.IsNullOrEmpty(nameSearch))
         {
-            return await FindById(item => item.CategoryName.Contains(nameSearch) && item.ParentId == null, trackChanges).CountAsync();
+            nameSearch = nameSearch.ToLower().Trim();
+            if (typeCategory == "children")
+            {
+                return await _context.Categories.Where(item => item.CategoryName.ToLower().Contains(nameSearch) && item.ParentId != null).CountAsync();
+            }
+            return await _context.Categories.Where(item => item.CategoryName.ToLower().Contains(nameSearch) && item.ParentId == null).CountAsync();
+
         }
         return await FindAll(trackChanges).CountAsync();
     }

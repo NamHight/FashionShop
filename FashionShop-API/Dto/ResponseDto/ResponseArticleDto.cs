@@ -10,7 +10,7 @@ namespace FashionShop_API.Dto.ResponseDto
         public string? Image { get; set; }
         public string? Description { get; set; }
         public long CategoryId { get; set; }
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreateAt { get; set; }
         public ResponseCategoryDto Category { get; set; }
     }
     

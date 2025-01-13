@@ -48,12 +48,13 @@ public class CategoryService : ICategoryService
 
 
     }
-    public async Task<CategoryViewModel> GetPageLinkAsync(int page, int pageSize, string nameSearch, bool trackChanges)
+    public async Task<CategoryViewModel> GetPageLinkAsync(int page, int pageSize, string nameSearch, string typeCategory, bool trackChanges)
     {
-        var categoryPages = await _managerRepository.Category.GetPageLinkAsync(page, pageSize, nameSearch, trackChanges);
-        var categoryCounts = await _managerRepository.Category.GetCountAsync(nameSearch, trackChanges);
+        var categoryPages = await _managerRepository.Category.GetPageLinkAsync(page, pageSize, nameSearch, typeCategory, trackChanges);
+        var categoryCounts = await _managerRepository.Category.GetCountAsync(nameSearch, typeCategory, trackChanges);
         var result = new CategoryViewModel
         {
+            TypeCategory = typeCategory,
             Categories = categoryPages,
             NameSearch = nameSearch,
             PagingInfo = new PagingInfo
