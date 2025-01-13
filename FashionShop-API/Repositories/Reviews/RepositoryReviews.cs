@@ -81,5 +81,12 @@ namespace FashionShop_API.Repositories.Reviews
         {
 			return await _context.Reviews.AsNoTracking().Where(item => item.ProductId == productId).AverageAsync(item => item.Rating);
         }
+        public async Task<List<Review>> GetListReviewByProductIdAsync(long productId)
+        {
+            // Truy vấn các review cho sản phẩm với productId
+            return await _context.Reviews
+                                 .Where(r => r.ProductId == productId)
+                                 .ToListAsync();
+        }
     }
 }

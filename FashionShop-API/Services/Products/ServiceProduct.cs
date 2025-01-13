@@ -80,7 +80,7 @@ namespace FashionShop.Services.Products
 
         public async Task<double> GetAverageReviewAsync(long productId)
         {
-            var reviews = await _managerRepository.Review.GetListReviewByProductId(productId, false);
+            var reviews = await _managerRepository.Review.GetListReviewByProductIdAsync(productId);
 
             if (reviews.Any())
             {
