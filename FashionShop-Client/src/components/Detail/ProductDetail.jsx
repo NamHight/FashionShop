@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
 import { useQuery } from '@tanstack/react-query';
 import { getProductDetails,increaseProductView, getProductStats  } from '../../services/api/ProductService'; // Assuming you have this service for API call
 import { useState, useEffect  } from 'react';
@@ -67,7 +67,17 @@ function ProductDetail() {
         }
       }, [product]);  // Dependency on product so it fetches when product data is available
       
+useEffect(() => {
+    const fetchProducts= async () => {
+     // Thiết lập interval để lấy dữ liệu mỗi 10 giây
+     const intervalId = setInterval(() => {
+      console.log("Fetching products...");
+      fetchProducts();
+    }, 10000); // 10 giây
 
+    // Dọn dẹp interval khi component bị unmount
+    return () => clearInterval(intervalId);
+  }}, []);
 
 
     useEffect(() => {

@@ -27,9 +27,9 @@ const PopoverUserInfo = ({name,avatar,id}) => {
        }
     }
     return (
-        <Tooltip placement="bottom" interactive>
-            <Tooltip.Trigger as={Button} className={'bg-emerald-400 outline-none border-none hover:bg-emerald-400 py-2 w-20 item-center flex gap-2'}>
-                <Avatar src={avatar ? avatar : "https://dub.sh/TdSBP0D"} alt="profile-picture" className={'w-7 h-7'}/>
+        <Tooltip placement="bottom" interactive className={''}>
+            <Tooltip.Trigger as={Button} className={'bg-emerald-400 outline-none border-none hover:bg-emerald-400 group  hover:border-none hover:outline-2  hover:shadow-none py-2 w-20 item-center flex gap-2'}>
+                <Avatar src={avatar ? avatar : "https://dub.sh/TdSBP0D"} alt="profile-picture" className={'w-7 h-7 group-hover:border-blue-500 group-hover:ring-4 group-hover:ring-blue-500 group-hover:outline-2 group-hover:outline-offset-2 group-hover:outline-blue-600'}/>
             </Tooltip.Trigger>
             <Tooltip.Content className="z-[100000] flex flex-col w-52 border border-surface bg-background px-0 py-2.5 text-foreground">
                 <div className={'border-b-2 gap-2 flex flex-col py-3'}>

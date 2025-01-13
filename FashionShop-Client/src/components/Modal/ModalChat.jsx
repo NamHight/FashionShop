@@ -17,7 +17,7 @@ const ModalChat = () => {
 <span
     className="relative flex shrink-0 overflow-hidden rounded-full w-8 h-8">
                           <div className="rounded-full bg-gray-100 border p-1"><svg stroke="none" fill="black"
-                                                                                    stroke-width="0"
+                                                                                    strokeWidth="0"
                                                                                     viewBox="0 0 16 16" height="20"
                                                                                     width="20"
                                                                                     xmlns="http://www.w3.org/2000/svg">
@@ -33,6 +33,7 @@ const ModalChat = () => {
                     </div>
 
             <div className="flex items-center pt-0">
+
                 <form className="flex items-center justify-center w-full space-x-2">
                     <input
                         className="flex h-10 w-full rounded-md border border-[#e5e7eb] px-3 py-2 text-sm placeholder-[#6b7280] focus:outline-none focus:ring-2 focus:ring-[#9ca3af] disabled:cursor-not-allowed disabled:opacity-50 text-[#030712] focus-visible:ring-offset-2"

@@ -28,9 +28,9 @@ namespace FashionShop_API.Repositories.Products
             return product;
         }
 
-        public async Task<IEnumerable<Product>?> GetListProductByCategoryId(long categoryId, bool trackChanges)
+        public async Task<IEnumerable<Product>?> GetListProductByCategoryId(string slug , bool trackChanges)
         {
-            var products = await FindByCondition(e=>e.CategoryId == categoryId,trackChanges)
+            var products = await FindByCondition(e=>e.Category.Slug == slug,trackChanges)
 				.ToListAsync();
             return products.Any() ? products : Enumerable.Empty<Product>();
         }
@@ -42,5 +42,21 @@ namespace FashionShop_API.Repositories.Products
 				.Where(p => p.Category.Slug == categorySlug && p.Slug == productSlug)
 				.FirstOrDefaultAsync();
 		}
-	}
+		private string _querySearch = @"Select * from products where Match(product_name) against({0} IN BOOLEAN MODE) OR product_name like {1} and status = 'available'";
+		public async Task<IEnumerable<Product>> SearchByName(string? searchTerm,string? sortOrder)
+		{
+			var query = _context.Products;
+			if (string.IsNullOrWhiteSpace(searchTerm))
+			{
+				return Enumerable.Empty<Product>();
+			}
+			var searchResult = await query
+				.FromSqlRaw(_querySearch, searchTerm,$"%{searchTerm}%")
+				.SortByCreatedDate(sortOrder)
+				.SortByPrice()
+				.AsNoTracking()
+				.ToListAsync();
+			return searchResult.AsEnumerable();
+		}
+    }
 }

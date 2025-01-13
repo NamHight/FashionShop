@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getAllProducts } from "../../services/api/ProductService";
+import ButtonAddCart from "../ButtonAddCart/ButtonAddCart";
 import Loading from "../Loading";
 import  "../List/ProductList.css";
 import { useAuth } from "../../context/AuthContext";
@@ -30,9 +31,21 @@ const ProductList = () => {
         setLoading(false);
       }
     };
-
-    fetchProductsAndFavorites();
+  fetchProductsAndFavorites();
   }, [user]); 
+  useEffect(() => {
+    const fetchProducts= async () => {
+     // Thiết lập interval để lấy dữ liệu mỗi 10 giây
+     const intervalId = setInterval(() => {
+      console.log("Fetching products...");
+      fetchProducts();
+    }, 10000); // 10 giây
+
+    // Dọn dẹp interval khi component bị unmount
+    return () => clearInterval(intervalId);
+  }}, []);
+
+    
 
   const handleAddToFavorite = async (productId) => {
     if (user) {
@@ -91,7 +104,7 @@ const ProductList = () => {
     );
 
   return (
-    <div className="max-w-screen-xl mx-auto p-4">
+    <div className="max-w-screen-xl mx-auto py-8">
       <h1 className="text-3xl font-bold mb-6">Product List</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {products.length > 0 ? (
@@ -118,11 +131,19 @@ const ProductList = () => {
               <p className="text-lg font-bold text-red-500 mb-4">
                 Price: ${product.price}
               </p>
+              <p className="text-md text-gray-600 mb-4">
+                Quantity: {product.quantity}
+              </p>
               <div className="flex justify-between">
-                <button className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors">
-                  Add to Cart
-                </button>
-                
+                <ButtonAddCart
+                  css="bg-emerald-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors"
+                  productId={product.productId}
+                  productName={product.productName}
+                  banner={product.banner}
+                  price={product.price}
+                  quantity={1}
+                />
+                </div>                
                 {user && ( // Chỉ hiển thị nút "Yêu thích" nếu người dùng đã đăng nhập
                 (() => {
                   // Kiểm tra xem sản phẩm có trong danh sách yêu thích không
@@ -149,7 +170,7 @@ const ProductList = () => {
                  
 
               </div>
-            </div>
+           
           ))
         ) : (
           <p className="col-span-full text-center text-lg text-gray-600">
