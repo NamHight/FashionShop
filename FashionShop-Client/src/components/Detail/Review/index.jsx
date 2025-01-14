@@ -108,14 +108,14 @@ const ReviewList = (props) => {
                         <div className="w-10 h-10 bg-stone-300 rounded-full justify-start items-start gap-2.5 flex">
                           <img
                             className="rounded-full object-cover"
-                            src={
-                              item.customer.avatar.substring(0, 4) === "http"
-                                ? item.customer.avatar
+                            src={ item?.customer.avatar &&
+                              item?.customer.avatar.substring(0, 4) === "http"
+                                ? item?.customer.avatar
                                 : `/assets/images/customers/${
-                                    item.avatar || "default.png"
+                                    item?.customer.avatar || "default.png"
                                   }`
                             }
-                            alt={item.customer.avatar}
+                            alt={item?.customer.avatar}
                           />
                         </div>
                         <div className="flex-col justify-start items-start gap-1 inline-flex">
