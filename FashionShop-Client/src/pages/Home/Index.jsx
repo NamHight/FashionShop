@@ -4,7 +4,7 @@ import AutoBanner from '../../components/AutoBanner/AutoBanner';
 import CategoriesList from '../../components/List/CategoryList';
 const Home = () => {
     return (
-    <div>
+    <div className='w-full'>
     <AutoBanner />
     <h1 className="text-3xl font-bold mb-6">Categories List</h1>
     <CategoriesList/>

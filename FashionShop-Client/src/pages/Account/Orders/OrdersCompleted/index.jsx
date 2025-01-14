@@ -5,18 +5,19 @@ import DataOrder from "../dataOrder";
 import { CustomSpinner } from "../../../../components/CustomSpinner";
 import { Input } from "@material-tailwind/react";
 import { IoSearch } from "react-icons/io5";
+import { useAuth } from "../../../../context/AuthContext";
 
 const ListOrder = ({ value }) => {
   return (
     <>
       <div className="bg-slate-100 rounded mt-3">
-        <div className="flex items-center text-lg pl-5 py-3 border-b border-gray-500">
+        <div className="flex items-center text-lg mx-5 py-3 border-b border-gray-500">
           <div className="mr-2">
             <FaCartArrowDown />
           </div>
           <h1 className="font-bold">{value.customerName}</h1>
         </div>
-        <div className="border-b border-gray-500">
+        <div className="border-b border-gray-500 mx-5">
           {value.ordersdetails.map((item) => {
             return (
               <div className="p-5 flex" key={item.orderDetailId}>
@@ -43,15 +44,15 @@ const ListOrder = ({ value }) => {
                     </div>
                   </div>
                 </div>
-                <div className="w-36 text-xl flex justify-center items-center text-red-600 ">
+                <div className="w-36 text-xl flex justify-end items-center text-red-600 ">
                   ${item.totalPrice}
                 </div>
               </div>
             );
           })}
         </div>
-        <div className="px-5 py-5 text-center md:flex">
-          <div className="text-xl mx-2 w-full md:text-start">
+        <div className="px-5 py-5 mx-5 text-center md:flex">
+          <div className="text-xl w-full md:text-start">
             <button className="border border-slate-500 px-9 py-3 rounded hover:bg-red-600 hover:text-white">
               Reviews
             </button>
@@ -59,7 +60,7 @@ const ListOrder = ({ value }) => {
               Buy Back
             </button>
           </div>
-          <div className="text-xl w-80 flex justify-center items-center">
+          <div className="text-xl w-80 flex justify-end items-center">
             <p className="font-bold flex items-center">
               Thành Tiền:
               <span className="text-red-600 text-3xl font-normal ml-3">
@@ -73,10 +74,10 @@ const ListOrder = ({ value }) => {
   );
 };
 
-function OrdersCompleted({ userId }) {
-  const data = DataOrder(userId, "completed");
+function OrdersCompleted() {
+  const { user } = useAuth();
+  const data = DataOrder(user.customerId, "completed");
   console.log("OrdersCompleted", data);
-
   const order = () => {
     return data.isLoading ? (
       <CustomSpinner />
@@ -99,7 +100,7 @@ function OrdersCompleted({ userId }) {
             </Input.Icon>
           </Input>
         </div>
-        {data.order.map((item) => (
+        {data.order.sort((a,b) => b.orderId - a.orderId).map((item) => (
           <ListOrder key={item.orderId} value={item} />
         ))}
       </div>

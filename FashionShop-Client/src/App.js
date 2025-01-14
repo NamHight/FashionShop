@@ -1,11 +1,12 @@
 import { Route, Routes, useLocation, useNavigate } from "react-router";
 import Layout from "./pages/Layout";
-import { Router, routerAccount } from "./router/Router";
-import {useEffect, useRef, useState} from "react";
+import { Router, routerAccount, routerOrderStatus } from "./router/Router";
+import { useEffect, useRef, useState } from "react";
 import { useAuth } from "./context/AuthContext";
 import VerifyPassword from "./pages/VerifyPassword";
 import Account from "./pages/Account";
 import Loading from "./components/Loading";
+import Orders from "./pages/Account/Orders";
 
 const TitleUpdater = () => {
   const location = useLocation();
@@ -31,6 +32,9 @@ const AuthRoute = ({ children }) => {
   const navigate = useNavigate();
   useEffect(() => {
     console.log(user);
+    if (user === undefined) {
+      return;
+    }
     if (!user) {
       navigate("/", { replace: true });
     } else {
@@ -47,18 +51,18 @@ function App() {
   const layoutRef = useRef(null);
   const handleScrollTop = () => {
     if (layoutRef.current) {
-      layoutRef.current.scrollTo({top: 0, behavior: "smooth"});
+      layoutRef.current.scrollTo({ top: 0, behavior: "smooth" });
     }
-
-  }
+  };
   const handleScroll = () => {
     if (layoutRef) {
       const positionScroll = layoutRef.current.scrollTop;
-      const scrollHeight = layoutRef.current.scrollHeight - layoutRef.current.clientHeight;
-      const scrollMath=Math.round((positionScroll * 100) / scrollHeight);
-      setIsInVisible(scrollMath > 60 );
+      const scrollHeight =
+        layoutRef.current.scrollHeight - layoutRef.current.clientHeight;
+      const scrollMath = Math.round((positionScroll * 100) / scrollHeight);
+      setIsInVisible(scrollMath > 60);
     }
-  }
+  };
   useEffect(() => {
     const layoutCurrent = layoutRef.current;
     if (layoutCurrent) {
@@ -71,10 +75,20 @@ function App() {
     };
   }, []);
   return (
-    <div ref={layoutRef} className={'h-screen w-full max-h-screen max-w-full overflow-y-auto'}>
+    <div
+      ref={layoutRef}
+      className={"h-screen w-full max-h-screen max-w-full overflow-y-auto"}
+    >
       <TitleUpdater />
       <Routes>
-        <Route element={<Layout isInVisible={isInVisible} handleScrollTop={() => handleScrollTop()} />}>
+        <Route
+          element={
+            <Layout
+              isInVisible={isInVisible}
+              handleScrollTop={() => handleScrollTop()}
+            />
+          }
+        >
           {Router.map((route) => {
             return (
               <Route
@@ -88,7 +102,6 @@ function App() {
             path="account"
             element={
               <AuthRoute>
-                {" "}
                 <Account />
               </AuthRoute>
             }
@@ -102,6 +115,17 @@ function App() {
                 />
               );
             })}
+            <Route path="orders" element={<Orders />}>
+              {routerOrderStatus.map((route) => {
+                return (
+                  <Route
+                    key={route.name}
+                    path={route.path}
+                    element={route.element}
+                  />
+                );
+              })}
+            </Route>
           </Route>
         </Route>
       </Routes>
