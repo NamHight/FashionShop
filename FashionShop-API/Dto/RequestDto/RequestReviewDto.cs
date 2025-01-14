@@ -6,7 +6,6 @@ namespace FashionShop_API.Dto.RequestDto
 {
 	public class RequestReviewDto
 	{
-		public long ReviewId { get; set; }
 
 		[Required(ErrorMessage = "Hãy nhập số sao")]
 		[Range(1, 5, ErrorMessage = "Số sao phải trong khoảng từ 1 đến 5.")]

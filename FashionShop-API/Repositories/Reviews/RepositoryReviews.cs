@@ -27,16 +27,12 @@ namespace FashionShop_API.Repositories.Reviews
 		{
 			if (!trackChanges)
 			{
-				// Nếu không cần theo dõi thay đổi, tắt tracking
 				_context.Entry(entity).State = EntityState.Added;
 			}
 			else
 			{
-				// Nếu cần theo dõi thay đổi, mặc định Entity Framework sẽ tự động track
 				await _context.Set<Review>().AddAsync(entity);
 			}
-
-			// Lưu thay đổi vào cơ sở dữ liệu
 			await _context.SaveChangesAsync();
 		}
 		public async Task UpdateAsync(Review entity, bool trackChanges)
@@ -80,6 +76,13 @@ namespace FashionShop_API.Repositories.Reviews
         public async Task<double?> TotalReviewRatingAsync(long productId)
         {
 			return await _context.Reviews.AsNoTracking().Where(item => item.ProductId == productId).AverageAsync(item => item.Rating);
+        }
+        public async Task<List<Review>> GetListReviewByProductIdAsync(long productId)
+        {
+            // Truy vấn các review cho sản phẩm với productId
+            return await _context.Reviews
+                                 .Where(r => r.ProductId == productId)
+                                 .ToListAsync();
         }
     }
 }

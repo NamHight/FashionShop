@@ -6,5 +6,6 @@ namespace FashionShop_API.Services.Orders
     {
         Task<IEnumerable<ResponseOrdersDto>?> GetListOrdersByIdAndStatus(long? id, string status, bool trackChanges);
         //Task RemoveOrdersByIdAndStatus(long id, string status, bool trackChanges);
+        Task<bool> HasPurchasedProductAsync(long customerId, long productId);
     }
 }

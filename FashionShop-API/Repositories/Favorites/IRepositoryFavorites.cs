@@ -6,7 +6,10 @@ namespace FashionShop_API.Repositories.Favorites
     {
         Task<IEnumerable<Favorite>?> GetListFavoritesById(long id, bool trackChanges);
         Task AddAsync(Favorite entity, bool trackChanges);
-        Task DeleteAsync(long id);
+        Task<IEnumerable<Favorite>> GetFavoriteByProductIdAsync(long productId);
 
-	}
+        Task<Favorite> GetFavoriteByUserIdAndProductId(long userId, long productId);
+        Task<bool> DeleteFavorite(Favorite favorite);
+
+    }
 }
