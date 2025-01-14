@@ -116,7 +116,7 @@ const ReviewList = (props) => {
                                     }`
                                 : "/assets/images/customers/default.png"
                             }
-                            alt={item.customer.avatar}
+                            alt={item?.customer.avatar}
                           />
                         </div>
                         <div className="flex-col justify-start items-start gap-1 inline-flex">
