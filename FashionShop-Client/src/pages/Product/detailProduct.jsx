@@ -10,6 +10,6 @@ const DetailProduct = () => {
 
 
     </div>
-    );
+  );
 };
 export default DetailProduct;

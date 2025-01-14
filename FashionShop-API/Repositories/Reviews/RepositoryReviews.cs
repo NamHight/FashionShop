@@ -2,6 +2,8 @@
 using FashionShop_API.Dto.ResponseDto;
 using FashionShop_API.Models;
 using FashionShop_API.Repositories.Favorites;
+using FashionShop_API.Repositories.Shared;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 
 namespace FashionShop_API.Repositories.Reviews
@@ -12,17 +14,15 @@ namespace FashionShop_API.Repositories.Reviews
 		{
 		}
 
-		public async Task<IEnumerable<Review>?> GetListReviewByProductId(long productId, bool trackChanges)
+		public async Task<PagedListAsync<Review>> GetListReviewByProductId(int page, int limit, long productId, string typeOrderBy)
 		{
-			// Truy vấn tất cả các đánh giá liên quan đến sản phẩm với ID 'productId'
-			var reviews = await FindByCondition(r => r.ProductId == productId, trackChanges)
-				.Include(r => r.Product) // Bao gồm thông tin sản phẩm
-				.Include(r => r.Product.Category) // Bao gồm thông tin danh mục của sản phẩm
-				.ToListAsync();
-
-			// Trả về danh sách các review hoặc danh sách rỗng nếu không có đánh giá nào
-			return reviews.Any() ? reviews : Enumerable.Empty<Review>();
-		}
+			if (typeOrderBy == "asc")
+			{
+				var reviews = FindByCondition(item => item.ProductId == productId, false).OrderBy(item => item.ReviewDate).Include(item => item.Customer);
+				return await PagedListAsync<Review>.ToPagedListAsync(reviews, page, limit);
+			}
+            return await PagedListAsync<Review>.ToPagedListAsync(_context.Reviews.AsNoTracking().Where(item => item.ProductId == productId).OrderByDescending(item => item.ReviewDate).Include(item => item.Customer).AsQueryable(), page, limit);
+        }
 		public async Task AddAsync(Review entity, bool trackChanges)
 		{
 			if (!trackChanges)
@@ -76,5 +76,10 @@ namespace FashionShop_API.Repositories.Reviews
 			_context.Set<Review>().Remove(review);
 			await _context.SaveChangesAsync(); // Lưu các thay đổi vào DB
 		}
-	}
+
+        public async Task<double?> TotalReviewRatingAsync(long productId)
+        {
+			return await _context.Reviews.AsNoTracking().Where(item => item.ProductId == productId).AverageAsync(item => item.Rating);
+        }
+    }
 }

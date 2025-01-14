@@ -66,7 +66,7 @@ namespace FashionShop.Repositories.Products
         {
             if (!string.IsNullOrEmpty(nameSearch))
             {
-                return await PageLinkAsync(page, pageSize, trackChanges).Where(item => item.ProductName.Contains(nameSearch)).ToListAsync();
+                return await PageLinkAsync(page, pageSize, trackChanges).Where(item => item.ProductName.Contains(nameSearch)).OrderByDescending(item => item.CreatedAt).ToListAsync();
             }
             return await PageLinkAsync(page, pageSize, trackChanges).ToListAsync();
         }
@@ -74,7 +74,7 @@ namespace FashionShop.Repositories.Products
         {
             if (!string.IsNullOrEmpty(nameSearch))
             {
-                return await FindById(item => item.ProductName.Contains(nameSearch), trackChanges).CountAsync();
+                return await FindById(item => item.ProductName.Contains(nameSearch), trackChanges).OrderByDescending(item => item.CreatedAt).CountAsync();
             }
             return await FindAll(trackChanges).CountAsync();
         }

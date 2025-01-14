@@ -60,7 +60,7 @@ function Cart() {
                     <td className="max-w-[8rem] p-3">
                         <img
                             className="max-w-64 rounded-xl object-cover object-center"
-                            src={`assets/${item.banner}`}
+                            src={`${process.env.PUBLIC_URL}/assets/images/products/${item.banner}`}
                             alt="product image"
                         />
                     </td>

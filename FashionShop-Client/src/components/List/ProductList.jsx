@@ -14,12 +14,12 @@ const ProductList = () => {
   const [error, setError] = useState(null);
   const [favorites, setFavorites] = useState([]);
   useEffect(() => {
-    const fetchProductsAndFavorites = async () => {
+    const fetchProducts = async () => {
       try {
         // Fetch all products
         const data = await getAllProducts();
         setProducts(data);
-
+  
         // Fetch favorites if user is logged in
         if (user) {
           const favoriteData = await getFavoriteById(user.customerId);
@@ -31,19 +31,17 @@ const ProductList = () => {
         setLoading(false);
       }
     };
-  fetchProductsAndFavorites();
-  }, [user]); 
-  useEffect(() => {
-    const fetchProducts= async () => {
-     // Thiết lập interval để lấy dữ liệu mỗi 10 giây
-     const intervalId = setInterval(() => {
+  
+    fetchProducts(); // Call it initially
+  
+    const intervalId = setInterval(() => {
       console.log("Fetching products...");
-      fetchProducts();
+      fetchProducts(); // Fetch products every 10 seconds
     }, 10000); // 10 giây
-
+  
     // Dọn dẹp interval khi component bị unmount
     return () => clearInterval(intervalId);
-  }}, []);
+  }, [user]);
 
     
 
@@ -86,7 +84,7 @@ const ProductList = () => {
   const isProductFavorite = (productId) => {
     return favorites.some((item) => item.productId === productId);
   };
-  console.log(favorites);
+  
   if (loading) return <Loading />;
   if (error)
     return (
@@ -114,11 +112,13 @@ const ProductList = () => {
               className="bg-white border rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-4"
             >
               <div className="aspect-w-1 aspect-h-1 aspect-rectangle">
+                <a href={`/${product.category.slug}/${product.slug}`}>
                 <img
                   src={`${process.env.PUBLIC_URL}/assets/images/products/${product.banner}`}
                   alt={product.productName}
                   className="w-full h-full object-cover rounded-t-lg"
                 />
+                </a>
               </div>
               <h3 className="text-lg font-semibold mt-4">
                 <a href={`/${product.category.slug}/${product.slug}`}>
@@ -134,39 +134,27 @@ const ProductList = () => {
               <p className="text-md text-gray-600 mb-4">
                 Quantity: {product.quantity}
               </p>
-              <div className="flex justify-between">
+              <div className="flex items-center justify-between space-x-4">
                 <ButtonAddCart
-                  css="bg-emerald-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors"
+                  css="bg-emerald-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors flex-1 h-12 min-w-[120px]"
                   productId={product.productId}
                   productName={product.productName}
                   banner={product.banner}
                   price={product.price}
                   quantity={1}
                 />
-                </div>                
-                {user && ( // Chỉ hiển thị nút "Yêu thích" nếu người dùng đã đăng nhập
-                (() => {
-                  // Kiểm tra xem sản phẩm có trong danh sách yêu thích không
-                
-                  return (
-                    <Button
-                    
+                {user && (
+                  <Button
                     className={`${
-                      isProductFavorite(product.productId)
-                        ? "bg-pink-500"
-                        : "bg-gray-300"
-                    } text-white p-2 rounded`}
+                      isProductFavorite(product.productId) ? "bg-pink-500" : "bg-gray-300"
+                    } text-white py-2 px-4 rounded-lg flex-1 h-12 min-w-[120px] hover:opacity-80 transition-opacity`}
                     onClick={() => handleAddToFavorite(product.productId)}
                   >
-                    ♥{" "}
-                    {isProductFavorite(product.productId)
-                      ? "Remove from"
-                      : "Add to"}{" "}
-                    Favorite
+                    ♥ {isProductFavorite(product.productId) ? "Remove from" : "Add to"} Favorite
                   </Button>
-                  );
-                })()
-              )}
+                )}
+              </div>
+
                  
 
               </div>

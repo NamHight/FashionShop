@@ -3,11 +3,16 @@ import { getAllProducts } from "../../services/api/ProductService";
 import ButtonAddCart from "../ButtonAddCart/ButtonAddCart";
 import Loading from "../Loading";
 import "../List/ProductList.css";
+import { useAuth } from "../../context/AuthContext";
+import { Button } from "@material-tailwind/react";
+import { addFavorite, getFavoriteById,removeFavorite } from '../../services/api/FavoriteService';
 
 const LatestProductList = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [favorites, setFavorites] = useState([]);
+  const { user } = useAuth();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -19,6 +24,10 @@ const LatestProductList = () => {
         );
         // Lấy 4 sản phẩm đầu tiên
         setProducts(sortedProducts.slice(0, 4));
+        if (user) {
+                  const favoriteData = await getFavoriteById(user.customerId);
+                  setFavorites(favoriteData || []);  // Store favorites into state
+                }
       } catch (err) {
         setError("Unable to fetch products.");
       } finally {
@@ -35,11 +44,50 @@ const LatestProductList = () => {
 
     // Dọn dẹp interval khi component bị unmount
     return () => clearInterval(intervalId);
-  }, []);
+  }, [user]);
 //Fomart lai ngay thang
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return new Date(dateString).toLocaleDateString(undefined, options);
+  };
+
+const handleAddToFavorite = async (productId) => {
+    if (user) {
+      try {
+        if (isProductFavorite(productId)) {
+          console.log("Removing favorite for product:", productId);
+          await removeFavorite(user.customerId, productId);
+  
+          setFavorites((prevFavorites) =>
+            prevFavorites.filter((item) => item.productId !== productId)
+          );
+          alert("Product removed from favorites!");
+        } else {
+          console.log("Adding favorite for product:", productId);
+          const response = await addFavorite(productId, user.customerId);
+          console.log("Add favorite response:", response);
+  
+          if (response.success) {
+            setFavorites((prevFavorites) => [
+              ...prevFavorites,
+              { productId },
+            ]);
+            alert("Product added to favorites!");
+          } else {
+            throw new Error("Failed to add to favorites");
+          }
+        }
+      } catch (error) {
+        console.error("Error handling favorite:", error.message);
+        alert(`Failed to update favorites: ${error.message}`);
+      }
+    } else {
+      alert("Please log in to add or remove from favorites.");
+    }
+  };
+
+  const isProductFavorite = (productId) => {
+    return favorites.some((item) => item.productId === productId);
   };
 
   if (loading) return <Loading />;
@@ -69,11 +117,12 @@ const LatestProductList = () => {
               className="bg-white border rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-4"
             >
               <div className="aspect-w-1 aspect-h-1 aspect-rectangle">
+                <a href={`/${product.category.slug}/${product.slug}`}>
                 <img
                   src={`${process.env.PUBLIC_URL}/assets/images/products/${product.banner}`}
                   alt={product.productName}
                   className="w-full h-full object-cover rounded-t-lg"
-                />
+                /></a>
               </div>
               <h3 className="text-lg font-semibold mt-4">
                 <a href={`/${product.category?.slug || ""}/${product.slug || ""}`}>
@@ -90,17 +139,27 @@ const LatestProductList = () => {
               <p className="text-md text-gray-700 mb-2">
                 Created on: {formatDate(product.createdAt)}
               </p>
-              <div className="flex justify-between">
+              <div className="flex items-center justify-between space-x-4">
                 <ButtonAddCart
-                  css="bg-emerald-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors"
+                  css="bg-emerald-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors flex-1 h-12 min-w-[120px]"
                   productId={product.productId}
                   productName={product.productName}
                   banner={product.banner}
                   price={product.price}
                   quantity={1}
                 />
-                
+                {user && (
+                  <Button
+                    className={`${
+                      isProductFavorite(product.productId) ? "bg-pink-500" : "bg-gray-300"
+                    } text-white py-2 px-4 rounded-lg flex-1 h-12 min-w-[120px] hover:opacity-80 transition-opacity`}
+                    onClick={() => handleAddToFavorite(product.productId)}
+                  >
+                    ♥ {isProductFavorite(product.productId) ? "Remove from" : "Add to"} Favorite
+                  </Button>
+                )}
               </div>
+
             </div>
           ))
         ) : (
