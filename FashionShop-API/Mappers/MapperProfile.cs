@@ -54,5 +54,7 @@ public class MapperProfile : Profile
             .ReverseMap();
         CreateMap<Product, ResponseProductDto>()
             .ReverseMap();
+
+        CreateMap<Order, RequestOrderCancelDto>().ReverseMap();
     }
 }

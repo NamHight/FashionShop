@@ -1,4 +1,7 @@
-﻿using FashionShop_API.Repositories;
+﻿using FashionShop_API.Dto.RequestDto;
+using FashionShop_API.Filters;
+using FashionShop_API.Models;
+using FashionShop_API.Repositories;
 using FashionShop_API.Services.ServiceLogger;
 using FashionShop_API.Services.ServiceManager;
 using Microsoft.AspNetCore.Authorization;
@@ -37,9 +40,12 @@ namespace FashionShop_API.Controllers
         }
 
         // POST api/<OrdersController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("ordercancel")]
+        [ServiceFilter(typeof(ValidationFilter))]
+        public async Task<IActionResult> OrderCancel([FromBody] RequestOrderCancelDto ordercancelsto)
         {
+            await _serviceManager.Orders.OrderCancel(ordercancelsto, true);
+            return Ok();
         }
 
         // PUT api/<OrdersController>/5
