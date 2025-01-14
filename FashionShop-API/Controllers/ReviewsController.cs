@@ -1,7 +1,9 @@
-﻿using FashionShop_API.Dto.RequestDto;
+﻿using FashionShop_API.Dto.QueryParam;
+using FashionShop_API.Dto.RequestDto;
 using FashionShop_API.Services.ServiceLogger;
 using FashionShop_API.Services.ServiceManager;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace FashionShop_API.Controllers
 {
@@ -18,24 +20,12 @@ namespace FashionShop_API.Controllers
 			_loggerManager = loggerManager;
 		}
 
-		[HttpGet("product/{productId}")]
-		public async Task<IActionResult> GetReviewsByProductId(long productId)
+		[HttpGet]
+		public async Task<IActionResult> GetReviewsByProductId([FromQuery] ParamReviewDto paramReviewDto)
 		{
-			// Lấy danh sách các review của sản phẩm
-			var reviews = await _serviceManager.Review.FindReviewsByProductIdAsync(productId, false);
-
-			// Kiểm tra nếu không có review
-			if (reviews == null || !reviews.Any())
-			{
-				return NotFound(new { message = "Không có đánh giá cho sản phẩm này!" });
-			}
-
-			// Trả về danh sách review cùng với ProductId
-			return Ok(new
-			{
-				ProductId = productId,
-				Reviews = reviews
-			});
+			var reviews = await _serviceManager.Review.FindReviewsByProductIdAsync(paramReviewDto.Page, paramReviewDto.Limit, paramReviewDto.ProductId, paramReviewDto.TypeOrderBy);
+			Response.Headers.Append("X-Pagination", JsonSerializer.Serialize(reviews.page));
+			return Ok(reviews.data);
 		}
 
 		[HttpPost]
@@ -124,6 +114,12 @@ namespace FashionShop_API.Controllers
 				_loggerManager.LogError($"Something went wrong in DeleteReview: {ex.Message}");
 				return StatusCode(500, new { message = "Đã có lỗi xảy ra khi xóa đánh giá." });
 			}
+		}
+		[HttpGet("TotalReviewRating/{productId}")]
+		public async Task<IActionResult> GetTotalReviewAsync(long productId)
+		{
+			var totalReview = await _serviceManager.Review.TotalReviewRatingAsync(productId);
+			return Ok(totalReview);
 		}
 	}
 }

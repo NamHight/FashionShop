@@ -4,6 +4,7 @@ using FashionShop_API.Dto.RequestDto;
 using FashionShop_API.Dto.ResponseDto;
 using FashionShop_API.Models;
 using FashionShop_API.Repositories;
+using FashionShop_API.Repositories.RepositoryManager;
 using FashionShop_API.Services.Products;
 using FashionShop_API.Services.ServiceLogger;
 
@@ -35,11 +36,11 @@ namespace FashionShop.Services.Products
             return product;
         }
 
-        public async Task<IEnumerable<ResponseProductDto>> FindProductsByCategoryIdAsync(long categoryId, bool trackChanges)
+        public async Task<IEnumerable<ResponseProductDto>> FindProductsByCategoryIdAsync(string slug, bool trackChanges)
         {
             try
             {
-                var products = await _managerRepository.Product.GetListProductByCategoryId(categoryId, trackChanges);
+                var products = await _managerRepository.Product.GetListProductByCategoryId(slug, trackChanges);
 
                 if (products == null || !products.Any())
                 {
@@ -64,6 +65,28 @@ namespace FashionShop.Services.Products
             var result = await _managerRepository.Product.SearchByName(requestSearchProductDto.searchTerm, requestSearchProductDto.sortOrder);
             var productDtos = _mapper.Map<IEnumerable<ResponseProductDto>>(result);
             return productDtos;
+        }
+        public async Task<int> GetFavoritesCountAsync(long productId)
+        {
+            var favorites = await _managerRepository.Favorite.GetFavoriteByProductIdAsync(productId);
+            return favorites.Count();
+        }
+
+        public async Task<int> GetViewsCountAsync(long productId)
+        {
+            var views = await _managerRepository.Product.GetViewsByProductIdAsync(productId);
+            return views.Count();
+        }
+
+        public async Task<double> GetAverageReviewAsync(long productId)
+        {
+            var reviews = await _managerRepository.Review.GetListReviewByProductIdAsync(productId);
+
+            if (reviews.Any())
+            {
+                return reviews.Average(r => r.Rating.HasValue ? (double)r.Rating.Value : 0);
+            }
+            return 0;
         }
     }
 }

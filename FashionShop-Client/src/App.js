@@ -5,7 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import { useAuth } from "./context/AuthContext";
 import VerifyPassword from "./pages/VerifyPassword";
 import Account from "./pages/Account";
-import Loading from "./components/Loading";
+import Loading from './components/Loading';
+import ProductListByCategory from "./components/List/ProductListByCategory";
 import Orders from "./pages/Account/Orders";
 
 const TitleUpdater = () => {
@@ -115,6 +116,9 @@ function App() {
                 />
               );
             })}
+          </Route>
+          <Route path="/categories/:categorySlug" element={<ProductListByCategory />} />
+        </Route>
             <Route path="orders" element={<Orders />}>
               {routerOrderStatus.map((route) => {
                 return (

@@ -10,6 +10,8 @@ using FashionShop_API.Services.Reviews;
 using FashionShop_API.Services.Promotions;
 using FashionShop_API.Services.Articles;
 using FashionShop_API.Services.Orders;
+using FashionShop_API.Services.Suppliers;
+using FashionShop_API.Services.Views;
 
 namespace FashionShop_API.Services.ServiceManager;
 
@@ -27,5 +29,7 @@ public interface IServiceManager
      IServicePromotion Promotion { get; }
      IServiceArticle Article { get; }
      IServiceOrders Orders{ get; }
+    IServiceSuppiler Suppiler { get; }
+     IServiceView Views { get; }
 
 }

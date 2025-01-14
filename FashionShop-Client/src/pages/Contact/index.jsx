@@ -183,7 +183,7 @@ const Contact = () => {
             </li>
           </ul>
         </div>
-        <div className="relative before:absolute"></div>
+        {/* <div className="relative before:absolute"></div> */}
       </div>
     </div>
   );

@@ -69,14 +69,15 @@ const BlogArticle = () => {
     },
   });
   function formActionSearch(data) {
+    const category = data.categoryId || null
     setparamPage((prevParamPage) => ({
       ...prevParamPage,
       page: 1,
       nameSearch: data.nameSearch,
-      categoryId: data.categoryId,
+      categoryId: category,
     }));
     console.log("ttt", data.nameSearch);
-    console.log("ttt categoryId", data.categoryId);
+    console.log("ttt categoryId", category);
   }
   return (
     <div className="container mr-px">
@@ -141,7 +142,7 @@ const BlogArticle = () => {
             <>
               <h2 className="text-lg font-semibold">Articles List</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-                {BlogArticleQuery.map((item, key) => {
+                {BlogArticleQuery && BlogArticleQuery.map((item, key) => {
                   return (
                     <div
                       className="col-span-1 bg-white border rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-4"
@@ -161,7 +162,7 @@ const BlogArticle = () => {
                         {item.articlesName}
                       </h3>
                       <p className="text-sm text-gray-500 mb-2">
-                        {item.createdAt}
+                        {item.createAt}
                       </p>
                       <p className="text-sm text-gray-500 mb-2">
                         {item.description}

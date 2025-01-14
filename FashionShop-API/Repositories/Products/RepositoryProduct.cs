@@ -28,9 +28,9 @@ namespace FashionShop_API.Repositories.Products
             return product;
         }
 
-        public async Task<IEnumerable<Product>?> GetListProductByCategoryId(long categoryId, bool trackChanges)
+        public async Task<IEnumerable<Product>?> GetListProductByCategoryId(string slug , bool trackChanges)
         {
-            var products = await FindByCondition(e=>e.CategoryId == categoryId,trackChanges)
+            var products = await FindByCondition(e=>e.Category.Slug == slug,trackChanges)
 				.ToListAsync();
             return products.Any() ? products : Enumerable.Empty<Product>();
         }
@@ -57,6 +57,10 @@ namespace FashionShop_API.Repositories.Products
 				.AsNoTracking()
 				.ToListAsync();
 			return searchResult.AsEnumerable();
+		}
+        public async Task<IEnumerable<View>> GetViewsByProductIdAsync(long productId)
+		{
+			return await _context.Views.Where(v=>v.ProductId == productId).ToListAsync();
 		}
     }
 }
