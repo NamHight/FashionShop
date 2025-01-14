@@ -88,10 +88,12 @@ function ProductDetail() {
       };
     
 
+    
       useEffect(() => {
         const checkPurchaseStatus = async () => {
           if (user) {
             const result = await checkIfPurchased(user.customerId, product.productId);
+            console.log(result);
             setCanReview(result); // Nếu đã mua, cho phép đánh giá, ngược lại không
           }
         };
@@ -100,20 +102,36 @@ function ProductDetail() {
           checkPurchaseStatus();
         }
       }, [user, product]);
-      const handleSubmitReview = async () => {
+    
+      const handleSubmitReview = async (event) => {
+        event.preventDefault(); // Ngăn reload trang
+    
         if (!canReview) {
           alert('You need to purchase this product before reviewing!');
           return;
         }
     
-        // Tiến hành gửi review nếu người dùng đã mua sản phẩm
         try {
-          const response = await addReview({ reviewText, rating, customerId: user.customerId, productId: product.productId });
+          const response = await addReview(
+            product.productId,  // productId
+            rating,             // rating
+            reviewText,         // reviewText
+            user.customerId     // customerId
+          );
+    
           console.log('Review submitted:', response);
+    
+    
+          alert('Thank you for your review!');
+          
+          // Sau khi người dùng nhấn OK, reload lại trang
+          window.location.reload();
         } catch (error) {
           console.error('Error submitting review:', error);
+          alert('Failed to submit review. Please try again.');
         }
       };
+      
 
 
       const [products, setProducts] = useState([]);
@@ -345,7 +363,7 @@ function ProductDetail() {
         </div>
       )}
     </div>
-                            <ReviewList productId={product.productId} />
+                            <ReviewList productId={product.productId}/>
                         </div>
                     )}
                 </div>

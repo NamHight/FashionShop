@@ -1,4 +1,4 @@
-import { publicAxios } from "../../libs/Config/AxiosConfig"
+import { authAxios, publicAxios } from "../../libs/Config/AxiosConfig"
 
 const BASE_ORDERS_URL = "Orders";
 const END_POINT = {
@@ -29,12 +29,14 @@ export const GetTotalReviewRating = async (productId) => {
 
 export const addReview = async (productId, rating, reviewText,customerId) => {
     try {
+      console.log(END_POINT.GetReviewByProductId);
       const response = await publicAxios.post(END_POINT.GetReviewByProductId, {
         productId,
         rating,
         reviewText,
         customerId,
       });
+      console.log(response.data)
       return response.data;
     } catch (error) {
       console.error("Error adding review:", error);
@@ -43,17 +45,26 @@ export const addReview = async (productId, rating, reviewText,customerId) => {
   };
   export const checkIfPurchased = async (customerId, productId) => {
     try {
-      const response = await fetch(`${BASE_ORDERS_URL}?customerId=${customerId}&productId=${productId}`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch purchase data');
+      const url = `${BASE_ORDERS_URL}?customerId=${customerId}&productId=${productId}`;
+      console.log("Request URL:", url);
+  
+      const response = await authAxios.get(url);
+  
+      if (response?.status === 200) {
+        const result = response.data;
+        console.log("API Response:", result);
+  
+        // Trả về true nếu thông báo xác nhận rằng người dùng đã mua sản phẩm
+        return result.message === 'You can review this product.';
       }
-      const result = await response.json();
-      if (result && result.status === 'completed') {
-        return true;
-      }
+  
+      // Nếu không phải status 200, trả về false
       return false;
     } catch (error) {
       console.error("Error checking purchase status:", error);
-      throw error;
+      // Trả về false nếu có lỗi
+      return false;
     }
   };
+  
+  

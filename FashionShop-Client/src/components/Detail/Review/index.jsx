@@ -108,7 +108,7 @@ const ReviewList = (props) => {
                         <div className="w-10 h-10 bg-stone-300 rounded-full justify-start items-start gap-2.5 flex">
                           <img
                             className="rounded-full object-cover"
-                            src={
+                            src={ item?.customer.avatar &&
                               item?.customer.avatar.substring(0, 4) === "http"
                                 ? item?.customer.avatar
                                 : `/assets/images/customers/${
