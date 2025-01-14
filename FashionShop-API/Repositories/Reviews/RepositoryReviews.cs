@@ -27,16 +27,12 @@ namespace FashionShop_API.Repositories.Reviews
 		{
 			if (!trackChanges)
 			{
-				// Nếu không cần theo dõi thay đổi, tắt tracking
 				_context.Entry(entity).State = EntityState.Added;
 			}
 			else
 			{
-				// Nếu cần theo dõi thay đổi, mặc định Entity Framework sẽ tự động track
 				await _context.Set<Review>().AddAsync(entity);
 			}
-
-			// Lưu thay đổi vào cơ sở dữ liệu
 			await _context.SaveChangesAsync();
 		}
 		public async Task UpdateAsync(Review entity, bool trackChanges)
