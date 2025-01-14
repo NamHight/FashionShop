@@ -1,8 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import {
-  GetReviewByProductId,
-} from "../../../services/api/ReviewService";
+import { GetReviewByProductId } from "../../../services/api/ReviewService";
 import { Rating, Spinner } from "@material-tailwind/react";
 import PaginationList from "../../Pagination/PaginationList";
 
@@ -109,11 +107,14 @@ const ReviewList = (props) => {
                           <img
                             className="rounded-full object-cover"
                             src={
-                              item.customer.avatar.substring(0, 4) === "http"
-                                ? item.customer.avatar
-                                : `/assets/images/customers/${
-                                    item.avatar || "default.png"
-                                  }`
+                              item?.customer.avatar
+                                ? item?.customer.avatar.substring(0, 4) ===
+                                  "http"
+                                  ? item.customer.avatar
+                                  : `/assets/images/customers/${
+                                      item?.customer.avatar || "default.png"
+                                    }`
+                                : "/assets/images/customers/default.png"
                             }
                             alt={item.customer.avatar}
                           />

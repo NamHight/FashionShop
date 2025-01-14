@@ -49,15 +49,18 @@ function ProductDetail() {
   return (
     <div>
       <Breadcrumb>
-      <Breadcrumb.Link href="/">
-        <FcHome className="h-[18px] w-[18px]" />
-      </Breadcrumb.Link>
-      <Breadcrumb.Separator />
-      <Breadcrumb.Link href={`/${categorySlug || "default-category"}`}>{product.category.categoryName || "Category"}</Breadcrumb.Link>
-      <Breadcrumb.Separator />
-      <Breadcrumb.Link href={`/${categorySlug}/${productSlug}`}>{product.productName || "Product Name"}</Breadcrumb.Link>
-    </Breadcrumb>
-      
+        <Breadcrumb.Link href="/">
+          <FcHome className="h-[18px] w-[18px]" />
+        </Breadcrumb.Link>
+        <Breadcrumb.Separator />
+        <Breadcrumb.Link href={`/${categorySlug || "default-category"}`}>
+          {product.category.categoryName || "Category"}
+        </Breadcrumb.Link>
+        <Breadcrumb.Separator />
+        <Breadcrumb.Link href={`/${categorySlug}/${productSlug}`}>
+          {product.productName || "Product Name"}
+        </Breadcrumb.Link>
+      </Breadcrumb>
 
       <div className="flex p-8 space-x-8">
         {/* Left: Product Images and Thumbnail List */}
