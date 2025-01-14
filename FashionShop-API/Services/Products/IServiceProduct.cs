@@ -13,5 +13,8 @@ namespace FashionShop_API.Services.Products
         Task<Product?> FindProductByIdAsync( long id, bool trackChanges);
         Task<Product> GetProductDetailsAsync(ParamCategoryProductDto param);
         Task<IEnumerable<ResponseProductDto>> SearchProductsByNameAsync(RequestSearchProductDto requestSearchProductDto);
-	}
+        Task<int> GetFavoritesCountAsync(long productId);
+        Task<int> GetViewsCountAsync(long productId);
+        Task<double> GetAverageReviewAsync(long productId);
+    }
 }

@@ -22,29 +22,34 @@ namespace FashionShop_API.Repositories.Favorites
 		{
 			if (!trackChanges)
 			{
-				// Nếu không cần theo dõi thay đổi, tắt tracking
 				_context.Entry(entity).State = EntityState.Added;
 			}
 			else
 			{
-				// Nếu cần theo dõi thay đổi, mặc định Entity Framework sẽ tự động track
 				await _context.Set<Favorite>().AddAsync(entity);
 			}
 
 			// Lưu thay đổi vào cơ sở dữ liệu
 			await _context.SaveChangesAsync();
 		}
-		public async Task DeleteAsync(long id)
-		{
-			var favorite = await _context.Set<Favorite>().FindAsync(id);
+        public async Task<Favorite> GetFavoriteByUserIdAndProductId(long userId, long productId)
+        {
+            return await _context.Favorites
+                .FirstOrDefaultAsync(f => f.CustomerId == userId && f.ProductId == productId);
+        }
 
-			if (favorite == null)
-			{
-				throw new KeyNotFoundException("Favorite not found.");
-			}
-
-			_context.Set<Favorite>().Remove(favorite);
-			await _context.SaveChangesAsync(); // Lưu các thay đổi vào DB
-		}
-	}
+        // Xóa yêu thích khỏi cơ sở dữ liệu
+        public async Task<bool> DeleteFavorite(Favorite favorite)
+        {
+            _context.Favorites.Remove(favorite);
+            int result = await _context.SaveChangesAsync();
+            return result > 0;
+        }
+        public async Task<IEnumerable<Favorite>> GetFavoriteByProductIdAsync(long productId)
+        {
+            return await _context.Favorites
+                .Where(f => f.ProductId == productId) // Tìm các bản ghi có productId tương ứng
+                .ToListAsync(); // Chuyển đổi kết quả thành một danh sách
+        }
+    }
 }

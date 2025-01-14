@@ -11,5 +11,7 @@ namespace FashionShop_API.Repositories.Reviews
 		Task UpdateAsync(Review entity, bool trackChanges);
 		Task DeleteAsync(long id);
 		Task<double?> TotalReviewRatingAsync(long productId);
-	}
+
+        Task<List<Review>> GetListReviewByProductIdAsync(long productId);
+    }
 }

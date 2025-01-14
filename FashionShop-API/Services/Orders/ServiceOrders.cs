@@ -49,5 +49,11 @@ namespace FashionShop_API.Services.Orders
         //        throw;
         //    }
         //}
+        public async Task<bool> HasPurchasedProductAsync(long customerId, long productId)
+        {
+            // Gọi repository để kiểm tra đơn hàng của người dùng
+            var order = await _repositoryManager.Orders.GetOrderByCustomerIdAndProductIdAsync(customerId, productId);
+            return order != null;
+        }
     }
 }

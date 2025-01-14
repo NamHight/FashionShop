@@ -53,5 +53,19 @@ namespace FashionShop_API.Controllers
         public void Delete(int id)
         {
         }
+        [HttpGet]
+        public async Task<IActionResult> CanReviewProduct(long customerId, long productId)
+        {
+            var hasPurchased = await _serviceManager.Orders.HasPurchasedProductAsync(customerId, productId);
+
+            if (hasPurchased)
+            {
+                return Ok(new { message = "You can review this product." });
+            }
+            else
+            {
+                return BadRequest(new { message = "You must purchase this product before reviewing." });
+            }
+        }
     }
 }

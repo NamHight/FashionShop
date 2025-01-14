@@ -70,5 +70,6 @@ public partial class Product
     public virtual ICollection<Stock> Stocks { get; set; } = new List<Stock>();
 
     [InverseProperty("Product")]
+    [Newtonsoft.Json.JsonIgnore]
     public virtual ICollection<View> Views { get; set; } = new List<View>();
 }
