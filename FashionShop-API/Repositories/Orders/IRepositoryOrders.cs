@@ -7,5 +7,6 @@ namespace FashionShop_API.Repositories.Orders
         //Task<Order?> GetOrdersByIdAndStatus(long id, string status, bool trackChanges);
         //Task RemoveOrdersByIdAndStatusPending(Order order);
         Task<Order> GetOrderByCustomerIdAndProductIdAsync(long customerId, long productId);
+        Task AddOrder(Order order);
     }
 }

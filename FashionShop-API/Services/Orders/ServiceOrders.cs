@@ -4,6 +4,8 @@ using FashionShop_API.Repositories.Orders;
 using FashionShop_API.Models;
 using FashionShop_API.Dto.ResponseDto;
 using FashionShop_API.Exceptions;
+using FashionShop_API.Dto.RequestDto;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace FashionShop_API.Services.Orders
 {
@@ -54,6 +56,16 @@ namespace FashionShop_API.Services.Orders
             // Gọi repository để kiểm tra đơn hàng của người dùng
             var order = await _repositoryManager.Orders.GetOrderByCustomerIdAndProductIdAsync(customerId, productId);
             return order != null;
+        }
+
+        public async Task<Order> AddOrder(RequestOrderDto order)
+        {
+            if (order is null) throw new ListOrdersNotFoundException("Order rong");
+            var orderDomain = _mappers.Map<Order>(order);
+            await _repositoryManager.Orders.AddOrder(orderDomain);
+            // sau khi SaveChanges thì orderDomain sẽ được gán ID;
+            await _repositoryManager.SaveChanges();
+            return orderDomain;
         }
     }
 }

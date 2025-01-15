@@ -5,9 +5,12 @@ import DataOrder from "../dataOrder";
 import { Input } from "@material-tailwind/react";
 import { CustomSpinner } from "../../../../components/CustomSpinner";
 import { IoSearch } from "react-icons/io5";
-import { useState } from "react";
+import { useState, useLocation, useEffect} from "react";
+
 
 const ListOrder = ({ value }) => {
+
+
   return (
     <>
       <div className="bg-slate-100 rounded mt-3">

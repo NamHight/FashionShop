@@ -50,7 +50,6 @@ function App() {
     if (layoutRef.current) {
       layoutRef.current.scrollTo({top: 0, behavior: "smooth"});
     }
-
   }
   const handleScroll = () => {
     if (layoutRef) {

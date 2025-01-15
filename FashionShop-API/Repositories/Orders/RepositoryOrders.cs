@@ -33,5 +33,10 @@ namespace FashionShop_API.Repositories.Orders
                                 && order.Ordersdetails.Any(item => item.ProductId == productId))
                 .FirstOrDefaultAsync();
         }
+
+        public async Task AddOrder(Order order)
+        {
+            await Create(order);
+        }
     }
 }

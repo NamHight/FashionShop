@@ -9,6 +9,7 @@ using FashionShop_API.Services.Caching;
 using FashionShop_API.Services.Products;
 using FashionShop_API.Services.ServiceManager;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using FashionShop_API.Services.Views;
 using Microsoft.AspNetCore.Http;
 
@@ -41,6 +42,9 @@ namespace FashionShop_API.Controllers
                 }
 
                 _logger.LogInformation("Fetched all products successfully.");
+
+     
+
                 return Ok(products);
             }
             catch (Exception ex)

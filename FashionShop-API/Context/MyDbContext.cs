@@ -208,16 +208,6 @@ public partial class MyDbContext : DbContext
             entity.HasOne(d => d.Employee).WithMany(p => p.Orders).HasConstraintName("fk_orders_employee");
         });
 
-        modelBuilder.Entity<Ordercancelreason>(entity =>
-        {
-            entity.HasKey(e => e.CancelorderId).HasName("PRIMARY");
-
-            entity.Property(e => e.CreateAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
-            entity.Property(e => e.Status).HasDefaultValueSql("'pending'");
-
-            entity.HasOne(d => d.Order).WithMany(p => p.Ordercancelreasons).HasConstraintName("ordercancelreason_ibfk_1");
-        });
-
         modelBuilder.Entity<Ordersdetail>(entity =>
         {
             entity.HasKey(e => e.OrderDetailId).HasName("PRIMARY");
