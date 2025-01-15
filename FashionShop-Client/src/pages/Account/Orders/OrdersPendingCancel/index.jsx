@@ -4,6 +4,7 @@ import { FaCartArrowDown } from "react-icons/fa6";
 import DataOrder from "../dataOrder";
 import { CustomSpinner } from "../../../../components/CustomSpinner";
 import { useAuth } from "../../../../context/AuthContext";
+import { Spinner } from "@material-tailwind/react";
 
 const ListOrder = ({ value }) => {
   return (
@@ -49,7 +50,12 @@ const ListOrder = ({ value }) => {
             );
           })}
         </div>
-        <div className="px-5 py-5 flex mx-5 justify-end">
+        <div className="px-5 py-5 flex mx-5 justify-between">
+          <div>
+            <p className="text-red-600 text-xl flex justify-center items-center border border-gray-900 px-10 py-3 rounded">
+             <Spinner color="error" className="mr-3"/>  Pending....  
+            </p>
+          </div>
           <div className="text-xl flex items-center">
             <p className="font-bold flex items-center">Thành Tiền:</p>
             <p className="text-red-600 text-3xl font-normal ml-3">
@@ -65,7 +71,6 @@ const ListOrder = ({ value }) => {
 export default function OrdersPendingCancel() {
   const { user } = useAuth();
   const data = DataOrder(user.customerId, "pending cancel");
-
   console.log("OrdersPending", data);
   const order = () => {
     return data.isLoading ? (

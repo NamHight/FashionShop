@@ -29,5 +29,10 @@ namespace FashionShop_API.Repositories.Orders
         {
             await Create(order);
         }
+        public async Task<Order> FindOrderById(long? id, bool trackChanges)
+        {
+            var order = await FindByCondition(item => item.OrderId.Equals(id), trackChanges).FirstOrDefaultAsync();
+            return order;
+        }
     }
 }

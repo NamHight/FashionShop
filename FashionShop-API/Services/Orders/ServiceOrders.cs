@@ -52,12 +52,6 @@ namespace FashionShop_API.Services.Orders
             await _repositoryManager.SaveChanges();
             return orderDomain;
         }
-        public async Task<bool> HasPurchasedProductAsync(long customerId, long productId)
-        {
-            // Gọi repository để kiểm tra đơn hàng của người dùng
-            var order = await _repositoryManager.Orders.GetOrderByCustomerIdAndProductIdAsync(customerId, productId);
-            return order != null;
-        }
         public async Task OrderCancel(RequestOrderCancelDto? order, bool trackChanges)
         {
             try

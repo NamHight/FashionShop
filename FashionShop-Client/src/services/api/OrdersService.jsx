@@ -25,7 +25,7 @@ export const createOrderCancel = async (value) => {
 
 export const addOrders = async (order) => {
   try {
-    const response = await authAxios.post( URL_CUSTOMER + "addOrders", order);
+    const response = await authAxios.post( URL_OrderByIdStatus + "addOrders", order);
     return response;
   } catch (e) {
     return await e.response;

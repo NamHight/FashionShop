@@ -5,7 +5,7 @@ import { useAuth } from "../../context/AuthContext";
 import { addOrders } from "../../services/api/OrdersService";
 import ModalLoginRegister from "../../components/Modal/ModalLoginRegister";
 import { AlertCustom } from "../../components/Alert/Alert";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { toast } from "react-toastify";
 
 const Payment = () => {

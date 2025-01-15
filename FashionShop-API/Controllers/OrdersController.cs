@@ -1,5 +1,6 @@
 ﻿using FashionShop_API.Dto.RequestDto;
 using FashionShop_API.Extensions;
+using FashionShop_API.Filters;
 using FashionShop_API.Models;
 using FashionShop_API.Repositories;
 using FashionShop_API.Services.ServiceLogger;
@@ -30,7 +31,6 @@ namespace FashionShop_API.Controllers
             _loggerManager = loggerManager;
         }
 
-        // GET api/<OrdersController>/5
         [HttpGet("{id}/{status}")]
         public async Task<IActionResult> GetListOrdersByIdAndStatus(long? id, string status)
         {
@@ -43,25 +43,12 @@ namespace FashionShop_API.Controllers
             return Ok(result);
         }
 
-        // POST api/<OrdersController>
         [HttpPost("ordercancel")]
         [ServiceFilter(typeof(ValidationFilter))]
         public async Task<IActionResult> OrderCancel([FromBody] RequestOrderCancelDto ordercancelsto)
         {
             await _serviceManager.Orders.OrderCancel(ordercancelsto, true);
             return Ok();
-        }
-
-        // PUT api/<OrdersController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<OrdersController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
 
         [HttpPost("addOrders")]
@@ -82,20 +69,6 @@ namespace FashionShop_API.Controllers
                 });
             }
             return Ok(new {message = "Thanh Toán Thành Công", data = orderDomain});
-        }
-        [HttpGet]
-        public async Task<IActionResult> CanReviewProduct(long customerId, long productId)
-        {
-            var hasPurchased = await _serviceManager.Orders.HasPurchasedProductAsync(customerId, productId);
-
-            if (hasPurchased)
-            {
-                return Ok(new { message = "You can review this product." });
-            }
-            else
-            {
-                return BadRequest(new { message = "You must purchase this product before reviewing." });
-            }
         }
         [HttpGet]
         public async Task<IActionResult> CanReviewProduct(long customerId, long productId)

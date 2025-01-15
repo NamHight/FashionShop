@@ -5,8 +5,9 @@ import { useEffect, useRef, useState } from "react";
 import { useAuth } from "./context/AuthContext";
 import VerifyPassword from "./pages/VerifyPassword";
 import Account from "./pages/Account";
-import Loading from './components/Loading';
+import Loading from "./components/Loading";
 import ProductListByCategory from "./components/List/ProductListByCategory";
+import Orders from "./pages/Account/Orders";
 
 const TitleUpdater = () => {
   const location = useLocation();
@@ -27,18 +28,22 @@ const TitleUpdater = () => {
   return null;
 };
 const AuthRoute = ({ children }) => {
-  const { user } = useAuth();
+  const { user,isLoading:loadingUser,isPending } = useAuth();
   const [isLoading, setisLoading] = useState(true);
   const navigate = useNavigate();
   useEffect(() => {
-    console.log(user);
-    if (!user) {
-      navigate("/", { replace: true });
-    } else {
-      setisLoading(false);
+    if(loadingUser || isPending){
+      setisLoading(true)
+    }else{
+      if (!user) {
+        console.log("Khong con user");
+        navigate("/", { replace: true });
+      } else {
+        setisLoading(false);
+      }
     }
   }, [user, navigate]);
-  if (isLoading) {
+  if (isLoading ) {
     return <Loading />;
   }
   return children;
@@ -50,7 +55,7 @@ function App() {
     if (layoutRef.current) {
       layoutRef.current.scrollTo({ top: 0, behavior: "smooth" });
     }
-  }
+  };
   const handleScroll = () => {
     if (layoutRef) {
       const positionScroll = layoutRef.current.scrollTop;
@@ -112,9 +117,6 @@ function App() {
                 />
               );
             })}
-          </Route>
-          <Route path="/categories/:categorySlug" element={<ProductListByCategory />} />
-        </Route>
             <Route path="orders" element={<Orders />}>
               {routerOrderStatus.map((route) => {
                 return (
@@ -127,6 +129,10 @@ function App() {
               })}
             </Route>
           </Route>
+          <Route
+            path="/categories/:categorySlug"
+            element={<ProductListByCategory />}
+          />
         </Route>
       </Routes>
     </div>

@@ -6,7 +6,6 @@ namespace FashionShop_API.Repositories.Orders
         Task<IEnumerable<Order>?> GetListOrdersByIdAndStatus(long? id, string status, bool trackChanges);
         Task<Order> GetOrderByCustomerIdAndProductIdAsync(long customerId, long productId);
         Task AddOrder(Order order);
-        Task<Order> GetOrderByCustomerIdAndProductIdAsync(long customerId, long productId);
         Task<Order> FindOrderById(long? id, bool trackChanges);
     }
 }

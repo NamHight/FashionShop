@@ -1,16 +1,12 @@
 import React, { useEffect } from "react";
 import { Tabs } from "@material-tailwind/react";
-import OrdersCancel from "./OrdersCancel/index";
-import OrdersCompleted from "./OrdersCompleted/index";
-import OrdersPending from "./OrdersPending/index";
-import { useAuth } from "../../../context/AuthContext";
 import { toast } from 'react-toastify';
-import { useLocation } from "react-router";
+import { Link, Outlet, useLocation } from "react-router";
 
 const Orders = () => {
-  const { user } = useAuth();
   const location = useLocation();
   const message = location.state?.message;
+  const currentTab = location.pathname.split("/").pop()
   useEffect(()=>{
     if (message) {
       console.log("da vao pending", message);
