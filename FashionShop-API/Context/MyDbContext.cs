@@ -37,8 +37,6 @@ public partial class MyDbContext : DbContext
 
     public virtual DbSet<Order> Orders { get; set; }
 
-    public virtual DbSet<Ordercancelreason> Ordercancelreasons { get; set; }
-
     public virtual DbSet<Ordersdetail> Ordersdetails { get; set; }
 
     public virtual DbSet<Product> Products { get; set; }

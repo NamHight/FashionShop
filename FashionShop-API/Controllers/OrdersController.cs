@@ -1,5 +1,6 @@
 ﻿using FashionShop_API.Dto.RequestDto;
 using FashionShop_API.Extensions;
+using FashionShop_API.Filters;
 using FashionShop_API.Models;
 using FashionShop_API.Repositories;
 using FashionShop_API.Services.ServiceLogger;
@@ -30,7 +31,6 @@ namespace FashionShop_API.Controllers
             _loggerManager = loggerManager;
         }
 
-        // GET api/<OrdersController>/5
         [HttpGet("{id}/{status}")]
         public async Task<IActionResult> GetListOrdersByIdAndStatus(long? id, string status)
         {
@@ -43,23 +43,12 @@ namespace FashionShop_API.Controllers
             return Ok(result);
         }
 
-
-        //// POST api/<OrdersController>
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
-
-        // PUT api/<OrdersController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPost("ordercancel")]
+        [ServiceFilter(typeof(ValidationFilter))]
+        public async Task<IActionResult> OrderCancel([FromBody] RequestOrderCancelDto ordercancelsto)
         {
-        }
-
-        // DELETE api/<OrdersController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            await _serviceManager.Orders.OrderCancel(ordercancelsto, true);
+            return Ok();
         }
 
         [HttpPost("addOrders")]

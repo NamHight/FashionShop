@@ -15,6 +15,11 @@ import DetailProduct from "../pages/Product/detailProduct";
 import ForgotPassword from "../pages/VerifyPassword/ForgotPassword";
 import ResetPassword from "../pages/VerifyPassword/ResetPassword";
 import Page404 from "../pages/Page404/Index";
+import OrdersProcessing from "../pages/Account/Orders/OrdersProcessing";
+import OrdersPendingCancel from "../pages/Account/Orders/OrdersPendingCancel";
+import OrdersDelivering from "../pages/Account/Orders/OrdersDelivering";
+import OrdersCompleted from "../pages/Account/Orders/OrdersCompleted";
+import OrdersCancel from "../pages/Account/Orders/OrdersCancel";
 
 
 export const Router = [
@@ -37,4 +42,12 @@ export const routerAccount = [
     {path: "", name: "Profile",element: <Profile/>},
     {path: "orders", name: "Orders",element: <Orders/>},
     {path: "listfavorite", name: "List Favorite",element: <ListFavorites/>},
+];
+
+export const routerOrderStatus= [
+    {path: "", name: "Processing",element: <OrdersProcessing/>},
+    {path: "pendingcancel", name: "PendingCancel",element:<OrdersPendingCancel/>},
+    {path: "delivering", name: "Delivering",element: <OrdersDelivering />},
+    {path: "completed", name: "Completed",element: <OrdersCompleted/>},
+    {path: "canceled", name: "Canceled",element: <OrdersCancel/>},
 ];

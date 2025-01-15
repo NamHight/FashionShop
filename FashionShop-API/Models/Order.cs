@@ -65,8 +65,5 @@ public partial class Order
     public virtual Employee? Employee { get; set; }
 
     [InverseProperty("Order")]
-    public virtual ICollection<Ordercancelreason> Ordercancelreasons { get; set; } = new List<Ordercancelreason>();
-
-    [InverseProperty("Order")]
     public virtual ICollection<Ordersdetail> Ordersdetails { get; set; } = new List<Ordersdetail>();
 }
