@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from "react-toastify";
 
 const Payment = () => {
-    const {carts, totalMoney, } = useCartConText();
+    const {carts, totalMoney, removeAllCart } = useCartConText();
 
     const {user} = useAuth();   
 
@@ -21,7 +21,7 @@ const Payment = () => {
 
     const inputRef = useRef(null);
 
-    useEffect(()=>{
+    useEffect(()=>{ // nếu đã đăng nhập có tồn tại user thì set state login = true hiển thị nút pay now
       if(user){
         setLogin(true);
       }
@@ -222,19 +222,28 @@ const Payment = () => {
         const message = 'Thanh Toan That Bai, Vui Long Thu Lai';
         var result = await addOrders({...data, PaymentMethod: "cash"});
         console.log(result);
-        if(result.status === 200) navigate('/account/orders/', { state: { message: 'Thanh toán thành công!' } });
+        if(result.status === 200) {
+          removeAllCart(); // thanh toán thành công thì remove all cart đi
+          navigate('/account/orders/', { state: { message: 'Thanh toán thành công!' } });
+        }
         else navigate(`/page404/${encodeURIComponent(message)}`, { state: { errorPayment: 'Thanh toán thất bại!' } });
 
       }else if(inputAtm.checked){
         const message = 'Thanh Toan That Bai, Vui Long Thu Lai';
         var result = await addOrders({...data, PaymentMethod: "credit_card"});
-        if(result.status === 200) navigate('/account/orders/', { state: { message: 'Thanh toán thành công!' } });
+        if(result.status === 200) {
+          removeAllCart(); // thanh toán thành công thì remove all cart đi
+          navigate('/account/orders/', { state: { message: 'Thanh toán thành công!' } });
+        }
         else navigate(`/page404/${encodeURIComponent(message)}`, { state: { errorPayment: 'Thanh toán thất bại!' } });
 
       }else if(inputPaypal.checked){
         const message = 'Thanh Toan That Bai, Vui Long Thu Lai';
         var result = await addOrders({...data, PaymentMethod: "paypal"});
-        if(result.status === 200) navigate('/account/orders/', { state: { message: 'Thanh toán thành công!' } });
+        if(result.status === 200) {
+          removeAllCart(); // thanh toán thành công thì remove all cart đi
+          navigate('/account/orders/', { state: { message: 'Thanh toán thành công!' } });
+        }
         else navigate(`/page404/${encodeURIComponent(message)}`, { state: { errorPayment: 'Thanh toán thất bại!' } });
       }
     }
