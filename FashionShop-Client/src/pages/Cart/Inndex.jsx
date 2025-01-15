@@ -14,14 +14,14 @@ function Cart() {
     
   
   return (
-    <div className="mt-10 mx-72 min-h-[700px]">
+    <div className="mt-10 mx-72 min-h-[700px] w-full">
         <div className="">
            <div className=" flex justify-start w-full">
             <Button  variant="gradient" className="me-3">
                     <Link to="/">Home</Link>
             </Button>
             <Button  variant="gradient" onClick={saveCart}>
-                Lưu Giỏ Hàng
+                Save Cart
             </Button>
            </div>
            <div className="text-center w-full my-5">
@@ -60,8 +60,8 @@ function Cart() {
                     <td className="max-w-[8rem] p-3">
                         <img
                             className="max-w-64 rounded-xl object-cover object-center"
-                            src={`assets/${item.banner}`}
-                            alt="product image"
+                            src={`assets/images/products/${item.banner}`}
+                            alt={item.productName}
                         />
                     </td>
                     <td className={classes} style={{ maxWidth: '110px', wordWrap: 'break-word', whiteSpace: 'normal' }}>
@@ -134,7 +134,7 @@ function Cart() {
         <div className="flex my-20 justify-between items-center bg-orange-100 p-6 rounded-lg shadow-lg">
           <div>
             <Typography variant="h5" color="blue-gray" className="font-bold">
-              Tổng Tiền Thanh Toán: {totalMoney()}$
+              Total Payment Amount: {totalMoney()}$
             </Typography>
           </div>
           <div className="flex gap-4">
@@ -142,8 +142,9 @@ function Cart() {
               disabled={totalCarts>0 ? false: true}
               className="flex items-center justify-center rounded-md bg-blue-600 py-3 px-6 text-white text-lg font-semibold transition hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
               type="button"
+              onClick={()=> saveCart()}
             >
-              <Link  disabled={totalCarts>0 ? false: true} to="/payment"> Thanh Toán</Link>
+              <Link  disabled={totalCarts>0 ? false: true} to="/payment"> Payment </Link>
             </Button>
             
             <Button
@@ -151,7 +152,7 @@ function Cart() {
               type="button"
               onClick={removeAllCart}
             >
-              Xóa Giỏ Hàng
+              Delete All Cart
             </Button>
           </div>
         </div>

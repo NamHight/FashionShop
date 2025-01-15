@@ -23,5 +23,10 @@ namespace FashionShop_API.Repositories.Orders
         //{
         //    Delete(order);
         //}
+
+        public async Task AddOrder(Order order)
+        {
+            await Create(order);
+        }
     }
 }

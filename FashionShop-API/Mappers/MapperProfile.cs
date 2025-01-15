@@ -37,6 +37,8 @@ public class MapperProfile : Profile
         CreateMap<Order, ResponseOrdersDto>()
             .IncludeMembers(item => item.Customer)
             .ReverseMap();
+        CreateMap<RequestOrderDto, Order>()
+            .ReverseMap();
         CreateMap<Ordersdetail, ResponseOrderDetailsDto>()
             .ForMember(item => item.ProductName, ots => ots.MapFrom(item => item.Product.ProductName))
             .ForMember(item => item.Banner, ots => ots.MapFrom(item => item.Product.Banner))
