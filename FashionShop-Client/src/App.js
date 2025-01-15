@@ -5,9 +5,10 @@ import {useEffect, useRef, useState} from "react";
 import { useAuth } from "./context/AuthContext";
 import VerifyPassword from "./pages/VerifyPassword";
 import Account from "./pages/Account";
+import Loading from './components/Loading';
+import ProductListByCategory from "./components/List/ProductListByCategory";
 import Loading from "./components/Loading";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 
 const TitleUpdater = () => {
   const location = useLocation();
@@ -105,6 +106,7 @@ function App() {
               );
             })}
           </Route>
+          <Route path="/categories/:categorySlug" element={<ProductListByCategory />} />
         </Route>
       </Routes>
     </div>

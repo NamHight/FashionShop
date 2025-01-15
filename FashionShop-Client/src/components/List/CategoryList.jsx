@@ -35,7 +35,7 @@ function CategoriesList() {
             <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 {displayedCategories.map((child) => (
                     <Link
-                        to={`/${child.slug}`}
+                        to={`/categories/${child.slug}`}
                         key={child.categoryId}
                         className="flex items-center rounded-lg border border-gray-200 bg-white px-4 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
                     >

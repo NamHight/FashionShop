@@ -10,6 +10,8 @@ using Newtonsoft.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddAutoMapper(typeof(MapperProfile));
 builder.Services.ConfigureGetConnection(builder.Configuration);
 builder.Services.ConfigureResponseCaching();

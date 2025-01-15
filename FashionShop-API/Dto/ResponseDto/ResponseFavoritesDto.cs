@@ -8,6 +8,7 @@ namespace FashionShop_API.Dto.ResponseDto
     public class ResponseFavoritesDto
     {
         public long FavoriteId { get; set; }
+        public long ProductId { get; set; }
         public string? ProductName { get; set; }
         public string? Banner { get; set; }
         public decimal? Price { get; set; }

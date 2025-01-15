@@ -11,8 +11,8 @@ public interface ICategoryRepository
     void CreateCategoryAsync(Category category);
     void UpdateStatus(Category category);
     Task<bool> DeleteAsync(long id, bool trackChanges);
-    Task<List<Category>> GetPageLinkAsync(int page, int pageSize, string nameSearch, bool trackChanges);
-    Task<int> GetCountAsync(string nameSearch, bool trackChanges);
+    Task<List<Category>> GetPageLinkAsync(int page, int pageSize, string nameSearch, string typeCategory, bool trackChanges);
+    Task<int> GetCountAsync(string nameSearch, string typeCategory, bool trackChanges);
    
     Task<long> FindByNameAsync(string newCategoryName);
     Task<int> CountCategoryAsync();

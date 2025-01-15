@@ -11,6 +11,8 @@ using FashionShop_API.Repositories.Promotions;
 using FashionShop_API.Repositories.Articles;
 using FashionShop_API.Repositories.Orders;
 using FashionShop_API.Repositories.OrderDetails;
+using FashionShop_API.Repositories.Suppilers;
+using FashionShop_API.Repositories.Views;
 
 namespace FashionShop_API.Repositories.RepositoryManager;
 
@@ -28,6 +30,8 @@ public class RepositoryManager : IRepositoryManager
     private Lazy<IRepositoryArticle> _article;
     private Lazy<IRepositoryOrders> _orders;
     private Lazy<IRepositoryOrderDetails> _orderDeteails;
+    private Lazy<IRepositorySuppiler> _suppiler;
+    private Lazy<IRepositoryViews> _views;
     public RepositoryManager (MyDbContext context, IMapper _mapper)
     {
         _context = context;
@@ -42,6 +46,8 @@ public class RepositoryManager : IRepositoryManager
         _article = new Lazy<IRepositoryArticle> (() => new RepositoryArticle(context));
         _orders = new Lazy<IRepositoryOrders> (() => new RepositoryOrders(context));
         _orderDeteails = new Lazy<IRepositoryOrderDetails>(() => new RepositoryOrderDetails(context));
+        _suppiler = new Lazy<IRepositorySuppiler>(() => new RepositorySuppiler(context));
+        _views = new Lazy<IRepositoryViews>(() => new RepositoryViews(context));
     }
 
     public IRepositoryCategory Category => _category.Value;
@@ -55,6 +61,8 @@ public class RepositoryManager : IRepositoryManager
 	public IRepositoryArticle Article => _article.Value;
 	public IRepositoryOrders Orders => _orders.Value;
     public IRepositoryOrderDetails OrderDetails => _orderDeteails.Value;
+    public IRepositorySuppiler Suppiler => _suppiler.Value;
+    public IRepositoryViews Views => _views.Value;
     public async Task SaveChanges() => await _context.SaveChangesAsync();
 	public async Task<bool> SaveChangesAsync() => await _context.SaveChangesAsync() > 0;
 }

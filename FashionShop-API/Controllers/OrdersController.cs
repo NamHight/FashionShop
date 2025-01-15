@@ -81,5 +81,19 @@ namespace FashionShop_API.Controllers
             }
             return Ok(new {message = "Thanh Toán Thành Công", data = orderDomain});
         }
+        [HttpGet]
+        public async Task<IActionResult> CanReviewProduct(long customerId, long productId)
+        {
+            var hasPurchased = await _serviceManager.Orders.HasPurchasedProductAsync(customerId, productId);
+
+            if (hasPurchased)
+            {
+                return Ok(new { message = "You can review this product." });
+            }
+            else
+            {
+                return BadRequest(new { message = "You must purchase this product before reviewing." });
+            }
+        }
     }
 }

@@ -169,19 +169,17 @@ const ModalLoginRegister = () => {
                     <Typography type="h5" className="flex justify-center items-center gap-2 mb-1 text-emerald-500 ">
                         <TbArrowWaveRightDown/> Fashion Shop <TbArrowWaveLeftDown/>
                     </Typography>
-                    <div className={`flex justify-center items-center my-3 w-full`}>
-                        {
-                            mutationLogin.isPending ? <Spinner/> :  <GoogleLogin size={"large"} ux_mode={"popup"}
-                                                                                 type={"standard"}
-                                                                                 width={200000}
-                                                                                 onSuccess={async (response) => {
-                                                                                     await mutationLoginGoogle.mutateAsync(response?.credential);
-                                                                                 }}
-                                                                                 onError={(error) => {
-                                                                                     console.log(error)
-                                                                                     setLoginError("errorGoogleLogin", {type: "custom", message: "Something went wrong"});
-                                                                                 }}/>
-                        }
+                    <div className={`flex justify-center items-center my-3 w-full disabled:cursor-not-allowed `} aria-disabled={mutationLogin.isPending && true}>
+                        <GoogleLogin size={"large"} ux_mode={"popup"}
+                         type={"standard"}
+                         width={200000}
+                         onSuccess={async (response) => {
+                             await mutationLoginGoogle.mutateAsync(response?.credential);
+                         }}
+                         onError={(error) => {
+                             console.log(error)
+                             setLoginError("errorGoogleLogin", {type: "custom", message: "Something went wrong"});
+                         }}/>
 
                     </div>
                     <div className={'flex justify-center w-full max-w-full'}>

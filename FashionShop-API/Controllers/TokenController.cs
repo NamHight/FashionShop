@@ -34,7 +34,7 @@ namespace FashionShop_API.Controllers
             _loggerManager.LogInfo("Controller Token: " + nameof(RefreshToken) + " Success");
             return Ok(result);
         }
-
+        [Authorize(Policy = "MultiAuth")]
         [HttpGet("ProtectData")]
         public async Task<IActionResult> ProtectData()
         {

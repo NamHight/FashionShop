@@ -53,6 +53,7 @@ public partial class Order
     public DateTime? UpdatedAt { get; set; }
 
     [Column("status", TypeName = "enum('processing','pending cancel','delivering','completed','canceled')")]
+
     public string? Status { get; set; }
 
     [ForeignKey("CustomerId")]
@@ -62,6 +63,9 @@ public partial class Order
     [ForeignKey("EmployeeId")]
     [InverseProperty("Orders")]
     public virtual Employee? Employee { get; set; }
+
+    [InverseProperty("Order")]
+    public virtual ICollection<Ordercancelreason> Ordercancelreasons { get; set; } = new List<Ordercancelreason>();
 
     [InverseProperty("Order")]
     public virtual ICollection<Ordersdetail> Ordersdetails { get; set; } = new List<Ordersdetail>();

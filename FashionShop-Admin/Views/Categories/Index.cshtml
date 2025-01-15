@@ -45,6 +45,10 @@
                         <div style="float:left">
                             <form asp-action="Index" method="get">
                                 <div class="input-group">
+                                    <select name="typeCategory">
+                                        <option value="parent">Category parent</option>
+                                        <option value="children">Category children</option>
+                                    </select>
                                     <input name="nameSearch" placeholder="Search for name..." />
                                     <input type="submit" value="Search" />
                                 </div>
@@ -115,7 +119,7 @@
                                 }
                             </tbody>
                         </table>
-                        <div page-model="@Model?.PagingInfo" page-action="Index" page-search="@Model?.NameSearch" page-class="btn" page-classes-enabled="true" page-class-normal="btn-outline-dark" page-class-selected="btn-primary" class="btn-group m-1"></div>
+                        <div page-model="@Model?.PagingInfo" page-action="Index" page-search="@Model?.NameSearch" page-type-category="@Model?.TypeCategory" page-class="btn" page-classes-enabled="true" page-class-normal="btn-outline-dark" page-class-selected="btn-primary" class="btn-group m-1"></div>
                     </div>
                 </div>
             </div>

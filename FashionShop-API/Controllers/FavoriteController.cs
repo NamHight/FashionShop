@@ -31,10 +31,12 @@ namespace FashionShop_API.Controllers
             var result = await _serviceManager.Favorite.GetListFavoritesByIdAsync(id, false);
             return Ok(result);
         }
-		[HttpPost]
-		public async Task<IActionResult> AddFarvorite([FromBody] RequestFarvoriteDto request)
+
+        
+        [HttpPost]
+		public async Task<IActionResult> AddFavorite([FromBody] RequestFarvoriteDto request)
 		{
-			_loggerManager.LogInfo("Controller Customer: " + nameof(AddFarvorite) + " Success");
+			//_loggerManager.LogInfo("Controller Customer: " + nameof(AddFavorite) + " Success");
 			if (request == null)
 			{
 				// Trả về BadRequest nếu request là null
@@ -44,7 +46,7 @@ namespace FashionShop_API.Controllers
 
 			try
 			{
-				await _serviceManager.Favorite.AddFarvoriteAsync(request, true);
+				await _serviceManager.Favorite.AddFavoriteAsync(request, true);
 				return Ok(new { message = "Yêu thích sản phẩm thành công" });
 			}
 			catch (Exception ex)
@@ -54,26 +56,26 @@ namespace FashionShop_API.Controllers
 				return StatusCode(500, new { message = "Đã có lỗi xảy ra. Vui lòng thử lại sau!" });
 			}
 		}
-		[HttpDelete("{id}")]
-		public async Task<IActionResult> DeleteFarvorite(long id)
-		{
-			_loggerManager.LogInfo("Controller Customer: " + nameof(DeleteFarvorite) + " Success");
+        [HttpDelete]
+        public async Task<IActionResult> DeleteFavorite(long userId, long productId)
+        {
+            try
+            {
+                bool result = await _serviceManager.Favorite.DeleteFavoriteAsync(userId, productId);
 
-			try
-			{
-				await _serviceManager.Favorite.DeleteFarvoriteAsync(id);
-
-				return Ok(new { message = "Yêu thích được xóa thành công!" });
-			}
-			catch (KeyNotFoundException)
-			{
-				return NotFound(new { message = "Không tìm thấy yêu thích để xóa." });
-			}
-			catch (Exception ex)
-			{
-				_loggerManager.LogError($"Something went wrong in DeleteFarvorite: {ex.Message}");
-				return StatusCode(500, new { message = "Đã có lỗi xảy ra khi xóa yêu thích." });
-			}
-		}
-	}
+                if (result)
+                {
+                    return Ok(new { message = "Yêu thích đã được xóa thành công!" });
+                }
+                else
+                {
+                    return NotFound(new { message = "Không tìm thấy yêu thích để xóa." });
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Đã có lỗi xảy ra khi xóa yêu thích.", error = ex.Message });
+            }
+        }
+    }
 }

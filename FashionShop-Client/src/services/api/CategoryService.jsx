@@ -1,4 +1,4 @@
-import {authAxios, publicAxios} from "../../libs/Config/AxiosConfig";
+import { publicAxios} from "../../libs/Config/AxiosConfig";
 
 const BASE_CATEGORY_URL = "Categories";
 

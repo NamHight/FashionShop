@@ -16,6 +16,8 @@ using FashionShop_API.Services.Reviews;
 using Microsoft.Extensions.Options;
 using FashionShop_API.Services.Articles;
 using FashionShop_API.Services.Orders;
+using FashionShop_API.Services.Suppliers;
+using FashionShop_API.Services.Views;
 using FashionShop_API.Services.OrderDetails;
 
 namespace FashionShop_API.Services.ServiceManager;
@@ -35,6 +37,8 @@ public class ServiceManager : IServiceManager
     private readonly Lazy<IServicePromotion> _promotion;
     private readonly Lazy<IServiceArticle> _article;
     private readonly Lazy<IServiceOrders> _order;
+    private readonly Lazy<IServiceSuppiler> _suppiler;
+    private readonly Lazy<IServiceView> _views;
     private readonly Lazy<IServiceOrderDetails> _orderDetail;
     public ServiceManager(IRepositoryManager repositoryManager,IMapper mapper,ILoggerManager logger,IConfiguration configuration,IOptions<GoogleOption> googleOption)
     {
@@ -42,7 +46,7 @@ public class ServiceManager : IServiceManager
         _category = new Lazy<IServiceCategory>(() => new ServiceCategory(repositoryManager,mapper,logger));
         _authenticate = new Lazy<IServiceAuthenticate>(() => new ServiceAuthenticate(repositoryManager,mapper,logger,configuration));
         _customer = new Lazy<IServiceCustomer>(() => new ServiceCustomer(mapper,repositoryManager));
-        _product = new Lazy<IServiceProduct>(() => new ServiceProduct(repositoryManager, mapper));
+        _product = new Lazy<IServiceProduct>(() => new ServiceProduct(repositoryManager, mapper,logger));
         _favorite = new Lazy<IServiceFavorites>(() => new ServiceFavorites(mapper,repositoryManager));
         _contact = new Lazy<IServiceContact>(() => new ServiceContact(repositoryManager, logger, mapper));
         _webisteInfo = new Lazy<IServiceWebsiteInfo>(() => new ServiceWebsiteInfo(repositoryManager, logger, mapper));
@@ -51,6 +55,8 @@ public class ServiceManager : IServiceManager
         _promotion = new Lazy<IServicePromotion>(() => new ServicePromotion(repositoryManager, mapper));
         _article = new Lazy<IServiceArticle>(() => new ServiceArticle(repositoryManager, mapper));
         _order = new Lazy<IServiceOrders>(() => new ServiceOrders(repositoryManager, mapper));
+        _suppiler = new Lazy<IServiceSuppiler>(()=> new ServiceSuppiler(repositoryManager, mapper));
+        _views = new Lazy<IServiceView>(() => new ServiceView(repositoryManager, mapper, logger));
         _orderDetail = new Lazy<IServiceOrderDetails>(() => new ServiceOrderDetails(repositoryManager, mapper));
     }
     public IServiceCategory Category => _category.Value;
@@ -65,5 +71,7 @@ public class ServiceManager : IServiceManager
     public IServicePromotion Promotion => _promotion.Value;
     public IServiceArticle Article => _article.Value;
     public IServiceOrders Orders => _order.Value;
+    public IServiceSuppiler Suppiler => _suppiler.Value;
+    public IServiceView Views => _views.Value;
     public IServiceOrderDetails Orderdetails => _orderDetail.Value;
 }

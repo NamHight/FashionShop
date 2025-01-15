@@ -21,7 +21,7 @@ namespace FashionShop_API.Repositories.Promotions
 
         public async Task<PagedListAsync<Promotion>> GetPaginateAsync(int page, int limit)
         {
-            return await PagedListAsync<Promotion>.ToPagedListAsync(_context.Promotions.AsQueryable(), page, limit);
+            return await PagedListAsync<Promotion>.ToPagedListAsync(_context.Promotions.OrderByDescending(item => item.CreatedAt).AsQueryable(), page, limit);
         }
     }
 }

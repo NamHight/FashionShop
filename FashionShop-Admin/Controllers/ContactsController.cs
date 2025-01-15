@@ -71,16 +71,17 @@ namespace FashionShop.Controllers
             }
             return View(model);
         }
+        [HttpDelete]
         public async Task<IActionResult> Delete(long id)
         {
-            var result = await _managerService.Contact.DeleteAsync(id, false);  
+            var result = await _managerService.Contact.DeleteAsync(id, false);
             if (result)
             {
-                return RedirectToAction(nameof(Index));
+                return Json(new { success = true, message = "Deleted successfully" });
             }
             else
             {
-                return NotFound();
+                return Json(new { success = false, message = "Deletion failed" });
             }
         }
     }

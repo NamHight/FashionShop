@@ -26,6 +26,7 @@ namespace FashionShop.Models.views
         public string? PageAction { get; set; }
 
         public string PageSearch { get; set; } = string.Empty;
+        public string PageTypeCategory { get; set; } = string.Empty;
 
         public bool PageClassesEnabled { get; set; } = false;
         public string PageClass { get; set; } = string.Empty;
@@ -43,7 +44,11 @@ namespace FashionShop.Models.views
                     TagBuilder tag = new TagBuilder("a");
                     if (!string.IsNullOrEmpty(PageSearch))
                     {
-                        tag.Attributes["href"] = urlHelper.Action(PageAction, new { Page = i, nameSearch = PageSearch });
+                        if (!string.IsNullOrEmpty(PageTypeCategory))
+                        {
+                            tag.Attributes["href"] = urlHelper.Action(PageAction, new { Page = i, nameSearch = PageSearch, typeCategory = PageTypeCategory });
+                        }
+                        tag.Attributes["href"] = urlHelper.Action(PageAction, new { Page = i, nameSearch = PageSearch});
                     }
                     else
                     {
