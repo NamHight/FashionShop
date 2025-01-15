@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Tabs } from "@material-tailwind/react";
-import { Link, Outlet, useLocation } from "react-router";
+import OrdersCancel from "./OrdersCancel/index";
+import OrdersCompleted from "./OrdersCompleted/index";
+import OrdersPending from "./OrdersPending/index";
+import { useAuth } from "../../../context/AuthContext";
+import { toast } from 'react-toastify';
+import { useLocation } from "react-router";
 
 const Orders = () => {
-  const location = useLocation(); //lấy url hiện tại
-  const currentTab = location.pathname.split("/").pop() //lấy phần tử cuối
-  console.log(currentTab);
-  
+  const { user } = useAuth();
+  const location = useLocation();
+  const message = location.state?.message;
+  useEffect(()=>{
+    if (message) {
+      console.log("da vao pending", message);
+        toast.success(message); // đã khai báo toastcontainer trong layout
+    }
+  }, [message])
+ 
   return (
     <div>
       <Tabs defaultValue={currentTab} onTabChange={(tab) => console.log(tab)}>
@@ -71,7 +82,6 @@ const Orders = () => {
               Canceled
             </Tabs.Trigger>
           </Link>
-          {/* <Tabs.TriggerIndicator /> */}
         </Tabs.List>
         <Outlet />
       </Tabs>

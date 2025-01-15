@@ -1,13 +1,31 @@
 import {Link} from "react-router"
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useCartConText } from "../../context/CartContext";
+import { useAuth } from "../../context/AuthContext";
+import { addOrders } from "../../services/api/OrdersService";
+import ModalLoginRegister from "../../components/Modal/ModalLoginRegister";
+import { AlertCustom } from "../../components/Alert/Alert";
+import { useNavigate } from 'react-router-dom';
+import { toast } from "react-toastify";
 
 const Payment = () => {
-    const {carts, totalMoney} = useCartConText();
+    const {carts, totalMoney, removeAllCart } = useCartConText();
+
+    const {user} = useAuth();   
+
+    const navigate = useNavigate(); // sử dụng useNavigate để chuyển hướng trang
+
+    const [login, setLogin] = useState(false);
 
     const vouchers = ["Nam123", "Giam20%", "Giam10%"];
 
     const inputRef = useRef(null);
+
+    useEffect(()=>{ // nếu đã đăng nhập có tồn tại user thì set state login = true hiển thị nút pay now
+      if(user){
+        setLogin(true);
+      }
+    }, [user])
 
     const handleVoucher = () =>{
         var discount = document.getElementById("discount");
@@ -54,6 +72,11 @@ const Payment = () => {
       const regex = /[^\w\s]/gi; // biểu thức regex kiểm tra ký tự đặc biệt
       const numberRegex = /\d/gi; // biểu thức regex kiểm tra số
       return regex.test(name) || numberRegex.test(name); // nếu có chưa số hoặc ký tự đặc biệt trả về true
+    }
+
+    function checkNumberOrSpecialCharacter2(name) {
+      const regex = /[^a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂỀỂỆỄÝỶỸỳỷỹĂắằẵẳẵĐđêôơưăắằẵẳẵĂÀÁẢÃÂẦẤẨẪẬẮẰẲẴẶÈÉẺẼÊỀẾỂỄỆÌÍỈĨỊÒÓỎÕÔỒỐỔỖỘƠỜỚỞỠỢÙÚỦŨỤƯỪỨỬỮỰỲÝỶỸỴ\s'.,-]/gi;
+      return regex.test(name); 
     }
     
     function checkCharaterOrSpecialCharacter(number) {
@@ -117,7 +140,114 @@ const Payment = () => {
         errorCSVCard.hidden = true;
       }
     }
-    
+
+    const handleCheckName = (event) =>{
+        let name = event.target.value;
+        const errorName = document.getElementById("errorName"); 
+        if (checkNumberOrSpecialCharacter2(name)){
+          errorName.hidden = false;
+          errorName.textContent = "Please enter a name without special characters or numbers.";
+        }else{
+          console.log("Ten la: ", name)
+          if(name.length == 0){
+            errorName.hidden = false;
+            errorName.textContent = "Please do not leave the recipient's name blank.";
+          }else if(name.length >200){
+            errorName.hidden = false;
+            errorName.textContent = "Please do not enter more than 200 characters.";
+          }else{
+            errorName.hidden = true;
+          }
+        }
+    }
+
+    const handleCheckPhone = (event) =>{
+      let phone = event.target.value;
+      const phoneElement = document.getElementById("phone"); 
+      const errorPhone = document.getElementById("errorPhone");
+      if(checkCharaterOrSpecialCharacter(phone)){
+        errorPhone.hidden = false;
+        errorPhone.textContent = "Please enter a phone number without letters or special characters.";
+      }else{
+        console.log("Phone la: ", phone);
+        if(phone.length == 0){
+          errorPhone.hidden = false;
+          errorPhone.textContent = "Please do not leave the recipient's phone blank.";
+        }else if(phone.length >15){
+          errorPhone.hidden = false;
+          errorPhone.textContent = "Please do not enter more than 15 characters.";
+        }else{
+          errorPhone.hidden = true;
+        }
+      }
+    }
+
+    const handleCheckAddress = (event) =>{
+      let address = event.target.value;
+      const addressElement = document.getElementById("address"); 
+      const errorAddress = document.getElementById("errorAddress");
+      console.log("Address la: ", address)
+      if(address.length == 0){
+        errorAddress.hidden = false;
+        errorAddress.textContent = "Please do not leave the recipient's address blank.";
+      }else if(address.length >200){
+        errorAddress.hidden = false;
+        errorAddress.textContent = "Please do not enter more than 200 characters.";
+      }else{
+        errorAddress.hidden = true;
+      }
+    }
+
+    // Gọi thông báo nhắc người dùng đăng nhập để tiếp tục thanh toán
+    const showToastRequireLogin = () =>{  
+      toast.info("Please Login To Continue Payment");
+    }
+
+    // Hàm xử lý sau khi bấm nút thanh toán
+    const handlePayment= async () =>{
+      const inputCash = document.getElementById("cash");
+      const inputAtm = document.getElementById("atm");
+      const inputPaypal = document.getElementById("paypal");
+      const inputName = document.getElementById("name").value;
+      const inputPhone = document.getElementById("phone").value;
+      const inputAddress = document.getElementById("address").value;
+      const finalMoney = document.getElementById("finalMoney").textContent.slice(1);
+
+      // Dữ liệu của hoá đơn và chi tiết hoá đơn gửi lên server nếu thanh toán thành công
+      var data = {TotalAmount: finalMoney, OrderDate: new Date(), CustomerId:user.customerId, 
+        Reciver: inputName, Address: inputAddress, Phone: inputPhone, Status: "processing", ListProductId: carts.map(item => item.productId)};
+
+      // Xử lý hình thức thanh toán, kết quả thanh toán và chuyển hướng
+      if(inputCash.checked){
+        const message = 'Thanh Toan That Bai, Vui Long Thu Lai';
+        var result = await addOrders({...data, PaymentMethod: "cash"});
+        console.log(result);
+        if(result.status === 200) {
+          removeAllCart(); // thanh toán thành công thì remove all cart đi
+          navigate('/account/orders/', { state: { message: 'Thanh toán thành công!' } });
+        }
+        else navigate(`/page404/${encodeURIComponent(message)}`, { state: { errorPayment: 'Thanh toán thất bại!' } });
+
+      }else if(inputAtm.checked){
+        const message = 'Thanh Toan That Bai, Vui Long Thu Lai';
+        var result = await addOrders({...data, PaymentMethod: "credit_card"});
+        if(result.status === 200) {
+          removeAllCart(); // thanh toán thành công thì remove all cart đi
+          navigate('/account/orders/', { state: { message: 'Thanh toán thành công!' } });
+        }
+        else navigate(`/page404/${encodeURIComponent(message)}`, { state: { errorPayment: 'Thanh toán thất bại!' } });
+
+      }else if(inputPaypal.checked){
+        const message = 'Thanh Toan That Bai, Vui Long Thu Lai';
+        var result = await addOrders({...data, PaymentMethod: "paypal"});
+        if(result.status === 200) {
+          removeAllCart(); // thanh toán thành công thì remove all cart đi
+          navigate('/account/orders/', { state: { message: 'Thanh toán thành công!' } });
+        }
+        else navigate(`/page404/${encodeURIComponent(message)}`, { state: { errorPayment: 'Thanh toán thất bại!' } });
+      }
+    }
+
     return (
         <div className="min-w-screen min-h-screen bg-gray-50 py-5">
           <div className="px-5">
@@ -133,16 +263,17 @@ const Payment = () => {
           <div className="w-full bg-white border-t border-b border-gray-200 px-5 py-10 text-gray-800">
             <div className="w-full">
               <div className="-mx-3 md:flex items-start">
+                {/* detail cart and subtotal */}
                 <div className="px-3 md:w-7/12 lg:pr-10">
                   <div className="w-full mx-auto text-gray-800 font-light mb-6 border-b border-gray-200 pb-6">
                     {/* start cart item */}
                     {
                         carts && carts.map((item, index) =>  
-                            <div key={index} className="w-full flex items-center">
+                            <div key={index} className="w-full flex items-center mb-1">
                                 <div className="overflow-hidden rounded-lg w-16 h-16 bg-gray-50 border border-gray-200">
                                 <img
-                                    src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80"
-                                    alt="abc"
+                                    src={`assets/images/products/${item.banner}`}
+                                    alt={item.productName}
                                 />
                                 </div>
                                 <div className="flex-grow pl-3">
@@ -220,34 +351,73 @@ const Payment = () => {
                     </div>
                   </div>
                 </div>
+                {/* detail payment */}
                 <div className="px-3 md:w-5/12">
+                  {/* info payment */}
                   <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-3 text-gray-800 font-light mb-6">
-                    <div className="w-full flex mb-3 items-center">
+                    {/* //item  info*/}
+                    <div className="w-full flex mb-3 items-center"> 
                       <div className="w-32">
                         <span className="text-gray-600 font-semibold">Name</span>
                       </div>
                       <div className="flex-grow pl-3">
-                        <input type="text" placeholder="please enter...ex: Nam Duong" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
+                        <input type="text" placeholder="please enter...ex: Nam Duong" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        onBlur={(e)=> handleCheckName(e)}
+                        id="name"/>
                       </div>
                     </div>
+                    <div className="my-2 text-left">
+                      <span hidden  id="errorName" className="text-red-600 font-body"></span>
+                    </div>
+                  
                     <div className="w-full flex mb-3 items-center">
                       <div className="w-32">
                         <span className="text-gray-600 font-semibold">Phone</span>
                       </div>
                       <div className="flex-grow pl-3">
-                        <input type="text" placeholder="please enter...ex: 0963982322" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
+                        <input type="text" placeholder="please enter...ex: 0963982322" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        onBlur={(e)=> handleCheckPhone(e)}
+                        id="phone"/>
                       </div>
                     </div>
+                    <div className="my-2 text-left">
+                      <span hidden  id="errorPhone" className="text-red-600 font-body"></span>
+                    </div>
+                   
                     <div className="w-full flex items-center">
                       <div className="w-32">
                         <span className="text-gray-600 font-semibold">Billing Address</span>
                       </div>
                       <div className="flex-grow pl-3">
-                        <input type="text" placeholder="please enter...ex: 123 George Street, Sydney, NSW 2000 Australia" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
+                        <input type="text" placeholder="please enter...ex: 123 George Street, Sydney, NSW 2000 Australia" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        onBlur={(e)=> handleCheckAddress(e)}
+                        id="address"/>
                       </div>
                     </div>
+                    <div className="mt-2 text-left">
+                      <span hidden  id="errorAddress" className="text-red-600 font-body"></span>
+                    </div>
                   </div>
+
+                  {/* Method payment */}
                   <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 text-gray-800 font-light mb-6">
+                  <div className="w-full p-3 border-b border-gray-200">
+                      <label htmlFor="type2" className="flex items-center cursor-pointer">
+                        <input
+                          type="radio"
+                          className="form-radio h-5 w-5 text-indigo-500"
+                          name="type"
+                          id="cash"
+                        />
+                        <img
+                          src="assets/images/share/icon_money.jpg"
+                          width="40"
+                          className="ml-3"
+                          alt="Cash"
+                        />
+                      </label>
+                    </div>
+
                     <div className="w-full p-3 border-b border-gray-200">
                       <div className="mb-5">
                         <label htmlFor="type1" className="flex items-center cursor-pointer">
@@ -255,7 +425,7 @@ const Payment = () => {
                             type="radio"
                             className="form-radio h-5 w-5 text-indigo-500"
                             name="type"
-                            id="type1"
+                            id="atm"
                           />
                           <img
                             src="https://leadershipmemphis.org/wp-content/uploads/2020/08/780370.png"
@@ -332,7 +502,7 @@ const Payment = () => {
                                 onBlur={(e) => checkExpirationYearCard(e.target.value)}
                                 id="expirationYear"
                                 className="w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors"
-                                placeholder="Example 2030"
+                                placeholder="Ex: 2030"
                                 type="text"
                               />
                           </div>
@@ -366,7 +536,7 @@ const Payment = () => {
                           type="radio"
                           className="form-radio h-5 w-5 text-indigo-500"
                           name="type"
-                          id="type2"
+                          id="paypal"
                         />
                         <img
                           src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"
@@ -377,16 +547,29 @@ const Payment = () => {
                       </label>
                     </div>
                   </div>
+
+                  {/* button payment */}
                   <div>
-                    <button className="block w-full max-w-xs mx-auto border border-transparent bg-indigo-500 hover:bg-indigo-600 focus:bg-indigo-600 text-white rounded-lg px-3 py-2 font-semibold">
-                      PAY NOW
-                    </button>
+                    {
+                      login ? <button className="block w-full max-w-xs mx-auto border border-transparent bg-indigo-500 hover:bg-indigo-600 focus:bg-indigo-600 text-white rounded-lg px-3 py-2 font-semibold"
+                        onClick={handlePayment}
+                        >
+                          PAY NOW
+                        </button> :
+                        <button className="block w-full max-w-xs mx-auto border border-transparent bg-indigo-500 hover:bg-indigo-600 focus:bg-indigo-600 text-white rounded-lg px-3 py-2 font-semibold"
+                         onClick={showToastRequireLogin}
+                         >
+                            PLEASE LOGIN
+                        </button>
+                    }
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+        
     );
 }
 

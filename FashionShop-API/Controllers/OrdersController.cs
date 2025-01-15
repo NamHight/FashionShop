@@ -1,11 +1,13 @@
 ﻿using FashionShop_API.Dto.RequestDto;
-using FashionShop_API.Filters;
+using FashionShop_API.Extensions;
 using FashionShop_API.Models;
 using FashionShop_API.Repositories;
 using FashionShop_API.Services.ServiceLogger;
 using FashionShop_API.Services.ServiceManager;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.DotNet.Scaffolding.Shared.Messaging;
 using System.Collections.Generic;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -19,6 +21,8 @@ namespace FashionShop_API.Controllers
     {
         private readonly IServiceManager _serviceManager;
         private readonly ILoggerManager _loggerManager;
+        const string cartKey = "myCart";
+        public List<Cart> Carts => HttpContext.Session.Get<List<Cart>>(cartKey) ?? new List<Cart>();
 
         public OrdersController(IServiceManager serviceManager, ILoggerManager loggerManager)
         {
@@ -58,6 +62,40 @@ namespace FashionShop_API.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+        }
+
+        [HttpPost("addOrders")]
+        public async Task<IActionResult> AddOrder([FromBody] RequestOrderDto order)
+        {
+            if (order is null) return BadRequest();
+
+            var orderDomain = await _serviceManager.Orders.AddOrder(order);
+            foreach (var item in Carts)
+            {
+                await _serviceManager.Orderdetails.AddOrderDetail(new Ordersdetail
+                {
+                    Quantity = item.Quantity,
+                    TotalPrice = (item.Price * item.Quantity),
+                    OrderId = orderDomain.OrderId,
+                    ProductId = item.ProductId,
+                    Status = "pending",
+                });
+            }
+            return Ok(new {message = "Thanh Toán Thành Công", data = orderDomain});
+        }
+        [HttpGet]
+        public async Task<IActionResult> CanReviewProduct(long customerId, long productId)
+        {
+            var hasPurchased = await _serviceManager.Orders.HasPurchasedProductAsync(customerId, productId);
+
+            if (hasPurchased)
+            {
+                return Ok(new { message = "You can review this product." });
+            }
+            else
+            {
+                return BadRequest(new { message = "You must purchase this product before reviewing." });
+            }
         }
         [HttpGet]
         public async Task<IActionResult> CanReviewProduct(long customerId, long productId)

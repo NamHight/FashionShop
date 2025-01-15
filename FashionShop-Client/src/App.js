@@ -7,7 +7,6 @@ import VerifyPassword from "./pages/VerifyPassword";
 import Account from "./pages/Account";
 import Loading from './components/Loading';
 import ProductListByCategory from "./components/List/ProductListByCategory";
-import Orders from "./pages/Account/Orders";
 
 const TitleUpdater = () => {
   const location = useLocation();
@@ -33,9 +32,6 @@ const AuthRoute = ({ children }) => {
   const navigate = useNavigate();
   useEffect(() => {
     console.log(user);
-    if (user === undefined) {
-      return;
-    }
     if (!user) {
       navigate("/", { replace: true });
     } else {
@@ -54,7 +50,7 @@ function App() {
     if (layoutRef.current) {
       layoutRef.current.scrollTo({ top: 0, behavior: "smooth" });
     }
-  };
+  }
   const handleScroll = () => {
     if (layoutRef) {
       const positionScroll = layoutRef.current.scrollTop;

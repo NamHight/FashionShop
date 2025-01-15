@@ -14,6 +14,7 @@ import BlogArticle from "../pages/Blog/Article/index";
 import DetailProduct from "../pages/Product/detailProduct";
 import ForgotPassword from "../pages/VerifyPassword/ForgotPassword";
 import ResetPassword from "../pages/VerifyPassword/ResetPassword";
+import Page404 from "../pages/Page404/Index";
 import OrdersProcessing from "../pages/Account/Orders/OrdersProcessing";
 import OrdersPendingCancel from "../pages/Account/Orders/OrdersPendingCancel";
 import OrdersDelivering from "../pages/Account/Orders/OrdersDelivering";
@@ -34,7 +35,8 @@ export const Router = [
     {path: "/reset-password",name: "ResetPassword", element: <ResetPassword/>},
     {path: "/cart", name: "Cart", element: <Cart/>},
     {path: "/payment", name: "Payment", element: <Payment/>},
-    {path: "/:categorySlug/:productSlug", name: "detailProduct", element: <DetailProduct/>}
+    {path: "/:categorySlug/:productSlug", name: "detailProduct", element: <DetailProduct/>},
+    {path: "/page404/:param1", name:"Page404", element: <Page404/>}
 ];
 export const routerAccount = [
     {path: "", name: "Profile",element: <Profile/>},

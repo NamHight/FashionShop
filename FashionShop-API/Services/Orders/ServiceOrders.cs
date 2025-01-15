@@ -36,21 +36,22 @@ namespace FashionShop_API.Services.Orders
                 throw;
             }
         }
-        //public async Task RemoveOrdersByIdAndStatus(long id, string status, bool trackChanges)
-        //{
-        //    try
-        //    {
-        //        var order = await _repositoryManager.Orders.GetOrdersByIdAndStatus(id, status, trackChanges);
-        //        if (order == null) throw new Exception();
-        //        await _repositoryManager.Orders.RemoveOrdersByIdAndStatusPending(order);
-        //        await _repositoryManager.SaveChangesAsync();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine("-- Lỗi ", ex);
-        //        throw;
-        //    }
-        //}
+        public async Task<bool> HasPurchasedProductAsync(long customerId, long productId)
+        {
+            // Gọi repository để kiểm tra đơn hàng của người dùng
+            var order = await _repositoryManager.Orders.GetOrderByCustomerIdAndProductIdAsync(customerId, productId);
+            return order != null;
+        }
+
+        public async Task<Order> AddOrder(RequestOrderDto order)
+        {
+            if (order is null) throw new ListOrdersNotFoundException("Order rong");
+            var orderDomain = _mappers.Map<Order>(order);
+            await _repositoryManager.Orders.AddOrder(orderDomain);
+            // sau khi SaveChanges thì orderDomain sẽ được gán ID;
+            await _repositoryManager.SaveChanges();
+            return orderDomain;
+        }
         public async Task<bool> HasPurchasedProductAsync(long customerId, long productId)
         {
             // Gọi repository để kiểm tra đơn hàng của người dùng

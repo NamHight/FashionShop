@@ -4,7 +4,9 @@ using FashionShop_API.Mappers;
 using FashionShop_API.Options;
 using FashionShop_API.Services.ServiceLogger;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,8 +30,11 @@ builder.Services.Configure<GoogleOption>(builder.Configuration.GetSection("Googl
 builder.Services.AddControllers(
     options =>
     {
-        
-    }).AddNewtonsoftJson();
+    }).AddNewtonsoftJson(options =>
+    {
+        options.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
+        options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+    });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {

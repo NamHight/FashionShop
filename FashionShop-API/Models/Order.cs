@@ -53,6 +53,7 @@ public partial class Order
     public DateTime? UpdatedAt { get; set; }
 
     [Column("status", TypeName = "enum('processing','pending cancel','delivering','completed','canceled')")]
+
     public string? Status { get; set; }
 
     [ForeignKey("CustomerId")]
