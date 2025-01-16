@@ -1,4 +1,3 @@
-import { Radio, Typography } from "@material-tailwind/react";
 import { IoMale, IoFemale, IoMaleFemale } from "react-icons/io5";
 import { useState } from "react";
 import { FormUpdate } from "./FormUpdate";
@@ -102,7 +101,6 @@ function FormProfile({ user }) {
           >
             Gender
           </label>
-          {!update ? (
             <p className="text-xl flex items-center">
               {user.gender === "male" ? (
                 <>
@@ -119,46 +117,6 @@ function FormProfile({ user }) {
                 </>
               )}{" "}
             </p>
-          ) : (
-            <Radio>
-              <div className="flex items-center gap-2">
-                <Radio.Item id="Male">
-                  <Radio.Indicator />
-                </Radio.Item>
-                <Typography
-                  as="label"
-                  htmlFor="Male"
-                  className="text-foreground flex items-center"
-                >
-                  Male <IoMale className="text-blue-500 ml-1" />
-                </Typography>
-              </div>
-              <div className="flex items-center gap-2">
-                <Radio.Item id="Female">
-                  <Radio.Indicator />
-                </Radio.Item>
-                <Typography
-                  as="label"
-                  htmlFor="Female"
-                  className="text-foreground flex items-center"
-                >
-                  Female <IoFemale className="text-red-500 ml-1" />
-                </Typography>
-              </div>
-              <div className="flex items-center gap-2">
-                <Radio.Item id="Another">
-                  <Radio.Indicator />
-                </Radio.Item>
-                <Typography
-                  as="label"
-                  htmlFor="Another"
-                  className="text-foreground flex items-center"
-                >
-                  Another <IoMaleFemale className="ml-1" />
-                </Typography>
-              </div>
-            </Radio>
-          )}
         </div>
         <div className="my-5 flex items-center">
           <label
@@ -170,7 +128,7 @@ function FormProfile({ user }) {
           {handleDate(user.birth)}
         </div>
         <div className="text-center flex">
-          <FormUpdate />
+          <FormUpdate value={user}/>
         </div>
       </div>
     </div>

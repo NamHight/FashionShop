@@ -23,16 +23,13 @@ function ImageProfile({user}) {
               : "/assets/images/Logo.png"
           }
           width={200}
-          className="rounded-full size-36 object-cover border border-blue-500 ring-4 ring-blue-500/20"
+          className="rounded-full size-36 object-cover border border-blue-500 ring-4 ring-blue-500/20 cursor-pointer"
         />
       </span>
       <form onSubmit={(e)=>handleUpload(e)}>
-        <input type="file" name="file" onChange={(e) => handleFile(e)} />
+        <input type="file" name="file" onChange={(e) => handleFile(e)} hidden/>
         <button  className="border-2 text-lg px-5 py-3 rounded-full">Upload File</button>
       </form>
-      <button type="submit" className="border-2 text-lg px-5 py-3 rounded-full">
-      Upload
-      </button>
     </div>
   );
 }
