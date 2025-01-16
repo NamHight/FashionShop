@@ -8,7 +8,7 @@ namespace FashionShop_API.Services.Favorites
     public interface IServiceFavorites
     {
         Task<IEnumerable<ResponseFavoritesDto>?> GetListFavoritesByIdAsync(long? id, bool trackChanges);
-		Task AddFarvoriteAsync(RequestFarvoriteDto farvorite, bool trackChanges);
-		Task DeleteFarvoriteAsync(long id);
-	}
+		Task AddFavoriteAsync(RequestFarvoriteDto farvorite, bool trackChanges);
+        Task<bool> DeleteFavoriteAsync(long userId, long productId);
+    }
 }

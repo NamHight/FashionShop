@@ -11,6 +11,7 @@ const ReviewList = (props) => {
     limit: 10,
     productId: productId,
     typeOrderBy: null,
+    rating: 0,
   };
   const [page, setPage] = useState([]);
   const [paramPage, setParamPage] = useState(PARAMPAGE);
@@ -21,6 +22,7 @@ const ReviewList = (props) => {
       paramPage.limit,
       paramPage.productId,
       paramPage.typeOrderBy,
+      paramPage.rating,
     ],
     queryFn: async () => {
       const result = await GetReviewByProductId({ params: paramPage });
@@ -68,8 +70,57 @@ const ReviewList = (props) => {
       typeOrderBy: value,
     }));
   };
+  const handleStarChange = (value) => {
+    setParamPage((prevParamPage) => ({
+      ...prevParamPage,
+      rating: value,
+    }));
+  };
   return (
     <>
+      <div className="m-3">
+        <select
+          onChange={(e) => handleStarChange(e.target.value)}
+          className="px-4 py-3 min-w-[150px] text-sm text-gray-500 border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-200"
+        >
+          <option
+            value="0"
+            className="hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+          >
+            search for star
+          </option>
+          <option
+            value="1"
+            className="hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+          >
+            1 star
+          </option>
+          <option
+            value="2"
+            className="hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+          >
+            2 star
+          </option>
+          <option
+            value="3"
+            className="hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+          >
+            3 star
+          </option>
+          <option
+            value="4"
+            className="hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+          >
+            4 star
+          </option>
+          <option
+            value="5"
+            className="hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+          >
+            5 star
+          </option>
+        </select>
+      </div>
       {!isLoading ? (
         typeof ReviewListQuery === "string" ? (
           <p>{ReviewListQuery}</p>
@@ -94,6 +145,7 @@ const ReviewList = (props) => {
                 </option>
               </select>
             </div>
+
             {ReviewListQuery.map((item) => {
               return (
                 <div

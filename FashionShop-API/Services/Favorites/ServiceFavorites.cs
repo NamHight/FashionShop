@@ -38,7 +38,7 @@ namespace FashionShop_API.Services.Favorites
                 throw;
             }
         }
-		public async Task AddFarvoriteAsync(RequestFarvoriteDto farvorite, bool trackChanges)
+		public async Task AddFavoriteAsync(RequestFarvoriteDto farvorite, bool trackChanges)
 		{
 			var farvoriteEntity = new Favorite
 			{
@@ -49,9 +49,22 @@ namespace FashionShop_API.Services.Favorites
 			};
 			await _repositoryManager.Favorite.AddAsync(farvoriteEntity, trackChanges);
 		}
-		public async Task DeleteFarvoriteAsync(long id)
-		{
-			await _repositoryManager.Favorite.DeleteAsync(id);
-		}
-	}
+        public async Task<bool> DeleteFavoriteAsync(long userId, long productId)
+        {
+            
+                // Lấy yêu thích của userId và productId
+                var favorite = await _repositoryManager.Favorite.GetFavoriteByUserIdAndProductId(userId, productId);
+
+                if (favorite == null)
+                {
+                    return false;
+                }
+
+                // Xóa yêu thích
+                return await _repositoryManager.Favorite.DeleteFavorite(favorite);
+            
+           
+        }
+
+    }
 }

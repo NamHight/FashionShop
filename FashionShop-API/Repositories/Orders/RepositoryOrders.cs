@@ -23,5 +23,15 @@ namespace FashionShop_API.Repositories.Orders
         //{
         //    Delete(order);
         //}
+
+        public async Task<Order> GetOrderByCustomerIdAndProductIdAsync(long customerId, long productId)
+        {
+            // Truy vấn đơn hàng của khách hàng với trạng thái 'completed' và kiểm tra sản phẩm
+            return await _context.Orders
+                .Where(order => order.CustomerId == customerId
+                                && order.Status == "completed"
+                                && order.Ordersdetails.Any(item => item.ProductId == productId))
+                .FirstOrDefaultAsync();
+        }
     }
 }

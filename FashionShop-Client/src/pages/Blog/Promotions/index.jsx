@@ -77,7 +77,7 @@ const Blog = () => {
                    discount : {item.discountRate}%     
                   </p>
                   <p className="text-sm text-gray-500 mb-2">
-                   StartDate : {item.startDate} - EndDate : {item.endDate}    
+                   StartDate : {item?.startDate ? item?.startDate.substring(0,10) : null} - EndDate : {item?.endDate ? item?.endDate.substring(0,10) : null}    
                   </p>
                 </div>
               );
