@@ -13,6 +13,8 @@ export const CartContext = createContext(null);
 
 export const CartContextProvider = ({ children }) => {
 
+    var paypalClientIDx = "";
+
     const [page, setPage] = useState(1); // Lưu trang hiện tại mà người dùng đang trỏ tới
 
     const { data: cartQuery, refetch, error, isLoading } = useQuery({
@@ -20,8 +22,9 @@ export const CartContextProvider = ({ children }) => {
         queryFn: async () => { 
             const allCarts = await getAllCartsService();
             if(allCarts != null){
-                console.log("Dữ liệu cart sau khi get API", allCarts);
-                return allCarts;
+                paypalClientIDx = allCarts.paypalClientID
+                console.log("Dữ liệu cart sau khi get API", allCarts.carts);
+                return allCarts.carts;
             }
             console.log("du lieu null");
             return null;
@@ -32,7 +35,7 @@ export const CartContextProvider = ({ children }) => {
         enabled: true // Không fetch tự động
     });
 
-    const [carts, setCarts] = useState(cartQuery);
+    const [carts, setCarts] = useState(cartQuery); // danh sách cart lưu tại client
     const [cartPagination, setCartPagination] = useState(() =>{
         if(carts!=null){
            var x = carts.slice((page-1)*3, (page-1)*3 +3)
@@ -83,18 +86,13 @@ export const CartContextProvider = ({ children }) => {
     const decreaseQuantity = (id) =>{
         var currentCart = carts.find(item=> item.productId === id);
         if(currentCart){
-            if(currentCart.quantity === 1){
-                removeCart(id);
-            }else{
-                var newCart = [...carts].map(item => {
-                    if(item.productId===id){
-                        return {...item, quantity : item.quantity- 1, amount: item.amount - item.price};
-                    }
-                    return item;
-                    
-                })
-                setCarts(newCart);
-            }
+            var newCart = [...carts].map(item => {
+                if(item.productId===id){
+                    return {...item, quantity : item.quantity- 1, amount: item.amount - item.price};
+                }
+                return item;
+            })
+            setCarts(newCart);
         }
     }
 
@@ -177,7 +175,7 @@ export const CartContextProvider = ({ children }) => {
         totalMoney: totalMoney,
         saveCart: saveCart,
         setPage: setPage,
-        
+        paypalClientIDx : paypalClientIDx
     }
 
     return (

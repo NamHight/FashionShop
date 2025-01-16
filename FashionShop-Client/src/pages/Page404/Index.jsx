@@ -10,7 +10,7 @@ function Page404 () {
     useEffect(()=>{
       if (errorPayment) {
         console.log("da vao 404", errorPayment, " ", decodeURIComponent(param1));
-       toast.error(errorPayment); // đã khai báo toastcontainer trong layout
+        toast.error(errorPayment); // đã khai báo toastcontainer trong layout
       }
     }, [errorPayment])
     return (

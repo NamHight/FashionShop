@@ -4,14 +4,42 @@ import { Link } from 'react-router';
 import {Pagination } from '../../components/Pagination/Pagination.jsx';
 import { useCartConText } from '../../context/CartContext.jsx';
 import {useAuth} from '../../context/AuthContext.jsx';
-import ButtonAddCart from "../../components/ButtonAddCart/ButtonAddCart.jsx"
+import {toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function Cart() {
     const {cart, decreaseQuantity, increaseQuantity, totalMoney, removeCart, removeAllCart, addCart, saveCart, totalCarts, totalPages} = useCartConText();
     const {user} = useAuth();
     const TABLE_HEAD = ["Product", "Name", "Price", "Quantity", "Amount", "Handle"];
     const TABLE_ROWS = cart;
- 
+
+    const CustomToast = ({ closeToast, id}) => (
+      <div>
+        <p>If you agree, the product in the cart will be removed. Do you agree ?</p>
+        <div className='flex items-center justify-end space-x-3 mt-3'>
+          <button onClick={() => handleOk(closeToast, id)} style={{ marginRight: '10px' }} className=''>OK</button>
+          <button onClick={() => handleCancel(closeToast)} className=''>Cancel</button>
+        </div>
+      </div>
+    );
+
+    const handleOk = (closeToast, id) => {
+      closeToast(); // Đóng toast
+      removeCart(id); // Xoá sản phẩm khỏi giỏ hàng khi người dùng đã confirm OK
+    };
+
+    const handleCancel = (closeToast) => {
+      closeToast(); // Đóng toast, và k làm gì cả vì người dùng không muốn xoá sản phẩm
+    };
     
+    const handleCheckQuantity =(id, quantity) =>{
+      // Neu quantity = 1 thi hien thi thong bao ban co muon tiep tuc => neu chon ok thi bam xoa san pham : k lam gi
+      if(quantity===1){
+        toast(<CustomToast id={id} />);
+      }else{
+        decreaseQuantity(id);
+      }
+    }
   
   return (
     <div className="mt-10 mx-72 min-h-[700px] w-full">
@@ -88,12 +116,13 @@ function Cart() {
                             variant="small"
                             color="blue-gray"
                             className="font-normal"
+                            id = "quantity"
                           >
                             {item.quantity}
                           </Typography>
                         </div>
                         <button className="bg-gray-200 px-4 py-2 rounded-md me-2"
-                            onClick={() => decreaseQuantity(item.productId)}
+                            onClick={() => handleCheckQuantity(item.productId, item.quantity)}
                         >
                             -
                         </button>
@@ -138,15 +167,23 @@ function Cart() {
             </Typography>
           </div>
           <div className="flex gap-4">
-            <Button
-              disabled={totalCarts>0 ? false: true}
-              className="flex items-center justify-center rounded-md bg-blue-600 py-3 px-6 text-white text-lg font-semibold transition hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-              type="button"
-              onClick={()=> saveCart()}
-            >
-              <Link  disabled={totalCarts>0 ? false: true} to="/payment"> Payment </Link>
-            </Button>
-            
+            {
+              totalCarts > 0 ?  
+              <Button
+                className="flex items-center justify-center rounded-md bg-blue-600 py-3 px-6 text-white text-lg font-semibold transition hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                type="button"
+                onClick={()=> saveCart()}
+              >
+                <Link  to="/payment"> Payment </Link>
+              </Button>  :
+
+              <Button
+               className="flex items-center justify-center rounded-md bg-blue-600 py-3 px-6 text-white text-lg font-semibold transition hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+               type="button"
+              >
+               <Link  to="/"> Please make a purchase </Link>
+             </Button>
+            }
             <Button
               className="flex items-center justify-center rounded-md bg-red-600 py-3 px-6 text-white text-lg font-semibold transition hover:bg-red-700 focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
               type="button"
