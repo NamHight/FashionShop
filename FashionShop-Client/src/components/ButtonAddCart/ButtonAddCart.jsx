@@ -5,9 +5,12 @@ import { useCartConText } from '../../context/CartContext';
 
 const ButtonAddCart = ({css, productId, productName, banner, price, quantity =1}) => {
     const {addCart} = useCartConText();
+    const handleAddCart = () =>{
+      addCart({productId : productId, productName : productName,banner: banner, price: price, quantity: quantity});
+    }
   return (
      <Button className= {css}
-        onClick={() => addCart({productId : productId, productName : productName,banner: banner, price: price, quantity: quantity})}
+        onClick={() => handleAddCart()}
      >  Add To Cart
      </Button>
   )
