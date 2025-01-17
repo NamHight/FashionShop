@@ -1,14 +1,25 @@
-import React from 'react';
-import {Outlet} from "react-router";
+import React, {useEffect, useState} from 'react';
+import {Outlet, useLocation} from "react-router";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import {Button} from "@material-tailwind/react";
 import {BiSolidArrowToTop} from "react-icons/bi";
 import ModalChat from "../components/Modal/ModalChat";
 import {ToastContainer, Bounce} from 'react-toastify';
+import {Helmet} from "react-helmet-async";
 const Layout = ({isInVisible,handleScrollTop}) => {
+    const location = useLocation();
+    const [title, setTitle] = useState('')
+    useEffect(() => {
+        setTitle(location.pathname.split('/').pop());
+    }, [location]);
     return (
         <div className={'flex flex-col min-h-screen relative'}>
+            <Helmet>
+                <title>Fashion{ title &&" - " + title}</title>
+                <meta name="description" content="official website" />
+                <meta name="keywords" content="website, fashion brand" />
+            </Helmet>
             <ToastContainer position="top-right"
                             autoClose={3000}
                             hideProgressBar={false}

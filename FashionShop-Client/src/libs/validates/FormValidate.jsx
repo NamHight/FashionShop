@@ -62,3 +62,8 @@ export const ContactValidate = z.object({
     description: z.string()
         .nonempty({message: "Description is required"})
 });
+
+export const ChatValidate = z.object({
+   username: z.string()
+       .nonempty({message:"Username is required"}),
+});
