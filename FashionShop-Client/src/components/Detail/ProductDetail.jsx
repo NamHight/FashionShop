@@ -75,26 +75,46 @@ function ProductDetail() {
 
 
       const [canReview, setCanReview] = useState(false);
-      const [rating, setRating] = useState(0); // Trạng thái cho số rating
-      const [reviewText, setReviewText] = useState(""); // Trạng thái cho nội dung review
+      const [rating, setRating] = useState(0);
+      const [reviewText, setReviewText] = useState("");
       
     
       const handleRatingChange = (value) => {
-        setRating(value); // Cập nhật rating khi người dùng chọn
+        setRating(value);
       };
     
       const handleReviewTextChange = (e) => {
-        setReviewText(e.target.value); // Cập nhật nội dung review
+        setReviewText(e.target.value);
       };
-    
+      
+      const [imageUrl, setImageUrl] = useState(null);
+      const [selectedImage, setSelectedImage] = useState(null);
+      const [imageError, setImageError] = useState(null);
+      const handleImageChange = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+          if (file.type.startsWith("image/")) {
+            setImageError(null); 
+            setSelectedImage(file); 
+            const reader = new FileReader();
+            reader.onloadend = () => {
+              setImageUrl(reader.result); 
+            };
+            reader.readAsDataURL(file); 
+          } else {
+            setImageError("Please upload a valid image file.");
+            setImageUrl(null);
+            setSelectedImage(null);
+          }
+        }
+      };
 
-    
       useEffect(() => {
         const checkPurchaseStatus = async () => {
           if (user) {
             const result = await checkIfPurchased(user.customerId, product.productId);
             console.log(result);
-            setCanReview(result); // Nếu đã mua, cho phép đánh giá, ngược lại không
+            setCanReview(result);
           }
         };
     
@@ -104,28 +124,26 @@ function ProductDetail() {
       }, [user, product]);
     
       const handleSubmitReview = async (event) => {
-        event.preventDefault(); // Ngăn reload trang
-    
+        event.preventDefault();
+      
         if (!canReview) {
           alert('You need to purchase this product before reviewing!');
           return;
         }
-    
+      
         try {
           const response = await addReview(
-            product.productId,  // productId
-            rating,             // rating
-            reviewText,         // reviewText
-            user.customerId     // customerId
+            product.productId,
+            rating,
+            reviewText,
+            user.customerId,
+            selectedImage 
           );
-    
+      
           console.log('Review submitted:', response);
-    
-    
+      
           alert('Thank you for your review!');
-          
-          // Sau khi người dùng nhấn OK, reload lại trang
-          window.location.reload();
+      
         } catch (error) {
           console.error('Error submitting review:', error);
           alert('Failed to submit review. Please try again.');
@@ -140,18 +158,24 @@ function ProductDetail() {
 
       useEffect(() => {
         const fetchProducts = async () => {
+          if (!product || !product.productId) {
+            return;
+          }
           const data = await getProductsBySlug(categorySlug);
-          setProducts(data);
+      
+          const currentProductId = product.productId;
+      
+          const filteredProducts = data.filter(product => product.productId !== currentProductId);
+          setProducts(filteredProducts);
         };
+      
         fetchProducts();
-      }, [categorySlug]);
+      }, [categorySlug, product]); 
 
-  // Lấy sản phẩm cần hiển thị cho trang hiện tại
       const indexOfLastProduct = currentPage * productsPerPage;
       const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
       const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
 
-  // Hàm chuyển trang
       const handleNextPage = () => {
         if (currentPage * productsPerPage < products.length) {
           setCurrentPage(currentPage + 1);
@@ -174,7 +198,6 @@ function ProductDetail() {
 
     return (
         <div>
-            {/* Breadcrumb Navigation */}
             <Breadcrumb className="py-4 px-8">
                 <Breadcrumb.Link href="/">
                     <FcHome className="h-[18px] w-[18px]" />
@@ -187,7 +210,6 @@ function ProductDetail() {
 
             <div className="flex justify-center p-8">
                 <div className="flex flex-wrap gap-8 max-w-screen-lg w-full">
-                    {/* Left: Product Image */}
                     <div className="flex-1 max-w-[500px]">
                         <img
                             className="w-full h-auto rounded-lg object-contain"
@@ -195,21 +217,15 @@ function ProductDetail() {
                             alt={product.productName || 'Product Image'}
                         />
                     </div>
-
-                    {/* Right: Product Details */}
                     <div className="flex-1.5">
                         <h1 className="text-3xl font-semibold mb-4">{product.productName}</h1>
                         <p className="text-lg text-gray-600 mb-4">Product ID: <span className="font-medium">{product.productId}</span></p>
                         <p className="text-2xl font-bold text-red-600 mb-4">{product.price} VND</p>
-
-                        {/* Stock and Sold Count */}
                         <div className="mb-4 grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
                                 <p className="text-lg font-medium">Remaining stock: {product.quantity}</p>
                                 <p className="text-lg font-medium">Sold: {product.soldCount}</p>
                             </div>
-
-                            {/* Favorites and Views */}
                             <div className="flex space-x-4">
                                 <p className="text-lg font-medium flex items-center">
                                     <FaHeart className="mr-1" /> {productStats?.favoritesCount ?? 'N/A'}
@@ -219,7 +235,6 @@ function ProductDetail() {
                                 </p>
                             </div>
 
-                            {/* Average Review */}
                             <p className="text-lg font-medium">
                                 <div className="flex items-center">
                                     {[...Array(5)].map((_, index) => {
@@ -235,8 +250,6 @@ function ProductDetail() {
                                 <span className="ml-2">{productStats?.averageReview ?? 'N/A'}</span>
                             </p>
                         </div>
-
-                        {/* Quantity Input */}
                         <div className="mb-4">
                             <label className="block text-lg font-medium mb-2">Quantity:</label>
                             <input
@@ -248,7 +261,6 @@ function ProductDetail() {
                             />
                         </div>
 
-                        {/* Action Buttons */}
                         <div className="space-x-4">
                             <ButtonAddCart
                                 css="bg-emerald-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors"
@@ -261,7 +273,6 @@ function ProductDetail() {
                             <button className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Buy Now</button>
                         </div>
 
-                        {/* Shipping and Warranty Policies */}
                         <div className="mt-8">
                             <h3 className="text-xl font-semibold mb-2">Shipping Policy</h3>
                             <p className="text-gray-600">Detailed information about our shipping policy...</p>
@@ -310,15 +321,19 @@ function ProductDetail() {
         <div className="text-center text-gray-600 mb-4">
           <p>Please log in to leave a review.</p>
         </div>
+        ) : !canReview ? (
+          <div className="text-center text-gray-600 mb-4">
+            <p>You need to purchase this product before reviewing!</p>
+          </div>
       ) : (
         <div>
-          {/* Phần form đánh giá */}
+
           <h3 className="text-xl font-semibold mb-4">Leave a Review</h3>
           {error && (
             <div className="text-red-500 text-sm mb-4">{error}</div>
           )}
           <form onSubmit={handleSubmitReview}>
-            {/* Rating */}
+          
             <div className="mb-4">
               <label className="block text-gray-700 font-medium mb-2">Rating</label>
               <div className="flex space-x-2">
@@ -337,7 +352,7 @@ function ProductDetail() {
               </div>
             </div>
 
-            {/* Review Text */}
+ 
             <div className="mb-4">
               <label className="block text-gray-700 font-medium mb-2">Your Review</label>
               <textarea
@@ -349,7 +364,21 @@ function ProductDetail() {
               ></textarea>
             </div>
 
-            {/* Submit Button */}
+            <div className="mb-4">
+              <label className="block text-gray-700 font-medium mb-2">Upload Image</label>
+              <input
+                type="file"
+                onChange={handleImageChange}
+                className="border border-gray-300 p-2 rounded-md"
+              />
+              {imageError && <p className="text-red-500 text-sm mt-2">{imageError}</p>}
+            </div>
+            {imageUrl && (
+              <div className="mt-4">
+                <h4 className="text-lg font-semibold">Uploaded Image</h4>
+                <img src={imageUrl} alt="Review" className="mt-2 max-w-full" />
+              </div>
+            )}
             <div className="flex justify-end">
               <Button
                 type="submit"
@@ -373,10 +402,9 @@ function ProductDetail() {
 
             <div className="py-8">
         <h2 className="text-2xl font-semibold mb-6 px-8">
-          Sản phẩm có liên quan
+          Relevant products
         </h2>
 
-        {/* Container với overflow-x-auto */}
         
         <div>
       <div className="flex overflow-x-auto space-x-4 px-4 w-full">

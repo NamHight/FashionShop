@@ -5,8 +5,10 @@ import DataOrder from "../dataOrder";
 import { CustomSpinner } from "../../../../components/CustomSpinner";
 import { Input } from "@material-tailwind/react";
 import { IoSearch } from "react-icons/io5";
+import ReviewButton from "../../../../components/Detail/ReviewButton/ReviewButton"; 
 
 const ListOrder = ({ value }) => {
+  
   return (
     <>
       <div className="bg-slate-100 rounded mt-3">
@@ -37,7 +39,7 @@ const ListOrder = ({ value }) => {
                       <h1 className="font-bold">{item.productName}</h1>
                     </div>
                     <div>
-                      <p>Categpry: {item.categoryName}</p>
+                      <p>Category: {item.categoryName}</p>
                       <p>Quantity x{item.quantity}</p>
                       <p>Price: ${item.price}</p>
                     </div>
@@ -46,6 +48,12 @@ const ListOrder = ({ value }) => {
                 <div className="w-36 text-xl flex justify-center items-center text-red-600 ">
                   ${item.totalPrice}
                 </div>
+                <ReviewButton
+              productId={item.productId} 
+              categoryName={item.categoryName}
+              productName={item.productName}
+            />
+            
               </div>
             );
           })}
