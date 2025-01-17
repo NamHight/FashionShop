@@ -1,10 +1,13 @@
 using FashionShop_API.Dto.ResponseDto;
 using FashionShop_API.Extensions;
+using FashionShop_API.Helper;
 using FashionShop_API.Mappers;
 using FashionShop_API.Options;
 using FashionShop_API.Services.ServiceLogger;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,8 +31,11 @@ builder.Services.Configure<GoogleOption>(builder.Configuration.GetSection("Googl
 builder.Services.AddControllers(
     options =>
     {
-        
-    }).AddNewtonsoftJson();
+    }).AddNewtonsoftJson(options =>
+    {
+        options.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
+        options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+    });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
@@ -59,8 +65,13 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 builder.Services.AddSwaggerGen();
-
-
+builder.Services.AddSingleton(x =>
+    new PaypalClient(
+        builder.Configuration["PaypalOptions:ClientId"],
+        builder.Configuration["PaypalOptions:ClientSecret"],
+        builder.Configuration["PaypalOptions:Mode"]
+    )
+);
 
 var app = builder.Build();
 var logger = app.Services.GetRequiredService<ILoggerManager>();

@@ -5,7 +5,7 @@ import CategoriesList from '../../components/List/CategoryList';
 import LatestProductList from '../../components/List/LatestProductsList';
 const Home = () => {
     return (
-    <div>
+    <div className='w-full'>
     <AutoBanner />
     <h1 className="text-3xl font-bold mb-6">Categories List</h1>
     <CategoriesList/>

@@ -57,3 +57,21 @@ export const saveCartsService = async (data) =>{
         return await e.response;
     }
 }
+
+export const createOrder  = async (data, actions) =>{
+    try {
+        const response= await authAxios.post(BASE_CART_URL+'createPaypalOrder');
+        return await response;
+    }catch (e){
+        return await e.response;
+    }
+}
+
+export const onApprove  = async (data, actions) =>{
+    try {
+        const response= await authAxios.post(BASE_CART_URL+'capturePaypalOrder/' + `${data.orderId}`);
+        return await response;
+    }catch (e){
+        return await e.response;
+    }
+}
