@@ -11,6 +11,7 @@ using FashionShop_API.Services.ServiceLogger;
 using FashionShop_API.Services.ServiceManager;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.WebSockets;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -26,6 +27,11 @@ public static class ServicesExtension
             options.UseMySql(configuration.GetConnectionString("DefaultConnection"),
                 ServerVersion.AutoDetect(configuration.GetConnectionString("DefaultConnection"))));
        
+    }
+
+    public static void ConfigureWebsocket(this IServiceCollection services)
+    {
+        services.AddSignalR();
     }
     public static void ConfigureAuthentication(this IServiceCollection services,IConfiguration configuration)
     {

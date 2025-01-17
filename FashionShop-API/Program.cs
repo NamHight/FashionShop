@@ -2,6 +2,7 @@ using FashionShop_API.Dto.ResponseDto;
 using FashionShop_API.Extensions;
 using FashionShop_API.Mappers;
 using FashionShop_API.Options;
+using FashionShop_API.Services.Chating;
 using FashionShop_API.Services.ServiceLogger;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.OpenApi.Models;
@@ -10,9 +11,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddHttpContextAccessor();
 
+builder.Services.ConfigureWebsocket();
 builder.Services.AddAutoMapper(typeof(MapperProfile));
 builder.Services.ConfigureGetConnection(builder.Configuration);
 builder.Services.ConfigureResponseCaching();
+builder.Services.AddSingleton<ServiceShareData>();
 builder.Services.ConfigureCors();
 builder.Services.ConfigureAuthentication(builder.Configuration);
 builder.Services.ConfigureRepositoryManager();
@@ -78,6 +81,7 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 {
     ForwardedHeaders = ForwardedHeaders.All
 });
+app.MapHub<ServiceChat>("/Chat");
 app.UseCors("CorsPolicy");
 app.UseResponseCaching();
 app.UseAuthentication();

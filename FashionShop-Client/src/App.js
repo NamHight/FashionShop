@@ -1,4 +1,4 @@
-import { Route, Routes, useLocation, useNavigate } from "react-router";
+import {Route, Routes, useLocation, useNavigate, useParams, useSearchParams} from "react-router";
 import Layout from "./pages/Layout";
 import { Router, routerAccount } from "./router/Router";
 import {useEffect, useRef, useState} from "react";
@@ -8,24 +8,6 @@ import Account from "./pages/Account";
 import Loading from './components/Loading';
 import ProductListByCategory from "./components/List/ProductListByCategory";
 
-const TitleUpdater = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    const titles = {
-      "/": "Fashion - Home",
-      "/about": "Fashion - About",
-      "/blog": "Fashion - Blog",
-      "/blog/article": "Fashion - BlogArticle",
-      "/verify-password": "Fashion - Verify Password",
-      "/account": "Fashion - My Profile",
-      "/account/orders": "Fashion - Orders",
-      "/account/listfavorite": "Fashion - List Favorite",
-    };
-    document.title = titles[location.pathname] || "Fashion";
-  }, [location]);
-  return null;
-};
 const AuthRoute = ({ children }) => {
   const { user } = useAuth();
   const [isLoading, setisLoading] = useState(true);
@@ -73,7 +55,6 @@ function App() {
   }, []);
   return (
     <div ref={layoutRef} className={'h-screen w-full max-h-screen max-w-full overflow-y-auto'}>
-      <TitleUpdater />
       <Routes>
         <Route element={<Layout isInVisible={isInVisible} handleScrollTop={() => handleScrollTop()} />}>
           {Router.map((route) => {

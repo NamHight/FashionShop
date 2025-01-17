@@ -96,12 +96,11 @@ const Footer = () => {
                         {
                             isLoading || isLoading || loading ?  <Spinner /> : Object.keys(websiteInfo).length !== 0 ? <>
                                 <Link to={'/'} className="">
-                                    <img src={websiteInfo?.logo} alt="logo" className={'size-32'}/>
+                                    <img src={'assets/Logo.png'} alt="logo" className={'size-32'}/>
                                 </Link>
                             </> : <>
-
                                 <Link to={'/'} className="">
-                                    <img src={responseData?.logo} alt="logo" className={'size-32'}/>
+                                    <img src={'assets/Logo.png'} alt="logo" className={'size-32'}/>
                                 </Link>
                             </>
                         }
