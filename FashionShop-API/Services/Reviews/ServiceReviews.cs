@@ -40,6 +40,7 @@ namespace FashionShop_API.Services.Reviews
 				ProductId = review.ProductId,
 				CustomerId = review.CustomerId,
 				ReviewText = review.ReviewText,
+				Image=review.Image,
 				Rating = review.Rating,
 				ReviewDate = DateTime.UtcNow
 			};

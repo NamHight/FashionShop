@@ -19,11 +19,11 @@ public partial class Order
     [Precision(10, 2)]
     public decimal? TotalAmount { get; set; }
 
-    [Column("order_date", TypeName = "datetime")]
-    public DateTime? OrderDate { get; set; }
-
     [Column("payment_method", TypeName = "enum('cash','credit_card','debit_card','paypal')")]
     public string? PaymentMethod { get; set; }
+
+    [Column("order_date", TypeName = "datetime")]
+    public DateTime? OrderDate { get; set; }
 
     [Column("employee_id")]
     public long? EmployeeId { get; set; }
@@ -43,13 +43,17 @@ public partial class Order
     [StringLength(15)]
     public string? Phone { get; set; }
 
+    [Column("reason_cancel", TypeName = "text")]
+    public string? ReasonCancel { get; set; }
+
     [Column("created_at", TypeName = "timestamp")]
     public DateTime? CreatedAt { get; set; }
 
     [Column("updated_at", TypeName = "timestamp")]
     public DateTime? UpdatedAt { get; set; }
 
-    [Column("status", TypeName = "enum('processing','delivering','completed','canceled')")]
+    [Column("status", TypeName = "enum('processing','pending cancel','delivering','completed','canceled')")]
+
     public string? Status { get; set; }
 
     [ForeignKey("CustomerId")]
@@ -59,9 +63,6 @@ public partial class Order
     [ForeignKey("EmployeeId")]
     [InverseProperty("Orders")]
     public virtual Employee? Employee { get; set; }
-
-    [InverseProperty("Order")]
-    public virtual ICollection<Ordercancelreason> Ordercancelreasons { get; set; } = new List<Ordercancelreason>();
 
     [InverseProperty("Order")]
     public virtual ICollection<Ordersdetail> Ordersdetails { get; set; } = new List<Ordersdetail>();
