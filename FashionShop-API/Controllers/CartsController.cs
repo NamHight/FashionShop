@@ -116,12 +116,45 @@ namespace FashionShop_API.Controllers
             return Ok();
         }
 
-        //[Authorize]
-        //[HttpPost("createPaypalOrder")]
-        //public async Task<IActionResult> CreatePaypalOrder(CancellationToken cancellationToken)
-        //{
-           
-        //    return Ok();
-        //}
+        [HttpPost("createPaypalOrder")]
+        [Authorize]
+        public async Task<IActionResult> CreatePaypalOrder(CancellationToken cancellationToken)
+        {
+            var totalMoney = Carts.Sum(p => p.Amount).ToString();
+            var unit = "USD";
+            var orderID = DateTime.Now.Ticks.ToString();
+
+            try
+            {
+                var response = await _paypalClient.CreateOrder(totalMoney, unit, orderID);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                var error = new { ex.GetBaseException().Message };
+                return BadRequest(error);
+            }
+        }
+
+        
+        [HttpPost("capturePaypalOrder")]
+        [Authorize]
+        public async Task<IActionResult> CapturePaypalOrder(string orderId, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var response = await _paypalClient.CaptureOrder(orderId);
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                var error = new { ex.GetBaseException().Message };
+                return BadRequest(error);
+            }
+        }
+
+
+
     }
 }

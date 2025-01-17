@@ -18,6 +18,12 @@ builder.Services.ConfigureGetConnection(builder.Configuration);
 builder.Services.ConfigureResponseCaching();
 builder.Services.ConfigureCors();
 builder.Services.ConfigureAuthentication(builder.Configuration);
+builder.Services.AddAuthentication("JwtBearerDefaults.AuthenticationScheme")
+  .AddCookie("JwtBearerDefaults.AuthenticationScheme", options =>
+  {
+      options.LoginPath = "/Account/Login";
+      options.AccessDeniedPath = "/Account/AccessDenied";
+  });
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureLoggerManager();
