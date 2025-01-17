@@ -5,10 +5,11 @@ import { useAuth } from "../../context/AuthContext";
 import { addOrders } from "../../services/api/OrdersService";
 import ModalLoginRegister from "../../components/Modal/ModalLoginRegister";
 import { AlertCustom } from "../../components/Alert/Alert";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { toast } from "react-toastify";
 // import { createOrder, onApprove } from "../../services/api/CartService";
 import {  PayPalScriptProvider,PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
+import { Spinner } from "@material-tailwind/react";
 
 
 
@@ -86,7 +87,7 @@ const Payment = () => {
      
       return (
           <div>
-              {isPending && <div>Loading...</div>}
+              {isPending && <Spinner/>}
               <PayPalButtons 
                createOrder={createOrder}
                onApprove={onApprove} />
@@ -325,10 +326,10 @@ const Payment = () => {
     const handleClickPaypalPayment = () =>{
       console.log("Da vao ham handle paypal")
       document.getElementById("paypal").checked = true; // bấm chọn paypal thì tích cho paypal 
-      const infoATM = document.getElementById("infoATM");
-      console.log("paypal_method", document.getElementById("paypal_method"), " " , document.getElementById("payNow"));
+      const infoATM = document.getElementById("infoATM"); 
       const paypal = document.getElementById("paypal_method");
       if(paypal) {
+        console.log("paypal tồn tại mà")
         paypal.hidden = false;
       }
       var payNow = document.getElementById("payNow");
@@ -757,7 +758,7 @@ const Payment = () => {
                             <PayPalComponent />
                         </PayPalScriptProvider>
                       </div>
-                    }
+                    } 
                   
                   </div>
                 </div>

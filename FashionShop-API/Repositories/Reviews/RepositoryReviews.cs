@@ -14,14 +14,24 @@ namespace FashionShop_API.Repositories.Reviews
 		{
 		}
 
-		public async Task<PagedListAsync<Review>> GetListReviewByProductId(int page, int limit, long productId, string typeOrderBy)
+		public async Task<PagedListAsync<Review>> GetListReviewByProductId(int page, int limit, long productId, string typeOrderBy, int rating)
 		{
+			if(typeOrderBy == "asc" && rating > 0)
+			{
+                var reviews = FindByCondition(item => item.ProductId == productId && item.Status == "approved" && item.Rating == rating, false).OrderBy(item => item.ReviewDate).Include(item => item.Customer);
+                return await PagedListAsync<Review>.ToPagedListAsync(reviews, page, limit);
+            }
+			if(rating > 0)
+			{
+                var reviews = FindByCondition(item => item.ProductId == productId && item.Status == "approved" && item.Rating == rating, false).OrderByDescending(item => item.ReviewDate).Include(item => item.Customer);
+                return await PagedListAsync<Review>.ToPagedListAsync(reviews, page, limit);
+            }
 			if (typeOrderBy == "asc")
 			{
-				var reviews = FindByCondition(item => item.ProductId == productId, false).OrderBy(item => item.ReviewDate).Include(item => item.Customer);
+				var reviews = FindByCondition(item => item.ProductId == productId && item.Status == "approved", false).OrderBy(item => item.ReviewDate).Include(item => item.Customer);
 				return await PagedListAsync<Review>.ToPagedListAsync(reviews, page, limit);
 			}
-            return await PagedListAsync<Review>.ToPagedListAsync(_context.Reviews.AsNoTracking().Where(item => item.ProductId == productId).OrderByDescending(item => item.ReviewDate).Include(item => item.Customer).AsQueryable(), page, limit);
+            return await PagedListAsync<Review>.ToPagedListAsync(_context.Reviews.AsNoTracking().Where(item => item.ProductId == productId && item.Status == "approved").OrderByDescending(item => item.ReviewDate).Include(item => item.Customer).AsQueryable(), page, limit);
         }
 		public async Task AddAsync(Review entity, bool trackChanges)
 		{

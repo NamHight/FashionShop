@@ -6,5 +6,6 @@
         public int Limit { get; set; } = 10;
         public long ProductId { get; set; }
         public string TypeOrderBy { get; set; } = string.Empty;
+        public int Rating { get; set; } = 0;
     }
 }

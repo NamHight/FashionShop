@@ -36,21 +36,11 @@ const LatestProductList = () => {
     };
 
     fetchProducts();
-     // Thiết lập interval để lấy dữ liệu mỗi 10 giây
      const intervalId = setInterval(() => {
-      console.log("Fetching products...");
       fetchProducts();
-    }, 10000); // 10 giây
-
-    // Dọn dẹp interval khi component bị unmount
+    }, 10000);
     return () => clearInterval(intervalId);
   }, [user]);
-//Fomart lai ngay thang
-  const formatDate = (dateString) => {
-    const options = { year: "numeric", month: "long", day: "numeric" };
-    return new Date(dateString).toLocaleDateString(undefined, options);
-  };
-
 const handleAddToFavorite = async (productId) => {
     if (user) {
       try {
@@ -133,12 +123,7 @@ const handleAddToFavorite = async (productId) => {
               <p className="text-lg font-bold text-red-500 mb-2">
                 Price: ${product.price}
               </p>
-              <p className="text-md text-gray-600 mb-4">
-                Quantity: {product.quantity}
-              </p>
-              <p className="text-md text-gray-700 mb-2">
-                Created on: {formatDate(product.createdAt)}
-              </p>
+              
               <div className="flex items-center justify-between space-x-4">
                 <ButtonAddCart
                   css="bg-emerald-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors flex-1 h-12 min-w-[120px]"

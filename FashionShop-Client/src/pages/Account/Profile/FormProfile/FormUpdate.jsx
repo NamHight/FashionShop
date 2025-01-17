@@ -9,7 +9,7 @@ import { Xmark } from "iconoir-react";
 export const FormUpdate = () => {
   return (
     <Dialog size="md">
-      <Dialog.Trigger as={Button} className="w-full">
+      <Dialog.Trigger as={Button} className="w-full border-0 bg-green-600 hover:bg-green-500">
         Update
       </Dialog.Trigger>
       <Dialog.Overlay>
@@ -145,7 +145,7 @@ export const FormUpdate = () => {
                 </label>
               </div>
             </div>
-            <Button isFullWidth className="w-10">
+            <Button isFullWidth className="w-10 border-0 bg-blue-600 hover:bg-blue-500">
               Save
             </Button>
           </form>

@@ -8,24 +8,28 @@ import {toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function Cart() {
-    const {cart, decreaseQuantity, increaseQuantity, totalMoney, removeCart, removeAllCart, addCart, saveCart, totalCarts, totalPages} = useCartConText();
+    const {cart, decreaseQuantity, increaseQuantity, totalMoney, removeCart, removeAllCart, addCart, saveCart, totalCarts, checkInventory, totalPages} = useCartConText();
     const {user} = useAuth();
     const TABLE_HEAD = ["Product", "Name", "Price", "Quantity", "Amount", "Handle"];
     const TABLE_ROWS = cart;
 
-    const CustomToast = ({ closeToast, id}) => (
+    const CustomToast = ({ closeToast, id, checkDeleteAll}) => (
       <div>
-        <p>If you agree, the product in the cart will be removed. Do you agree ?</p>
+        {
+          checkDeleteAll ?  <p>If you agree, all product in the cart will be removed. Do you agree ?</p> :
+          <p>If you agree, the product in the cart will be removed. Do you agree ?</p>
+        }
         <div className='flex items-center justify-end space-x-3 mt-3'>
-          <button onClick={() => handleOk(closeToast, id)} style={{ marginRight: '10px' }} className=''>OK</button>
+          <button onClick={() => handleOk(closeToast, id, checkDeleteAll)} style={{ marginRight: '10px' }} className=''>OK</button>
           <button onClick={() => handleCancel(closeToast)} className=''>Cancel</button>
         </div>
       </div>
     );
 
-    const handleOk = (closeToast, id) => {
+    const handleOk = (closeToast, id, checkDeleteAll) => {
       closeToast(); // Đóng toast
-      removeCart(id); // Xoá sản phẩm khỏi giỏ hàng khi người dùng đã confirm OK
+      if(checkDeleteAll) removeAllCart();
+      else removeCart(id); // Xoá sản phẩm khỏi giỏ hàng khi người dùng đã confirm OK
     };
 
     const handleCancel = (closeToast) => {
@@ -38,6 +42,20 @@ function Cart() {
         toast(<CustomToast id={id} />);
       }else{
         decreaseQuantity(id);
+      }
+    }
+
+    const handleDeleteAllCart = () =>{
+      toast(<CustomToast checkDeleteAll={true}/>);
+    }
+
+    const handleIncreseQuantity = (id, quantityx) =>{
+      var check = checkInventory(id, quantityx);
+      console.log("gia tri cua bien check trong cart la: ", check)
+      if(check){
+        increaseQuantity(id);
+      }else{
+        toast("Số lượng hàng đã hết, chúng tôi sẽ nhập thêm hàng trong thời gian sớm nhất, rất mong bạn thông cảm");
       }
     }
   
@@ -128,7 +146,7 @@ function Cart() {
                         </button>
                         <button
                             className="bg-gray-200 px-4 py-2 rounded-md"
-                            onClick={() => increaseQuantity(item.productId)}
+                            onClick={() => handleIncreseQuantity(item.productId, item.quantity)}
                         >
                             +
                         </button>
@@ -187,7 +205,7 @@ function Cart() {
             <Button
               className="flex items-center justify-center rounded-md bg-red-600 py-3 px-6 text-white text-lg font-semibold transition hover:bg-red-700 focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
               type="button"
-              onClick={removeAllCart}
+              onClick={handleDeleteAllCart}
             >
               Delete All Cart
             </Button>

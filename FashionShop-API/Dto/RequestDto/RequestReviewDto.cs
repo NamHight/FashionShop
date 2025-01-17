@@ -14,6 +14,7 @@ namespace FashionShop_API.Dto.RequestDto
 		[Required(ErrorMessage = "Hãy miêu tả về sản phẩm")]
 		[StringLength(500, ErrorMessage = "Mô tả không được vượt quá 500 ký tự.")]
 		public string? ReviewText { get; set; }
+		public string? Image {  get; set; }
 
 		public DateTime? ReviewDate { get; set; }
 

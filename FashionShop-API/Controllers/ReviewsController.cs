@@ -23,45 +23,65 @@ namespace FashionShop_API.Controllers
 		[HttpGet]
 		public async Task<IActionResult> GetReviewsByProductId([FromQuery] ParamReviewDto paramReviewDto)
 		{
-			var reviews = await _serviceManager.Review.FindReviewsByProductIdAsync(paramReviewDto.Page, paramReviewDto.Limit, paramReviewDto.ProductId, paramReviewDto.TypeOrderBy);
+			var reviews = await _serviceManager.Review.FindReviewsByProductIdAsync(paramReviewDto.Page, paramReviewDto.Limit, paramReviewDto.ProductId, paramReviewDto.TypeOrderBy, paramReviewDto.Rating);
 			Response.Headers.Append("X-Pagination", JsonSerializer.Serialize(reviews.page));
 			return Ok(reviews.data);
 		}
 
-		[HttpPost]
-		public async Task<IActionResult> AddReview([FromBody] RequestReviewDto request)
-		{
-			if (request == null)
-			{
-				// Trả về BadRequest nếu request là null
-				_loggerManager.LogError("Invalid review data.");
-				return BadRequest(new { message = "Dữ liệu đánh giá không hợp lệ!" });
-			}
+        [HttpPost]
+        public async Task<IActionResult> AddReview([FromForm] RequestReviewDto request, IFormFile? image)
+        {
+            if (request == null)
+            {
+                _loggerManager.LogError("Invalid review data.");
+                return BadRequest(new { message = "Dữ liệu đánh giá không hợp lệ!" });
+            }
 
-			// Kiểm tra nếu các thông tin cần thiết không hợp lệ (ví dụ: thiếu nội dung, điểm số, v.v.)
-			if (string.IsNullOrWhiteSpace(request.ReviewText) || request.Rating < 1 || request.Rating > 5)
-			{
-				_loggerManager.LogError("Invalid review content or rating.");
-				return BadRequest(new { message = "Đánh giá không hợp lệ. Vui lòng kiểm tra lại nội dung và điểm số." });
-			}
+            if (string.IsNullOrWhiteSpace(request.ReviewText) || request.Rating < 1 || request.Rating > 5)
+            {
+                _loggerManager.LogError("Invalid review content or rating.");
+                return BadRequest(new { message = "Đánh giá không hợp lệ. Vui lòng kiểm tra lại nội dung và điểm số." });
+            }
 
-			try
-			{
-				// Gọi dịch vụ để thêm review vào cơ sở dữ liệu
-				await _serviceManager.Review.AddReviewAsync(request,true);
+            try
+            {
+                string imagePath = string.Empty;
+                if (image != null)
+                {
+                    if (!image.ContentType.StartsWith("image"))
+                    {
+                        return BadRequest(new { message = "Tệp tải lên phải là hình ảnh." });
+                    }
+                    var wwwRootPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
+                    var reviewFolder = Path.Combine(wwwRootPath, "assets", "images", "review");
+                    if (!Directory.Exists(reviewFolder))
+                    {
+                        Directory.CreateDirectory(reviewFolder);
+                    }
+                    var fileName = Guid.NewGuid().ToString() + Path.GetExtension(image.FileName);
+                    var filePath = Path.Combine(reviewFolder, fileName);
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await image.CopyToAsync(fileStream);
+                    }
 
-				// Trả về kết quả thành công
-				return Ok(new { message = "Đánh giá đã được thêm thành công!" });
-			}
-			catch (Exception ex)
-			{
-				// Log lỗi nếu có
-				_loggerManager.LogError($"Something went wrong inside the AddReview action: {ex.Message}");
-				return StatusCode(500, new { message = "Đã có lỗi xảy ra. Vui lòng thử lại sau!" });
-			}
-		}
+                    imagePath = fileName;
+                }
+                request.Image = imagePath;
+                await _serviceManager.Review.AddReviewAsync(request, true);
 
-		[HttpPut("{id}")]
+                return Ok(new { message = "Đánh giá đã được thêm thành công!" });
+            }
+            catch (Exception ex)
+            {
+                _loggerManager.LogError($"Something went wrong inside the AddReview action: {ex.Message}");
+                return StatusCode(500, new { message = "Đã có lỗi xảy ra. Vui lòng thử lại sau!" });
+            }
+        }
+
+
+
+        [HttpPut("{id}")]
 		public async Task<IActionResult> UpdateReview(long id, [FromBody] RequestReviewDto request, [FromQuery] bool trackChanges = true)
 		{
 			if (request == null)
