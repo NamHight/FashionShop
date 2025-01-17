@@ -30,5 +30,4 @@ public class PagedListAsync<T> : List<T> where T : class
             .ToListAsync();
         return new PagedListAsync<T>(items, count, page, limit);
     }
-    
 }

@@ -1,5 +1,6 @@
 import * as React from "react";
 import { FaFilter } from "react-icons/fa";
+import "./style.css";
 import {
   Drawer,
   Button,
@@ -90,41 +91,20 @@ export function Filter() {
       <Drawer>
         <Drawer.Trigger
           as={Button}
-          className="bg-slate-100 border border-emerald-400 hover:text-white hover:opacity-70"
+          className="bg-slate-100 border border-emerald-400 filter"
         >
-          <FaFilter className="text-emerald-400 hover:text-white size-5" />
+          <FaFilter className="text-emerald-400 iconfilter size-5" />
         </Drawer.Trigger>
         <Drawer.Overlay>
           <Drawer.Panel placement="left" className="p-0">
-            <div className="flex items-center justify-between gap-4">
-              <Drawer.DismissTrigger
-                as={IconButton}
-                size="sm"
-                variant="ghost"
-                color="secondary"
-                className="absolute right-2 top-2"
-                isCircular
-              >
-                <Xmark className="h-5 w-5" />
-              </Drawer.DismissTrigger>
-            </div>
-
             <Card className="border-none shadow-none">
-              <Card.Header className="m-0 flex h-max items-center gap-2 px-3 pb-3 pt-4">
-                <Avatar size="xs" src="/logo.png" alt="brand" />
-
-                <Typography className="font-semibold">
-                  Material Tailwind
-                </Typography>
+              <Card.Header className="m-0 flex h-max items-center justify-center gap-2 px-3 pb-3 pt-4 bg-emerald-400 w-full rounded-none">
+                <div className="w-32 h-14">
+                  <Avatar src="assets/Logo.png" alt="Logo.png" className="" />
+                </div>
               </Card.Header>
 
               <Card.Body className="p-3">
-                <Input type="search" placeholder="Search here...">
-                  <Input.Icon>
-                    <Search className="h-full w-full" />
-                  </Input.Icon>
-                </Input>
-
                 <List className="mt-3">
                   {Links.map(({ icon: Icon, title, href, badge }) => (
                     <List.Item key={title} href={href}>
@@ -193,36 +173,6 @@ export function Filter() {
                   </List.Item>
                 </List>
               </Card.Body>
-
-              <Card.Footer className="p-3">
-                <Card color="primary" className="shadow-none">
-                  <Card.Header className="m-3">
-                    <SelectFace3d className="h-10 w-10 text-primary-foreground" />
-                  </Card.Header>
-
-                  <Card.Body>
-                    <Typography type="h6" className="mb-1 text-white">
-                      Upgrade to PRO
-                    </Typography>
-
-                    <Typography type="small" className="text-white/80">
-                      Upgrade to Material Tailwind PRO and get even more
-                      components, plugins, advanced features and premium.
-                    </Typography>
-                  </Card.Body>
-
-                  <Card.Footer>
-                    <Button
-                      size="sm"
-                      as="a"
-                      href="#"
-                      className="border-white bg-white text-black hover:border-white hover:bg-white hover:text-black"
-                    >
-                      Upgrade Now
-                    </Button>
-                  </Card.Footer>
-                </Card>
-              </Card.Footer>
             </Card>
           </Drawer.Panel>
         </Drawer.Overlay>

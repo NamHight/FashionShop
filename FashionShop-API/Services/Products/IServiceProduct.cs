@@ -1,4 +1,6 @@
 ﻿
+using System.Data.SqlTypes;
+using FashionShop_API.Dto;
 using FashionShop_API.Dto.QueryParam;
 using FashionShop_API.Dto.RequestDto;
 using FashionShop_API.Dto.ResponseDto;
@@ -16,5 +18,6 @@ namespace FashionShop_API.Services.Products
         Task<int> GetFavoritesCountAsync(long productId);
         Task<int> GetViewsCountAsync(long productId);
         Task<double> GetAverageReviewAsync(long productId);
+        Task<(IEnumerable<ResponseSearchProductDto> products, PageInfo pageInfo)> GetProductSearchAndFilterAsync(RequestProductDto requestProductDto, bool trackChanges);
     }
 }
