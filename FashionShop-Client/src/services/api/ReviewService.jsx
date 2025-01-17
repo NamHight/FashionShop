@@ -27,22 +27,49 @@ export const GetTotalReviewRating = async (productId) => {
     }
 }
 
-export const addReview = async (productId, rating, reviewText,customerId) => {
-    try {
-      console.log(END_POINT.GetReviewByProductId);
-      const response = await publicAxios.post(END_POINT.GetReviewByProductId, {
-        productId,
-        rating,
-        reviewText,
-        customerId,
-      });
-      console.log(response.data)
-      return response.data;
-    } catch (error) {
-      console.error("Error adding review:", error);
-      throw error;
+// export const addReview = async (productId, rating, reviewText,customerId) => {
+//     try {
+//       console.log(END_POINT.GetReviewByProductId);
+//       const response = await publicAxios.post(END_POINT.GetReviewByProductId, {
+//         productId,
+//         rating,
+//         reviewText,
+//         customerId,
+//       });
+//       console.log(response.data)
+//       return response.data;
+//     } catch (error) {
+//       console.error("Error adding review:", error);
+//       throw error;
+//     }
+//   };
+
+export const addReview = async (productId, rating, reviewText, customerId, imageFile) => {
+  try {
+    const formData = new FormData();
+    formData.append("ProductId", productId);
+    formData.append("Rating", rating);
+    formData.append("ReviewText", reviewText);
+    formData.append("CustomerId", customerId);
+    if (imageFile) {
+      formData.append("Image", imageFile);  // Gửi tệp hình ảnh
     }
-  };
+
+    const response = await publicAxios.post(END_POINT.GetReviewByProductId, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",  // Đảm bảo gửi đúng kiểu dữ liệu
+      },
+    });
+
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error adding review:", error);
+    throw error;
+  }
+};
+
+
   export const checkIfPurchased = async (customerId, productId) => {
     try {
       const url = `${BASE_ORDERS_URL}?customerId=${customerId}&productId=${productId}`;
