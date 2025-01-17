@@ -23,7 +23,7 @@ namespace FashionShop_API.Controllers
 		[HttpGet]
 		public async Task<IActionResult> GetReviewsByProductId([FromQuery] ParamReviewDto paramReviewDto)
 		{
-			var reviews = await _serviceManager.Review.FindReviewsByProductIdAsync(paramReviewDto.Page, paramReviewDto.Limit, paramReviewDto.ProductId, paramReviewDto.TypeOrderBy);
+			var reviews = await _serviceManager.Review.FindReviewsByProductIdAsync(paramReviewDto.Page, paramReviewDto.Limit, paramReviewDto.ProductId, paramReviewDto.TypeOrderBy, paramReviewDto.Rating);
 			Response.Headers.Append("X-Pagination", JsonSerializer.Serialize(reviews.page));
 			return Ok(reviews.data);
 		}
