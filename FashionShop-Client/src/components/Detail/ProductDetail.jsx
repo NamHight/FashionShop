@@ -111,17 +111,22 @@ function ProductDetail() {
 
       useEffect(() => {
         const checkPurchaseStatus = async () => {
-          if (user) {
-            const result = await checkIfPurchased(user.customerId, product.productId);
-            console.log(result);
-            setCanReview(result);
+          if (user && product && product.productId) {
+            try {
+              const result = await checkIfPurchased(user.customerId, product.productId);
+              console.log(result);
+              setCanReview(result);
+            } catch (error) {
+              console.error('Error checking purchase status:', error);
+            }
+          } else {
+            console.log('Missing user or product data');
           }
         };
-    
-        if (user) {
+        if (user && product) {
           checkPurchaseStatus();
         }
-      }, [user, product]);
+      }, [user, product]); 
     
       const handleSubmitReview = async (event) => {
         event.preventDefault();
@@ -228,10 +233,10 @@ function ProductDetail() {
                             </div>
                             <div className="flex space-x-4">
                                 <p className="text-lg font-medium flex items-center">
-                                    <FaHeart className="mr-1" /> {productStats?.favoritesCount ?? 'N/A'}
+                                    <FaHeart className="mr-1" /> {productStats?.favoritesCount ?? '0'}
                                 </p>
                                 <p className="text-lg font-medium flex items-center">
-                                    <GrView className="mr-1" /> {productStats?.viewsCount ?? 'N/A'}
+                                    <GrView className="mr-1" /> {productStats?.viewsCount ?? '0'}
                                 </p>
                             </div>
 
@@ -247,7 +252,7 @@ function ProductDetail() {
                                         return <FaRegStar key={index} className="mr-1 text-gray-300" />;
                                     })}
                                 </div>
-                                <span className="ml-2">{productStats?.averageReview ?? 'N/A'}</span>
+                                <span className="ml-2">{productStats?.averageReview ?? '0'}</span>
                             </p>
                         </div>
                         <div className="mb-4">
