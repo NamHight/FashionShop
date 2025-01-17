@@ -50,7 +50,7 @@ const ReviewButton = ({ productId }) => {
   return (
     <button
       onClick={handleReviewClick}
-      className="border border-slate-500 px-9 py-3 rounded hover:bg-red-600 hover:text-white"
+      className="border border-slate-500 p-2 rounded hover:bg-red-600 hover:text-white w-[auto] h-[50px]"
       disabled={loading}
     >
       {loading ? 'Loading...' : 'Reviews'}

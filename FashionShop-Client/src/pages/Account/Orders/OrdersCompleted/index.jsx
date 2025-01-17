@@ -45,25 +45,20 @@ const ListOrder = ({ value }) => {
                       <p>Price: ${item.price}</p>
                     </div>
                   </div>
+                  <ReviewButton
+                  productId={item.productId} 
+                />
                 </div>
                 <div className="w-36 text-xl flex justify-end items-center text-red-600 ">
                   ${item.totalPrice}
                 </div>
-                <ReviewButton
-              productId={item.productId} 
-              categoryName={item.categoryName}
-              productName={item.productName}
-            />
-            
               </div>
+              
             );
           })}
         </div>
         <div className="px-5 py-5 mx-5 text-center md:flex">
           <div className="text-xl w-full md:text-start">
-            <button className="border border-slate-500 px-9 py-3 rounded hover:bg-red-600 hover:text-white">
-              Reviews
-            </button>
             <button className="ml-3 border border-slate-500 px-9 py-3 rounded hover:bg-red-600 hover:text-white">
               Buy Back
             </button>
