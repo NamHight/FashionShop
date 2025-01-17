@@ -2,6 +2,7 @@
 using FashionShop_API.Dto.RequestDto;
 using FashionShop_API.Dto.ResponseDto;
 using FashionShop_API.Extensions;
+using FashionShop_API.Helper;
 using FashionShop_API.Mappers;
 using FashionShop_API.Models;
 using FashionShop_API.Repositories.Shared;
@@ -21,9 +22,11 @@ namespace FashionShop_API.Controllers
         private readonly ILogger<CategoriesController> _logger;
         private readonly IServiceManager _serviceManager;
         private readonly MapperProfile _mapper;
+        private readonly PaypalClient _paypalClient;
         const string cartKey = "myCart";
         public List<Cart> Carts => HttpContext.Session.Get<List<Cart>>(cartKey) ?? new List<Cart>();
-        public CartsController(ILogger<CategoriesController> logger, IServiceManager serviceManager, IServiceCacheRedis serviceCacheRedis) {
+        public CartsController(ILogger<CategoriesController> logger, IServiceManager serviceManager, IServiceCacheRedis serviceCacheRedis, PaypalClient paypalClientx) {
+            _paypalClient = paypalClientx;
             _logger = logger;
             _serviceManager = serviceManager;
         }
@@ -32,7 +35,8 @@ namespace FashionShop_API.Controllers
         [HttpGet("getAllCarts")]
         public IActionResult GetAllCart() {
             Console.WriteLine("danh sach cart la", Carts);
-            return Ok(Carts);
+            var PaypalClientID = _paypalClient.ClientId;
+            return Ok(new { carts = Carts, paypalClientID = PaypalClientID });
         }
 
         [HttpGet("getPaginationAllCarts/{page}")]
@@ -111,5 +115,13 @@ namespace FashionShop_API.Controllers
             HttpContext.Session.Set(cartKey, requestCart); // cài lại cart
             return Ok();
         }
+
+        //[Authorize]
+        //[HttpPost("createPaypalOrder")]
+        //public async Task<IActionResult> CreatePaypalOrder(CancellationToken cancellationToken)
+        //{
+           
+        //    return Ok();
+        //}
     }
 }

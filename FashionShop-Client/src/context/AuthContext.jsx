@@ -8,7 +8,7 @@ import {loginGoogle} from "../services/api/AuthServices";
 export const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-    const { data:user, error, isLoading,status, } = useQuery({
+    const { data:user, error, isLoading,status, isPending } = useQuery({
         queryKey:['user'], // Query key
         queryFn:async()=>
     {
@@ -35,6 +35,7 @@ export const AuthProvider = ({ children }) => {
         user,
         isLoading,
         error,
+        isPending
     };
 
     return (
