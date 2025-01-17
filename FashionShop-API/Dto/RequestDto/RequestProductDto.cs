@@ -6,10 +6,11 @@ namespace FashionShop_API.Dto.RequestDto
 {
     public class RequestProductDto : ParamProductDto
     {
-        public decimal? MinPrice { get; set; } = 0;
-        public decimal? MaxPrice { get; set; } = decimal.MaxValue;
-        public string? CategoryName { get; set; }
 
-       public string? SearchProduct { get; set; }
+        public string? searchProduct { get; set; }
+        public string? categoryName { get; set; }
+
+        public decimal? minPrice { get; set; } = 0;
+        public decimal? maxPrice { get; set; } = decimal.MaxValue;
     }
 }

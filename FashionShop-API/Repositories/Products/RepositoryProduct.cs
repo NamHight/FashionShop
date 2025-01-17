@@ -71,13 +71,13 @@ namespace FashionShop_API.Repositories.Products
         }
         public async Task<PagedList<Product>> GetProductsSearchAndFilterAsync(RequestProductDto? requestProductDto, bool trackChanges)
         {
-            var product = await FindByCondition(item => item.ProductName.ToLower().Contains(requestProductDto.SearchProduct.ToLower().Trim()) 
+            var product = await FindByCondition(item => item.ProductName.ToLower().Contains(requestProductDto.searchProduct.ToLower().Trim()) 
            , trackChanges)
                 .Include(item => item.Category)
-                .FilterProductPrice(requestProductDto.MinPrice, requestProductDto.MaxPrice)
-                .FilterProductCategory(requestProductDto.CategoryName)
+                .FilterProductPrice(requestProductDto.minPrice, requestProductDto.maxPrice)
+                .FilterProductCategory(requestProductDto.categoryName)
                 .ToListAsync();
-            var result = PagedList<Product>.ToPagedList(product, requestProductDto.PageNumber, requestProductDto.PageSize);
+            var result = PagedList<Product>.ToPagedList(product, requestProductDto.pageNumber, requestProductDto.pageSize);
             return result;
         }
 

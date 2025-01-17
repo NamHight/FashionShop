@@ -165,7 +165,7 @@ namespace FashionShop_API.Controllers
             {
                 return BadRequest(new { message = "Argument is not null" });
             }
-            if(requestProductDto.MinPrice > requestProductDto.MaxPrice)
+            if(requestProductDto.minPrice > requestProductDto.maxPrice)
             {
                 return BadRequest(new { message = "max price " });
             }

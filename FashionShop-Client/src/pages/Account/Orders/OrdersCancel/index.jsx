@@ -51,12 +51,7 @@ const ListOrder = ({ value }) => {
             );
           })}
         </div>
-        <div className="px-5 py-5 text-center md:flex mx-5">
-          <div className="text-xl w-1/2 md:text-start">
-            <button className="border border-slate-500 px-9 py-3 rounded hover:bg-red-600 hover:text-white">
-              Buy Back
-            </button>
-          </div>
+        <div className="px-5 py-5 flex justify-end md:flex mx-5">
           <div className="text-xl w-1/2 flex justify-end items-center">
             <p className="font-bold flex items-center">
               Thành Tiền:

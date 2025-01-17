@@ -30,6 +30,11 @@ import {
   Bin,
   UserXmark,
 } from "iconoir-react";
+import { RadioChecked } from "../../../components/RadioChecked";
+import { getCategories } from "../../../services/api/CategoryService";
+import { useQuery } from "@tanstack/react-query";
+import Loading from "../../../components/Loading";
+import { useNavigate, useSearchParams } from "react-router";
 
 const Links = [
   {
@@ -84,10 +89,36 @@ const Links = [
 ];
 
 export function Filter() {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const {
+    data: categories,
+    isLoading: isCategoryLoading,
+    isPending,
+    isError,
+  } = useQuery({
+    queryKey: ["category"],
+    queryFn: async () => {
+      let result = await getCategories();
+      return result;
+    },
+  });
+  const [minPrice, setMinPrice] = React.useState(0);
+  const [maxPrice, setMaxPrice] = React.useState(0);
+  let [searchParams] = useSearchParams();
+  const path = useNavigate();
+  const productName = searchParams.get("searchProduct");
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const form = new FormData();
+    // const minPrice = form.get('minPrice');
+    // const maxPrice = form.get('maxPrice');
+    console.log(minPrice, "dsfs", maxPrice, "dsdf", productName)
+    path(`/search?searchProduct=${productName}&minPrice=${minPrice}&maxPrice=${maxPrice}`)
+    window.location.reload();
+  }
 
   return (
-    <div>
+    <div className="p-5">
       <Drawer>
         <Drawer.Trigger
           as={Button}
@@ -106,71 +137,30 @@ export function Filter() {
 
               <Card.Body className="p-3">
                 <List className="mt-3">
-                  {Links.map(({ icon: Icon, title, href, badge }) => (
-                    <List.Item key={title} href={href}>
-                      <List.ItemStart>
-                        <Icon className="h-[18px] w-[18px]" />
-                      </List.ItemStart>
-
-                      {title}
-
-                      {badge && (
-                        <List.ItemEnd>
-                          <Chip size="sm" variant="ghost">
-                            <Chip.Label>{badge}</Chip.Label>
-                          </Chip>
-                        </List.ItemEnd>
-                      )}
-                    </List.Item>
-                  ))}
-
                   <hr className="-mx-3 my-3 border-secondary" />
-
-                  <List.Item onClick={() => setIsOpen((cur) => !cur)}>
-                    <List.ItemStart>
-                      <MoreHorizCircle className="h-[18px] w-[18px]" />
-                    </List.ItemStart>
-                    More
-                    <List.ItemEnd>
-                      <NavArrowRight
-                        className={`h-4 w-4 ${isOpen ? "rotate-90" : ""}`}
-                      />
-                    </List.ItemEnd>
-                  </List.Item>
-
-                  <Collapse open={isOpen}>
-                    <List>
-                      <List.Item>
-                        <List.ItemStart>
-                          <Folder className="h-[18px] w-[18px]" />
-                        </List.ItemStart>
-                        Spam
-                      </List.Item>
-
-                      <List.Item>
-                        <List.ItemStart>
-                          <UserXmark className="h-[18px] w-[18px]" />
-                        </List.ItemStart>
-                        Blocked
-                      </List.Item>
-
-                      <List.Item>
-                        <List.ItemStart>
-                          <Folder className="h-[18px] w-[18px]" />
-                        </List.ItemStart>
-                        Important
-                      </List.Item>
-                    </List>
-                  </Collapse>
-
-                  <hr className="-mx-3 my-3 border-secondary" />
-
-                  <List.Item className="text-error hover:bg-error/10 hover:text-error focus:bg-error/10 focus:text-error">
-                    <List.ItemStart>
-                      <LogOut className="h-[18px] w-[18px]" />
-                    </List.ItemStart>
-                    Logout
-                  </List.Item>
+                  {isPending ? (
+                    <Loading />
+                  ) : (
+                    <RadioChecked data={categories.data} />
+                  )}
+                  <List.Item className="text-error hover:bg-error/10 hover:text-error focus:bg-error/10 focus:text-error"></List.Item>
+                </List>
+                <hr className="-mx-3 my-3 border-secondary" />
+                <List className="mt-3">
+                  <form onSubmit={(e) => handleSubmit(e)} method="get">
+                    <Input
+                      placeholder="Min Price"
+                      id="minPrice"
+                      value={minPrice}
+                      onChange={(e) => setMinPrice(e.target.value < 0 ? 1 : e.target.value)}
+                      className="mb-4"
+                    />
+                    <Input placeholder="Max Price" className="mb-4" id="maxPrice"
+                      value={maxPrice}
+                      onChange={(e) => setMaxPrice(e.target.value < 0 ? 1 : e.target.value)}
+                    />
+                    <Button variant="outline">Outline</Button>
+                  </form>
                 </List>
               </Card.Body>
             </Card>

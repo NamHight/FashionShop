@@ -72,9 +72,10 @@ export const searchProductByName = async (name, sortOrder = "desc") => {
   }
 };
 
-export const searchProductName = async (name, categoryName, minPrice, maxPrice) => {
+export const searchProductName = async ({productName, categoryName,page,limit, minPrice, maxPrice}) => {
   try {
-    return await publicAxios.get();
+    const response = await publicAxios.get(`${BASE_PRODUCT_URL}/search?searchProduct=${productName}${categoryName ? '&categoryName=' + categoryName : ''}${minPrice ? '&minPrice='+minPrice : ''}${maxPrice ? '&maxPrice=' + maxPrice : ''}${page ? '&pageNumber='+page : ''}${limit ? '&pageSize='+limit : ''}`)
+    return response;
   } catch (ex) {
     return ex.response;
   }
