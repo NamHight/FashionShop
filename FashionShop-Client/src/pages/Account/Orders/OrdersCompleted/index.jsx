@@ -58,11 +58,6 @@ const ListOrder = ({ value }) => {
           })}
         </div>
         <div className="px-5 py-5 mx-5 text-center md:flex">
-          <div className="text-xl w-full md:text-start">
-            <button className="ml-3 border border-slate-500 px-9 py-3 rounded hover:bg-red-600 hover:text-white">
-              Buy Back
-            </button>
-          </div>
           <div className="text-xl w-80 flex justify-end items-center">
             <p className="font-bold flex items-center">
               Thành Tiền:
