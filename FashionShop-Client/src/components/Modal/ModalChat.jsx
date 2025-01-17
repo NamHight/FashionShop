@@ -93,41 +93,64 @@ const ModalChat = () => {
             </div>
 
             {
-              !connection || !getUserNameChatLocalStorage ?  enterRoom() : (
-                      <div className="flex-1 px-4 gap-3 mb-4 mt-1 rounded overflow-y-auto text-gray-600 text-sm">
-                          <div className={'grid grid-cols-12 gap-2'}>
-                              <div className={'col-span-2'}>
-                                  <img src={"https://dub.sh/TdSBP0D"} className={"size-12 rounded-full "} alt="test"/>
-                              </div>
-                              <div className={"col-span-10 bg-[#f0f2f5] rounded p-2 text-black text-sm font-sans"}>
-                                  <p className="leading-relaxed">
-                                      {greeting}
-                                  </p>
-                              </div>
-                          </div>
-                          {
-                              messages.map((message,index) => (
-                                  <div className={'grid grid-cols-12 gap-2'} key={index}>
-                                      <div className={'col-span-2'}>
-                                          <img src={"https://dub.sh/TdSBP0D"} className={"size-12 rounded-full "}
-                                               alt="test"/>
-                                      </div>
-                                      <div
-                                          className={"col-span-10 bg-[#f0f2f5] rounded p-2 text-black text-sm font-sans"}>
-                                          <p className="leading-relaxed">
-                                              {message.message}
-                                          </p>
-                                      </div>
-                                  </div>
-                              ))
-                          }
-                      </div>
-              )
+                !connection || !getUserNameChatLocalStorage ? enterRoom() : (
+                    <div className="flex-1 px-4 gap-3 mb-4 mt-1 rounded overflow-y-auto text-gray-600 text-sm">
+                        <div className={'grid grid-cols-12 gap-2'}>
+                            <div className={'col-span-2'}>
+                                <img src={"assets/AI.png"} className={"size-12 rounded-full "} alt="test"/>
+                            </div>
+                            <div className={"col-span-10 bg-[#f0f2f5] rounded p-2 text-black text-sm font-sans"}>
+                                <p className="leading-relaxed">
+                                    {greeting}
+                                </p>
+                            </div>
+                        </div>
+                        {
+                            messages.map((message, index) =>
+                                <div key={index}>
+                                    {
+                                        message.username === getUserNameChatLocalStorage ?
+                                            (
+                                                <div className={'grid grid-cols-12 gap-2 my-2'}>
+                                                    <div className={'col-span-2'}>
+                                                        <img src={"assets/user.png"}
+                                                             className={"size-12 rounded-full "}
+                                                             alt="test"/>
+                                                    </div>
+                                                    <div
+                                                        className={"col-span-10 bg-[#f0f2f5] rounded p-2 text-black text-sm font-sans"}>
+                                                        <p className="leading-relaxed">
+                                                            {message.message}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            ) : (
+                                                <div className={'grid grid-cols-12 gap-2 my-2'}>
+                                                    <div
+                                                        className={"col-span-10 bg-[#f0f2f5] rounded p-2 text-black text-sm font-sans"}>
+                                                        <p className="leading-relaxed">
+                                                            {message.message}
+                                                        </p>
+                                                    </div>
+                                                    <div className={'col-span-2'}>
+                                                        <img src={"assets/AI.png"}
+                                                             className={"size-12 rounded-full "}
+                                                             alt="test"/>
+                                                    </div>
+                                                </div>
+                                            )
+                                    }
+                                </div>
+                            )
+                        }
+                    </div>
+                )
             }
             {
                 connection && getUserNameChatLocalStorage && (
                     <div className="flex items-center pt-0 px-2 py-2">
-                        <form className="flex items-center justify-center w-full space-x-2" onSubmit={handleSubmitChat(handleChat)}>
+                        <form className="flex items-center justify-center w-full space-x-2"
+                              onSubmit={handleSubmitChat(handleChat)}>
                             <input
                                 {...registerChat("chatting")}
                                 className="flex h-10 w-full rounded-md border border-[#e5e7eb] px-3 py-2 text-sm placeholder-[#6b7280] focus:outline-none focus:ring-2 focus:ring-[#9ca3af] disabled:cursor-not-allowed disabled:opacity-50 text-[#030712] focus-visible:ring-offset-2"
