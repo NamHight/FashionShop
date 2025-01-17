@@ -6,7 +6,7 @@ namespace FashionShop_API.Repositories.Reviews
 {
 	public interface IRepositoryReviews
 	{
-		Task<PagedListAsync<Review>> GetListReviewByProductId(int page, int limit, long productId, string typeOrderBy);
+		Task<PagedListAsync<Review>> GetListReviewByProductId(int page, int limit, long productId, string typeOrderBy, int rating);
 		Task AddAsync(Review entity, bool trackChanges);
 		Task UpdateAsync(Review entity, bool trackChanges);
 		Task DeleteAsync(long id);

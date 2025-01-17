@@ -14,6 +14,7 @@ namespace FashionShop_API.Dto.ResponseDto
         public decimal? TotalPrice { get; set; }
         public long? OrderId { get; set; }
         public string? ProductName { get; set; }
+        public string? ProductId {  get; set; }
         public string? Banner { get; set; }
         public decimal? Price { get; set; }
         public string? CategoryName { get; set; }

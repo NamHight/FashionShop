@@ -6,8 +6,10 @@ import { CustomSpinner } from "../../../../components/CustomSpinner";
 import { Input } from "@material-tailwind/react";
 import { IoSearch } from "react-icons/io5";
 import { useAuth } from "../../../../context/AuthContext";
+import ReviewButton from "../../../../components/Detail/ReviewButton/ReviewButton"; 
 
 const ListOrder = ({ value }) => {
+  
   return (
     <>
       <div className="bg-slate-100 rounded mt-3">
@@ -38,28 +40,24 @@ const ListOrder = ({ value }) => {
                       <h1 className="font-bold">{item.productName}</h1>
                     </div>
                     <div>
-                      <p>Categpry: {item.categoryName}</p>
+                      <p>Category: {item.categoryName}</p>
                       <p>Quantity x{item.quantity}</p>
                       <p>Price: ${item.price}</p>
                     </div>
                   </div>
+                  <ReviewButton
+                  productId={item.productId} 
+                />
                 </div>
                 <div className="w-36 text-xl flex justify-end items-center text-red-600 ">
                   ${item.totalPrice}
                 </div>
               </div>
+              
             );
           })}
         </div>
         <div className="px-5 py-5 mx-5 text-center md:flex">
-          <div className="text-xl w-full md:text-start">
-            <button className="border border-slate-500 px-9 py-3 rounded hover:bg-red-600 hover:text-white">
-              Reviews
-            </button>
-            <button className="ml-3 border border-slate-500 px-9 py-3 rounded hover:bg-red-600 hover:text-white">
-              Buy Back
-            </button>
-          </div>
           <div className="text-xl w-80 flex justify-end items-center">
             <p className="font-bold flex items-center">
               Thành Tiền:
