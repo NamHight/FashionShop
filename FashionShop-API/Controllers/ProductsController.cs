@@ -11,6 +11,7 @@ using FashionShop_API.Services.ServiceManager;
 using Microsoft.AspNetCore.Mvc;
 using FashionShop_API.Services.Views;
 using Microsoft.AspNetCore.Http;
+using System.Text.Json;
 
 namespace FashionShop_API.Controllers
 {
@@ -41,6 +42,9 @@ namespace FashionShop_API.Controllers
                 }
 
                 _logger.LogInformation("Fetched all products successfully.");
+
+     
+
                 return Ok(products);
             }
             catch (Exception ex)
@@ -154,5 +158,21 @@ namespace FashionShop_API.Controllers
             }
         }
 
+        [HttpGet("search")]
+        public async Task<IActionResult> GetProductSearchByNameAndFilter([FromQuery] RequestProductDto requestProductDto)
+        {
+            if(requestProductDto is null)
+            {
+                return BadRequest(new { message = "Argument is not null" });
+            }
+            if(requestProductDto.minPrice > requestProductDto.maxPrice)
+            {
+                return BadRequest(new { message = "max price " });
+            }
+            var pageResult = await _serviceManager.Product.GetProductSearchAndFilterAsync(requestProductDto, false);
+            Response.Headers.Append("X-Pagination", JsonSerializer.Serialize(pageResult.pageInfo));
+            return Ok(pageResult.products);
+        }
+        
     }
 }

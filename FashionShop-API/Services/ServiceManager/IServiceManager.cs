@@ -12,6 +12,7 @@ using FashionShop_API.Services.Articles;
 using FashionShop_API.Services.Orders;
 using FashionShop_API.Services.Suppliers;
 using FashionShop_API.Services.Views;
+using FashionShop_API.Services.OrderDetails;
 
 namespace FashionShop_API.Services.ServiceManager;
 
@@ -32,4 +33,5 @@ public interface IServiceManager
     IServiceSuppiler Suppiler { get; }
      IServiceView Views { get; }
 
+     IServiceOrderDetails Orderdetails { get; }
 }

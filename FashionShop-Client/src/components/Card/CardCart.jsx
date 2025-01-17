@@ -49,5 +49,4 @@ const CardCart = ({Image, Name,Price,Quantity}) => {
         </Card>
     );
 };
-
 export default CardCart;

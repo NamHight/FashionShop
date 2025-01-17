@@ -7,7 +7,7 @@ namespace FashionShop_API.Services.Reviews
 {
 	public interface IServiceReviews
 	{
-		Task<(IEnumerable<ResponseReviewDto> data, PageInfo page)> FindReviewsByProductIdAsync(int page, int limit, long productId, string typeOrderBy);
+		Task<(IEnumerable<ResponseReviewDto> data, PageInfo page)> FindReviewsByProductIdAsync(int page, int limit, long productId, string typeOrderBy, int rating);
 		Task AddReviewAsync(RequestReviewDto review, bool trackChanges);
 		Task<Review> UpdateReviewAsync(long id, RequestReviewDto review, bool trackChanges);
 		Task DeleteReviewAsync(long id);

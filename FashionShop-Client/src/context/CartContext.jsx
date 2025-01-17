@@ -4,6 +4,7 @@ import { jwtDecode } from "jwt-decode";
 import { tokenProtection } from "../services/api/TokenService";
 import { useQuery, useSuspenseInfiniteQuery } from '@tanstack/react-query';
 import { set } from "zod";
+import { getAllProducts } from "../services/api/ProductService";
 
 export const CartContext = createContext(null);
 
@@ -13,15 +14,31 @@ export const CartContext = createContext(null);
 
 export const CartContextProvider = ({ children }) => {
 
+    var paypalClientIDx = "";
+
     const [page, setPage] = useState(1); // Lưu trang hiện tại mà người dùng đang trỏ tới
+
+    const { data: products, errorx, isLoadingx } = useQuery({
+        queryKey:['product'], 
+        queryFn: async () => { 
+            const product = await getAllProducts();
+            if(product != null) return product
+            return null;
+        },
+        refetchOnWindowFocus: false, // Không fetch lại khi focus tab
+        staleTime: 1000 * 60 * 5, // Dữ liệu sẽ không bị xem là "cũ" trong 5 phút
+        cacheTime: 1000 * 60 * 10, // Dữ liệu sẽ được giữ trong cache trong 10 phút
+        enabled: true // Không fetch tự động
+    });
 
     const { data: cartQuery, refetch, error, isLoading } = useQuery({
         queryKey:['cart'], 
         queryFn: async () => { 
             const allCarts = await getAllCartsService();
             if(allCarts != null){
-                console.log("Dữ liệu cart sau khi get API", allCarts);
-                return allCarts;
+                paypalClientIDx = allCarts.paypalClientID
+                console.log("Dữ liệu cart sau khi get API", allCarts.carts);
+                return allCarts.carts;
             }
             console.log("du lieu null");
             return null;
@@ -32,12 +49,12 @@ export const CartContextProvider = ({ children }) => {
         enabled: true // Không fetch tự động
     });
 
-    const [carts, setCarts] = useState(cartQuery);
+    const [carts, setCarts] = useState(cartQuery); // danh sách cart lưu tại client
     const [cartPagination, setCartPagination] = useState(() =>{
         if(carts!=null){
-           var x = carts.slice((page-1)*3, (page-1)*3 +3)
-           console.log("du lieu khai bao cho cartPagination: ", x);
-           return x;
+           var pagination = carts.slice((page-1)*3, (page-1)*3 +3)
+           console.log("du lieu khai bao cho cartPagination: ", pagination);
+           return pagination;
         }
         return null;
     }) // Khởi tạo giá trị ban đầu cho cartPagination bằng 3 phần tử đầu tiên trong cart
@@ -83,18 +100,13 @@ export const CartContextProvider = ({ children }) => {
     const decreaseQuantity = (id) =>{
         var currentCart = carts.find(item=> item.productId === id);
         if(currentCart){
-            if(currentCart.quantity === 1){
-                removeCart(id);
-            }else{
-                var newCart = [...carts].map(item => {
-                    if(item.productId===id){
-                        return {...item, quantity : item.quantity- 1, amount: item.amount - item.price};
-                    }
-                    return item;
-                    
-                })
-                setCarts(newCart);
-            }
+            var newCart = [...carts].map(item => {
+                if(item.productId===id){
+                    return {...item, quantity : item.quantity- 1, amount: item.amount - item.price};
+                }
+                return item;
+            })
+            setCarts(newCart);
         }
     }
 
@@ -161,6 +173,19 @@ export const CartContextProvider = ({ children }) => {
        return 1;
     }
 
+    const checkInventory =  (id, quantityx) =>{
+        var check = true;
+        products.map(item => {
+            if(item.productId === id){
+                if(item.quantity === quantityx) {
+                    check = false;
+                    return;
+                }
+            }
+       })
+       return check;
+    } 
+
     const value = {
         carts: carts,
         cart: cartPagination,
@@ -177,7 +202,8 @@ export const CartContextProvider = ({ children }) => {
         totalMoney: totalMoney,
         saveCart: saveCart,
         setPage: setPage,
-        
+        checkInventory: checkInventory,
+        paypalClientIDx : paypalClientIDx
     }
 
     return (

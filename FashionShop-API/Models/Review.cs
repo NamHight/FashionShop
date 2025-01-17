@@ -24,6 +24,10 @@ public partial class Review
     [Column("review_date", TypeName = "datetime")]
     public DateTime? ReviewDate { get; set; }
 
+    [Column("image")]
+    [StringLength(255)]
+    public string? Image { get; set; }
+
     [Column("customer_id")]
     public long? CustomerId { get; set; }
 

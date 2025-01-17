@@ -1,14 +1,100 @@
 import {Link} from "react-router"
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useCartConText } from "../../context/CartContext";
+import { useAuth } from "../../context/AuthContext";
+import { addOrders } from "../../services/api/OrdersService";
+import ModalLoginRegister from "../../components/Modal/ModalLoginRegister";
+import { AlertCustom } from "../../components/Alert/Alert";
+import { useNavigate } from 'react-router';
+import { toast } from "react-toastify";
+// import { createOrder, onApprove } from "../../services/api/CartService";
+import {  PayPalScriptProvider,PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
+import { Spinner } from "@material-tailwind/react";
+
+
 
 const Payment = () => {
-    const {carts, totalMoney} = useCartConText();
+    const {carts, totalMoney, removeAllCart, paypalClientIDx } = useCartConText();
+
+    const {user} = useAuth();   
+
+    const navigate = useNavigate(); // sử dụng useNavigate để chuyển hướng trang
+
+    const [login, setLogin] = useState(false);
 
     const vouchers = ["Nam123", "Giam20%", "Giam10%"];
 
     const inputRef = useRef(null);
 
+    useEffect(()=>{ // nếu đã đăng nhập có tồn tại user thì set state login = true hiển thị nút pay now
+      if(user){
+        setLogin(true);
+      }
+    }, [user])
+
+    const initialOptions = {
+      "client-id": "AZxQRoHiBGtifo08svPS_2JARUmuw3WCKlHnrlcFnHgkU4UGMGc8usf7ZGNEgFJLmla3-zWvAjQy5zXJ",
+      dataNamespace: "paypal_sdk", // Adding this resolves potential conflicts
+      currency: "USD",
+      intent: "capture",
+      components: 'buttons'
+    };
+
+    function createOrder() {
+      // replace this url with your server
+      return fetch("https://react-paypal-js-storybook.fly.dev/api/paypal/create-order", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+          },
+          // use the "body" param to optionally pass additional order information
+          // like product ids and quantities
+          body: JSON.stringify({
+              cart: [
+                  {   
+                      sku: "1blwyeo8",
+                      quantity: 2,
+                  },
+              ],
+          }),
+      })
+          .then((response) => response.json())
+          .then((order) => {
+            console.log("Chi tiet hoa don",order.id )
+              // Your code here after create the order
+              return order.id;
+          });
+    }
+    function onApprove(data) {
+      // replace this url with your server
+      return fetch("https://react-paypal-js-storybook.fly.dev/api/paypal/capture-order", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+              orderID: data.orderID,
+          }),
+      })
+          .then((response) => response.json())
+          .then((orderData) => {
+              console.log("thong tin", orderData)
+          });
+    }
+
+    const PayPalComponent = () => {
+      const [{ isPending }] = usePayPalScriptReducer();
+     
+      return (
+          <div>
+              {isPending && <Spinner/>}
+              <PayPalButtons 
+               createOrder={createOrder}
+               onApprove={onApprove} />
+          </div>
+      );
+  };
+  
     const handleVoucher = () =>{
         var discount = document.getElementById("discount");
         const inputCoupon = inputRef.current.value;
@@ -55,6 +141,11 @@ const Payment = () => {
       const numberRegex = /\d/gi; // biểu thức regex kiểm tra số
       return regex.test(name) || numberRegex.test(name); // nếu có chưa số hoặc ký tự đặc biệt trả về true
     }
+
+    function checkNumberOrSpecialCharacter2(name) {
+      const regex = /[^a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂỀỂỆỄÝỶỸỳỷỹĂắằẵẳẵĐđêôơưăắằẵẳẵĂÀÁẢÃÂẦẤẨẪẬẮẰẲẴẶÈÉẺẼÊỀẾỂỄỆÌÍỈĨỊÒÓỎÕÔỒỐỔỖỘƠỜỚỞỠỢÙÚỦŨỤƯỪỨỬỮỰỲÝỶỸỴ\s'.,-]/gi;
+      return regex.test(name); 
+    }
     
     function checkCharaterOrSpecialCharacter(number) {
       const regex = /[^\w\s]/gi; // biểu thức regex kiểm tra ký tự đặc biệt
@@ -62,64 +153,282 @@ const Payment = () => {
       return regex.test(number) || letterRegex.test(number); // nếu có chưa số hoặc ký tự đặc biệt trả về true
     }
   
-    const checkValidateNameOnCard =  (event) =>{
+    const checkValidateNameOnCard =  () =>{
       var errorNameOnCard = document.getElementById("errorNameOnCard");
-      var inputName = document.getElementById("nameOnCard")
-      var name = handleNameOnCard(event); // chuyển tên ng dùng nhập thành viết hoa và bỏ dấu
+      var inputName = document.getElementById("nameOnCard");
+      var name = handleNameOnCard(inputName.value); // chuyển tên ng dùng nhập thành viết hoa và bỏ dấu
       console.log(name);
-      if (checkNumberOrSpecialCharacter(name)){ // kiểm tra nếu tồn tại ký tự đặc biệt hoặc số thì báo lỗi
+      if(name.length ===0){
+        errorNameOnCard.hidden = false;
+        errorNameOnCard.textContent = "The cardholder's name cannot be left blank";
+        return false;
+      }
+      else if (checkNumberOrSpecialCharacter(name)){ // kiểm tra nếu tồn tại ký tự đặc biệt hoặc số thì báo lỗi
         errorNameOnCard.hidden = false;
         errorNameOnCard.textContent = "The username on the card does not include special characters, accents and numbers";
-      }else{
+        return false;
+      }else{ // Nếu đã kiểm tra thành công thì tối ưu lại tên thành tên viết hoa, không dấu
         inputName.value = name;
         errorNameOnCard.hidden = true;
+        return true;
       }
     }
 
-    const checkValidateNumberOnCard= (event) =>{
+    const checkValidateNumberOnCard= () =>{
         const numberCardElement = document.getElementById("cardNumber");
         const errorCardNumber = document.getElementById("errorCardNumber");
-        const numberCard = String(event).trim();
+        const numberCard = String(numberCardElement.value).trim();
         console.log("So the da nhap: ", numberCard);
+        if(numberCard.length ===0){
+          errorCardNumber.hidden = false;
+          errorCardNumber.textContent = "The card number cannot be left blank.";
+          return false;
+        }
         if(numberCard.length !=16 ){
           console.log("Chưa đủ 16 ký tự", numberCard.length);
           errorCardNumber.hidden = false;
           errorCardNumber.textContent = "Card number must have 16 characters.";
+          return false;
         }else{
           console.log("Đã đủ 16 ký tự");
           errorCardNumber.hidden = true;
+          return true;
         }
     }
 
-    const checkExpirationYearCard= (event) =>{
+    const checkExpirationYearCard= () =>{
       const errorExpirationYear = document.getElementById("errorExpirationYear");
       const expirationMonth = document.getElementById("expirationMonth");
-      const expirationYear = document.getElementById("expirationYear");
+      const expirationYear = document.getElementById("expirationYear").value;
       var expirationMonthValue = expirationMonth.value;
       console.log("thang het han la:", expirationMonthValue);
-      if(+event < new Date().getFullYear() && +expirationMonthValue < new Date().getFullYear()){
+      if(expirationYear.length === 0) {
+        errorExpirationYear.hidden = false;
+        errorExpirationYear.textContent = "The card expiration year cannot be left blank";
+        return false;
+      }
+
+      if(+expirationYear <= 0){
+        errorExpirationYear.hidden = false;
+        errorExpirationYear.textContent = "The expiration year must always be a positive integer";
+        return false;
+      }
+      else if(+expirationYear < new Date().getFullYear() && +expirationMonthValue < new Date().getFullYear()){
         console.log("The da het han");
         errorExpirationYear.hidden = false;
         errorExpirationYear.textContent = "Your card has expired please check again";
-      }else{
+        return false;
+      }
+      else{
         errorExpirationYear.hidden = true;
+        return true;
       }
     }
 
-    const checkCSVCard= (event) =>{
-      const csv = document.getElementById("csv");
+    const checkCSVCard= () =>{
+      const csv = document.getElementById("csv").value
       const errorCSVCard = document.getElementById("errorCSVCard");
-      console.log("So csv la: ", event);
-      if(event.trim().length != 3){
+      console.log("So csv la: ", csv);
+      if(csv.length === 0) {
         errorCSVCard.hidden = false;
-        errorCSVCard.textContent = "Please enter 3 digits for csv";
+        errorCSVCard.textContent = "The CSV number cannot be left blank.";
+        return false;
+      }else if(csv.trim().length != 3){
+        errorCSVCard.hidden = false;
+        errorCSVCard.textContent = "Please enter only 3 digits for the CSV";
+        return false;
       }else{
         errorCSVCard.hidden = true;
+        return true;
       }
     }
-    
+
+    const handleCheckName = () =>{
+        const name = document.getElementById("name").value;
+        const errorName = document.getElementById("errorName"); 
+        if (checkNumberOrSpecialCharacter2(name)){
+          errorName.hidden = false;
+          errorName.textContent = "Please enter a name without special characters or numbers.";
+        }else{
+          console.log("Ten la: ", name)
+          if(name.length == 0){
+            errorName.hidden = false;
+            errorName.textContent = "Please do not leave the recipient's name blank.";
+          }else if(name.length >200){
+            errorName.hidden = false;
+            errorName.textContent = "Please do not enter more than 200 characters.";
+          }else{
+            errorName.hidden = true;
+          }
+        }
+    }
+
+    const handleCheckPhone = () =>{
+      let phone = document.getElementById("phone").value;
+      const errorPhone = document.getElementById("errorPhone");
+      if(checkCharaterOrSpecialCharacter(phone)){
+        errorPhone.hidden = false;
+        errorPhone.textContent = "Please enter a phone number without letters or special characters.";
+      }else{
+        console.log("Phone la: ", phone);
+        if(phone.length == 0){
+          errorPhone.hidden = false;
+          errorPhone.textContent = "Please do not leave the recipient's phone blank.";
+        }else if(phone.length >15){
+          errorPhone.hidden = false;
+          errorPhone.textContent = "Please do not enter more than 15 characters.";
+        }else{
+          errorPhone.hidden = true;
+        }
+      }
+    }
+
+    const handleCheckAddress = () =>{
+      const address = document.getElementById("address").value;
+      const errorAddress = document.getElementById("errorAddress");
+      console.log("Address la: ", address)
+      if(address.length == 0){
+        errorAddress.hidden = false;
+        errorAddress.textContent = "Please do not leave the recipient's address blank.";
+      }else if(address.length >200){
+        errorAddress.hidden = false;
+        errorAddress.textContent = "Please do not enter more than 200 characters.";
+      }else{
+        errorAddress.hidden = true;
+      }
+    }
+
+    // Gọi thông báo nhắc người dùng đăng nhập để tiếp tục thanh toán
+    const showToastRequireLogin = () =>{  
+      toast.info("Please Login To Continue Payment");
+    }
+
+    const handleClickATMPayment =  () =>{
+      const infoATM = document.getElementById("infoATM");
+      const inputATM = document.getElementById("atm");
+      inputATM.checked = true; //tích cho atm
+      console.log("Đã chọn thanh toán bang atm",  inputATM.checked);
+      var payNow = document.getElementById("payNow");
+      if(payNow){
+        document.getElementById("payNow").classList.add("block");
+        document.getElementById("payNow").hidden = false;
+      }
+      const paypal = document.getElementById("paypal_method");
+      if(paypal) {
+        if(paypal.hidden == false) 
+          {
+            paypal.hidden = true;
+          }
+      }
+      infoATM.hidden = false; // hiển thị info
+    }
+
+    const handleClickPaypalPayment = () =>{
+      console.log("Da vao ham handle paypal")
+      document.getElementById("paypal").checked = true; // bấm chọn paypal thì tích cho paypal 
+      const infoATM = document.getElementById("infoATM"); 
+      const paypal = document.getElementById("paypal_method");
+      if(paypal) {
+        console.log("paypal tồn tại mà")
+        paypal.hidden = false;
+      }
+      var payNow = document.getElementById("payNow");
+      if(payNow){
+        document.getElementById("payNow").classList.remove("block");
+        document.getElementById("payNow").hidden = true;
+      }
+      infoATM.hidden = true; // tích xong thì ẩn infoATM đi
+    }
+
+    const handleClickCashPayment = () =>{
+      document.getElementById("cash").checked = true; // bấm chọn cash thì tích cho cash 
+      const infoATM = document.getElementById("infoATM");
+      var payNow = document.getElementById("payNow");
+      if(payNow){
+        document.getElementById("payNow").classList.add("block");
+        document.getElementById("payNow").hidden = false;
+      }
+      const paypal = document.getElementById("paypal_method");
+      if(paypal) {
+        if(paypal.hidden == false) 
+          {
+            paypal.hidden = true;
+          }
+      }
+      infoATM.hidden = true; // ẩn thông tin atm đi
+    }
+
+     // Hàm xử lý sau khi bấm nút thanh toán
+     const handlePayment= async () =>{
+      const inputCash = document.getElementById("cash");
+      const inputAtm = document.getElementById("atm");
+      const inputPaypal = document.getElementById("paypal");
+      const inputName = document.getElementById("name").value;
+      const inputPhone = document.getElementById("phone").value;
+      const inputAddress = document.getElementById("address").value;
+      const finalMoney = document.getElementById("finalMoney").textContent.slice(1);
+
+      //Xử lý khi người dùng chưa điền thông tin nhận hàng
+      if(inputName.length ===0 ||inputPhone.length===0 || inputAddress.length===0){
+          console.log("co thong tin chua dien");
+          handleCheckName();
+          handleCheckPhone();
+          handleCheckAddress();
+          toast.info("Please enter your shipping information");
+          return;
+      }
+
+      // Dữ liệu của hoá đơn và chi tiết hoá đơn gửi lên server nếu thanh toán thành công
+      var data = {TotalAmount: finalMoney, OrderDate: new Date(), CustomerId:user.customerId, 
+        Reciver: inputName, Address: inputAddress, Phone: inputPhone, Status: "processing", ListProductId: carts.map(item => item.productId)};
+
+      // Xử lý hình thức thanh toán, kết quả thanh toán và chuyển hướng
+      if(inputCash.checked){
+        console.log("Đã vào xử lý thanh toán bằng cash");
+        const message = 'Thanh Toan That Bai, Vui Long Thu Lai';
+        var result = await addOrders({...data, PaymentMethod: "cash"});  // gọi hàm để tạo hoá đơn cho kh
+        if(result.status === 200) { // tạo hoá đơn thành công thì làm...
+          removeAllCart(); // thanh toán thành công thì remove all cart đi
+          navigate('/account/orders/', { state: { message: 'Thanh toán thành công!' } });
+        }
+        else navigate(`/page404/${encodeURIComponent(message)}`, { state: { errorPayment: 'Thanh toán thất bại!' } });
+
+      }else if(inputAtm.checked){
+        console.log("Đã vào xử lý thanh toán bằng atm");
+        const message = 'Thanh Toan That Bai, Vui Long Thu Lai';
+        // Kiểm tra validate thành công mới cho thanh toán, nếu không sẽ thông báo nhập lại thông tin atm
+        const validYear = checkExpirationYearCard();
+        const validCSV = checkCSVCard();
+        const validName = checkValidateNumberOnCard();
+        const validNumberCard = checkValidateNameOnCard();
+        console.log("Ket qua kiem tra validate",validYear, " ", validCSV, " ", validName, " ", validNumberCard);
+
+        if(validYear && validCSV && validName && validNumberCard){ // nếu kiểm tra thành công trả về true hết thì mới tiếp tục tạo hoá đơn thanh toán
+          console.log("kiem tra thanh cong")
+          var result = await addOrders({...data, PaymentMethod: "credit_card"});
+          if(result.status === 200) {
+            removeAllCart(); // thanh toán thành công thì remove all cart đi
+            navigate('/account/orders/', { state: { message: 'Thanh toán thành công!' } });
+          }
+          else navigate(`/page404/${encodeURIComponent(message)}`, { state: { errorPayment: 'Thanh toán thất bại!' } });
+
+        }else{ // nếu kiểm tra validate thất bại thì thông báo kèm dừng thanh toán
+          console.log("kiem tra that bai")
+          toast.error("Please ensure the card information is valid before continuing with the payment");
+        }
+      }else if(inputPaypal.checked){
+        const message = 'Thanh Toan That Bai, Vui Long Thu Lai';
+        var result = await addOrders({...data, PaymentMethod: "paypal"});
+        if(result.status === 200) {
+          removeAllCart(); // thanh toán thành công thì remove all cart đi
+          navigate('/account/orders/', { state: { message: 'Thanh toán thành công!' } });
+        }
+        else navigate(`/page404/${encodeURIComponent(message)}`, { state: { errorPayment: 'Thanh toán thất bại!' } });
+      }
+    }
+
     return (
-        <div className="min-w-screen min-h-screen bg-gray-50 py-5">
+        <div className="w-screen min-h-screen bg-gray-50 py-5">
           <div className="px-5">
             <div className="mb-2 items-center">
               <h1 className="text-3xl md:text-5xl font-bold text-gray-600">Checkout</h1>
@@ -133,16 +442,17 @@ const Payment = () => {
           <div className="w-full bg-white border-t border-b border-gray-200 px-5 py-10 text-gray-800">
             <div className="w-full">
               <div className="-mx-3 md:flex items-start">
+                {/* detail cart and subtotal */}
                 <div className="px-3 md:w-7/12 lg:pr-10">
                   <div className="w-full mx-auto text-gray-800 font-light mb-6 border-b border-gray-200 pb-6">
                     {/* start cart item */}
                     {
                         carts && carts.map((item, index) =>  
-                            <div key={index} className="w-full flex items-center">
+                            <div key={index} className="w-full flex items-center mb-1">
                                 <div className="overflow-hidden rounded-lg w-16 h-16 bg-gray-50 border border-gray-200">
                                 <img
-                                    src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80"
-                                    alt="abc"
+                                    src={`assets/images/products/${item.banner}`}
+                                    alt={item.productName}
                                 />
                                 </div>
                                 <div className="flex-grow pl-3">
@@ -220,42 +530,83 @@ const Payment = () => {
                     </div>
                   </div>
                 </div>
+                {/* detail payment */}
                 <div className="px-3 md:w-5/12">
+                  {/* info payment */}
                   <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-3 text-gray-800 font-light mb-6">
-                    <div className="w-full flex mb-3 items-center">
+                    {/* //item  info*/}
+                    <div className="w-full flex mb-3 items-center"> 
                       <div className="w-32">
                         <span className="text-gray-600 font-semibold">Name</span>
                       </div>
                       <div className="flex-grow pl-3">
-                        <input type="text" placeholder="please enter...ex: Nam Duong" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
+                        <input type="text" placeholder="please enter...ex: Nam Duong" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        onBlur={()=> handleCheckName()}
+                        id="name"/>
                       </div>
                     </div>
+                    <div className="my-2 text-left">
+                      <span hidden  id="errorName" className="text-red-600 font-body"></span>
+                    </div>
+                  
                     <div className="w-full flex mb-3 items-center">
                       <div className="w-32">
                         <span className="text-gray-600 font-semibold">Phone</span>
                       </div>
                       <div className="flex-grow pl-3">
-                        <input type="text" placeholder="please enter...ex: 0963982322" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
+                        <input type="text" placeholder="please enter...ex: 0963982322" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        onBlur={()=> handleCheckPhone()}
+                        id="phone"/>
                       </div>
                     </div>
+                    <div className="my-2 text-left">
+                      <span hidden  id="errorPhone" className="text-red-600 font-body"></span>
+                    </div>
+                   
                     <div className="w-full flex items-center">
                       <div className="w-32">
                         <span className="text-gray-600 font-semibold">Billing Address</span>
                       </div>
                       <div className="flex-grow pl-3">
-                        <input type="text" placeholder="please enter...ex: 123 George Street, Sydney, NSW 2000 Australia" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
+                        <input type="text" placeholder="please enter...ex: 123 George Street, Sydney, NSW 2000 Australia" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        onBlur={()=> handleCheckAddress()}
+                        id="address"/>
                       </div>
                     </div>
+                    <div className="mt-2 text-left">
+                      <span hidden  id="errorAddress" className="text-red-600 font-body"></span>
+                    </div>
                   </div>
+
+                  {/* Method payment */}
                   <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 text-gray-800 font-light mb-6">
-                    <div className="w-full p-3 border-b border-gray-200">
+                  <div className="w-full p-3 border-b border-gray-200" onClick={() => handleClickCashPayment()}>
+                      <label htmlFor="type2" className="flex items-center cursor-pointer" >
+                        <input
+                          defaultChecked={true}
+                          type="radio"
+                          className="form-radio h-5 w-5 text-indigo-500"
+                          name="type"
+                          id="cash"
+                        />
+                        <img
+                          src="assets/images/share/icon_money.jpg"
+                          width="40"
+                          className="ml-3"
+                          alt="Cash"
+                        />
+                      </label>
+                    </div>
+
+                     {/* start atm payment */}
+                    <div className="w-full p-3 border-b border-gray-200" onClick={() => handleClickATMPayment()}>
                       <div className="mb-5">
                         <label htmlFor="type1" className="flex items-center cursor-pointer">
                           <input
                             type="radio"
                             className="form-radio h-5 w-5 text-indigo-500"
                             name="type"
-                            id="type1"
+                            id="atm"
                           />
                           <img
                             src="https://leadershipmemphis.org/wp-content/uploads/2020/08/780370.png"
@@ -264,14 +615,16 @@ const Payment = () => {
                           />
                         </label>
                       </div>
-                      <div>
+                      
+                      {/* info atm */}
+                      <div id="infoATM" hidden>
                         <div className="mb-3">
                           <label className="text-gray-600 font-semibold text-sm mb-2 ml-1">
                             Name on card
                           </label>
                           <div>
                             <input
-                              onBlur={(e) => checkValidateNameOnCard(e.target.value)}
+                              onBlur={() => checkValidateNameOnCard()}
                               id="nameOnCard"
                               className="w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors"
                               placeholder="John Smith"
@@ -288,7 +641,7 @@ const Payment = () => {
                           </label>
                           <div>
                             <input
-                              onBlur={(e) => checkValidateNumberOnCard(e.target.value)}
+                              onBlur={() => checkValidateNumberOnCard()}
                               id="cardNumber"
                               className="w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors"
                               placeholder="0000 0000 0000 0000"
@@ -299,13 +652,13 @@ const Payment = () => {
                             <span hidden id="errorCardNumber" className="text-red-600 font-body"></span>
                           </div>
                         </div>
-                        <div className="mb-3 -mx-2 flex items-end">
+                        <div className="mb-3 -mx-2 flex items-end justify-between">
                           <div className="px-2 w-1/4">
                             <label className="text-gray-600 font-semibold text-sm mb-2 ml-1">
                               Expiration Month
                             </label>
                             <div>
-                              <select className="form-select w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer"
+                              <select className="form-select w-full px-4 pr-5 py-[10.5px] mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer"
                                 id="expirationMonth"
                               >
                                 <option value="01">01 - January</option>
@@ -329,11 +682,11 @@ const Payment = () => {
                               Expiration Year
                             </label>
                             <input
-                                onBlur={(e) => checkExpirationYearCard(e.target.value)}
+                                onBlur={() => checkExpirationYearCard()}
                                 id="expirationYear"
-                                className="w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors"
-                                placeholder="Example 2030"
-                                type="text"
+                                className="w-full px-4 pr-5 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors"
+                                placeholder="Ex: 2030"
+                                type="number"
                               />
                           </div>
                           
@@ -343,15 +696,16 @@ const Payment = () => {
                             </label>
                             <div>
                               <input
-                                onBlur={(e) => checkCSVCard(e.target.value)}
+                                onBlur={() => checkCSVCard()}
                                 id = "csv"
-                                className="w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors"
-                                placeholder="000"
+                                className="w-full px-4 pr-5 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors"
+                                placeholder="Ex: 000"
                                 type="number"
                               />
                             </div>
                           </div>
                         </div>
+                        {/* end payment atm */}
                         <div className="mt-2 text-left">
                             <span hidden id="errorCSVCard" className="text-red-600 font-body"></span>
                         </div>
@@ -360,13 +714,16 @@ const Payment = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="w-full p-3">
-                      <label htmlFor="type2" className="flex items-center cursor-pointer">
+
+                   
+                    {/* start paypal payment */}
+                    <div className="w-full p-3" onClick={() => handleClickPaypalPayment()}>
+                      <label htmlFor="type2" className="flex items-center cursor-pointer" >
                         <input
                           type="radio"
                           className="form-radio h-5 w-5 text-indigo-500"
                           name="type"
-                          id="type2"
+                          id="paypal"
                         />
                         <img
                           src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"
@@ -376,17 +733,40 @@ const Payment = () => {
                         />
                       </label>
                     </div>
+                   
                   </div>
+
+                  {/* button payment */}
                   <div>
-                    <button className="block w-full max-w-xs mx-auto border border-transparent bg-indigo-500 hover:bg-indigo-600 focus:bg-indigo-600 text-white rounded-lg px-3 py-2 font-semibold">
-                      PAY NOW
-                    </button>
+                    {
+                      login ? <button className="block w-full max-w-xs mx-auto border border-transparent bg-indigo-500 hover:bg-indigo-600 focus:bg-indigo-600 text-white rounded-lg px-3 py-2 font-semibold"
+                        onClick={handlePayment}
+                        id="payNow"
+                        >
+                          PAY NOW
+                        </button> :
+                        <button className="block w-full max-w-xs mx-auto border border-transparent bg-indigo-500 hover:bg-indigo-600 focus:bg-indigo-600 text-white rounded-lg px-3 py-2 font-semibold"
+                         onClick={showToastRequireLogin}
+                         >
+                            PLEASE LOGIN
+                        </button>
+                    }
+                    {
+                      login && 
+                      <div id="paypal_method" className="w-full max-w-xs mx-auto border border-transparent" hidden >
+                        <PayPalScriptProvider options={initialOptions}>
+                            <PayPalComponent />
+                        </PayPalScriptProvider>
+                      </div>
+                    } 
+                  
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+          {/* <script src={`https://sandbox.paypal.com/sdk/js?client-id=${}`}></script> */}
+        </div> 
     );
 }
 

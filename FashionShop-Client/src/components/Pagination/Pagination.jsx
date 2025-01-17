@@ -3,7 +3,7 @@ import { NavArrowRight, NavArrowLeft } from "iconoir-react";
 import { useCartConText } from "../../context/CartContext";
 
 export function Pagination() {
-  const { page, setPage, totalPages } = useCartConText();
+  const { page, setPage, totalPages, totalCarts } = useCartConText();
 
   const next = () => {
     if (page === totalPages) return;
@@ -28,14 +28,14 @@ export function Pagination() {
         Previous
       </Button>
       <span className="text-gray-700 font-medium">
-        Page {page} - {totalPages}
+        Page {page} - {totalPages===0 ? 1 : totalPages}
       </span>
       <Button
         variant="solid"
         onClick={next}
         color="info"
         className="flex items-center gap-2"
-        disabled={page === totalPages}
+        disabled={page === totalPages || totalCarts === 0}
       >
         Next
         <NavArrowRight className="h-5 w-5" />

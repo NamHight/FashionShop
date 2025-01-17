@@ -1,16 +1,35 @@
-function ImageProfile() {
+import { useState } from "react";
+
+function ImageProfile({user}) {
+  const [file, setFile] = useState()
+  function handleFile(event){
+    setFile(event.target.files)
+    console.log(event.target.files[0])
+  }
+  const handleUpload = (e) => {
+    e.preventDefault()
+    const form = new FormData(e.target);
+    console.log('form', form.get('file'))
+  }
   return (
-    <div className="m-20 text-center">
-      <span className="flex justify-center mb-5 rounded-full">
+    <div className="m-20 text-center avatar">
+      
+      <span className="flex justify-center mb-5 w-44 h-44">
         <img
-          src="https://th.bing.com/th?id=OIP.4akau9Zyzq-ioaE0S_YVrwHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
-          alt="ảnh.jpg"
+          alt={user?.avatar}
+          src={
+            user.avatar
+              ? "/assets/images/avatar/" + user.avatar
+              : "/assets/images/Logo.png"
+          }
           width={200}
-          className="rounded-full "
+          className="rounded-full size-36 object-cover border border-blue-500 ring-4 ring-blue-500/20 cursor-pointer"
         />
       </span>
-      <input type="file" name="image" id="image" hidden />
-      <button  className="border-2 text-lg px-5 py-3 rounded-full">Upload File</button>
+      <form onSubmit={(e)=>handleUpload(e)}>
+        <input type="file" name="file" onChange={(e) => handleFile(e)} hidden/>
+        <button  className="border-2 text-lg px-5 py-3 rounded-full">Upload File</button>
+      </form>
     </div>
   );
 }

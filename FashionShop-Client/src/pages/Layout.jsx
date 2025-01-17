@@ -31,7 +31,7 @@ const Layout = ({isInVisible,handleScrollTop}) => {
                             pauseOnHover
                             theme="light"
                             transition={Bounce}/>
-            <div className={'sticky top-0 max-w-full w-screen bg-emerald-400'}>
+            <div className={'sticky top-0 max-w-full w-screen bg-emerald-400 z-[999]'}>
                 <Header/>
             </div>
             <div className={'flex-1 container flex justify-center items-center mx-auto'}>

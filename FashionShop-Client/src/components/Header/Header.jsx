@@ -1,5 +1,5 @@
 import React, {useEffect, useLayoutEffect, useState} from 'react';
-import {Link} from "react-router";
+import {Link, useNavigate} from "react-router";
 import {IconButton, Input, List, Spinner, Tooltip, Typography} from "@material-tailwind/react";
 import {IoIosArrowDown} from "react-icons/io";
 import ModalLoginRegister from "../Modal/ModalLoginRegister";
@@ -15,6 +15,7 @@ import {getLocalStorage, setLocalStorage} from "../../libs/Helpers/LocalStorageC
 import {useDebounce} from "../../hooks/useDebounce";
 import {searchProductByName} from "../../services/api/ProductService";
 import ProductSearch from "../List/ProductSearch";
+import { useForm } from 'react-hook-form';
 
 const Links = [
     {name: "BLOG", path: "/blog"},
@@ -49,6 +50,7 @@ function NavLinks() {
 
 const Header = () => {
     const {user, isLoading, error} = useAuth();
+    const navigator = useNavigate();
     const [categoriesLocalStorage, setCategoriesLocalStorage] = useState([]);
     const [activeCategories, setActiveCategories] = useState(false);
     const [loading, setLoading] = useState(true);
@@ -182,6 +184,12 @@ const Header = () => {
     const handleSearch = (event) => {
         setSearch(event.target.value);
     }
+
+    const handlerSearchEneter = (event)=>{
+      if(event.key == 'Enter'){
+        navigator('search') 
+      }
+    }
     const handleRenderingSearch = () =>{
         return (
             searchTemp && <div>
@@ -202,7 +210,7 @@ const Header = () => {
         )
     }
     return (
-        <div className={'container flex justify-center items-center mx-auto z-100 xl:h-[5rem] lg:h-[4.5rem] md:h-[4rem] h-[3.5rem] '}>
+        <div className={'container flex justify-center items-center mx-auto z-100 xl:h-[5rem] lg:h-[4.5rem] md:h-[4rem] h-[3.5rem]'}>
             <div className={'flex justify-center items-center'}>
                 <Link to="/" className={'md:w-[4rem] xl:w-[7rem] sm:w-[3rem] lg:w-[5rem]'}>
                     <img src={`/assets/Logo.png`} alt={'logo'}
@@ -222,7 +230,9 @@ const Header = () => {
                     <li className={'group w-full flex justify-center items-center '}>
                         <div className={'hidden sm:flex md:flex xl:hidden lg:hidden justify-center items-center w-full relative group md:w-[1rem]'}>
                             <Input
-                                onChange={(e) => handleSearch(e)}
+                                onChange={(e) => handleSearch(e)                
+                                }
+
                                 className={' md:px-2 group-hover:pr-6 pl-3 group-hover:bg-white absolute shadow-none opacity-0 group-hover:opacity-100  border-0 group-hover:w-[20rem] transition-all duration-300 ease-in-out top-[-1.13rem] right-[-1rem] group-hover:flex flex group-hover:transition-all group-hover:duration-300 group-hover:ease-in-out justify-center items-center max-w-[20rem] rounded-l-3xl rounded-r-3xl border-t-0 outline-0 '}
                                 type={'search'} placeholder={"Searching....."}/>
                             <div
@@ -248,15 +258,19 @@ const Header = () => {
                             }
                         </div>
                         <div className={'relative flex justify-center items-center w-full'}>
+                        <form  className='w-full'>
                         <Input
+                        name='searchProduct'
                                 onChange={(e) => handleSearch(e)}
+                                onKeyDown={(e) => handlerSearchEneter(e)}
                                 type="search" placeholder="Searching....."
                                 className={' xl:block lg:block sm:hidden  md:hidden bg-white duration-300 ease-in-out  transition-all group-hover:outline-blue-300 hover:border-blue-300 focus:outline-blue-300 group-focus:border-blue-300'}>
                                 <Input.Icon>
                                     <IoSearch
                                         className="xl:block lg:block md:hidden h-full w-full text-emerald-400 group-hover:text-blue-300 group-focus:text-blue-300 "/>
                                 </Input.Icon>
-                            </Input>
+                            </Input>      
+                        </form>
                             {
                                 handleRenderingSearch()
                             }

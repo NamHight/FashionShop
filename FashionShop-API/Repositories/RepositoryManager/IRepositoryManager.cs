@@ -9,6 +9,7 @@ using FashionShop_API.Repositories.Promotions;
 using FashionShop_API.Repositories.Articles;
 using FashionShop_API.Repositories.Orders;
 using FashionShop_API.Repositories.Suppilers;
+using FashionShop_API.Repositories.OrderDetails;
 
 using FashionShop_API.Repositories.Views;
 
@@ -28,6 +29,7 @@ public interface IRepositoryManager
     IRepositoryArticle Article { get; }
     IRepositoryOrders Orders { get; }
     IRepositoryViews Views { get; }
+    IRepositoryOrderDetails OrderDetails { get; }
     Task SaveChanges();
     Task<bool> SaveChangesAsync();
 }

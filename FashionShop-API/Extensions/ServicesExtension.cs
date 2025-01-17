@@ -41,8 +41,8 @@ public static class ServicesExtension
         var googleSetting = configuration.GetSection("Google");
         services.AddAuthentication(options =>
             {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme; 
+                options.DefaultAuthenticateScheme = "CustomJWT";
+                options.DefaultChallengeScheme = "CustomJWT";
             })
             .AddJwtBearer("Google",options =>
             {

@@ -19,10 +19,10 @@ namespace FashionShop_API.Services.Reviews
 			_managerRepository = managerRepository;
 			_mapper = mapper;
 		}
-		public async Task<(IEnumerable<ResponseReviewDto> data, PageInfo page)> FindReviewsByProductIdAsync(int page, int limit, long productId, string typeOrderBy)
+		public async Task<(IEnumerable<ResponseReviewDto> data, PageInfo page)> FindReviewsByProductIdAsync(int page, int limit, long productId, string typeOrderBy, int rating)
 		{
 
-			var reviews = await _managerRepository.Review.GetListReviewByProductId(page, limit, productId, typeOrderBy);
+			var reviews = await _managerRepository.Review.GetListReviewByProductId(page, limit, productId, typeOrderBy, rating);
 			if (reviews.Count == 0)
 			{
 				throw new ReviewNotFoundException("Product has no reviews yet");
@@ -40,6 +40,7 @@ namespace FashionShop_API.Services.Reviews
 				ProductId = review.ProductId,
 				CustomerId = review.CustomerId,
 				ReviewText = review.ReviewText,
+				Image=review.Image,
 				Rating = review.Rating,
 				ReviewDate = DateTime.UtcNow
 			};

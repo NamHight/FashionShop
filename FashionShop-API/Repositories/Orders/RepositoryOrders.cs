@@ -14,15 +14,6 @@ namespace FashionShop_API.Repositories.Orders
                 .ThenInclude(item => item.Category).ToListAsync();
             return listorderdetail.AsEnumerable();
         }
-        //public async Task<Ordersdetail?> GetOrdersByIdAndStatus(long id, string status, bool trackChanges)
-        //{
-        //    var order = await FindByCondition(item => item.Order.CustomerId.Equals(id) && item.Order.Status == status, trackChanges).FirstOrDefaultAsync();
-        //    return order;
-        //}
-        //public async Task RemoveOrdersByIdAndStatusPending(Order order)
-        //{
-        //    Delete(order);
-        //}
 
         public async Task<Order> GetOrderByCustomerIdAndProductIdAsync(long customerId, long productId)
         {
@@ -32,6 +23,16 @@ namespace FashionShop_API.Repositories.Orders
                                 && order.Status == "completed"
                                 && order.Ordersdetails.Any(item => item.ProductId == productId))
                 .FirstOrDefaultAsync();
+        }
+
+        public async Task AddOrder(Order order)
+        {
+            await Create(order);
+        }
+        public async Task<Order> FindOrderById(long? id, bool trackChanges)
+        {
+            var order = await FindByCondition(item => item.OrderId.Equals(id), trackChanges).FirstOrDefaultAsync();
+            return order;
         }
     }
 }

@@ -33,4 +33,21 @@ public static class ProductExtension
     {
         return products.OrderBy(p => p.Price);
     }
+    public static IQueryable<Product> FilterProductPrice(this IQueryable<Product>
+        products, decimal? minPrice, decimal? maxPrice) { 
+
+        if (minPrice is null && maxPrice is null) {
+            return products;
+        }
+        return products.Where(e => e.Price >= minPrice && e.Price <= maxPrice);
+    }
+    public static IQueryable<Product> FilterProductCategory(this IQueryable<Product>
+       products, string categoryName)
+    {
+        if (string.IsNullOrWhiteSpace(categoryName))
+        {
+            return products;
+        }
+        return products.Where(e => e.Category.CategoryName.ToLower().Contains(categoryName.ToLower()));
+    }
 }
