@@ -7,9 +7,9 @@ import ModalLoginRegister from "../../components/Modal/ModalLoginRegister";
 import { AlertCustom } from "../../components/Alert/Alert";
 import { useNavigate } from 'react-router';
 import { toast } from "react-toastify";
-import { createOrder, onApprove } from "../../services/api/CartService";
-import { PayPalButtons, usePayPalScriptReducer  } from '@paypal/react-paypal-js';
-import { PayPalScriptProvider } from "@paypal/react-paypal-js/dist/cjs/react-paypal-js.min";
+// import { createOrder, onApprove } from "../../services/api/CartService";
+import {  PayPalScriptProvider,PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
+import { Spinner } from "@material-tailwind/react";
 
 
 
@@ -33,18 +33,64 @@ const Payment = () => {
     }, [user])
 
     const initialOptions = {
-      "client-id": paypalClientIDx,
+      "client-id": "AZxQRoHiBGtifo08svPS_2JARUmuw3WCKlHnrlcFnHgkU4UGMGc8usf7ZGNEgFJLmla3-zWvAjQy5zXJ",
+      dataNamespace: "paypal_sdk", // Adding this resolves potential conflicts
       currency: "USD",
       intent: "capture",
+      components: 'buttons'
     };
 
+    function createOrder() {
+      // replace this url with your server
+      return fetch("https://react-paypal-js-storybook.fly.dev/api/paypal/create-order", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+          },
+          // use the "body" param to optionally pass additional order information
+          // like product ids and quantities
+          body: JSON.stringify({
+              cart: [
+                  {   
+                      sku: "1blwyeo8",
+                      quantity: 2,
+                  },
+              ],
+          }),
+      })
+          .then((response) => response.json())
+          .then((order) => {
+            console.log("Chi tiet hoa don",order.id )
+              // Your code here after create the order
+              return order.id;
+          });
+    }
+    function onApprove(data) {
+      // replace this url with your server
+      return fetch("https://react-paypal-js-storybook.fly.dev/api/paypal/capture-order", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+              orderID: data.orderID,
+          }),
+      })
+          .then((response) => response.json())
+          .then((orderData) => {
+              console.log("thong tin", orderData)
+          });
+    }
+
     const PayPalComponent = () => {
-      const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
+      const [{ isPending }] = usePayPalScriptReducer();
      
       return (
           <div>
-              {isPending && <div>Loading...</div>}
-              <PayPalButtons />
+              {isPending && <Spinner/>}
+              <PayPalButtons 
+               createOrder={createOrder}
+               onApprove={onApprove} />
           </div>
       );
   };
@@ -262,18 +308,53 @@ const Payment = () => {
       const inputATM = document.getElementById("atm");
       inputATM.checked = true; //tích cho atm
       console.log("Đã chọn thanh toán bang atm",  inputATM.checked);
+      var payNow = document.getElementById("payNow");
+      if(payNow){
+        document.getElementById("payNow").classList.add("block");
+        document.getElementById("payNow").hidden = false;
+      }
+      const paypal = document.getElementById("paypal_method");
+      if(paypal) {
+        if(paypal.hidden == false) 
+          {
+            paypal.hidden = true;
+          }
+      }
       infoATM.hidden = false; // hiển thị info
     }
 
     const handleClickPaypalPayment = () =>{
+      console.log("Da vao ham handle paypal")
       document.getElementById("paypal").checked = true; // bấm chọn paypal thì tích cho paypal 
-      const infoATM = document.getElementById("infoATM");
+      const infoATM = document.getElementById("infoATM"); 
+      const paypal = document.getElementById("paypal_method");
+      if(paypal) {
+        console.log("paypal tồn tại mà")
+        paypal.hidden = false;
+      }
+      var payNow = document.getElementById("payNow");
+      if(payNow){
+        document.getElementById("payNow").classList.remove("block");
+        document.getElementById("payNow").hidden = true;
+      }
       infoATM.hidden = true; // tích xong thì ẩn infoATM đi
     }
 
     const handleClickCashPayment = () =>{
       document.getElementById("cash").checked = true; // bấm chọn cash thì tích cho cash 
       const infoATM = document.getElementById("infoATM");
+      var payNow = document.getElementById("payNow");
+      if(payNow){
+        document.getElementById("payNow").classList.add("block");
+        document.getElementById("payNow").hidden = false;
+      }
+      const paypal = document.getElementById("paypal_method");
+      if(paypal) {
+        if(paypal.hidden == false) 
+          {
+            paypal.hidden = true;
+          }
+      }
       infoATM.hidden = true; // ẩn thông tin atm đi
     }
 
@@ -660,6 +741,7 @@ const Payment = () => {
                     {
                       login ? <button className="block w-full max-w-xs mx-auto border border-transparent bg-indigo-500 hover:bg-indigo-600 focus:bg-indigo-600 text-white rounded-lg px-3 py-2 font-semibold"
                         onClick={handlePayment}
+                        id="payNow"
                         >
                           PAY NOW
                         </button> :
@@ -669,9 +751,15 @@ const Payment = () => {
                             PLEASE LOGIN
                         </button>
                     }
-                     {/* <PayPalScriptProvider options={initialOptions}>
-                        <PayPalComponent />
-                     </PayPalScriptProvider> */}
+                    {
+                      login && 
+                      <div id="paypal_method" className="w-full max-w-xs mx-auto border border-transparent" hidden >
+                        <PayPalScriptProvider options={initialOptions}>
+                            <PayPalComponent />
+                        </PayPalScriptProvider>
+                      </div>
+                    } 
+                  
                   </div>
                 </div>
               </div>

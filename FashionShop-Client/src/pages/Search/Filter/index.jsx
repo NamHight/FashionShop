@@ -157,7 +157,7 @@ export function Filter() {
                     />
                     <Input placeholder="Max Price" className="mb-4" id="maxPrice"
                       value={maxPrice}
-                      onChange={(e) => setMaxPrice(e.target.value < 0 ? 1 : e.target.value)}
+                      onChange={(e) => setMaxPrice(e.target.value < 0 ? 1 : e.target.value <  minPrice ? minPrice + 1 : e.target.value)}
                     />
                     <Button variant="outline">Outline</Button>
                   </form>

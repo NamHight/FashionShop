@@ -20,6 +20,7 @@ import OrdersPendingCancel from "../pages/Account/Orders/OrdersPendingCancel";
 import OrdersDelivering from "../pages/Account/Orders/OrdersDelivering";
 import OrdersCompleted from "../pages/Account/Orders/OrdersCompleted";
 import OrdersCancel from "../pages/Account/Orders/OrdersCancel";
+import Test from "../pages/Test/Index";
 import Search from "../pages/Search";
 
 
@@ -38,6 +39,7 @@ export const Router = [
     {path: "/payment", name: "Payment", element: <Payment/>},
     {path: "/:categorySlug/:productSlug", name: "detailProduct", element: <DetailProduct/>},
     {path: "/page404/:param1", name:"Page404", element: <Page404/>},
+    {path: "/test", name:"Test", element: <Test/>},
     {path: "/search", name:"Search", element: <Search/>}
 ];
 export const routerAccount = [
