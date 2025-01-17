@@ -1,12 +1,16 @@
 ﻿using AutoMapper;
+using FashionShop_API.Dto;
 using FashionShop_API.Dto.QueryParam;
 using FashionShop_API.Dto.RequestDto;
 using FashionShop_API.Dto.ResponseDto;
+using FashionShop_API.Exceptions;
+using FashionShop_API.Exceptions.Base;
 using FashionShop_API.Models;
 using FashionShop_API.Repositories;
 using FashionShop_API.Repositories.RepositoryManager;
 using FashionShop_API.Services.Products;
 using FashionShop_API.Services.ServiceLogger;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 
 namespace FashionShop.Services.Products
@@ -88,5 +92,14 @@ namespace FashionShop.Services.Products
             }
             return 0;
         }
+      
+        public async Task<(IEnumerable<ResponseSearchProductDto> products, PageInfo pageInfo)> GetProductSearchAndFilterAsync(RequestProductDto requestProductDto, bool trackChanges)
+        {
+       
+            var product = await _managerRepository.Product.GetProductsSearchAndFilterAsync(requestProductDto, trackChanges);
+            var productDto = _mapper.Map<IEnumerable<ResponseSearchProductDto>>(product);
+            return (products: productDto, pageInfo: product.PageInfo);
+        }
+
     }
 }

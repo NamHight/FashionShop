@@ -57,7 +57,7 @@ const ListOrder = ({ value }) => {
             );
           })}
         </div>
-        <div className="px-5 py-5 mx-5 text-center md:flex">
+        <div className="px-5 py-5 mx-5 flex justify-end md:flex">
           <div className="text-xl w-80 flex justify-end items-center">
             <p className="font-bold flex items-center">
               Thành Tiền:

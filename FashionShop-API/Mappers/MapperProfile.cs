@@ -56,6 +56,12 @@ public class MapperProfile : Profile
             .ReverseMap();
         CreateMap<Product, ResponseProductDto>()
             .ReverseMap();
+        CreateMap<Product, ResponseSearchProductDto>()
+            .IncludeMembers(e => e.Category)
+            .ReverseMap();
+        CreateMap<Category, ResponseSearchProductDto>()
+            .ReverseMap();
+
         CreateMap<Supplier, SuppilerDto>().ReverseMap();
 
         CreateMap<Order, RequestOrderCancelDto>().ReverseMap();
