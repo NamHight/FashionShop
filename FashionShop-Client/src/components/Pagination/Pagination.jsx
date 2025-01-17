@@ -28,7 +28,7 @@ export function Pagination() {
         Previous
       </Button>
       <span className="text-gray-700 font-medium">
-        Page {page} - {totalPages}
+        Page {page} - {totalPages===0 ? 1 : totalPages}
       </span>
       <Button
         variant="solid"

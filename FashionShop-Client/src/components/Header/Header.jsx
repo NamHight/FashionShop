@@ -202,7 +202,7 @@ const Header = () => {
         )
     }
     return (
-        <div className={'container flex justify-center items-center mx-auto z-100 xl:h-[5rem] lg:h-[4.5rem] md:h-[4rem] h-[3.5rem] '}>
+        <div className={'container flex justify-center items-center mx-auto z-100 xl:h-[5rem] lg:h-[4.5rem] md:h-[4rem] h-[3.5rem]'}>
             <div className={'flex justify-center items-center'}>
                 <Link to="/" className={'md:w-[4rem] xl:w-[7rem] sm:w-[3rem] lg:w-[5rem]'}>
                     <img src={`/assets/Logo.png`} alt={'logo'}

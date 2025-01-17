@@ -27,6 +27,8 @@ public static class ServicesExtension
                 ServerVersion.AutoDetect(configuration.GetConnectionString("DefaultConnection"))));
        
     }
+   
+  
     public static void ConfigureAuthentication(this IServiceCollection services,IConfiguration configuration)
     {
         JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
@@ -35,8 +37,8 @@ public static class ServicesExtension
         var googleSetting = configuration.GetSection("Google");
         services.AddAuthentication(options =>
             {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme; 
+                options.DefaultAuthenticateScheme = "CustomJWT";
+                options.DefaultChallengeScheme = "CustomJWT";
             })
             .AddJwtBearer("Google",options =>
             {
