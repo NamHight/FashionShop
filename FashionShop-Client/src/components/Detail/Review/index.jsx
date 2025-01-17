@@ -191,6 +191,17 @@ const ReviewList = (props) => {
                     <p className="text-gray-800 text-sm font-normal leading-snug">
                       {item.reviewText}
                     </p>
+                    <p className="text-gray-800 text-sm font-normal leading-snug">
+                      {
+                        item?.image !== 'null' ? (
+                          <img src={`http://localhost:7068/assets/images/review/${item?.image}`} alt={item?.image} style={{ 
+                            padding: "20px",
+                            width: "300px",
+                            height: "350px",
+                          }}/>
+                        ) : (null)
+                      }
+                    </p>
                   </div>
                 </div>
               );
